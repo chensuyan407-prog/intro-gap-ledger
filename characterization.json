@@ -1,0 +1,55 @@
+{
+ "deviations_from_paper": [
+  {
+   "target": "planted defects caught at fail level (dev, rules tuned on it)",
+   "metric": "absolute_error",
+   "actual_value": 1.0,
+   "reference_value": 1.0,
+   "score": 1.0,
+   "explanation": "32 defects in 2 cases (en IEEE, zh GB/T); baselines: key/structure lint 0.125, + numbers anywhere 0.1875, no check 0",
+   "evidence_artifact": "metrics",
+   "tolerance": 0.1
+  },
+  {
+   "target": "planted defects caught at fail level (held-out, at code freeze)",
+   "metric": "absolute_error",
+   "actual_value": 0.9333,
+   "reference_value": 1.0,
+   "score": 0.7777,
+   "explanation": "15 defects in 1 case (en APA, CSL-JSON) written after the freeze; misses: H13 number_from_wrong_place; baselines 0.0667 / 0.1333",
+   "evidence_artifact": "metrics",
+   "tolerance": 0.3
+  },
+  {
+   "target": "benign edits without a new fail (dev + held-out)",
+   "metric": "absolute_error",
+   "actual_value": 1.0,
+   "reference_value": 1.0,
+   "score": 1.0,
+   "explanation": "number format, paraphrase, group order, rewording, citation-style switch",
+   "evidence_artifact": "metrics",
+   "tolerance": 0.25
+  },
+  {
+   "target": "gold ledgers without fail (3 cases)",
+   "metric": "absolute_error",
+   "actual_value": 1.0,
+   "reference_value": 1.0,
+   "score": 1.0,
+   "explanation": "gold drafts written by following SKILL.md; two real source conflicts (67.5 vs 67.6 MMLU; 41.8 vs 41.0 BLEU) found by the checker and recorded as author notes",
+   "evidence_artifact": "metrics",
+   "tolerance": 0.34
+  },
+  {
+   "target": "robustness checks passed",
+   "metric": "absolute_error",
+   "actual_value": 1.0,
+   "reference_value": 1.0,
+   "score": 1.0,
+   "explanation": "missing_case_json=ok; empty_library=ok; encrypted_source_pdf=ok; scanned_own_paper=ok; invalid_plan_json=ok; no_draft=ok; check_before_init=ok; corrupt_library=ok; determinism=ok",
+   "evidence_artifact": "metrics",
+   "tolerance": 0.1
+  }
+ ],
+ "notes": "No LLM A/B (base agent vs Skill agent) was run by the author; the platform runs it on its fixed cases. The code changed after the freeze only in contract-field mapping and the LaTeX preview bibliography style (see README)."
+}

@@ -1,0 +1,51 @@
+[
+ {
+  "id": "P1.S1",
+  "part": "background",
+  "text": "Large language models are usually trained on about 300 billion tokens [citation needed].",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "300",
+    "found_in": [],
+    "elsewhere": []
+   }
+  ],
+  "type": "statement"
+ },
+ {
+  "id": "P2.S1",
+  "part": "related",
+  "text": "Prior scaling-law studies fixed the training schedule [citation needed].",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ },
+ {
+  "id": "P3.S1",
+  "part": "gap",
+  "text": "The effect of the token budget is open.",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P4.S1",
+  "part": "contrib",
+  "text": "We train over 400 language models.",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "400",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "own_paper",
+  "self_refs": [
+   "Figure 3"
+  ]
+ }
+]

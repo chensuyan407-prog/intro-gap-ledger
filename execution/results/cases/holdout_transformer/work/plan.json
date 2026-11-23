@@ -1,0 +1,30 @@
+{"language": "en", "style": "apa",
+ "groups": [
+  {"id": "g1", "name": "Recurrent encoder-decoders with attention", "basis": "method",
+   "dimension": "how the decoder accesses the source sentence and how much computation is sequential",
+   "refs": ["hochreiter1997", "bahdanau2015", "wu2016"],
+   "comparison": "fixed-length encoding vs. soft-search over source positions; both keep step-by-step recurrent computation",
+   "evidence": [{"ref": "bahdanau2015", "id": "E:bahdanau2015:p1:3", "use": "setting"}, {"ref": "bahdanau2015", "id": "E:bahdanau2015:p1:4", "use": "method"}]},
+  {"id": "g2", "name": "Convolutional sequence models", "basis": "method",
+   "dimension": "parallelism during training vs. path length between distant positions",
+   "refs": ["gehring2017", "he2016"],
+   "comparison": "ConvS2S parallelises over all elements; residual connections (He et al.) are what make deep stacks trainable",
+   "evidence": [{"ref": "gehring2017", "id": "E:gehring2017:p1:3", "use": "result"}, {"ref": "he2016", "id": "E:he2016:p1:1", "use": "method"}]}
+ ],
+ "gaps": [
+  {"id": "gap1", "statement": "Recurrent models compute sequentially and convolutional models need several layers to connect distant positions, so no existing transduction model is both fully parallel and connects any two positions in a constant number of operations.",
+   "type": "common_limitation",
+   "from": [{"ref": "bahdanau2015", "id": "E:bahdanau2015:p1:4"}, {"ref": "gehring2017", "id": "E:gehring2017:p1:1", "kind": "setting"}, {"ref": "gehring2017", "id": "E:gehring2017:p1:3", "kind": "result"}],
+   "author_judgment": false}
+ ],
+ "contributions": [
+  {"id": "k1", "text": "We propose the Transformer, an encoder-decoder based solely on attention mechanisms, dispensing with recurrence and convolutions.",
+   "gaps": ["gap1"], "evidence": [{"id": "E:self:p1:10"}, {"loc": "Figure 1", "quote": "The Transformer - model architecture"}]},
+  {"id": "k2", "text": "On WMT 2014 English-to-German the Transformer reaches 28.4 BLEU, more than 2 BLEU above the best previous results including ensembles.",
+   "gaps": ["gap1"], "evidence": [{"id": "E:self:p1:12"}, {"loc": "Table 2", "quote": "The Transformer achieves better BLEU scores than previous state-of-the-art models"}]},
+  {"id": "k3", "text": "We show that the Transformer generalizes to English constituency parsing with large and limited training data.",
+   "gaps": ["gap1"], "evidence": [{"id": "E:self:p1:14"}]}
+ ],
+ "omitted_refs": {"ba2016": "layer normalization is an implementation detail of the method section, not of the introduction"},
+ "author_notes": ["Source conflict: the abstract (p1) gives 41.8 BLEU on WMT14 English-to-French, Section 6.1 (p8) gives 41.0; the draft does not state the EN-FR number - confirm which version is final."]
+}

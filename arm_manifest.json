@@ -1,0 +1,242 @@
+{
+ "arm_version": "1.1",
+ "paper": {
+  "title": "写作08｜引言与相关工作写作 — intro-gap-ledger Skill",
+  "challenge_id": "product-arena-04-4b82ad21"
+ },
+ "entrypoint": "src/reproduce.py",
+ "environment": {
+  "dependencies": "requirements.txt",
+  "python_version": ">=3.8",
+  "gpu_required": false,
+  "extra_packages": [
+   "PyMuPDF>=1.23 (PDF text; or poppler pdftotext)",
+   "xelatex/pdflatex + bibtex (optional PDF preview)",
+   "tesseract (optional OCR)"
+  ]
+ },
+ "execution": {
+  "log_path": "execution/run.log",
+  "exit_code": 0,
+  "ran_at": "2026-11-23T05:27:27.489922Z",
+  "wall_time_s": 46.75,
+  "ran_by": "agent",
+  "artifacts": [
+   {
+    "id": "metrics",
+    "path": "execution/results/metrics.json",
+    "type": "metric",
+    "format": "json",
+    "checksum_sha256": "86ffa0dc00345276e3c39afe5e209cf944c00fdc392321fea8cf221af64b4a92"
+   },
+   {
+    "id": "metrics_dev",
+    "path": "execution/results/metrics_dev.json",
+    "type": "metric",
+    "format": "json",
+    "checksum_sha256": "3d23f312a0f57c0c29625b36e2449495ef1de72d61193a7803f2543819197601"
+   },
+   {
+    "id": "metrics_holdout_at_freeze",
+    "path": "execution/results/metrics_holdout_at_freeze.json",
+    "type": "metric",
+    "format": "json",
+    "checksum_sha256": "2d4e0123034fb5433fe773082b96facfe624d3f8f4dffebd776bfe832375994c"
+   },
+   {
+    "id": "metrics_holdout",
+    "path": "execution/results/metrics_holdout.json",
+    "type": "metric",
+    "format": "json",
+    "checksum_sha256": "2d4e0123034fb5433fe773082b96facfe624d3f8f4dffebd776bfe832375994c"
+   },
+   {
+    "id": "eval_rows_dev",
+    "path": "execution/results/eval_rows_dev.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "e3ea7c5d860abf7ec83f3282e5a3119cfc68855c4a9f4937806a0f378c6b9b3b"
+   },
+   {
+    "id": "eval_rows_holdout_at_freeze",
+    "path": "execution/results/eval_rows_holdout_at_freeze.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "9b801e1abc8039ddb40b6dbbe723124e75f4e2ce16c3a8a0aa2fc3020195f4c9"
+   },
+   {
+    "id": "dev_en_result",
+    "path": "execution/results/cases/dev_en/output/result.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "5cb15dba16facf1ef38a4795f5a52afa4cc00106e30fe784ea8ef3b7b48667d5"
+   },
+   {
+    "id": "dev_en_draft",
+    "path": "execution/results/cases/dev_en/output/intro_related_work.md",
+    "type": "data",
+    "format": "md",
+    "checksum_sha256": "a431d06b458c9f717718d9284e1cbdf82acae3949964c0b020f9d87a2874185d"
+   },
+   {
+    "id": "dev_en_gap_derivation",
+    "path": "execution/results/cases/dev_en/output/gap_derivation.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "280da51009b522e9a3c27d4dfcda9854ea58db4077e66db86a8754f98052d68c"
+   },
+   {
+    "id": "dev_en_matrix",
+    "path": "execution/results/cases/dev_en/output/related_work_matrix.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "35586b3fc477c5a107e526e002a61f44974b4377286a33d783a45ee2578bcc13"
+   },
+   {
+    "id": "dev_en_source_map",
+    "path": "execution/results/cases/dev_en/output/source_map.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "ac0256bceea6449ad0b68e622b52b5bec77fd0f70e99f8169a6897850ef11788"
+   },
+   {
+    "id": "dev_en_preview",
+    "path": "execution/results/cases/dev_en/output/intro_related_work_preview.pdf",
+    "type": "figure",
+    "format": "pdf",
+    "checksum_sha256": "a3f81044d6579d1cef6eed36138171908e33e61ccffeb4af6e381964f55571aa"
+   },
+   {
+    "id": "dev_zh_result",
+    "path": "execution/results/cases/dev_zh/output/result.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "8b3403fd3cd7d86fc080bf2942644a0ccb79679a8ff939563542cc582c23ee04"
+   },
+   {
+    "id": "dev_zh_draft",
+    "path": "execution/results/cases/dev_zh/output/intro_related_work.md",
+    "type": "data",
+    "format": "md",
+    "checksum_sha256": "a48c74a4c59e544723e4ec0f9eaae12f48db8507a041e60068fdd616098845a5"
+   },
+   {
+    "id": "dev_zh_gap_derivation",
+    "path": "execution/results/cases/dev_zh/output/gap_derivation.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "df421bfda7f138f329145ece2a760b1b5b5bb734b3a69258950aee5e143c9f3b"
+   },
+   {
+    "id": "dev_zh_matrix",
+    "path": "execution/results/cases/dev_zh/output/related_work_matrix.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "8395ee755eeaadc35a37ca2ddc7ce5596b0a7c111f7c165b18e975eae076faa2"
+   },
+   {
+    "id": "dev_zh_source_map",
+    "path": "execution/results/cases/dev_zh/output/source_map.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "098fa0eac602e18c3966ed3b16b2dc84d972fe5ad56a21c90228c1bdabdb43a5"
+   },
+   {
+    "id": "dev_zh_preview",
+    "path": "execution/results/cases/dev_zh/output/intro_related_work_preview.pdf",
+    "type": "figure",
+    "format": "pdf",
+    "checksum_sha256": "84a4885e27f6ec9c30d7f77f8c7569e5fbf0b641c2e22ebbc787a5df8c85b526"
+   },
+   {
+    "id": "holdout_transformer_result",
+    "path": "execution/results/cases/holdout_transformer/output/result.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "da7a6936d9c3b4dbf4918dd884268cf5c38ad14ba8b6ff4d230dbc50312389a7"
+   },
+   {
+    "id": "holdout_transformer_draft",
+    "path": "execution/results/cases/holdout_transformer/output/intro_related_work.md",
+    "type": "data",
+    "format": "md",
+    "checksum_sha256": "a0504509a5f38040910394dbc2c01619414daeafdaefa9ebf0e0b87db314563c"
+   },
+   {
+    "id": "holdout_transformer_gap_derivation",
+    "path": "execution/results/cases/holdout_transformer/output/gap_derivation.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "8e5816e4bf82ca7080f31661b2fab4e5821278d47381cd184fa32347ce8cc4ed"
+   },
+   {
+    "id": "holdout_transformer_matrix",
+    "path": "execution/results/cases/holdout_transformer/output/related_work_matrix.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "fa7bde3d4807c10af305393c23436329aade5e42741f10a8db9649c3d2fa0ba6"
+   },
+   {
+    "id": "holdout_transformer_source_map",
+    "path": "execution/results/cases/holdout_transformer/output/source_map.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "498c85848affbe2468cfb16a265b025f7478993735a9086f6e7f2a59c00e335c"
+   },
+   {
+    "id": "holdout_transformer_preview",
+    "path": "execution/results/cases/holdout_transformer/output/intro_related_work_preview.pdf",
+    "type": "figure",
+    "format": "pdf",
+    "checksum_sha256": "0f9f026734cf8b7adfe6c33f55ee631895bfd45632b55473a4ea20b278e9938b"
+   }
+  ]
+ },
+ "expected_outputs": [
+  {
+   "name": "planted defects caught at fail level (dev, rules tuned on it)",
+   "type": "metric",
+   "produced_by": [
+    "metrics"
+   ],
+   "comparison_method": "numeric_tolerance"
+  },
+  {
+   "name": "planted defects caught at fail level (held-out, at code freeze)",
+   "type": "metric",
+   "produced_by": [
+    "metrics"
+   ],
+   "comparison_method": "numeric_tolerance"
+  },
+  {
+   "name": "benign edits without a new fail (dev + held-out)",
+   "type": "metric",
+   "produced_by": [
+    "metrics"
+   ],
+   "comparison_method": "numeric_tolerance"
+  },
+  {
+   "name": "gold ledgers without fail (3 cases)",
+   "type": "metric",
+   "produced_by": [
+    "metrics"
+   ],
+   "comparison_method": "numeric_tolerance"
+  },
+  {
+   "name": "robustness checks passed",
+   "type": "metric",
+   "produced_by": [
+    "metrics"
+   ],
+   "comparison_method": "numeric_tolerance"
+  }
+ ],
+ "handoff": {
+  "status": "partial",
+  "next_suggestion": "Run the platform's three fixed cases with the DeepSeek harness (base vs Skill); add semantic (cross-lingual) support scoring; tighten number-in-context for table pages.",
+  "hypothesis": "Separating writing (agent) from verification (script) with an explicit evidence ledger - groups with a comparison axis, gaps derived from located limitation sentences of cited works, contributions bound to the paper's own sentences/figures/tables - catches the typical failure modes of introduction drafts (invented or misattributed citations, wrong numbers, uncited claims, padding, one-paper-per-sentence related work, unsupported gaps and contributions) that a key/structure lint misses."
+ }
+}

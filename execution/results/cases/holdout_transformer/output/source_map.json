@@ -1,0 +1,240 @@
+[
+ {
+  "id": "P1.S1",
+  "part": "background",
+  "text": "Sequence transduction, such as machine translation, has been dominated by recurrent neural networks that map an input sequence to a variable length output sequence.",
+  "citations": [
+   {
+    "key": "gehring2017",
+    "evidence": "E:gehring2017:p1:1",
+    "page": 1,
+    "quote": "The prevalent approach to sequence to sequence learning maps an input sequence to a variable length output sequence via recurrent neural networks.",
+    "support": 0.57,
+    "source_text": "abstract_only",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P1.S2",
+  "part": "background",
+  "text": "Neural machine translation trains a single network jointly to maximize translation performance.",
+  "citations": [
+   {
+    "key": "bahdanau2015",
+    "evidence": "E:bahdanau2015:p1:2",
+    "page": 1,
+    "quote": "Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance.",
+    "support": 0.89,
+    "source_text": "abstract_only",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P1.S3",
+  "part": "background",
+  "text": "Recurrent computation is sequential along the sequence, which limits parallelization within training examples as sentences get longer.",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P2.S1",
+  "part": "related",
+  "text": "Recurrent translation models differ mainly in how the decoder reads the source sentence.",
+  "citations": [
+   {
+    "key": "bahdanau2015",
+    "evidence": "E:bahdanau2015:p1:2",
+    "page": 1,
+    "quote": "Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance.",
+    "support": 0.5,
+    "source_text": "abstract_only",
+    "link": "auto"
+   },
+   {
+    "key": "wu2016",
+    "evidence": null,
+    "page": null,
+    "quote": null,
+    "support": null,
+    "source_text": "metadata_only"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S2",
+  "part": "related",
+  "text": "Basic encoder-decoders compress a source sentence into a fixed-length vector from which the decoder generates a translation, whereas Bahdanau et al. let the model soft-search for the parts of the source sentence that are relevant to predicting a target word.",
+  "citations": [
+   {
+    "key": "bahdanau2015",
+    "evidence": "E:bahdanau2015:p1:3",
+    "page": 1,
+    "quote": "The models proposed recently for neural machine translation often belong to a family of encoder-decoders and consists of an encoder that encodes a source sentence into a fixed-length vector from which a decoder generates a translation.",
+    "support": 0.42,
+    "source_text": "abstract_only",
+    "link": "explicit"
+   },
+   {
+    "key": "bahdanau2015",
+    "evidence": "E:bahdanau2015:p1:4",
+    "page": 1,
+    "quote": "In this paper, we conjecture that the use of a fixed-length vector is a bottleneck in improving the performance of this basic encoder-decoder architecture, and propose to extend this by allowing a model to automatically (soft-)search for parts of a source sentence that are relevant to predicting a target word, without having to form these parts as a hard segment explicitly.",
+    "support": 0.58,
+    "source_text": "abstract_only",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S3",
+  "part": "related",
+  "text": "Both variants keep long short-term memory style recurrence and therefore process tokens one step at a time.",
+  "citations": [
+   {
+    "key": "hochreiter1997",
+    "evidence": null,
+    "page": null,
+    "quote": null,
+    "support": null,
+    "source_text": "metadata_only"
+   }
+  ],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P3.S1",
+  "part": "related",
+  "text": "Convolutional models trade recurrence for parallelism: compared to recurrent models, computations over all elements can be fully parallelized during training.",
+  "citations": [
+   {
+    "key": "gehring2017",
+    "evidence": "E:gehring2017:p1:3",
+    "page": 1,
+    "quote": "Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.",
+    "support": 0.71,
+    "source_text": "abstract_only",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P3.S2",
+  "part": "related",
+  "text": "Deep convolutional stacks rely on residual learning to remain trainable.",
+  "citations": [
+   {
+    "key": "he2016",
+    "evidence": "E:he2016:p1:1",
+    "page": 1,
+    "quote": "We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously.",
+    "support": 0.25,
+    "source_text": "full_text",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P3.S3",
+  "part": "related",
+  "text": "In contrast to attention over all positions, a convolution only relates positions within its kernel, so distant positions are connected through several layers.",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P4.S1",
+  "part": "gap",
+  "text": "Thus recurrent models compute sequentially and convolutional models need several layers to connect distant positions: no existing transduction model is both fully parallel and connects any two positions in a constant number of operations.",
+  "citations": [
+   {
+    "key": "gehring2017",
+    "evidence": "E:gehring2017:p1:3",
+    "page": 1,
+    "quote": "Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.",
+    "support": 0.18,
+    "source_text": "abstract_only",
+    "link": "explicit"
+   },
+   {
+    "key": "gehring2017",
+    "evidence": "E:gehring2017:p1:3",
+    "page": 1,
+    "quote": "Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.",
+    "support": 0.18,
+    "source_text": "abstract_only",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P5.S1",
+  "part": "contrib",
+  "text": "Our contributions are:",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ },
+ {
+  "id": "P6.S1",
+  "part": "contrib",
+  "text": "We propose the Transformer, an encoder-decoder based solely on attention mechanisms, dispensing with recurrence and convolutions.",
+  "citations": [],
+  "numbers": [],
+  "type": "own_paper",
+  "self_refs": [
+   "Figure 1"
+  ]
+ },
+ {
+  "id": "P7.S1",
+  "part": "contrib",
+  "text": "On WMT 2014 English-to-German the Transformer reaches 28.4 BLEU, more than 2 BLEU above the best previous results including ensembles.",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "28.4",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "2",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "own_paper",
+  "self_refs": [
+   "Table 2"
+  ]
+ },
+ {
+  "id": "P8.S1",
+  "part": "contrib",
+  "text": "We show that the Transformer generalizes to English constituency parsing with large and limited training data.",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ }
+]

@@ -1,0 +1,1 @@
+{"groups": [], "gaps": [{"id": "gap1", "statement": "The effect of the token budget is open.", "author_judgment": true}], "contributions": [{"id": "k1", "text": "We train over 400 language models", "gaps": ["gap1"], "evidence": [{"id": "E:self:p1:4"}]}]}

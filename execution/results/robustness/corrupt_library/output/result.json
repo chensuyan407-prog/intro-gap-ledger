@@ -1,0 +1,50 @@
+{
+ "case_id": "corrupt",
+ "status": "partial",
+ "status_reason": "init only: evidence extracted, no draft written yet",
+ "skill": "intro-gap-ledger 0.1.0",
+ "missing_materials": [],
+ "parse_problems": [
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\lib.bib",
+   "problem": "unbalanced braces in entry cut; entry skipped"
+  },
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\more.ris",
+   "problem": "RIS record without ER at end of file; kept"
+  }
+ ],
+ "sources": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\paper.pdf",
+   "pages": 36,
+   "chars": 97931,
+   "problem": null
+  },
+  "kaplan2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "brown2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "rae2021": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "smith2022": {
+   "path": null,
+   "text": "abstract_only"
+  },
+  "clark2022": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "doe2021": {
+   "path": null,
+   "text": "metadata_only"
+  }
+ },
+ "updated": "2026-11-23T05:27:25Z"
+}

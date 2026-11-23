@@ -1,0 +1,19 @@
+{
+ "records": [],
+ "style": "numeric",
+ "language": "en",
+ "case_id": null,
+ "own": null,
+ "notes": [],
+ "required_refs": [],
+ "contract": {},
+ "task_file": null,
+ "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\missing_case\\input\\case.json",
+ "problems": [],
+ "missing": [
+  "own paper (PDF/manuscript of the work being introduced) not found: contributions cannot be checked against results",
+  "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
+ ],
+ "src_status": {},
+ "inputs": {}
+}

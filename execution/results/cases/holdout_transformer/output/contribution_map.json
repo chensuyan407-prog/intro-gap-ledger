@@ -1,0 +1,63 @@
+[
+ {
+  "id": "k1",
+  "text": "We propose the Transformer, an encoder-decoder based solely on attention mechanisms, dispensing with recurrence and convolutions.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:10",
+    "page": 1,
+    "quote": "We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.",
+    "verified": true
+   },
+   {
+    "loc": "Figure 1",
+    "quote": "The Transformer - model architecture",
+    "page": 3,
+    "match": 1.0,
+    "verified": true,
+    "loc_exists": true
+   }
+  ]
+ },
+ {
+  "id": "k2",
+  "text": "On WMT 2014 English-to-German the Transformer reaches 28.4 BLEU, more than 2 BLEU above the best previous results including ensembles.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:12",
+    "page": 1,
+    "quote": "Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU.",
+    "verified": true
+   },
+   {
+    "loc": "Table 2",
+    "quote": "The Transformer achieves better BLEU scores than previous state-of-the-art models",
+    "page": 8,
+    "match": 1.0,
+    "verified": true,
+    "loc_exists": true
+   }
+  ]
+ },
+ {
+  "id": "k3",
+  "text": "We show that the Transformer generalizes to English constituency parsing with large and limited training data.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:14",
+    "page": 1,
+    "quote": "We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+    "verified": true
+   }
+  ]
+ }
+]

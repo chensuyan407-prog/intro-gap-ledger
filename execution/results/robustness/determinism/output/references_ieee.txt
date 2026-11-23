@@ -1,0 +1,5 @@
+[1] T. Brown, B. Mann, N. Ryder, M. Subbiah, J. Kaplan, P. Dhariwal, et al., "Language Models are Few-Shot Learners," *Advances in Neural Information Processing Systems*, vol. 33, pp. 1877-1901, 2020.
+[2] S. Smith, M. Patwary, B. Norick, et al., "Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model," *arXiv preprint arXiv:2201.11990*, 2022.
+[3] J. Kaplan, S. McCandlish, T. Henighan, T. B. Brown, B. Chess, R. Child, et al., "Scaling Laws for Neural Language Models," *arXiv preprint arXiv:2001.08361*, 2020.
+[4] A. Clark, D. de las Casas, A. Guy, et al., "Unified Scaling Laws for Routed Language Models," *arXiv preprint arXiv:2202.01169*, 2022.
+[5] J. W. Rae, S. Borgeaud, T. Cai, K. Millican, et al., "Scaling Language Models: Methods, Analysis & Insights from Training Gopher," *arXiv preprint arXiv:2112.11446*, 2021.

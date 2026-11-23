@@ -1,0 +1,182 @@
+{
+ "records": [
+  {
+   "key": "kaplan2020",
+   "type": "article",
+   "title": "Scaling Laws for Neural Language Models",
+   "authors": [
+    "Kaplan, Jared",
+    "McCandlish, Sam",
+    "Henighan, Tom",
+    "Brown, Tom B.",
+    "Chess, Benjamin",
+    "Child, Rewon",
+    "Gray, Scott",
+    "Radford, Alec",
+    "Wu, Jeffrey",
+    "Amodei, Dario"
+   ],
+   "year": "2020",
+   "venue": "arXiv preprint arXiv:2001.08361",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "2001.08361",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\library.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "brown2020",
+   "type": "inproceedings",
+   "title": "Language Models are Few-Shot Learners",
+   "authors": [
+    "Brown, Tom",
+    "Mann, Benjamin",
+    "Ryder, Nick",
+    "Subbiah, Melanie",
+    "Kaplan, Jared",
+    "Dhariwal, Prafulla",
+    "others"
+   ],
+   "year": "2020",
+   "venue": "Advances in Neural Information Processing Systems",
+   "volume": "33",
+   "issue": "",
+   "pages": "1877-1901",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\library.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "rae2021",
+   "type": "article",
+   "title": "Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+   "authors": [
+    "Rae, Jack W.",
+    "Borgeaud, Sebastian",
+    "Cai, Trevor",
+    "Millican, Katie",
+    "others"
+   ],
+   "year": "2021",
+   "venue": "arXiv preprint arXiv:2112.11446",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "2112.11446",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\library.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "smith2022",
+   "type": "article",
+   "title": "Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",
+   "authors": [
+    "Smith, Shaden",
+    "Patwary, Mostofa",
+    "Norick, Brandon",
+    "others"
+   ],
+   "year": "2022",
+   "venue": "arXiv preprint arXiv:2201.11990",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "Pretrained general-purpose language models can achieve state-of-the-art accuracies in various natural language processing domains by adapting to downstream tasks via zero-shot, few-shot and fine-tuning techniques. Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models. We present details on the training of the largest monolithic transformer based language model, Megatron-Turing NLG 530B (MT-NLG), with 530 billion parameters.",
+   "pdf": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\smith2022.pdf",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\library.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "clark2022",
+   "type": "article",
+   "title": "Unified Scaling Laws for Routed Language Models",
+   "authors": [
+    "Clark, Aidan",
+    "de las Casas, Diego",
+    "Guy, Aurelia",
+    "others"
+   ],
+   "year": "2022",
+   "venue": "arXiv preprint arXiv:2202.01169",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\library.bib",
+   "missing_fields": []
+  }
+ ],
+ "style": "numeric",
+ "language": "en",
+ "case_id": "enc",
+ "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\paper.pdf",
+ "notes": [],
+ "required_refs": [],
+ "contract": {},
+ "task_file": null,
+ "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\case.json",
+ "problems": [
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\smith2022.pdf",
+   "problem": "encrypted PDF (password required)"
+  }
+ ],
+ "missing": [],
+ "src_status": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\paper.pdf",
+   "pages": 36,
+   "chars": 97931,
+   "problem": null
+  },
+  "kaplan2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "brown2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "rae2021": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "smith2022": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\smith2022.pdf",
+   "pages": 0,
+   "chars": 0,
+   "problem": "encrypted PDF (password required)",
+   "text": "unreadable"
+  },
+  "clark2022": {
+   "path": null,
+   "text": "metadata_only"
+  }
+ },
+ "inputs": {
+  "case.json": "a8496f37c570959ad2719b0f5a84bc0a00bf402906231f58e03572b68fc057b9",
+  "library.bib": "7092368b03f5860cf70143858aba657f49a54dd45ac7b26ad546fcec7e72ef43",
+  "paper.pdf": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4",
+  "smith2022.pdf": "b58e6f7092b97692c64094306b2e9f411b2f4d8a1359c57a7557240906abb70b"
+ }
+}

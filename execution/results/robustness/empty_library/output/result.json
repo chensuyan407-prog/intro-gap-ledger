@@ -1,0 +1,195 @@
+{
+ "case_id": "empty_lib",
+ "status": "partial",
+ "status_reason": "2 blocking check(s) failed - see review.md",
+ "skill": "intro-gap-ledger 0.1.0",
+ "language": "en",
+ "citation_style": "numeric",
+ "summary": {
+  "sentences": 4,
+  "cited_sentences": 0,
+  "author_judgments": 1,
+  "references": 0,
+  "groups": 0,
+  "gaps": 1,
+  "contributions": 1,
+  "fails": 2,
+  "warns": 3
+ },
+ "draft": "Large language models are usually trained on about 300 billion tokens [citation needed].\n\nPrior scaling-law studies fixed the training schedule [citation needed].\n\nThe effect of the token budget is open.\n\n- We train over 400 language models (Figure 3).\n\n## References\n\n\n",
+ "parts": {
+  "background": "Large language models are usually trained on about 300 billion tokens [citation needed].\n",
+  "related": "Prior scaling-law studies fixed the training schedule [citation needed].\n",
+  "gap": "The effect of the token budget is open.\n",
+  "contrib": "We train over 400 language models (Figure 3).\n"
+ },
+ "references": [],
+ "related_work_groups": [],
+ "gap_derivation": [
+  {
+   "id": "gap1",
+   "statement": "The effect of the token budget is open.",
+   "type": null,
+   "author_judgment": true,
+   "derived_from": [],
+   "filled_by": [
+    "k1"
+   ]
+  }
+ ],
+ "contributions": [
+  {
+   "id": "k1",
+   "text": "We train over 400 language models",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:4",
+     "page": 1,
+     "quote": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens should also be doubled.",
+     "verified": true
+    }
+   ]
+  }
+ ],
+ "source_map": [
+  {
+   "id": "P1.S1",
+   "part": "background",
+   "text": "Large language models are usually trained on about 300 billion tokens [citation needed].",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "300",
+     "found_in": [],
+     "elsewhere": []
+    }
+   ],
+   "type": "statement"
+  },
+  {
+   "id": "P2.S1",
+   "part": "related",
+   "text": "Prior scaling-law studies fixed the training schedule [citation needed].",
+   "citations": [],
+   "numbers": [],
+   "type": "statement"
+  },
+  {
+   "id": "P3.S1",
+   "part": "gap",
+   "text": "The effect of the token budget is open.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P4.S1",
+   "part": "contrib",
+   "text": "We train over 400 language models.",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "400",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    }
+   ],
+   "type": "own_paper",
+   "self_refs": [
+    "Figure 3"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "check": "S4c",
+   "level": "fail",
+   "message": "number 300 in an uncited sentence (cite its source or remove)",
+   "where": "P1.S1",
+   "sentence": "Large language models are usually trained on about 300 billion tokens [citation needed]."
+  },
+  {
+   "check": "S3b",
+   "level": "warn",
+   "message": "sentence marked as needing a citation (material gap)",
+   "where": "P1.S1",
+   "sentence": "Large language models are usually trained on about 300 billion tokens [citation needed]."
+  },
+  {
+   "check": "S3b",
+   "level": "warn",
+   "message": "sentence marked as needing a citation (material gap)",
+   "where": "P2.S1",
+   "sentence": "Prior scaling-law studies fixed the training schedule [citation needed]."
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "plan.json has no related-work groups",
+   "where": null
+  },
+  {
+   "check": "S10b",
+   "level": "warn",
+   "message": "gap gap1 rests on author judgment only: needs human confirmation",
+   "where": "gap1"
+  }
+ ],
+ "needs_review": [
+  {
+   "type": "S10b",
+   "where": "gap1",
+   "note": "gap gap1 rests on author judgment only: needs human confirmation"
+  },
+  {
+   "type": "author_judgment",
+   "where": "P3.S1",
+   "note": "The effect of the token budget is open."
+  }
+ ],
+ "missing_materials": [
+  "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
+ ],
+ "parse_problems": [],
+ "uncited_library_records": [],
+ "uncertainty": [
+  "support scores are lexical; semantic faithfulness of paraphrases was judged by the agent, not proven by the script"
+ ],
+ "changes": [
+  {
+   "version": 1,
+   "at": "2026-11-23T05:27:22Z",
+   "note": "first draft",
+   "fails": 2,
+   "warns": 3
+  }
+ ],
+ "inputs": {
+  "case.json": "fe6b06a3582e2d84891d8675e28772250c04247a26649eb2b7903cb44dd4f95b",
+  "paper.pdf": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4"
+ },
+ "artifacts": {
+  "draft_md": "intro_related_work.md",
+  "draft_annotated": "intro_related_work_annotated.md",
+  "latex": "intro_related_work.tex",
+  "bib": "references.bib",
+  "references": "references_ieee.txt",
+  "html_preview": "intro_related_work.html",
+  "pdf_preview": null,
+  "source_map": "source_map.json",
+  "matrix": "related_work_matrix.md",
+  "gap_derivation": "gap_derivation.md",
+  "contribution_map": "contribution_map.json",
+  "review": "review.md",
+  "diff": null
+ },
+ "preview_note": "skipped (--no-pdf)",
+ "updated": "2026-11-23T05:27:22Z",
+ "seconds": 0.1,
+ "unmapped_contract_fields": []
+}

@@ -1,0 +1,3 @@
+{"case_id": "dev_zh_residual", "language": "zh", "citation_style": "GB/T 7714-2015 顺序编码制",
+ "paper": "本文_resnet.pdf",
+ "output_contract": {"引言与相关工作": "中文 Markdown 稿件", "参考文献": "GB/T 7714 列表", "证据映射": "逐句来源", "贡献对照": "贡献-图表对应", "待确认": "需作者确认的条目"}}

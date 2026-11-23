@@ -1,0 +1,2 @@
+{"id": "holdout_transformer", "lang": "en", "reference_style": "APA 7th (author-year)", "manuscript": "main_paper.pdf", "must_cite": ["bahdanau2015", "gehring2017"],
+ "output_contract": ["intro_markdown", "related_work_groups", "research_gap", "contribution_evidence", "bibliography", "evidence_map", "open_questions"]}

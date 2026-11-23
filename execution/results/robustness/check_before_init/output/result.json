@@ -1,0 +1,5 @@
+{
+ "case_id": null,
+ "status": "failed",
+ "status_reason": "run `irw.py init` first (work/library.json missing)"
+}

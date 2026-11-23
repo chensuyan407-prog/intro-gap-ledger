@@ -1,0 +1,23 @@
+\section{Introduction}
+
+Sequence transduction, such as machine translation, has been dominated by recurrent neural networks that map an input sequence to a variable length output sequence ~\cite{gehring2017}. Neural machine translation trains a single network jointly to maximize translation performance ~\cite{bahdanau2015}. Recurrent computation is sequential along the sequence, which limits parallelization within training examples as sentences get longer .
+
+\section{Related Work}
+
+\subsection{Recurrent encoder-decoders with attention}
+
+Recurrent translation models differ mainly in how the decoder reads the source sentence ~\cite{bahdanau2015,wu2016}. Basic encoder-decoders compress a source sentence into a fixed-length vector from which the decoder generates a translation ~\cite{bahdanau2015}, whereas Bahdanau et al. let the model soft-search for the parts of the source sentence that are relevant to predicting a target word ~\cite{bahdanau2015}. Both variants keep long short-term memory style recurrence ~\cite{hochreiter1997} and therefore process tokens one step at a time .
+
+\subsection{Convolutional sequence models}
+
+Convolutional models trade recurrence for parallelism: compared to recurrent models, computations over all elements can be fully parallelized during training ~\cite{gehring2017}. Deep convolutional stacks rely on residual learning to remain trainable ~\cite{he2016}. In contrast to attention over all positions, a convolution only relates positions within its kernel, so distant positions are connected through several layers .
+
+Thus recurrent models compute sequentially ~\cite{gehring2017} and convolutional models need several layers to connect distant positions ~\cite{gehring2017}: no existing transduction model is both fully parallel and connects any two positions in a constant number of operations .
+
+Our contributions are:
+
+\begin{itemize}
+\item We propose the Transformer, an encoder-decoder based solely on attention mechanisms, dispensing with recurrence and convolutions  (Figure 1).
+\item On WMT 2014 English-to-German the Transformer reaches 28.4 BLEU, more than 2 BLEU above the best previous results including ensembles  (Table 2).
+\item We show that the Transformer generalizes to English constituency parsing with large and limited training data.
+\end{itemize}

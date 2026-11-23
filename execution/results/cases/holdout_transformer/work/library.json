@@ -1,0 +1,210 @@
+{
+ "records": [
+  {
+   "key": "he2016",
+   "type": "paper-conference",
+   "title": "Deep Residual Learning for Image Recognition",
+   "authors": [
+    "He, Kaiming",
+    "Zhang, Xiangyu",
+    "Ren, Shaoqing",
+    "Sun, Jian"
+   ],
+   "year": "2016",
+   "venue": "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition",
+   "volume": "",
+   "issue": "",
+   "pages": "770-778",
+   "doi": "10.1109/CVPR.2016.90",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\he2016.pdf",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
+   "notes": "",
+   "missing_fields": []
+  },
+  {
+   "key": "bahdanau2015",
+   "type": "paper-conference",
+   "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+   "authors": [
+    "Bahdanau, Dzmitry",
+    "Cho, Kyunghyun",
+    "Bengio, Yoshua"
+   ],
+   "year": "2015",
+   "venue": "International Conference on Learning Representations",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "Neural machine translation is a recently proposed approach to machine translation. Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance. The models proposed recently for neural machine translation often belong to a family of encoder-decoders and consists of an encoder that encodes a source sentence into a fixed-length vector from which a decoder generates a translation. In this paper, we conjecture that the use of a fixed-length vector is a bottleneck in improving the performance of this basic encoder-decoder architecture, and propose to extend this by allowing a model to automatically (soft-)search for parts of a source sentence that are relevant to predicting a target word, without having to form these parts as a hard segment explicitly.",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
+   "notes": "",
+   "missing_fields": []
+  },
+  {
+   "key": "gehring2017",
+   "type": "paper-conference",
+   "title": "Convolutional Sequence to Sequence Learning",
+   "authors": [
+    "Gehring, Jonas",
+    "Auli, Michael",
+    "Grangier, David",
+    "Yarats, Denis",
+    "Dauphin, Yann N."
+   ],
+   "year": "2017",
+   "venue": "Proceedings of the 34th International Conference on Machine Learning",
+   "volume": "",
+   "issue": "",
+   "pages": "1243-1252",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "The prevalent approach to sequence to sequence learning maps an input sequence to a variable length output sequence via recurrent neural networks. We introduce an architecture based entirely on convolutional neural networks. Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
+   "notes": "",
+   "missing_fields": []
+  },
+  {
+   "key": "hochreiter1997",
+   "type": "article-journal",
+   "title": "Long Short-Term Memory",
+   "authors": [
+    "Hochreiter, Sepp",
+    "Schmidhuber, Jürgen"
+   ],
+   "year": "1997",
+   "venue": "Neural Computation",
+   "volume": "9",
+   "issue": "8",
+   "pages": "1735-1780",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
+   "notes": "",
+   "missing_fields": []
+  },
+  {
+   "key": "wu2016",
+   "type": "article",
+   "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+   "authors": [
+    "Wu, Yonghui",
+    "Schuster, Mike",
+    "Chen, Zhifeng"
+   ],
+   "year": "2016",
+   "venue": "arXiv preprint arXiv:1609.08144",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
+   "notes": "",
+   "missing_fields": []
+  },
+  {
+   "key": "ba2016",
+   "type": "article",
+   "title": "Layer Normalization",
+   "authors": [
+    "Ba, Jimmy Lei",
+    "Kiros, Jamie Ryan",
+    "Hinton, Geoffrey E."
+   ],
+   "year": "",
+   "venue": "arXiv preprint arXiv:1607.06450",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
+   "notes": "",
+   "missing_fields": [
+    "year"
+   ]
+  }
+ ],
+ "style": "apa",
+ "language": "en",
+ "case_id": "holdout_transformer",
+ "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+ "notes": [],
+ "required_refs": [
+  "bahdanau2015",
+  "gehring2017"
+ ],
+ "contract": [
+  "intro_markdown",
+  "related_work_groups",
+  "research_gap",
+  "contribution_evidence",
+  "bibliography",
+  "evidence_map",
+  "open_questions"
+ ],
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\task.md",
+ "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\case.json",
+ "problems": [],
+ "missing": [],
+ "src_status": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "pages": 15,
+   "chars": 40022,
+   "problem": null
+  },
+  "he2016": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\he2016.pdf",
+   "pages": 12,
+   "chars": 60032,
+   "problem": null,
+   "text": "full_text"
+  },
+  "bahdanau2015": {
+   "path": null,
+   "text": "abstract_only"
+  },
+  "gehring2017": {
+   "path": null,
+   "text": "abstract_only"
+  },
+  "hochreiter1997": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "wu2016": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "ba2016": {
+   "path": null,
+   "text": "metadata_only"
+  }
+ },
+ "inputs": {
+  "case.json": "fa4eff2b2b9e7cdc3ba62d22c98df17d5abac33ecd175951dd36bca0d49f701c",
+  "he2016.pdf": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+  "main_paper.pdf": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+  "references.json": "9bd6c8f80f0d41a95ec5f34a907499eafe3ce80c2cb3ec89f3ff48232689e582",
+  "task.md": "851bcdf000d18af28ed554605794f20d6e8f221fecee55ef291307a196c84d78"
+ }
+}

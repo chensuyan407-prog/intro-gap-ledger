@@ -1,0 +1,608 @@
+$ tests\run_eval.py --set dev
+{
+ "set": "dev",
+ "cases": [
+  "dev_en",
+  "dev_zh"
+ ],
+ "gold": {
+  "dev_en": {
+   "fails": 0,
+   "status": "complete",
+   "warns": 1,
+   "needs_review": 8,
+   "check_seconds": 0.59
+  },
+  "dev_zh": {
+   "fails": 0,
+   "status": "complete",
+   "warns": 3,
+   "needs_review": 5,
+   "check_seconds": 0.26
+  }
+ },
+ "defects": 32,
+ "caught_expected": 32,
+ "caught_any": 32,
+ "recall_expected": 1.0,
+ "baseline_b0": 0.0,
+ "baseline_b1_key_structure_lint": 0.125,
+ "baseline_b2_plus_numbers_anywhere": 0.1875,
+ "benign": 5,
+ "benign_without_new_fail": 5,
+ "ops_not_applied": [],
+ "missed": [],
+ "benign_false_alarms": [],
+ "by_type": {
+  "contribution_inflated_number": "2/2",
+  "contribution_nonexistent_table": "2/2",
+  "empty_padding": "2/2",
+  "evidence_from_wrong_source": "2/2",
+  "fabricated_citation": "2/2",
+  "fabricated_quote_contribution": "1/1",
+  "gap_evidence_wrong_id": "1/1",
+  "gap_not_addressed": "1/1",
+  "gap_quote_fabricated": "1/1",
+  "gap_without_derivation": "2/2",
+  "group_ref_not_cited": "1/1",
+  "group_without_dimension": "1/1",
+  "misattributed_citation": "1/1",
+  "missing_part": "2/2",
+  "overclaim_significance": "2/2",
+  "required_ref_missing": "1/1",
+  "sota_without_evidence": "1/1",
+  "summary_stitching": "2/2",
+  "uncited_claim": "2/2",
+  "uncited_number": "1/1",
+  "wrong_number_cited": "2/2"
+ },
+ "wall_seconds": 22.0
+}
+
+
+[exit 0]
+
+$ tests\run_eval.py --set holdout
+{
+ "set": "holdout",
+ "cases": [
+  "holdout_transformer"
+ ],
+ "gold": {
+  "holdout_transformer": {
+   "fails": 0,
+   "status": "complete",
+   "warns": 0,
+   "needs_review": 7,
+   "check_seconds": 0.19
+  }
+ },
+ "defects": 15,
+ "caught_expected": 14,
+ "caught_any": 14,
+ "recall_expected": 0.9333,
+ "baseline_b0": 0.0,
+ "baseline_b1_key_structure_lint": 0.0667,
+ "baseline_b2_plus_numbers_anywhere": 0.1333,
+ "benign": 3,
+ "benign_without_new_fail": 3,
+ "ops_not_applied": [],
+ "missed": [
+  {
+   "id": "H13",
+   "type": "number_from_wrong_place",
+   "new_fails": []
+  }
+ ],
+ "benign_false_alarms": [],
+ "by_type": {
+  "cited_number_not_in_source": "1/1",
+  "contribution_without_evidence": "1/1",
+  "contribution_wrong_figure": "1/1",
+  "empty_padding": "1/1",
+  "fabricated_citation": "1/1",
+  "gap_asserted_without_sources": "1/1",
+  "gap_from_uncited_work": "1/1",
+  "misattributed_citation": "1/1",
+  "must_cite_missing": "1/1",
+  "number_from_wrong_place": "0/1",
+  "overclaim_significance": "1/1",
+  "summary_stitching": "1/1",
+  "uncited_claim": "1/1",
+  "unsupported_novelty_scope": "1/1",
+  "wrong_number_contribution": "1/1"
+ },
+ "wall_seconds": 4.7
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case tests\cases\dev_en\input\case.json --out execution\results\cases\dev_en\output --work execution\results\cases\dev_en\work
+{
+ "case_id": "dev_en_compute_optimal",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\task.md",
+ "language": "en",
+ "style": "ieee",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\paper.pdf",
+ "records": 5,
+ "with_text": [
+  "kaplan2020",
+  "brown2020"
+ ],
+ "abstract_only": [
+  "smith2022"
+ ],
+ "metadata_only": [
+  "rae2021",
+  "clark2022"
+ ],
+ "notes": [],
+ "contract_fields": [
+  "introduction",
+  "references",
+  "source_map",
+  "contributions",
+  "needs_review"
+ ],
+ "problems": [],
+ "missing": [],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.8
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\cases\dev_en\work --out execution\results\cases\dev_en\output
+{
+ "status": "complete",
+ "fails": 0,
+ "warns": 1,
+ "top": [],
+ "warn_top": [
+  "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
+ ],
+ "needs_review": 8,
+ "unmapped_contract_fields": [],
+ "seconds": 3.9
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case tests\cases\dev_zh\input\case.json --out execution\results\cases\dev_zh\output --work execution\results\cases\dev_zh\work
+{
+ "case_id": "dev_zh_residual",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\task.md",
+ "language": "zh",
+ "style": "gbt7714",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+ "records": 5,
+ "with_text": [
+  "ioffe2015"
+ ],
+ "abstract_only": [
+  "simonyan2015",
+  "srivastava2015"
+ ],
+ "metadata_only": [
+  "szegedy2015",
+  "zhou2016"
+ ],
+ "notes": [],
+ "contract_fields": [
+  "引言与相关工作",
+  "参考文献",
+  "证据映射",
+  "贡献对照",
+  "待确认"
+ ],
+ "problems": [],
+ "missing": [],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.2
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\cases\dev_zh\work --out execution\results\cases\dev_zh\output
+{
+ "status": "complete",
+ "fails": 0,
+ "warns": 3,
+ "top": [],
+ "warn_top": [
+  "S5d P2.S1: cross-lingual citation [@simonyan2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+  "S5d P3.S1: cross-lingual citation [@ioffe2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+  "S5d P3.S1: cross-lingual citation [@srivastava2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence"
+ ],
+ "needs_review": 5,
+ "unmapped_contract_fields": [],
+ "seconds": 4.3
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case tests\cases\holdout_transformer\input\case.json --out execution\results\cases\holdout_transformer\output --work execution\results\cases\holdout_transformer\work
+{
+ "case_id": "holdout_transformer",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\task.md",
+ "language": "en",
+ "style": "apa",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+ "records": 6,
+ "with_text": [
+  "he2016"
+ ],
+ "abstract_only": [
+  "bahdanau2015",
+  "gehring2017"
+ ],
+ "metadata_only": [
+  "hochreiter1997",
+  "wu2016",
+  "ba2016"
+ ],
+ "notes": [],
+ "contract_fields": [
+  "intro_markdown",
+  "related_work_groups",
+  "research_gap",
+  "contribution_evidence",
+  "bibliography",
+  "evidence_map",
+  "open_questions"
+ ],
+ "problems": [],
+ "missing": [],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.3
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\cases\holdout_transformer\work --out execution\results\cases\holdout_transformer\output
+{
+ "status": "complete",
+ "fails": 0,
+ "warns": 0,
+ "top": [],
+ "warn_top": [],
+ "needs_review": 7,
+ "unmapped_contract_fields": [],
+ "seconds": 3.5
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\missing_case\input\case.json --out execution\results\robustness\missing_case\output --work execution\results\robustness\missing_case\work
+{
+ "case_id": null,
+ "case_error": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\missing_case\\input\\case.json not found",
+ "task_file": null,
+ "language": "en",
+ "style": "numeric",
+ "own_paper": null,
+ "records": 0,
+ "with_text": [],
+ "abstract_only": [],
+ "metadata_only": [],
+ "notes": [],
+ "contract_fields": [],
+ "problems": [],
+ "missing": [
+  "own paper (PDF/manuscript of the work being introduced) not found: contributions cannot be checked against results",
+  "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
+ ],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.0
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\empty_library\input\case.json --out execution\results\robustness\empty_library\output --work execution\results\robustness\empty_library\work
+{
+ "case_id": "empty_lib",
+ "case_error": null,
+ "task_file": null,
+ "language": "en",
+ "style": "numeric",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.pdf",
+ "records": 0,
+ "with_text": [],
+ "abstract_only": [],
+ "metadata_only": [],
+ "notes": [],
+ "contract_fields": [],
+ "problems": [],
+ "missing": [
+  "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
+ ],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.4
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\robustness\empty_library\work --out execution\results\robustness\empty_library\output --no-pdf
+{
+ "status": "partial",
+ "fails": 2,
+ "warns": 3,
+ "top": [
+  "S4c P1.S1: number 300 in an uncited sentence (cite its source or remove)",
+  "S9 : plan.json has no related-work groups"
+ ],
+ "warn_top": [
+  "S3b P1.S1: sentence marked as needing a citation (material gap)",
+  "S3b P2.S1: sentence marked as needing a citation (material gap)",
+  "S10b gap1: gap gap1 rests on author judgment only: needs human confirmation"
+ ],
+ "needs_review": 2,
+ "unmapped_contract_fields": [],
+ "seconds": 0.1
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\encrypted_source\input\case.json --out execution\results\robustness\encrypted_source\output --work execution\results\robustness\encrypted_source\work
+{
+ "case_id": "enc",
+ "case_error": null,
+ "task_file": null,
+ "language": "en",
+ "style": "numeric",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\paper.pdf",
+ "records": 5,
+ "with_text": [],
+ "abstract_only": [],
+ "metadata_only": [
+  "kaplan2020",
+  "brown2020",
+  "rae2021",
+  "clark2022"
+ ],
+ "notes": [],
+ "contract_fields": [],
+ "problems": [
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\smith2022.pdf",
+   "problem": "encrypted PDF (password required)"
+  }
+ ],
+ "missing": [],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.5
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\scanned_own\input\case.json --out execution\results\robustness\scanned_own\output --work execution\results\robustness\scanned_own\work
+{
+ "case_id": "scan",
+ "case_error": null,
+ "task_file": null,
+ "language": "en",
+ "style": "numeric",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\scanned_own\\input\\paper.pdf",
+ "records": 0,
+ "with_text": [],
+ "abstract_only": [],
+ "metadata_only": [],
+ "notes": [],
+ "contract_fields": [],
+ "problems": [
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\scanned_own\\input\\paper.pdf",
+   "problem": "little or no text layer (scanned?): no text layer and tesseract is not installed"
+  }
+ ],
+ "missing": [
+  "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
+ ],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.1
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\bad_plan\input\case.json --out execution\results\robustness\bad_plan\output --work execution\results\robustness\bad_plan\work
+{
+ "case_id": "dev_en_compute_optimal",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\input\\task.md",
+ "language": "en",
+ "style": "ieee",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\input\\paper.pdf",
+ "records": 5,
+ "with_text": [
+  "kaplan2020",
+  "brown2020"
+ ],
+ "abstract_only": [
+  "smith2022"
+ ],
+ "metadata_only": [
+  "rae2021",
+  "clark2022"
+ ],
+ "notes": [],
+ "contract_fields": [
+  "introduction",
+  "references",
+  "source_map",
+  "contributions",
+  "needs_review"
+ ],
+ "problems": [],
+ "missing": [],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.9
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\work --out execution\results\robustness\bad_plan\output --no-pdf
+{
+ "status": "partial",
+ "fails": 4,
+ "warns": 6,
+ "top": [
+  "PLAN : C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\plan.json missing or invalid JSON",
+  "S9 : plan.json has no related-work groups",
+  "S10 : plan.json has no gaps",
+  "S11 : plan.json has no contributions"
+ ],
+ "warn_top": [
+  "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase",
+  "S9f : [@brown2020] cited in related work but in no group of plan.json",
+  "S9f : [@clark2022] cited in related work but in no group of plan.json",
+  "S9f : [@kaplan2020] cited in related work but in no group of plan.json",
+  "S9f : [@rae2021] cited in related work but in no group of plan.json",
+  "S9f : [@smith2022] cited in related work but in no group of plan.json"
+ ],
+ "needs_review": 7,
+ "unmapped_contract_fields": [],
+ "seconds": 0.4
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\work --out execution\results\robustness\bad_plan\output --no-pdf
+{"case_id": "dev_en_compute_optimal", "status": "failed", "status_reason": "no draft at C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\draft.md", "skill": "intro-gap-ledger 0.1.0"}
+
+
+[exit 2]
+
+$ submission\scripts\irw.py check --work execution\results\robustness\check_before_init\work --out execution\results\robustness\check_before_init\output
+library.json missing: run init first
+
+
+[exit 2]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\corrupt_library\input\case.json --out execution\results\robustness\corrupt_library\output --work execution\results\robustness\corrupt_library\work
+{
+ "case_id": "corrupt",
+ "case_error": null,
+ "task_file": null,
+ "language": "en",
+ "style": "numeric",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\paper.pdf",
+ "records": 6,
+ "with_text": [],
+ "abstract_only": [
+  "smith2022"
+ ],
+ "metadata_only": [
+  "kaplan2020",
+  "brown2020",
+  "rae2021",
+  "clark2022",
+  "doe2021"
+ ],
+ "notes": [],
+ "contract_fields": [],
+ "problems": [
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\lib.bib",
+   "problem": "unbalanced braces in entry cut; entry skipped"
+  },
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\more.ris",
+   "problem": "RIS record without ER at end of file; kept"
+  }
+ ],
+ "missing": [],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.4
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\determinism\input\case.json --out execution\results\robustness\determinism\output --work execution\results\robustness\determinism\work
+{
+ "case_id": "dev_en_compute_optimal",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\determinism\\input\\task.md",
+ "language": "en",
+ "style": "ieee",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\determinism\\input\\paper.pdf",
+ "records": 5,
+ "with_text": [
+  "kaplan2020",
+  "brown2020"
+ ],
+ "abstract_only": [
+  "smith2022"
+ ],
+ "metadata_only": [
+  "rae2021",
+  "clark2022"
+ ],
+ "notes": [],
+ "contract_fields": [
+  "introduction",
+  "references",
+  "source_map",
+  "contributions",
+  "needs_review"
+ ],
+ "problems": [],
+ "missing": [],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.9
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\robustness\determinism\work --out execution\results\robustness\determinism\output --no-pdf
+{
+ "status": "complete",
+ "fails": 0,
+ "warns": 1,
+ "top": [],
+ "warn_top": [
+  "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
+ ],
+ "needs_review": 8,
+ "unmapped_contract_fields": [],
+ "seconds": 0.5
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\robustness\determinism\work --out execution\results\robustness\determinism\output --no-pdf
+{
+ "status": "complete",
+ "fails": 0,
+ "warns": 1,
+ "top": [],
+ "warn_top": [
+  "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
+ ],
+ "needs_review": 8,
+ "unmapped_contract_fields": [],
+ "seconds": 0.4
+}
+
+
+[exit 0]
+

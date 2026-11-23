@@ -1,0 +1,660 @@
+[
+ {
+  "id": "E01",
+  "case": "dev_en",
+  "type": "fabricated_citation",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S2"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S2 P1.S4: citation key 'hestness2017' is not in the library (no invented references)"
+  ],
+  "b1": true,
+  "b2": true,
+  "b2_new_flags": 1
+ },
+ {
+  "id": "E02",
+  "case": "dev_en",
+  "type": "misattributed_citation",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S5"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S5 P1.S2: citation [@kaplan2020] weakly supports this sentence (0.5); source 'brown2020' matches much better (0.83) - misattributed?"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E03",
+  "case": "dev_en",
+  "type": "wrong_number_cited",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S4"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4 P1.S1: number 170 not supported by the cited evidence"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E04",
+  "case": "dev_en",
+  "type": "uncited_claim",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S3"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S3 P1.S4: claim-like sentence (scales, power law) without citation or [author judgment]"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E05",
+  "case": "dev_en",
+  "type": "empty_padding",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S7"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S7 P1.S1: empty padding phrase 'in recent years, ' without a concrete, cited fact - replace with the actual problem/constraint"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E06",
+  "case": "dev_en",
+  "type": "summary_stitching",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S8"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S8 P2: related-work paragraph 2 is a list of one-paper summaries (3 in a row, no comparison words): compare the works on the group's dimension"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E07",
+  "case": "dev_en",
+  "type": "gap_without_derivation",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S10"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S10 gap1: gap gap1: no 'from' evidence (limitations of cited works) and not marked author_judgment"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E08",
+  "case": "dev_en",
+  "type": "gap_evidence_wrong_id",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S10e"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S10e gap1: gap gap1: evidence E:kaplan2020:p99:1 not found in source 'kaplan2020'"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E09",
+  "case": "dev_en",
+  "type": "contribution_nonexistent_table",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11e"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11e k2: contribution k2: Table 12 does not exist in the own paper"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E10",
+  "case": "dev_en",
+  "type": "contribution_inflated_number",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S4"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4 P8.S1: number 69.5 not supported by the cited evidence / the contribution evidence in the own paper (the number occurs only in unrelated context: self p30)"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E11",
+  "case": "dev_en",
+  "type": "overclaim_significance",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11h"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11h P8.S1: 'significantly' but the own paper reports no significance test / error bars"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E12",
+  "case": "dev_en",
+  "type": "gap_not_addressed",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11g",
+   "S10"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11g gap2: gap gap2 is not addressed by any contribution"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E13",
+  "case": "dev_en",
+  "type": "missing_part",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S1"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S1 : part 'gap' missing (mark it with <!-- part:gap -->)"
+  ],
+  "b1": true,
+  "b2": true,
+  "b2_new_flags": 1
+ },
+ {
+  "id": "E14",
+  "case": "dev_en",
+  "type": "evidence_from_wrong_source",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S5c"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S5c P1.S4: evidence id E:brown2020:p1:5 does not exist in source 'kaplan2020' (it belongs to 'brown2020')"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E15",
+  "case": "dev_en",
+  "type": "group_without_dimension",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S9"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S9 g2: group g2: comparison dimension missing"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E16",
+  "case": "dev_en",
+  "type": "fabricated_quote_contribution",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11d"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4 P6.S1: number 400 not supported by the cited evidence / the contribution evidence in the own paper (the number occurs only in unrelated context: self p1)",
+   "S4 P6.S1: number 70 not supported by the cited evidence / the contribution evidence in the own paper (the number occurs only in unrelated context: self p1)",
+   "S4 P6.S1: number 16 not supported by the cited evidence / the contribution evidence in the own paper (the number occurs only in unrelated context: self p1)",
+   "S4 P6.S1: number 5 not supported by the cited evidence / the contribution evidence in the own paper (the number occurs only in unrelated context: self p1)",
+   "S4 P6.S1: number 500 not supported by the cited evidence / the contribution evidence in the own paper (the number occurs only in unrelated context: self p1)",
+   "S11d k1: contribution k1: quote not found in own paper (best 0.30)"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E17",
+  "case": "dev_en",
+  "type": "uncited_number",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S4c",
+   "S3"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4c P3.S2: number 530 in an uncited sentence (cite its source or remove)",
+   "S9d g2: group g2: [@brown2020] is in the group but not cited in the related-work part",
+   "S9d g2: group g2: [@rae2021] is in the group but not cited in the related-work part",
+   "S9d g2: group g2: [@smith2022] is in the group but not cited in the related-work part"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "E18",
+  "case": "dev_en",
+  "type": "sota_without_evidence",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11j"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11j P8.S1: 'state-of-the-art' without pointing to the own table/figure that shows it ([@self:Table n])"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z01",
+  "case": "dev_zh",
+  "type": "fabricated_citation",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S2"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S2 P2.S3: citation key 'krizhevsky2012' is not in the library (no invented references)"
+  ],
+  "b1": true,
+  "b2": true,
+  "b2_new_flags": 1
+ },
+ {
+  "id": "Z02",
+  "case": "dev_zh",
+  "type": "wrong_number_cited",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S4"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4 P3.S2: number 20 not supported by the cited evidence (the number occurs only in unrelated context: ioffe2015 p6, ioffe2015 p6)"
+  ],
+  "b1": false,
+  "b2": true,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z03",
+  "case": "dev_zh",
+  "type": "uncited_claim",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S3"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4c P3.S2: number 14 in an uncited sentence (cite its source or remove)",
+   "S3 P3.S2: claim-like sentence (研究表明, 表明) without citation or [author judgment]"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z04",
+  "case": "dev_zh",
+  "type": "empty_padding",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S7"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S3 P1.S1: claim-like sentence (广泛) without citation or [author judgment]",
+   "S7 P1.S1: empty padding phrase '受到广泛关注' without a concrete, cited fact - replace with the actual problem/constraint"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z05",
+  "case": "dev_zh",
+  "type": "summary_stitching",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S8"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S8 P3: related-work paragraph 3 is a list of one-paper summaries (3 in a row, no comparison words): compare the works on the group's dimension"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z06",
+  "case": "dev_zh",
+  "type": "gap_without_derivation",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S10"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S10 gap1: gap gap1: no 'from' evidence (limitations of cited works) and not marked author_judgment"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z07",
+  "case": "dev_zh",
+  "type": "contribution_nonexistent_table",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11e"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11e k3: contribution k3: Table 19 does not exist in the own paper"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z08",
+  "case": "dev_zh",
+  "type": "contribution_inflated_number",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S4"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4 P7.S1: number 3.07 not supported by the cited evidence / the contribution evidence in the own paper"
+  ],
+  "b1": false,
+  "b2": true,
+  "b2_new_flags": 1
+ },
+ {
+  "id": "Z09",
+  "case": "dev_zh",
+  "type": "overclaim_significance",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11h"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11h P7.S1: '显著' but the own paper reports no significance test / error bars"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z10",
+  "case": "dev_zh",
+  "type": "evidence_from_wrong_source",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S5c"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S5c P1.S1: evidence id E:ioffe2015:p1:4 does not exist in source 'simonyan2015' (it belongs to 'ioffe2015')"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z11",
+  "case": "dev_zh",
+  "type": "group_ref_not_cited",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S9d"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S9d g1: group g1: [@zhou2016] is in the group but not cited in the related-work part"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z12",
+  "case": "dev_zh",
+  "type": "gap_quote_fabricated",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S10e"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S10e gap1: gap gap1: quote not found in [@ioffe2015] (best match 0.38)"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "Z13",
+  "case": "dev_zh",
+  "type": "missing_part",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S1"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S1 : part 'contrib' missing (mark it with <!-- part:contrib -->)"
+  ],
+  "b1": true,
+  "b2": true,
+  "b2_new_flags": 1
+ },
+ {
+  "id": "Z14",
+  "case": "dev_zh",
+  "type": "required_ref_missing",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S13"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S13 : required reference 'zhou2016' not cited"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "B01",
+  "case": "dev_en",
+  "type": "benign_number_format",
+  "benign": true,
+  "ops_applied": true,
+  "expect": [],
+  "caught": null,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": null,
+  "b2": null,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "B02",
+  "case": "dev_en",
+  "type": "benign_paraphrase",
+  "benign": true,
+  "ops_applied": true,
+  "expect": [],
+  "caught": null,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": null,
+  "b2": null,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "B03",
+  "case": "dev_en",
+  "type": "benign_group_reorder",
+  "benign": true,
+  "ops_applied": true,
+  "expect": [],
+  "caught": null,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": null,
+  "b2": null,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "B04",
+  "case": "dev_zh",
+  "type": "benign_reword",
+  "benign": true,
+  "ops_applied": true,
+  "expect": [],
+  "caught": null,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": null,
+  "b2": null,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "B05",
+  "case": "dev_zh",
+  "type": "benign_style_switch",
+  "benign": true,
+  "ops_applied": true,
+  "expect": [],
+  "caught": null,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": null,
+  "b2": null,
+  "b2_new_flags": 0
+ }
+]

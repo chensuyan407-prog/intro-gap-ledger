@@ -1,0 +1,13 @@
+{
+ "case_id": null,
+ "status": "failed",
+ "status_reason": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\missing_case\\input\\case.json not found",
+ "skill": "intro-gap-ledger 0.1.0",
+ "missing_materials": [
+  "own paper (PDF/manuscript of the work being introduced) not found: contributions cannot be checked against results",
+  "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
+ ],
+ "parse_problems": [],
+ "sources": {},
+ "updated": "2026-11-23T05:27:21Z"
+}

@@ -1,0 +1,10 @@
+__pycache__/
+tests/cases/*/work/
+tests/cases/*/output/
+execution/results/cases/*/work/sources/
+*/_latex/
+# third-party arXiv PDFs and their extracted full texts (see tests/SOURCES.md)
+tests/cases/**/*.pdf
+execution/results/robustness/*/input/*.pdf
+**/work/sources/
+**/work/evidence.json

@@ -1,0 +1,2 @@
+# optional: PDF text extraction (or poppler pdftotext on PATH)
+pymupdf>=1.23

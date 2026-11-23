@@ -1,0 +1,28 @@
+{
+ "records": [],
+ "style": "numeric",
+ "language": "en",
+ "case_id": "empty_lib",
+ "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.pdf",
+ "notes": [],
+ "required_refs": [],
+ "contract": {},
+ "task_file": null,
+ "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\case.json",
+ "problems": [],
+ "missing": [
+  "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
+ ],
+ "src_status": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.pdf",
+   "pages": 36,
+   "chars": 97931,
+   "problem": null
+  }
+ },
+ "inputs": {
+  "case.json": "fe6b06a3582e2d84891d8675e28772250c04247a26649eb2b7903cb44dd4f95b",
+  "paper.pdf": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4"
+ }
+}

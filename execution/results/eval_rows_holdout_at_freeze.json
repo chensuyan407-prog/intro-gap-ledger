@@ -1,0 +1,314 @@
+[
+ {
+  "id": "H01",
+  "case": "holdout_transformer",
+  "type": "fabricated_citation",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S2"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S2 P2.S1: citation key 'sutskever2014' is not in the library (no invented references)"
+  ],
+  "b1": true,
+  "b2": true,
+  "b2_new_flags": 1
+ },
+ {
+  "id": "H02",
+  "case": "holdout_transformer",
+  "type": "misattributed_citation",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S5"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S5 P3.S1: citation [@he2016] weakly supports this sentence (0.21); source 'gehring2017' matches much better (0.79) - misattributed?",
+   "S9d g2: group g2: [@gehring2017] is in the group but not cited in the related-work part"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H03",
+  "case": "holdout_transformer",
+  "type": "wrong_number_contribution",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S4"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4 P7.S1: number 29.4 not supported by the cited evidence / the contribution evidence in the own paper"
+  ],
+  "b1": false,
+  "b2": true,
+  "b2_new_flags": 1
+ },
+ {
+  "id": "H04",
+  "case": "holdout_transformer",
+  "type": "uncited_claim",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S3"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S3 P3.S2: claim-like sentence (has been shown, shown to) without citation or [author judgment]",
+   "S9d g2: group g2: [@he2016] is in the group but not cited in the related-work part"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H05",
+  "case": "holdout_transformer",
+  "type": "empty_padding",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S7"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S7 P1.S1: empty padding phrase 'plays an important role' without a concrete, cited fact - replace with the actual problem/constraint"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H06",
+  "case": "holdout_transformer",
+  "type": "summary_stitching",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S8"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S8 P2: related-work paragraph 2 is a list of one-paper summaries (3 in a row, no comparison words): compare the works on the group's dimension"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H07",
+  "case": "holdout_transformer",
+  "type": "gap_asserted_without_sources",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S10"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S10 gap1: gap gap1: no 'from' evidence (limitations of cited works) and not marked author_judgment"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H08",
+  "case": "holdout_transformer",
+  "type": "gap_from_uncited_work",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S10c"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S10c gap1: gap gap1: derived from [@ba2016] which is never cited in the draft"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H09",
+  "case": "holdout_transformer",
+  "type": "contribution_wrong_figure",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11e"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11e k1: contribution k1: Figure 7 does not exist in the own paper"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H10",
+  "case": "holdout_transformer",
+  "type": "contribution_without_evidence",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11 k3: contribution k3: no evidence in the own paper"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H11",
+  "case": "holdout_transformer",
+  "type": "overclaim_significance",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11h"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11h P7.S1: 'significant improvement' but the own paper reports no significance test / error bars"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H12",
+  "case": "holdout_transformer",
+  "type": "must_cite_missing",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S13"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S13 : required reference 'gehring2017' not cited"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H13",
+  "case": "holdout_transformer",
+  "type": "number_from_wrong_place",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S4"
+  ],
+  "caught": false,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H14",
+  "case": "holdout_transformer",
+  "type": "cited_number_not_in_source",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S4"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S4 P3.S2: number 1202 not supported by the cited evidence (the number occurs only in unrelated context: he2016 p7)"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "H15",
+  "case": "holdout_transformer",
+  "type": "unsupported_novelty_scope",
+  "benign": false,
+  "ops_applied": true,
+  "expect": [
+   "S11j"
+  ],
+  "caught": true,
+  "caught_any_new_fail": true,
+  "new_fails": [
+   "S11j P8.S1: 'best' without pointing to the own table/figure that shows it ([@self:Table n])"
+  ],
+  "b1": false,
+  "b2": false,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "HB1",
+  "case": "holdout_transformer",
+  "type": "benign_synonym",
+  "benign": true,
+  "ops_applied": true,
+  "expect": [],
+  "caught": null,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": null,
+  "b2": null,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "HB2",
+  "case": "holdout_transformer",
+  "type": "benign_number_spelled",
+  "benign": true,
+  "ops_applied": true,
+  "expect": [],
+  "caught": null,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": null,
+  "b2": null,
+  "b2_new_flags": 0
+ },
+ {
+  "id": "HB3",
+  "case": "holdout_transformer",
+  "type": "benign_style_ieee",
+  "benign": true,
+  "ops_applied": true,
+  "expect": [],
+  "caught": null,
+  "caught_any_new_fail": false,
+  "new_fails": [],
+  "b1": null,
+  "b2": null,
+  "b2_new_flags": 0
+ }
+]

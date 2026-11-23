@@ -1,0 +1,167 @@
+{
+ "records": [
+  {
+   "key": "ioffe2015",
+   "type": "conf",
+   "title": "Batch normalization: Accelerating deep network training by reducing internal covariate shift",
+   "authors": [
+    "Ioffe, Sergey",
+    "Szegedy, Christian"
+   ],
+   "year": "2015",
+   "venue": "Proceedings of the 32nd International Conference on Machine Learning",
+   "volume": "",
+   "issue": "",
+   "pages": "448-456",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\ioffe2015.pdf",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "missing_fields": []
+  },
+  {
+   "key": "simonyan2015",
+   "type": "conf",
+   "title": "Very deep convolutional networks for large-scale image recognition",
+   "authors": [
+    "Simonyan, Karen",
+    "Zisserman, Andrew"
+   ],
+   "year": "2015",
+   "venue": "International Conference on Learning Representations",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "In this work we investigate the effect of the convolutional network depth on its accuracy in the large-scale image recognition setting. Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "missing_fields": []
+  },
+  {
+   "key": "srivastava2015",
+   "type": "conf",
+   "title": "Training very deep networks",
+   "authors": [
+    "Srivastava, Rupesh K.",
+    "Greff, Klaus",
+    "Schmidhuber, Jürgen"
+   ],
+   "year": "2015",
+   "venue": "Advances in Neural Information Processing Systems 28",
+   "volume": "",
+   "issue": "",
+   "pages": "2377-2385",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "Theoretical and empirical evidence indicates that the depth of neural networks is crucial for their success. However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem. Here we introduce a new architecture designed to overcome this. Our so-called highway networks allow unimpeded information flow across many layers on information highways. They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow. Even with hundreds of layers, highway networks can be trained directly through simple gradient descent.",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "missing_fields": []
+  },
+  {
+   "key": "szegedy2015",
+   "type": "conf",
+   "title": "Going deeper with convolutions",
+   "authors": [
+    "Szegedy, Christian",
+    "Liu, Wei",
+    "Jia, Yangqing",
+    "Sermanet, Pierre",
+    "Reed, Scott"
+   ],
+   "year": "2015",
+   "venue": "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition",
+   "volume": "",
+   "issue": "",
+   "pages": "1-9",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "missing_fields": []
+  },
+  {
+   "key": "zhou2016",
+   "type": "book",
+   "title": "机器学习",
+   "authors": [
+    "周志华"
+   ],
+   "year": "2016",
+   "venue": "清华大学出版社",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "missing_fields": []
+  }
+ ],
+ "style": "gbt7714",
+ "language": "zh",
+ "case_id": "dev_zh_residual",
+ "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+ "notes": [],
+ "required_refs": [],
+ "contract": {
+  "引言与相关工作": "中文 Markdown 稿件",
+  "参考文献": "GB/T 7714 列表",
+  "证据映射": "逐句来源",
+  "贡献对照": "贡献-图表对应",
+  "待确认": "需作者确认的条目"
+ },
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\task.md",
+ "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\case.json",
+ "problems": [],
+ "missing": [],
+ "src_status": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "pages": 12,
+   "chars": 60032,
+   "problem": null
+  },
+  "ioffe2015": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\ioffe2015.pdf",
+   "pages": 11,
+   "chars": 45911,
+   "problem": null,
+   "text": "full_text"
+  },
+  "simonyan2015": {
+   "path": null,
+   "text": "abstract_only"
+  },
+  "srivastava2015": {
+   "path": null,
+   "text": "abstract_only"
+  },
+  "szegedy2015": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "zhou2016": {
+   "path": null,
+   "text": "metadata_only"
+  }
+ },
+ "inputs": {
+  "case.json": "d708c24368e0dbdbf814738f04123155aff656790fb93c5e0779f9d8f6131a92",
+  "ioffe2015.pdf": "bdc69e0b568f41d8d3181cc9077a461f58fcdd1c70c9f49efe60a05ee6109655",
+  "library.ris": "b01d9ca13918f8e46e0c8df9cb9a74255dc4a0beceec271e92144b946dd65d0d",
+  "task.md": "59532853385c28d335edcf1a7b4944406eaeb605e505c38c786484410fe260ed",
+  "本文_resnet.pdf": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a"
+ }
+}

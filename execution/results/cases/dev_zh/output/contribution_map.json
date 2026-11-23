@@ -1,0 +1,83 @@
+[
+ {
+  "id": "k1",
+  "text": "提出残差学习框架，用不增加参数和计算量的恒等捷径连接让堆叠层拟合残差映射。",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p2:30",
+    "page": 2,
+    "quote": "In this paper, we address the degradation problem by introducing a deep residual learning framework.",
+    "verified": true
+   },
+   {
+    "id": "E:self:p2:39",
+    "page": 2,
+    "quote": "Identity shortcut connections add neither extra parameter nor computational complexity.",
+    "verified": true
+   },
+   {
+    "loc": "Figure 2",
+    "quote": "Residual learning: a building block",
+    "page": 2,
+    "match": 1.0,
+    "verified": true,
+    "loc_exists": true
+   }
+  ]
+ },
+ {
+  "id": "k2",
+  "text": "在 ImageNet 上训练深达 152 层的残差网络，深度为 VGG 的 8 倍但复杂度更低，集成模型在测试集上的 top-5 错误率为 3.57%。",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:4",
+    "page": 1,
+    "quote": "On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers—8× deeper than VGG nets [41] but still having lower complexity.",
+    "verified": true
+   },
+   {
+    "id": "E:self:p2:47",
+    "page": 2,
+    "quote": "Our ensemble has 3.57% top-5 error on the 2 ImageNet test set, and won the 1st place in the ILSVRC 2015 classification competition.",
+    "verified": true
+   },
+   {
+    "loc": "Table 5",
+    "quote": "Error rates (%) of ensembles",
+    "page": 6,
+    "match": 1.0,
+    "verified": true,
+    "loc_exists": true
+   }
+  ]
+ },
+ {
+  "id": "k3",
+  "text": "在 CIFAR-10 上分析 100 层与 1000 层以上的残差网络，并与 FitNet、Highway 比较。",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:7",
+    "page": 1,
+    "quote": "We also present analysis on CIFAR-10 with 100 and 1000 layers.",
+    "verified": true
+   },
+   {
+    "loc": "Table 6",
+    "quote": "Classification error on the CIFAR-10 test set",
+    "page": 7,
+    "match": 1.0,
+    "verified": true,
+    "loc_exists": true
+   }
+  ]
+ }
+]

@@ -1,0 +1,17 @@
+[
+ {
+  "id": "k1",
+  "text": "We train over 400 language models",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:4",
+    "page": 1,
+    "quote": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens should also be doubled.",
+    "verified": true
+   }
+  ]
+ }
+]

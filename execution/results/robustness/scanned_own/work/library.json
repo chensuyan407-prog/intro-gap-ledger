@@ -1,0 +1,33 @@
+{
+ "records": [],
+ "style": "numeric",
+ "language": "en",
+ "case_id": "scan",
+ "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\scanned_own\\input\\paper.pdf",
+ "notes": [],
+ "required_refs": [],
+ "contract": {},
+ "task_file": null,
+ "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\scanned_own\\input\\case.json",
+ "problems": [
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\scanned_own\\input\\paper.pdf",
+   "problem": "little or no text layer (scanned?): no text layer and tesseract is not installed"
+  }
+ ],
+ "missing": [
+  "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
+ ],
+ "src_status": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\scanned_own\\input\\paper.pdf",
+   "pages": 1,
+   "chars": 0,
+   "problem": "little or no text layer (scanned?): no text layer and tesseract is not installed"
+  }
+ },
+ "inputs": {
+  "case.json": "a07aa75ba18379fefd803865baa2b68ce0e3ff6a75f719da99248485e1716800",
+  "paper.pdf": "b34e70d02690de201696fbdc6fa5684741e48d37a294475f399eb3d7ab26fdb2"
+ }
+}

@@ -1,0 +1,51 @@
+TY  - CONF
+ID  - ioffe2015
+TI  - Batch normalization: Accelerating deep network training by reducing internal covariate shift
+AU  - Ioffe, Sergey
+AU  - Szegedy, Christian
+T2  - Proceedings of the 32nd International Conference on Machine Learning
+PY  - 2015
+SP  - 448
+EP  - 456
+ER  - 
+TY  - CONF
+ID  - simonyan2015
+TI  - Very deep convolutional networks for large-scale image recognition
+AU  - Simonyan, Karen
+AU  - Zisserman, Andrew
+T2  - International Conference on Learning Representations
+PY  - 2015
+AB  - In this work we investigate the effect of the convolutional network depth on its accuracy in the large-scale image recognition setting. Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.
+ER  - 
+TY  - CONF
+ID  - srivastava2015
+TI  - Training very deep networks
+AU  - Srivastava, Rupesh K.
+AU  - Greff, Klaus
+AU  - Schmidhuber, Jürgen
+T2  - Advances in Neural Information Processing Systems 28
+PY  - 2015
+SP  - 2377
+EP  - 2385
+AB  - Theoretical and empirical evidence indicates that the depth of neural networks is crucial for their success. However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem. Here we introduce a new architecture designed to overcome this. Our so-called highway networks allow unimpeded information flow across many layers on information highways. They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow. Even with hundreds of layers, highway networks can be trained directly through simple gradient descent.
+ER  - 
+TY  - CONF
+ID  - szegedy2015
+TI  - Going deeper with convolutions
+AU  - Szegedy, Christian
+AU  - Liu, Wei
+AU  - Jia, Yangqing
+AU  - Sermanet, Pierre
+AU  - Reed, Scott
+T2  - Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition
+PY  - 2015
+SP  - 1
+EP  - 9
+ER  - 
+TY  - BOOK
+ID  - zhou2016
+TI  - 机器学习
+AU  - 周志华
+T2  - 清华大学出版社
+PY  - 2016
+ER  - 

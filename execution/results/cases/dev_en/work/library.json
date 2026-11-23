@@ -1,0 +1,188 @@
+{
+ "records": [
+  {
+   "key": "kaplan2020",
+   "type": "article",
+   "title": "Scaling Laws for Neural Language Models",
+   "authors": [
+    "Kaplan, Jared",
+    "McCandlish, Sam",
+    "Henighan, Tom",
+    "Brown, Tom B.",
+    "Chess, Benjamin",
+    "Child, Rewon",
+    "Gray, Scott",
+    "Radford, Alec",
+    "Wu, Jeffrey",
+    "Amodei, Dario"
+   ],
+   "year": "2020",
+   "venue": "arXiv preprint arXiv:2001.08361",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "2001.08361",
+   "abstract": "",
+   "pdf": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\kaplan2020.pdf",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\library.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "brown2020",
+   "type": "inproceedings",
+   "title": "Language Models are Few-Shot Learners",
+   "authors": [
+    "Brown, Tom",
+    "Mann, Benjamin",
+    "Ryder, Nick",
+    "Subbiah, Melanie",
+    "Kaplan, Jared",
+    "Dhariwal, Prafulla",
+    "others"
+   ],
+   "year": "2020",
+   "venue": "Advances in Neural Information Processing Systems",
+   "volume": "33",
+   "issue": "",
+   "pages": "1877-1901",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\brown2020.pdf",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\library.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "rae2021",
+   "type": "article",
+   "title": "Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+   "authors": [
+    "Rae, Jack W.",
+    "Borgeaud, Sebastian",
+    "Cai, Trevor",
+    "Millican, Katie",
+    "others"
+   ],
+   "year": "2021",
+   "venue": "arXiv preprint arXiv:2112.11446",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "2112.11446",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\library.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "smith2022",
+   "type": "article",
+   "title": "Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",
+   "authors": [
+    "Smith, Shaden",
+    "Patwary, Mostofa",
+    "Norick, Brandon",
+    "others"
+   ],
+   "year": "2022",
+   "venue": "arXiv preprint arXiv:2201.11990",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "Pretrained general-purpose language models can achieve state-of-the-art accuracies in various natural language processing domains by adapting to downstream tasks via zero-shot, few-shot and fine-tuning techniques. Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models. We present details on the training of the largest monolithic transformer based language model, Megatron-Turing NLG 530B (MT-NLG), with 530 billion parameters.",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\library.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "clark2022",
+   "type": "article",
+   "title": "Unified Scaling Laws for Routed Language Models",
+   "authors": [
+    "Clark, Aidan",
+    "de las Casas, Diego",
+    "Guy, Aurelia",
+    "others"
+   ],
+   "year": "2022",
+   "venue": "arXiv preprint arXiv:2202.01169",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\library.bib",
+   "missing_fields": []
+  }
+ ],
+ "style": "ieee",
+ "language": "en",
+ "case_id": "dev_en_compute_optimal",
+ "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\paper.pdf",
+ "notes": [],
+ "required_refs": [],
+ "contract": {
+  "introduction": "Markdown text of Introduction + Related Work",
+  "references": "formatted reference list",
+  "source_map": "per-sentence sources",
+  "contributions": "contribution -> evidence",
+  "needs_review": "items for the author"
+ },
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\task.md",
+ "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\case.json",
+ "problems": [],
+ "missing": [],
+ "src_status": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\paper.pdf",
+   "pages": 36,
+   "chars": 97931,
+   "problem": null
+  },
+  "kaplan2020": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\kaplan2020.pdf",
+   "pages": 30,
+   "chars": 90158,
+   "problem": null,
+   "text": "full_text"
+  },
+  "brown2020": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\brown2020.pdf",
+   "pages": 75,
+   "chars": 238201,
+   "problem": null,
+   "text": "full_text"
+  },
+  "rae2021": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "smith2022": {
+   "path": null,
+   "text": "abstract_only"
+  },
+  "clark2022": {
+   "path": null,
+   "text": "metadata_only"
+  }
+ },
+ "inputs": {
+  "brown2020.pdf": "97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+  "case.json": "6ac03d3c0fedfbe0f15db6cb9f476597936dcd06a9a2076e5b39643f4b80bffa",
+  "kaplan2020.pdf": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+  "library.bib": "7092368b03f5860cf70143858aba657f49a54dd45ac7b26ad546fcec7e72ef43",
+  "paper.pdf": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4",
+  "task.md": "e042b56477083140bd597ca4984dbe9d8c54451bd8282d579272b76dc55c69b5"
+ }
+}

@@ -1,0 +1,209 @@
+{
+ "records": [
+  {
+   "key": "kaplan2020",
+   "type": "article",
+   "title": "Scaling Laws for Neural Language Models",
+   "authors": [
+    "Kaplan, Jared",
+    "McCandlish, Sam",
+    "Henighan, Tom",
+    "Brown, Tom B.",
+    "Chess, Benjamin",
+    "Child, Rewon",
+    "Gray, Scott",
+    "Radford, Alec",
+    "Wu, Jeffrey",
+    "Amodei, Dario"
+   ],
+   "year": "2020",
+   "venue": "arXiv preprint arXiv:2001.08361",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "2001.08361",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\lib.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "brown2020",
+   "type": "inproceedings",
+   "title": "Language Models are Few-Shot Learners",
+   "authors": [
+    "Brown, Tom",
+    "Mann, Benjamin",
+    "Ryder, Nick",
+    "Subbiah, Melanie",
+    "Kaplan, Jared",
+    "Dhariwal, Prafulla",
+    "others"
+   ],
+   "year": "2020",
+   "venue": "Advances in Neural Information Processing Systems",
+   "volume": "33",
+   "issue": "",
+   "pages": "1877-1901",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\lib.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "rae2021",
+   "type": "article",
+   "title": "Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+   "authors": [
+    "Rae, Jack W.",
+    "Borgeaud, Sebastian",
+    "Cai, Trevor",
+    "Millican, Katie",
+    "others"
+   ],
+   "year": "2021",
+   "venue": "arXiv preprint arXiv:2112.11446",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "2112.11446",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\lib.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "smith2022",
+   "type": "article",
+   "title": "Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model",
+   "authors": [
+    "Smith, Shaden",
+    "Patwary, Mostofa",
+    "Norick, Brandon",
+    "others"
+   ],
+   "year": "2022",
+   "venue": "arXiv preprint arXiv:2201.11990",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "Pretrained general-purpose language models can achieve state-of-the-art accuracies in various natural language processing domains by adapting to downstream tasks via zero-shot, few-shot and fine-tuning techniques. Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models. We present details on the training of the largest monolithic transformer based language model, Megatron-Turing NLG 530B (MT-NLG), with 530 billion parameters.",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\lib.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "clark2022",
+   "type": "article",
+   "title": "Unified Scaling Laws for Routed Language Models",
+   "authors": [
+    "Clark, Aidan",
+    "de las Casas, Diego",
+    "Guy, Aurelia",
+    "others"
+   ],
+   "year": "2022",
+   "venue": "arXiv preprint arXiv:2202.01169",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\lib.bib",
+   "missing_fields": []
+  },
+  {
+   "key": "doe2021",
+   "type": "jour",
+   "title": "An entry without end",
+   "authors": [
+    "Doe, Jane"
+   ],
+   "year": "2021",
+   "venue": "",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\more.ris",
+   "missing_fields": [
+    "venue"
+   ]
+  }
+ ],
+ "style": "numeric",
+ "language": "en",
+ "case_id": "corrupt",
+ "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\paper.pdf",
+ "notes": [],
+ "required_refs": [],
+ "contract": {},
+ "task_file": null,
+ "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\case.json",
+ "problems": [
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\lib.bib",
+   "problem": "unbalanced braces in entry cut; entry skipped"
+  },
+  {
+   "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\more.ris",
+   "problem": "RIS record without ER at end of file; kept"
+  }
+ ],
+ "missing": [],
+ "src_status": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\paper.pdf",
+   "pages": 36,
+   "chars": 97931,
+   "problem": null
+  },
+  "kaplan2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "brown2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "rae2021": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "smith2022": {
+   "path": null,
+   "text": "abstract_only"
+  },
+  "clark2022": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "doe2021": {
+   "path": null,
+   "text": "metadata_only"
+  }
+ },
+ "inputs": {
+  "case.json": "44c6e1c5e38a4144b09267fa967d46c3457df880160ed123054f7d49663900b2",
+  "lib.bib": "e6ed5928cfed4a5e0b5f2ca2fb7144666ef9019ecaa7c25bd12884ef90ef6f43",
+  "more.ris": "c034c3ada823f470e173405acb79d90cd77c5a7d7cd699cd16366321b036b1a3",
+  "paper.pdf": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4"
+ }
+}

@@ -1,0 +1,652 @@
+{
+ "_doc": "Planted defects on the gold plan/draft of each dev case. op: draft (replace old->new in draft.md) | plan (set a JSON path). expect = check ids that should fail (prefix match). benign = should NOT add a fail.",
+ "mutations": [
+  {
+   "id": "E01",
+   "case": "dev_en",
+   "type": "fabricated_citation",
+   "expect": [
+    "S2"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "and stopping significantly short of convergence [@kaplan2020 #E:kaplan2020:p3:31].",
+      "and stopping significantly short of convergence [@kaplan2020 #E:kaplan2020:p3:31; @hestness2017]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E02",
+   "case": "dev_en",
+   "type": "misattributed_citation",
+   "expect": [
+    "S5"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "Scaling these models improves few-shot performance on many tasks [@brown2020 #E:brown2020:p1:5].",
+      "Scaling these models improves few-shot performance on many tasks [@kaplan2020]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E03",
+   "case": "dev_en",
+   "type": "wrong_number_cited",
+   "expect": [
+    "S4"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "from GPT-3, with 175 billion parameters",
+      "from GPT-3, with 170 billion parameters"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E04",
+   "case": "dev_en",
+   "type": "uncited_claim",
+   "expect": [
+    "S3"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "training compute [@kaplan2020 #E:kaplan2020:p1:6], and",
+      "training compute, and"
+     ]
+    },
+    {
+     "draft": [
+      "short of convergence [@kaplan2020 #E:kaplan2020:p3:31].",
+      "short of convergence."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E05",
+   "case": "dev_en",
+   "type": "empty_padding",
+   "expect": [
+    "S7"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "## 1 Introduction\n\n",
+      "## 1 Introduction\n\nIn recent years, large language models have attracted increasing attention in the community. "
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E06",
+   "case": "dev_en",
+   "type": "summary_stitching",
+   "expect": [
+    "S8"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "Both lines of scaling-law work fit power laws to the loss, but they differ in which variables are varied [@kaplan2020; @clark2022]. Kaplan et al. vary model size, data and compute, while all of their runs used a learning rate schedule with a 3000 step linear warmup followed by a cosine decay to zero [@kaplan2020 #E:kaplan2020:p7:91]. Clark et al. extend the analysis to routed language models, in which the number of experts is an additional variable [@clark2022]. In contrast to our setting, neither analysis varies the training horizon of each model [author judgment].",
+      "Kaplan et al. studied scaling laws for neural language models with model size, data and compute [@kaplan2020]. Kaplan et al. also used a learning rate schedule with a 3000 step linear warmup followed by a cosine decay to zero [@kaplan2020 #E:kaplan2020:p7:91]. Clark et al. proposed unified scaling laws for routed language models with experts [@clark2022]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E07",
+   "case": "dev_en",
+   "type": "gap_without_derivation",
+   "expect": [
+    "S10"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "gaps.0.from",
+      []
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E08",
+   "case": "dev_en",
+   "type": "gap_evidence_wrong_id",
+   "expect": [
+    "S10e"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "gaps.0.from",
+      [
+       {
+        "ref": "kaplan2020",
+        "id": "E:kaplan2020:p99:1"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E09",
+   "case": "dev_en",
+   "type": "contribution_nonexistent_table",
+   "expect": [
+    "S11e"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "contributions.1.evidence",
+      [
+       {
+        "loc": "Table 12",
+        "quote": "scaling with increased training compute"
+       }
+      ]
+     ]
+    },
+    {
+     "draft": [
+      "[@self:Table 2]",
+      "[@self:Table 12]"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E10",
+   "case": "dev_en",
+   "type": "contribution_inflated_number",
+   "expect": [
+    "S4"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "it reaches 67.6% average accuracy on MMLU",
+      "it reaches 69.5% average accuracy on MMLU"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E11",
+   "case": "dev_en",
+   "type": "overclaim_significance",
+   "expect": [
+    "S11h"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "it reaches 67.6% average accuracy on MMLU, 7.6% above Gopher",
+      "it significantly outperforms all larger models, reaching 67.6% average accuracy on MMLU, 7.6% above Gopher"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E12",
+   "case": "dev_en",
+   "type": "gap_not_addressed",
+   "expect": [
+    "S11g",
+    "S10"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "gaps.1",
+      {
+       "id": "gap2",
+       "statement": "No study measures how data quality changes the compute-optimal frontier.",
+       "type": "uncovered_setting",
+       "from": [
+        {
+         "ref": "kaplan2020",
+         "id": "E:kaplan2020:p3:31"
+        }
+       ],
+       "author_judgment": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E13",
+   "case": "dev_en",
+   "type": "missing_part",
+   "expect": [
+    "S1"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "<!-- part:gap -->\n",
+      ""
+     ]
+    },
+    {
+     "draft": [
+      "These studies share one limitation: the compute-optimal estimates were fitted with a single training schedule [@kaplan2020 #E:kaplan2020:p7:91], so the effect of the number of training tokens on the optimal model size was never measured directly. If this effect is large, current large models may be undertrained for their budgets [author judgment].\n",
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E14",
+   "case": "dev_en",
+   "type": "evidence_from_wrong_source",
+   "expect": [
+    "S5c"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "[@kaplan2020 #E:kaplan2020:p1:6]",
+      "[@kaplan2020 #E:brown2020:p1:5]"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E15",
+   "case": "dev_en",
+   "type": "group_without_dimension",
+   "expect": [
+    "S9"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "groups.1.dimension",
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E16",
+   "case": "dev_en",
+   "type": "fabricated_quote_contribution",
+   "expect": [
+    "S11d"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "contributions.0.evidence",
+      [
+       {
+        "quote": "we prove that the compute-optimal frontier is exactly linear in log space for all model families"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E17",
+   "case": "dev_en",
+   "type": "uncited_number",
+   "expect": [
+    "S4c",
+    "S3"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "GPT-3 [@brown2020], Gopher [@rae2021] and Megatron-Turing NLG [@smith2022] all increase the parameter count",
+      "GPT-3, Gopher and Megatron-Turing NLG all increase the parameter count up to 530 billion"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E18",
+   "case": "dev_en",
+   "type": "sota_without_evidence",
+   "expect": [
+    "S11j"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "7.6% above Gopher [@self:Table 6].",
+      "7.6% above Gopher, a new state-of-the-art."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z01",
+   "case": "dev_zh",
+   "type": "fabricated_citation",
+   "expect": [
+    "S2"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "[@szegedy2015]。二者",
+      "[@szegedy2015; @krizhevsky2012]。二者"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z02",
+   "case": "dev_zh",
+   "type": "wrong_number_cited",
+   "expect": [
+    "S4"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "以少 14 倍的训练步数达到相同精度",
+      "以少 20 倍的训练步数达到相同精度"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z03",
+   "case": "dev_zh",
+   "type": "uncited_claim",
+   "expect": [
+    "S3"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "降低对初始化的依赖[@ioffe2015 #E:ioffe2015:p1:4]，在图像分类模型上以少 14 倍的训练步数达到相同精度[@ioffe2015 #E:ioffe2015:p1:6]。",
+      "降低对初始化的依赖，研究表明它在图像分类模型上以少 14 倍的训练步数达到相同精度。"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z04",
+   "case": "dev_zh",
+   "type": "empty_padding",
+   "expect": [
+    "S7"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "## 1 引言\n\n",
+      "## 1 引言\n\n近年来，深度学习受到广泛关注，在计算机视觉领域发挥着重要作用。"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z05",
+   "case": "dev_zh",
+   "type": "summary_stitching",
+   "expect": [
+    "S8"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "另一条路线不改变深度，而是改变训练信号穿过多层的方式[@ioffe2015; @srivastava2015]。批归一化对层输入做归一化，使网络可以使用高得多的学习率并降低对初始化的依赖[@ioffe2015 #E:ioffe2015:p1:4]，在图像分类模型上以少 14 倍的训练步数达到相同精度[@ioffe2015 #E:ioffe2015:p1:6]。与之不同，Highway 网络借鉴 LSTM，用自适应门控单元调节跨层信息流[@srivastava2015 #E:srivastava2015:p1:5]。前者作用于激活分布，后者引入了带参数的捷径[作者判断]。",
+      "Ioffe 等提出了批归一化方法，可以使用更高的学习率[@ioffe2015 #E:ioffe2015:p1:4]。Ioffe 等在图像分类模型上以少 14 倍的训练步数达到相同精度[@ioffe2015 #E:ioffe2015:p1:6]。Srivastava 等提出了 Highway 网络，用自适应门控单元调节信息流[@srivastava2015 #E:srivastava2015:p1:5]。"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z06",
+   "case": "dev_zh",
+   "type": "gap_without_derivation",
+   "expect": [
+    "S10"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "gaps.0.from",
+      []
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z07",
+   "case": "dev_zh",
+   "type": "contribution_nonexistent_table",
+   "expect": [
+    "S11e"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "contributions.2.evidence",
+      [
+       {
+        "id": "E:self:p1:7"
+       },
+       {
+        "loc": "Table 19",
+        "quote": "CIFAR-10"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z08",
+   "case": "dev_zh",
+   "type": "contribution_inflated_number",
+   "expect": [
+    "S4"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "top-5 错误率为 3.57%",
+      "top-5 错误率为 3.07%"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z09",
+   "case": "dev_zh",
+   "type": "overclaim_significance",
+   "expect": [
+    "S11h"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "深度为 VGG 的 8 倍但复杂度更低",
+      "深度为 VGG 的 8 倍但复杂度更低，精度显著优于所有已有方法"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z10",
+   "case": "dev_zh",
+   "type": "evidence_from_wrong_source",
+   "expect": [
+    "S5c"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "[@simonyan2015 #E:simonyan2015:p1:2]。然而",
+      "[@simonyan2015 #E:ioffe2015:p1:4]。然而"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z11",
+   "case": "dev_zh",
+   "type": "group_ref_not_cited",
+   "expect": [
+    "S9d"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "groups.0.refs",
+      [
+       "simonyan2015",
+       "szegedy2015",
+       "zhou2016"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z12",
+   "case": "dev_zh",
+   "type": "gap_quote_fabricated",
+   "expect": [
+    "S10e"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "gaps.0.from",
+      [
+       {
+        "ref": "ioffe2015",
+        "quote": "batch normalization cannot train networks deeper than 30 layers"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z13",
+   "case": "dev_zh",
+   "type": "missing_part",
+   "expect": [
+    "S1"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "<!-- part:contrib -->\n本文的贡献如下：\n\n- 提出残差学习框架，用不增加参数和计算量的恒等捷径连接让堆叠层拟合残差映射[@self:图2]。\n- 在 ImageNet 上训练深达 152 层的残差网络，深度为 VGG 的 8 倍但复杂度更低，集成模型在测试集上的 top-5 错误率为 3.57%[@self:表5]。\n- 在 CIFAR-10 上分析 100 层与 1000 层以上的残差网络，并与 FitNet、Highway 比较[@self:表6]。\n",
+      ""
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Z14",
+   "case": "dev_zh",
+   "type": "required_ref_missing",
+   "expect": [
+    "S13"
+   ],
+   "ops": [
+    {
+     "library": [
+      "required_refs",
+      [
+       "ioffe2015",
+       "zhou2016"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B01",
+   "case": "dev_en",
+   "type": "benign_number_format",
+   "benign": true,
+   "ops": [
+    {
+     "draft": [
+      "with 175 billion parameters [@brown2020",
+      "with 175B parameters [@brown2020"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B02",
+   "case": "dev_en",
+   "type": "benign_paraphrase",
+   "benign": true,
+   "ops": [
+    {
+     "draft": [
+      "Scaling these models improves few-shot performance on many tasks [@brown2020 #E:brown2020:p1:5].",
+      "Larger models of this kind show better few-shot performance across many tasks [@brown2020 #E:brown2020:p1:5]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B03",
+   "case": "dev_en",
+   "type": "benign_group_reorder",
+   "benign": true,
+   "ops": [
+    {
+     "plan": [
+      "groups",
+      "__reverse__"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B04",
+   "case": "dev_zh",
+   "type": "benign_reword",
+   "benign": true,
+   "ops": [
+    {
+     "draft": [
+      "二者都没有改变“逐层堆叠”的训练方式[作者判断]。",
+      "两种做法仍沿用逐层堆叠的训练方式[作者判断]。"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B05",
+   "case": "dev_zh",
+   "type": "benign_style_switch",
+   "benign": true,
+   "ops": [
+    {
+     "plan": [
+      "style",
+      "apa"
+     ]
+    }
+   ]
+  }
+ ]
+}
