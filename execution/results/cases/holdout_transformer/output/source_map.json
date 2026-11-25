@@ -10,7 +10,7 @@
     "page": 1,
     "quote": "The prevalent approach to sequence to sequence learning maps an input sequence to a variable length output sequence via recurrent neural networks.",
     "support": 0.57,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "explicit"
    }
   ],
@@ -28,7 +28,7 @@
     "page": 1,
     "quote": "Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance.",
     "support": 0.89,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "explicit"
    }
   ],
@@ -54,16 +54,17 @@
     "page": 1,
     "quote": "Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance.",
     "support": 0.5,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "auto"
    },
    {
     "key": "wu2016",
-    "evidence": null,
-    "page": null,
-    "quote": null,
-    "support": null,
-    "source_text": "metadata_only"
+    "evidence": "E:wu2016:p1:1",
+    "page": 1,
+    "quote": "[own paper p2] Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+    "support": 0.2,
+    "source_text": "secondary",
+    "link": "auto"
    }
   ],
   "numbers": [],
@@ -80,7 +81,7 @@
     "page": 1,
     "quote": "The models proposed recently for neural machine translation often belong to a family of encoder-decoders and consists of an encoder that encodes a source sentence into a fixed-length vector from which a decoder generates a translation.",
     "support": 0.42,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "explicit"
    },
    {
@@ -89,7 +90,7 @@
     "page": 1,
     "quote": "In this paper, we conjecture that the use of a fixed-length vector is a bottleneck in improving the performance of this basic encoder-decoder architecture, and propose to extend this by allowing a model to automatically (soft-)search for parts of a source sentence that are relevant to predicting a target word, without having to form these parts as a hard segment explicitly.",
     "support": 0.58,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "explicit"
    }
   ],
@@ -105,9 +106,10 @@
     "key": "hochreiter1997",
     "evidence": null,
     "page": null,
-    "quote": null,
-    "support": null,
-    "source_text": "metadata_only"
+    "quote": "",
+    "support": 0.0,
+    "source_text": "secondary",
+    "link": "auto"
    }
   ],
   "numbers": [],
@@ -124,7 +126,7 @@
     "page": 1,
     "quote": "Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.",
     "support": 0.71,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "explicit"
    }
   ],
@@ -168,7 +170,7 @@
     "page": 1,
     "quote": "Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.",
     "support": 0.18,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "explicit"
    },
    {
@@ -177,7 +179,7 @@
     "page": 1,
     "quote": "Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.",
     "support": 0.18,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "explicit"
    }
   ],

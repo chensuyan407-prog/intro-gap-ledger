@@ -1,0 +1,51 @@
+{
+ "set": "v2",
+ "cases": [
+  "ho2_bn_paperonly",
+  "ho3_kaplan_notes"
+ ],
+ "gold": {
+  "ho2_bn_paperonly": {
+   "fails": 0,
+   "status": "partial",
+   "warns": 4,
+   "needs_review": 17,
+   "check_seconds": 0.21
+  },
+  "ho3_kaplan_notes": {
+   "fails": 0,
+   "status": "partial",
+   "warns": 0,
+   "needs_review": 10,
+   "check_seconds": 0.27
+  }
+ },
+ "defects": 14,
+ "caught_expected": 14,
+ "caught_any": 14,
+ "recall_expected": 1.0,
+ "baseline_b0": 0.0,
+ "baseline_b1_key_structure_lint": 0.0714,
+ "baseline_b2_plus_numbers_anywhere": 0.1429,
+ "benign": 3,
+ "benign_without_new_fail": 3,
+ "ops_not_applied": [],
+ "missed": [],
+ "benign_false_alarms": [],
+ "by_type": {
+  "contribution_wrong_figure": "1/1",
+  "empty_padding": "1/1",
+  "evidence_from_wrong_source": "1/1",
+  "fabricated_citation": "1/1",
+  "gap_quote_fabricated": "1/1",
+  "gap_without_derivation": "1/1",
+  "misattributed_citation": "1/1",
+  "overclaim_first": "1/1",
+  "padding": "1/1",
+  "summary_stitching": "1/1",
+  "uncited_claim": "1/1",
+  "wrong_number_cited": "1/1",
+  "wrong_number_contribution": "2/2"
+ },
+ "wall_seconds": 6.6
+}

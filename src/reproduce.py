@@ -77,10 +77,11 @@ def robustness(log):
     run(irw("init", "--case", os.path.join(i, "case.json"), "--out", o, "--work", w), log)
     r = J(os.path.join(o, "result.json"))
     out["missing_case_json"] = {"status": r["status"], "reason": r["status_reason"], "ok": r["status"] == "failed" and "not found" in r["status_reason"]}
-    # 2 empty library: own paper only; draft marks missing citations instead of inventing them
+    # 2 empty library: own paper without reference list; draft marks missing citations instead of inventing them
     d, i, w, o = mk("empty_library")
-    shutil.copy(os.path.join(en, "input", "paper.pdf"), i)
-    json.dump({"case_id": "empty_lib", "language": "en"}, open(os.path.join(i, "case.json"), "w"))
+    open(os.path.join(i, "paper.md"), "w", encoding="utf-8").write(
+        "# Own Paper\n\n## Experiments\n\nWe introduce a unified benchmark. Figure 3 shows the scaling trend. Larger batches improve convergence. We train over 400 language models.\n")
+    json.dump({"case_id": "empty_lib", "language": "en", "own_paper": "paper.md"}, open(os.path.join(i, "case.json"), "w"))
     run(irw("init", "--case", os.path.join(i, "case.json"), "--out", o, "--work", w), log)
     open(os.path.join(w, "draft.md"), "w", encoding="utf-8").write(
         "<!-- part:background -->\nLarge language models are usually trained on about 300 billion tokens [citation needed].\n\n"
@@ -138,7 +139,7 @@ def robustness(log):
     s = json.loads(p.stdout)
     probs = [x["problem"] for x in s["problems"]]
     out["corrupt_library"] = {"records": s["records"], "problems": probs,
-                              "ok": s["records"] == 6 and any("unbalanced" in x for x in probs) and any("without ER" in x for x in probs)}
+                              "ok": s["records"] >= 6 and any("unbalanced" in x for x in probs) and any("without ER" in x for x in probs)}
     # 9 determinism (two checks of the same ledger)
     d, i, w, o = mk("determinism")
     shutil.copytree(os.path.join(en, "input"), i, dirs_exist_ok=True)
@@ -153,16 +154,50 @@ def robustness(log):
             r.pop(k, None)
         keep.append(json.dumps(r, sort_keys=True))
     out["determinism"] = {"ok": keep[0] == keep[1]}
+    # 10 JSON Schema + deliverables contract, status enum mapping, EN/ZH scaled numbers, bullet-number retention (v0.2.1)
+    d, i, w, o = mk("json_schema_contract")
+    shutil.copytree(os.path.join(en, "input"), i, dirs_exist_ok=True)
+    cjson = J(os.path.join(i, "case.json"))
+    cjson["output_contract"] = {
+        "type": "object",
+        "required": ["case_id", "status", "verification_notes", "gap_analysis"],
+        "properties": {
+            "case_id": {"type": "string"},
+            "status": {"type": "string", "enum": ["success", "partial", "failed"]},
+            "verification_notes": {"type": "array", "items": {"type": "string"}},
+            "gap_analysis": {"type": "string"},
+        },
+        "deliverables": {"related_work_groups": {"type": "array"}},
+    }
+    json.dump(cjson, open(os.path.join(i, "case.json"), "w", encoding="utf-8"))
+    run(irw("init", "--case", os.path.join(i, "case.json"), "--out", o, "--work", w), log)
+    for f in ("plan.json", "draft.md"):
+        shutil.copy(os.path.join(en, "gold", f), w)
+    run(irw("check", "--work", w, "--out", o, "--no-pdf"), log)
+    r = J(os.path.join(o, "result.json"))
+    sys.path.insert(0, os.path.dirname(CLI))
+    from irw_common import num_in_text
+    from irw import parse_draft
+    sents_tmp, _ = parse_draft("<!-- part:contrib -->\n- 2020 experiments show 60亿 tokens gain [@self:p1].\n", J(os.path.join(ROOT, "submission", "rules", "lexicon.json")))
+    out["v021_schema_scale_list"] = {
+        "status": r["status"],
+        "schema_ok": (r.get("status") == "success" and isinstance(r.get("verification_notes"), list) and isinstance(r.get("gap_analysis"), str)
+                      and isinstance(r.get("related_work_groups"), list) and "properties" not in r and "required" not in r),
+        "scale_ok": num_in_text("60", "6 billion tokens", "60亿 tokens") and not num_in_text("60", "5 billion tokens", "60亿 tokens"),
+        "list_digit_ok": bool(sents_tmp and "2020" in sents_tmp[0]["text"]),
+    }
+    out["v021_schema_scale_list"]["ok"] = all(out["v021_schema_scale_list"][k] for k in ("schema_ok", "scale_ok", "list_digit_ok"))
     return out
 
 
 def main():
     t0 = time.time()
     os.makedirs(RES, exist_ok=True)
-    step("thought", title="Plan", body="Run planted-defect evaluation (dev + held-out), full gold runs with rendering, robustness checks; record metrics, manifest and trace.")
+    step("thought", title="Plan", body="Run planted-defect evaluation (dev + held-out + v2), full gold runs with rendering, robustness checks; record metrics, manifest and trace.")
     with open(os.path.join(ROOT, "execution", "run.log"), "w", encoding="utf-8") as log:
         run([sys.executable, os.path.join(ROOT, "tests", "run_eval.py"), "--set", "dev"], log)
         run([sys.executable, os.path.join(ROOT, "tests", "run_eval.py"), "--set", "holdout"], log)
+        run([sys.executable, os.path.join(ROOT, "tests", "run_eval.py"), "--set", "v2"], log)
         full = {}
         for c in ("dev_en", "dev_zh", "holdout_transformer"):
             cd = os.path.join(ROOT, "tests", "cases", c)
@@ -182,22 +217,27 @@ def main():
     dev = J(os.path.join(RES, "metrics_dev.json"))
     ho = J(os.path.join(RES, "metrics_holdout.json"))
     hof = J(os.path.join(RES, "metrics_holdout_at_freeze.json"))
-    metrics = {"skill": "intro-gap-ledger 0.1.0", "dev": {k: dev[k] for k in ("defects", "caught_expected", "recall_expected", "baseline_b1_key_structure_lint", "baseline_b2_plus_numbers_anywhere", "benign", "benign_without_new_fail", "gold", "by_type")},
+    v2 = J(os.path.join(RES, "metrics_v2.json"))
+    metrics = {"skill": "intro-gap-ledger 0.2.1", "dev": {k: dev[k] for k in ("defects", "caught_expected", "recall_expected", "baseline_b1_key_structure_lint", "baseline_b2_plus_numbers_anywhere", "benign", "benign_without_new_fail", "gold", "by_type")},
                "holdout_at_freeze": {k: hof[k] for k in ("defects", "caught_expected", "recall_expected", "baseline_b1_key_structure_lint", "baseline_b2_plus_numbers_anywhere", "benign", "benign_without_new_fail", "missed", "by_type")},
                "holdout_now": {k: ho[k] for k in ("defects", "caught_expected", "recall_expected", "benign_without_new_fail", "missed")},
+               "v2": {k: v2[k] for k in ("defects", "caught_expected", "recall_expected", "baseline_b1_key_structure_lint", "baseline_b2_plus_numbers_anywhere", "benign", "benign_without_new_fail", "missed", "by_type")},
                "full_runs": full, "robustness": rob, "robustness_passed": f"{sum(1 for v in rob.values() if v['ok'])}/{len(rob)}",
                "wall_seconds": round(time.time() - t0, 1),
                "note": "author-written cases on real arXiv papers; not the platform's fixed cases; no LLM A/B was run here"}
     json.dump(metrics, open(os.path.join(RES, "metrics.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     step("observation", title="Results", body=json.dumps({"dev": f"{dev['caught_expected']}/{dev['defects']}", "holdout_at_freeze": f"{hof['caught_expected']}/{hof['defects']}",
-                                                           "robustness": metrics["robustness_passed"]}))
+                                                           "v2": f"{v2['caught_expected']}/{v2['defects']}", "robustness": metrics["robustness_passed"]}))
     with open(os.path.join(ROOT, "trace", "trace.jsonl"), "w", encoding="utf-8") as fh:
         for t in TRACE:
             fh.write(json.dumps(t, ensure_ascii=False) + "\n")
     write_arm(metrics, time.time() - t0)
     print(json.dumps({"dev": f"{dev['caught_expected']}/{dev['defects']}", "holdout_at_freeze": f"{hof['caught_expected']}/{hof['defects']}",
-                      "holdout_now": f"{ho['caught_expected']}/{ho['defects']}", "benign_dev": f"{dev['benign_without_new_fail']}/{dev['benign']}",
-                      "benign_holdout": f"{hof['benign_without_new_fail']}/{hof['benign']}", "B1": [dev["baseline_b1_key_structure_lint"], hof["baseline_b1_key_structure_lint"]],
+                      "holdout_now": f"{ho['caught_expected']}/{ho['defects']}", "v2": f"{v2['caught_expected']}/{v2['defects']}",
+                      "benign_dev": f"{dev['benign_without_new_fail']}/{dev['benign']}",
+                      "benign_holdout": f"{hof['benign_without_new_fail']}/{hof['benign']}",
+                      "benign_v2": f"{v2['benign_without_new_fail']}/{v2['benign']}",
+                      "B1": [dev["baseline_b1_key_structure_lint"], hof["baseline_b1_key_structure_lint"]],
                       "B2": [dev["baseline_b2_plus_numbers_anywhere"], hof["baseline_b2_plus_numbers_anywhere"]],
                       "robustness": metrics["robustness_passed"], "full": {c: v["status"] for c, v in full.items()}, "seconds": metrics["wall_seconds"]}, indent=1))
 

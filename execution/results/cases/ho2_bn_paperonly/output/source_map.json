@@ -1,0 +1,328 @@
+[
+ {
+  "id": "P1.S1",
+  "part": "background",
+  "text": "随机梯度下降及其变体（如动量法和 Adagrad）已被用于在深层网络上取得领先结果。",
+  "citations": [
+   {
+    "key": "sutskever2013",
+    "evidence": "E:sutskever2013:p1:1",
+    "page": 1,
+    "quote": "[own paper p1] Stochastic gradient descent (SGD) has proved to be an effective way of training deep networks, and SGD variants such as momentum (Sutskever et al., 2013) and Adagrad (Duchi et al., 2011) have been used to achieve state of the art performance.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   },
+   {
+    "key": "duchi2011",
+    "evidence": "E:duchi2011:p1:1",
+    "page": 1,
+    "quote": "[own paper p1] Stochastic gradient descent (SGD) has proved to be an effective way of training deep networks, and SGD variants such as momentum (Sutskever et al., 2013) and Adagrad (Duchi et al., 2011) have been used to achieve state of the art performance.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P1.S2",
+  "part": "background",
+  "text": "然而，训练深层网络时每一层的输入分布会随前面各层参数的变化而改变，这使训练需要较小的学习率和仔细的参数初始化。",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P1.S3",
+  "part": "background",
+  "text": "实践中，饱和与梯度消失通常依靠 ReLU、仔细的初始化和较小的学习率来缓解。",
+  "citations": [
+   {
+    "key": "nair2010",
+    "evidence": "E:nair2010:p1:1",
+    "page": 1,
+    "quote": "[own paper p2] In practice, the saturation problem and the resulting vanishing gradients are usually addressed by using Rectified Linear Units (Nair & Hinton, 2010) ReLU(x) = max(x, 0), careful initialization (Bengio & Glorot, 2010; Saxe et al., 2013), and small learning rates.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   },
+   {
+    "key": "bengio2010",
+    "evidence": "E:bengio2010:p1:1",
+    "page": 1,
+    "quote": "[own paper p2] In practice, the saturation problem and the resulting vanishing gradients are usually addressed by using Rectified Linear Units (Nair & Hinton, 2010) ReLU(x) = max(x, 0), careful initialization (Bengio & Glorot, 2010; Saxe et al., 2013), and small learning rates.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S1",
+  "part": "related",
+  "text": "这一路线不改变各层输入的分布，而是改变参数更新方式或减轻激活饱和。",
+  "citations": [
+   {
+    "key": "sutskever2013",
+    "evidence": null,
+    "page": null,
+    "quote": null,
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true
+   },
+   {
+    "key": "nair2010",
+    "evidence": null,
+    "page": null,
+    "quote": null,
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S2",
+  "part": "related",
+  "text": "动量法与 Adagrad 属于随机梯度下降的变体；",
+  "citations": [
+   {
+    "key": "sutskever2013",
+    "evidence": "E:sutskever2013:p1:1",
+    "page": 1,
+    "quote": "[own paper p1] Stochastic gradient descent (SGD) has proved to be an effective way of training deep networks, and SGD variants such as momentum (Sutskever et al., 2013) and Adagrad (Duchi et al., 2011) have been used to achieve state of the art performance.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   },
+   {
+    "key": "duchi2011",
+    "evidence": "E:duchi2011:p1:1",
+    "page": 1,
+    "quote": "[own paper p1] Stochastic gradient descent (SGD) has proved to be an effective way of training deep networks, and SGD variants such as momentum (Sutskever et al., 2013) and Adagrad (Duchi et al., 2011) have been used to achieve state of the art performance.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S3",
+  "part": "related",
+  "text": "ReLU 与仔细的初始化则针对饱和问题。",
+  "citations": [
+   {
+    "key": "nair2010",
+    "evidence": "E:nair2010:p1:1",
+    "page": 1,
+    "quote": "[own paper p2] In practice, the saturation problem and the resulting vanishing gradients are usually addressed by using Rectified Linear Units (Nair & Hinton, 2010) ReLU(x) = max(x, 0), careful initialization (Bengio & Glorot, 2010; Saxe et al., 2013), and small learning rates.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   },
+   {
+    "key": "bengio2010",
+    "evidence": "E:bengio2010:p1:1",
+    "page": 1,
+    "quote": "[own paper p2] In practice, the saturation problem and the resulting vanishing gradients are usually addressed by using Rectified Linear Units (Nair & Hinton, 2010) ReLU(x) = max(x, 0), careful initialization (Bengio & Glorot, 2010; Saxe et al., 2013), and small learning rates.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S4",
+  "part": "related",
+  "text": "两类方法都没有直接控制中间层输入的分布。",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P3.S1",
+  "part": "related",
+  "text": "另一条路线直接规范输入的分布，区别在于统计量在哪里计算。",
+  "citations": [
+   {
+    "key": "lecun1998a",
+    "evidence": null,
+    "page": null,
+    "quote": null,
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true
+   },
+   {
+    "key": "lyu2008",
+    "evidence": null,
+    "page": null,
+    "quote": null,
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P3.S2",
+  "part": "related",
+  "text": "早有研究表明，将网络输入白化（零均值、单位方差并去相关）可以加快训练收敛；",
+  "citations": [
+   {
+    "key": "lecun1998a",
+    "evidence": "E:lecun1998a:p1:1",
+    "page": 1,
+    "quote": "[own paper p2] It has been long known (LeCun et al., 1998b; Wiesler & Ney, [own paper p3] As shown in (LeCun et al., 1998b), such normalization speeds up convergence, even when the features are not decorrelated.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   },
+   {
+    "key": "wiesler2011",
+    "evidence": null,
+    "page": null,
+    "quote": null,
+    "support": null,
+    "source_text": "metadata_only"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P3.S3",
+  "part": "related",
+  "text": "与之不同，部分已有方法在单个训练样本上计算统计量。",
+  "citations": [
+   {
+    "key": "lyu2008",
+    "evidence": "E:lyu2008:p1:1",
+    "page": 1,
+    "quote": "[own paper p3] Some of the previous approaches (e.g. (Lyu & Simoncelli, 2008)) use statistics computed over a single training example, or, in the case of image networks, over different feature maps at a given location.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P4.S1",
+  "part": "gap",
+  "text": "已有方法要么只白化网络输入，要么在单个样本上计算统计量，深层网络各层输入分布随训练变化的问题仍需依靠小学习率与仔细初始化来应对。",
+  "citations": [
+   {
+    "key": "lecun1998a",
+    "evidence": "E:lecun1998a:p1:1",
+    "page": 1,
+    "quote": "[own paper p2] It has been long known (LeCun et al., 1998b; Wiesler & Ney, [own paper p3] As shown in (LeCun et al., 1998b), such normalization speeds up convergence, even when the features are not decorrelated.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   },
+   {
+    "key": "lyu2008",
+    "evidence": "E:lyu2008:p1:1",
+    "page": 1,
+    "quote": "[own paper p3] Some of the previous approaches (e.g. (Lyu & Simoncelli, 2008)) use statistics computed over a single training example, or, in the case of image networks, over different feature maps at a given location.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   },
+   {
+    "key": "nair2010",
+    "evidence": "E:nair2010:p1:1",
+    "page": 1,
+    "quote": "[own paper p2] In practice, the saturation problem and the resulting vanishing gradients are usually addressed by using Rectified Linear Units (Nair & Hinton, 2010) ReLU(x) = max(x, 0), careful initialization (Bengio & Glorot, 2010; Saxe et al., 2013), and small learning rates.",
+    "support": null,
+    "source_text": "secondary",
+    "cross_lingual": true,
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P5.S1",
+  "part": "contrib",
+  "text": "本文的贡献如下：",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ },
+ {
+  "id": "P6.S1",
+  "part": "contrib",
+  "text": "提出批归一化（Batch Normalization），在每个小批量上对各层激活做归一化，以减小内部协变量偏移并加速深层网络训练。",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ },
+ {
+  "id": "P7.S1",
+  "part": "contrib",
+  "text": "在 ImageNet 分类网络上，批归一化以原模型 7% 的训练步数达到相同精度。",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "7",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "statement"
+ },
+ {
+  "id": "P8.S1",
+  "part": "contrib",
+  "text": "批归一化网络的集成模型在 ImageNet 上取得 4.9% 的 top-5 验证错误率和 4.82% 的测试错误率。",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "4.9",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "4.82",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "statement"
+ }
+]

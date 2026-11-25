@@ -3,7 +3,7 @@
  "style": "numeric",
  "language": "en",
  "case_id": "empty_lib",
- "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.pdf",
+ "own": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.md",
  "notes": [],
  "required_refs": [],
  "contract": {},
@@ -15,14 +15,14 @@
  ],
  "src_status": {
   "self": {
-   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.pdf",
-   "pages": 36,
-   "chars": 97931,
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.md",
+   "pages": 1,
+   "chars": 168,
    "problem": null
   }
  },
  "inputs": {
-  "case.json": "fe6b06a3582e2d84891d8675e28772250c04247a26649eb2b7903cb44dd4f95b",
-  "paper.pdf": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4"
+  "case.json": "544d987a3868762f5697ebe7b10b313a10977d7f09cba7b7d04fc1404f61034e",
+  "paper.md": "19f727575dbdf1041a870ff967985c36018996cc58b20b5f65646b4f5eb67372"
  }
 }

@@ -1,8 +1,8 @@
 {
  "case_id": "dev_zh_residual",
  "status": "complete",
- "status_reason": "all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 5 note(s) for the author (judgments, unverifiable claims)",
- "skill": "intro-gap-ledger 0.1.0",
+ "status_reason": "all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 7 note(s) for the author (judgments, unverifiable claims)",
+ "skill": "intro-gap-ledger 0.2.1",
  "language": "zh",
  "citation_style": "gbt7714",
  "summary": {
@@ -14,7 +14,7 @@
   "gaps": 1,
   "contributions": 3,
   "fails": 0,
-  "warns": 3
+  "warns": 5
  },
  "draft": "## 1 引言\n\n在大规模图像识别中，网络深度是精度的重要来源：VGG 使用 3x3 小卷积核，把深度推到 16-19 个权重层后显著优于此前的配置[1]。然而，深度增加后训练变得更加困难，非常深的网络如何训练仍是开放问题[2]。因此，能否稳定地训练比现有网络深得多的模型，是继续利用深度收益的前提。\n\n## 2 相关工作\n\n### 2.1 通过加深网络提升表示能力\n\n这一路线的共同做法是在同一识别任务上不断增加层数，区别在于增加深度的方式[1,3]。VGG 保持结构简单，只堆叠小卷积核[1]；GoogLeNet 则采用更深的模块化结构[3]。二者都没有改变“逐层堆叠”的训练方式。\n\n### 2.2 改善深层网络的可训练性\n\n另一条路线不改变深度，而是改变训练信号穿过多层的方式[2,4]。批归一化对层输入做归一化，使网络可以使用高得多的学习率并降低对初始化的依赖[4]，在图像分类模型上以少 14 倍的训练步数达到相同精度[4]。与之不同，Highway 网络借鉴 LSTM，用自适应门控单元调节跨层信息流[2]。前者作用于激活分布，后者引入了带参数的捷径。\n\n上述方法解决了深层网络能否开始收敛的问题[4]，但门控捷径依赖数据相关的参数[2]，更深网络的训练本身仍是开放问题[2]。尚缺少一种不增加参数、又能让更深网络至少不比浅层网络更难优化的结构。\n\n本文的贡献如下：\n\n- 提出残差学习框架，用不增加参数和计算量的恒等捷径连接让堆叠层拟合残差映射（图2）。\n- 在 ImageNet 上训练深达 152 层的残差网络，深度为 VGG 的 8 倍但复杂度更低，集成模型在测试集上的 top-5 错误率为 3.57%（表5）。\n- 在 CIFAR-10 上分析 100 层与 1000 层以上的残差网络，并与 FitNet、Highway 比较（表6）。\n\n## 参考文献\n\n[1] Simonyan K, Zisserman A. Very deep convolutional networks for large-scale image recognition[C]//International Conference on Learning Representations, 2015.\n[2] Srivastava RK, Greff K, Schmidhuber J. Training very deep networks[C]//Advances in Neural Information Processing Systems 28, 2015: 2377-2385.\n[3] Szegedy C, Liu W, Jia Y, et al. Going deeper with convolutions[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2015: 1-9.\n[4] Ioffe S, Szegedy C. Batch normalization: Accelerating deep network training by reducing internal covariate shift[C]//Proceedings of the 32nd International Conference on Machine Learning, 2015: 448-456.\n",
  "parts": {
@@ -208,7 +208,7 @@
      "page": 1,
      "quote": "Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -242,7 +242,7 @@
      "page": 1,
      "quote": "However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -269,7 +269,7 @@
      "page": null,
      "quote": null,
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true
     },
     {
@@ -278,7 +278,8 @@
      "page": null,
      "quote": null,
      "support": null,
-     "source_text": "metadata_only"
+     "source_text": "secondary",
+     "cross_lingual": true
     }
    ],
    "numbers": [],
@@ -295,7 +296,7 @@
      "page": 1,
      "quote": "Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -314,7 +315,8 @@
      "page": null,
      "quote": null,
      "support": null,
-     "source_text": "metadata_only"
+     "source_text": "secondary",
+     "cross_lingual": true
     }
    ],
    "numbers": [],
@@ -348,7 +350,7 @@
      "page": null,
      "quote": null,
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true
     }
    ],
@@ -405,7 +407,7 @@
      "page": 1,
      "quote": "They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -442,7 +444,7 @@
      "page": 1,
      "quote": "They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     },
@@ -452,7 +454,7 @@
      "page": 1,
      "quote": "However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -558,6 +560,20 @@
   {
    "check": "S5d",
    "level": "warn",
+   "message": "cross-lingual citation [@szegedy2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+   "where": "P2.S1",
+   "sentence": "这一路线的共同做法是在同一识别任务上不断增加层数，区别在于增加深度的方式。"
+  },
+  {
+   "check": "S5d",
+   "level": "warn",
+   "message": "cross-lingual citation [@szegedy2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+   "where": "P2.S3",
+   "sentence": "GoogLeNet 则采用更深的模块化结构。"
+  },
+  {
+   "check": "S5d",
+   "level": "warn",
    "message": "cross-lingual citation [@ioffe2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
    "where": "P3.S1",
    "sentence": "另一条路线不改变深度，而是改变训练信号穿过多层的方式。"
@@ -572,9 +588,19 @@
  ],
  "needs_review": [
   {
-   "type": "claim_unverifiable",
+   "type": "secondary_evidence",
+   "ref": "simonyan2015",
+   "note": "checked against abstract + citing_context (how the own paper / notes describe it), not against the original work"
+  },
+  {
+   "type": "secondary_evidence",
+   "ref": "srivastava2015",
+   "note": "checked against abstract + citing_context (how the own paper / notes describe it), not against the original work"
+  },
+  {
+   "type": "secondary_evidence",
    "ref": "szegedy2015",
-   "note": "no source text: the statement about this work was checked against metadata only"
+   "note": "checked against citing_context (how the own paper / notes describe it), not against the original work"
   },
   {
    "type": "author_judgment",
@@ -598,24 +624,209 @@
   }
  ],
  "missing_materials": [],
- "parse_problems": [],
+ "parse_problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
  "uncited_library_records": [
   {
    "key": "zhou2016",
    "reason": "教材，与本文的具体技术问题无直接关系"
+  },
+  {
+   "key": "bengio1994",
+   "reason": null
+  },
+  {
+   "key": "bishop1995",
+   "reason": null
+  },
+  {
+   "key": "briggs2000",
+   "reason": null
+  },
+  {
+   "key": "chatfield2011",
+   "reason": null
+  },
+  {
+   "key": "everingham2010",
+   "reason": null
+  },
+  {
+   "key": "gidaris2015",
+   "reason": null
+  },
+  {
+   "key": "girshick2015",
+   "reason": null
+  },
+  {
+   "key": "girshick2014",
+   "reason": null
+  },
+  {
+   "key": "glorot2010",
+   "reason": null
+  },
+  {
+   "key": "goodfellow2013",
+   "reason": null
+  },
+  {
+   "key": "he2015",
+   "reason": null
+  },
+  {
+   "key": "he2014",
+   "reason": null
+  },
+  {
+   "key": "he2015a",
+   "reason": null
+  },
+  {
+   "key": "hinton2012",
+   "reason": null
+  },
+  {
+   "key": "hochreiter1997",
+   "reason": null
+  },
+  {
+   "key": "jegou2011",
+   "reason": null
+  },
+  {
+   "key": "jegou2012",
+   "reason": null
+  },
+  {
+   "key": "jia2014",
+   "reason": null
+  },
+  {
+   "key": "krizhevsky2009",
+   "reason": null
+  },
+  {
+   "key": "krizhevsky2012",
+   "reason": null
+  },
+  {
+   "key": "lecun1989",
+   "reason": null
+  },
+  {
+   "key": "lecun1998",
+   "reason": null
+  },
+  {
+   "key": "lee2014",
+   "reason": null
+  },
+  {
+   "key": "lin2013",
+   "reason": null
+  },
+  {
+   "key": "lin2014",
+   "reason": null
+  },
+  {
+   "key": "long2015",
+   "reason": null
+  },
+  {
+   "key": "montufar2014",
+   "reason": null
+  },
+  {
+   "key": "nair2010",
+   "reason": null
+  },
+  {
+   "key": "perronnin2007",
+   "reason": null
+  },
+  {
+   "key": "raiko2012",
+   "reason": null
+  },
+  {
+   "key": "ren2015",
+   "reason": null
+  },
+  {
+   "key": "ren2015a",
+   "reason": null
+  },
+  {
+   "key": "ripley1996",
+   "reason": null
+  },
+  {
+   "key": "romero2015",
+   "reason": null
+  },
+  {
+   "key": "russakovsky2014",
+   "reason": null
+  },
+  {
+   "key": "saxe2013",
+   "reason": null
+  },
+  {
+   "key": "schraudolph1998",
+   "reason": null
+  },
+  {
+   "key": "schraudolph1998a",
+   "reason": null
+  },
+  {
+   "key": "sermanet2014",
+   "reason": null
+  },
+  {
+   "key": "szeliski1990",
+   "reason": null
+  },
+  {
+   "key": "szeliski2006",
+   "reason": null
+  },
+  {
+   "key": "vatanen2013",
+   "reason": null
+  },
+  {
+   "key": "vedaldi2008",
+   "reason": null
+  },
+  {
+   "key": "venables1999",
+   "reason": null
+  },
+  {
+   "key": "zeiler2014",
+   "reason": null
   }
  ],
  "uncertainty": [
-  "statements about szegedy2015 rest on library metadata only (no source text provided)",
+  "1 input parse problem(s): see parse_problems",
   "support scores are lexical; semantic faithfulness of paraphrases was judged by the agent, not proven by the script"
  ],
  "changes": [
   {
    "version": 1,
-   "at": "2026-11-23T05:27:17Z",
+   "at": "2026-11-25T09:38:18Z",
    "note": "first draft",
    "fails": 0,
-   "warns": 3
+   "warns": 5
   }
  ],
  "inputs": {
@@ -632,7 +843,12 @@
   "bib": "references.bib",
   "references": "references_gbt7714.txt",
   "html_preview": "intro_related_work.html",
+  "docx": "intro_related_work.docx",
   "pdf_preview": "intro_related_work_preview.pdf",
+  "png_previews": [
+   "intro_related_work_preview_p1.png",
+   "intro_related_work_preview_p2.png"
+  ],
   "source_map": "source_map.json",
   "matrix": "related_work_matrix.md",
   "gap_derivation": "gap_derivation.md",
@@ -641,7 +857,7 @@
   "diff": null
  },
  "preview_note": null,
- "updated": "2026-11-23T05:27:17Z",
+ "updated": "2026-11-25T09:38:18Z",
  "seconds": 4.3,
  "引言与相关工作": "这一路线的共同做法是在同一识别任务上不断增加层数，区别在于增加深度的方式[1,2]。\nVGG 保持结构简单，只堆叠小卷积核[1]；\nGoogLeNet 则采用更深的模块化结构[2]。\n二者都没有改变“逐层堆叠”的训练方式。\n另一条路线不改变深度，而是改变训练信号穿过多层的方式[3,4]。\n批归一化对层输入做归一化，使网络可以使用高得多的学习率并降低对初始化的依赖[3]，在图像分类模型上以少 14 倍的训练步数达到相同精度[3]。\n与之不同，Highway 网络借鉴 LSTM，用自适应门控单元调节跨层信息流[4]。\n前者作用于激活分布，后者引入了带参数的捷径。\n",
  "参考文献": [
@@ -662,7 +878,7 @@
      "page": 1,
      "quote": "Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -696,7 +912,7 @@
      "page": 1,
      "quote": "However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -723,7 +939,7 @@
      "page": null,
      "quote": null,
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true
     },
     {
@@ -732,7 +948,8 @@
      "page": null,
      "quote": null,
      "support": null,
-     "source_text": "metadata_only"
+     "source_text": "secondary",
+     "cross_lingual": true
     }
    ],
    "numbers": [],
@@ -749,7 +966,7 @@
      "page": 1,
      "quote": "Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -768,7 +985,8 @@
      "page": null,
      "quote": null,
      "support": null,
-     "source_text": "metadata_only"
+     "source_text": "secondary",
+     "cross_lingual": true
     }
    ],
    "numbers": [],
@@ -802,7 +1020,7 @@
      "page": null,
      "quote": null,
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true
     }
    ],
@@ -859,7 +1077,7 @@
      "page": 1,
      "quote": "They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -896,7 +1114,7 @@
      "page": 1,
      "quote": "They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     },
@@ -906,7 +1124,7 @@
      "page": 1,
      "quote": "However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem.",
      "support": null,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "cross_lingual": true,
      "link": "explicit"
     }
@@ -1090,9 +1308,19 @@
  "待确认": {
   "needs_review": [
    {
-    "type": "claim_unverifiable",
+    "type": "secondary_evidence",
+    "ref": "simonyan2015",
+    "note": "checked against abstract + citing_context (how the own paper / notes describe it), not against the original work"
+   },
+   {
+    "type": "secondary_evidence",
+    "ref": "srivastava2015",
+    "note": "checked against abstract + citing_context (how the own paper / notes describe it), not against the original work"
+   },
+   {
+    "type": "secondary_evidence",
     "ref": "szegedy2015",
-    "note": "no source text: the statement about this work was checked against metadata only"
+    "note": "checked against citing_context (how the own paper / notes describe it), not against the original work"
    },
    {
     "type": "author_judgment",
@@ -1116,7 +1344,7 @@
    }
   ],
   "uncertainty": [
-   "statements about szegedy2015 rest on library metadata only (no source text provided)",
+   "1 input parse problem(s): see parse_problems",
    "support scores are lexical; semantic faithfulness of paraphrases was judged by the agent, not proven by the script"
   ],
   "missing_materials": []

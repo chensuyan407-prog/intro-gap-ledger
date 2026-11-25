@@ -1,7 +1,7 @@
 {"_doc": "Written after the code freeze (tests/FREEZE_holdout.sha256). Same format as mutations_dev.json.",
  "mutations": [
   {"id": "H01", "case": "holdout_transformer", "type": "fabricated_citation", "expect": ["S2"],
-   "ops": [{"draft": ["[@bahdanau2015; @wu2016]", "[@bahdanau2015; @wu2016; @sutskever2014]"]}]},
+   "ops": [{"draft": ["[@bahdanau2015; @wu2016]", "[@bahdanau2015; @wu2016; @sutskever2015]"]}]},
   {"id": "H02", "case": "holdout_transformer", "type": "misattributed_citation", "expect": ["S5"],
    "ops": [{"draft": ["computations over all elements can be fully parallelized during training [@gehring2017 #E:gehring2017:p1:3]", "computations over all elements can be fully parallelized during training [@he2016]"]}]},
   {"id": "H03", "case": "holdout_transformer", "type": "wrong_number_contribution", "expect": ["S4"],

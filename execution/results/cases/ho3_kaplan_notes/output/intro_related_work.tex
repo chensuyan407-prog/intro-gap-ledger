@@ -1,0 +1,23 @@
+\section{Introduction}
+
+Transformer language models are the basis of recent progress in language modeling ~\cite{vaswani2017}. A 1.5B-parameter Transformer language model trained on WebText already performs downstream tasks zero-shot ~\cite{radford2019}. How the loss of such models depends on model size, data and compute is therefore a practical question for anyone with a fixed training budget .
+
+\section{Related Work}
+
+\subsection{Empirical scaling of generalization error}
+
+Both empirical scaling studies fit power laws to generalization error, but they differ in the variables they fit ~\cite{hestness2017,rosenfeld2019}. Hestness et al. find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition ~\cite{hestness2017}, whereas Rosenfeld et al. propose a joint functional form in model size and data size that extrapolates across scales ~\cite{rosenfeld2019}. In contrast to our setting, neither study treats compute as the constraint .
+
+\subsection{Large Transformer language models}
+
+The large-model line shares the Transformer architecture ~\cite{vaswani2017}, and GPT-2 scales it to 1.5B parameters with zero-shot task transfer ~\cite{radford2019}. These reports show gains with size but give no rule for allocating compute between model size and data .
+
+Thus existing scaling studies relate error to data and model size but leave training time and compute allocation unmodelled ~\cite{rosenfeld2019}, and their estimates disagree: Hestness et al. found super-linear scaling of dataset size with model size ~\cite{hestness2017}. How a fixed compute budget should be split between model size, data and training time remains open .
+
+Our contributions are:
+
+\begin{itemize}
+\item We show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude  (Figure 1).
+\item We find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.
+\item Under a fixed compute budget, the best performance comes from training very large models and stopping well before convergence  (Figure 3).
+\end{itemize}

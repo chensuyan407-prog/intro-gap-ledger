@@ -1,8 +1,8 @@
 {
  "case_id": "dev_en_compute_optimal",
  "status": "complete",
- "status_reason": "all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 8 note(s) for the author (judgments, unverifiable claims)",
- "skill": "intro-gap-ledger 0.1.0",
+ "status_reason": "all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 9 note(s) for the author (judgments, unverifiable claims)",
+ "skill": "intro-gap-ledger 0.2.1",
  "language": "en",
  "citation_style": "ieee",
  "summary": {
@@ -14,7 +14,7 @@
   "gaps": 1,
   "contributions": 3,
   "fails": 0,
-  "warns": 1
+  "warns": 2
  },
  "draft": "## 1 Introduction\n\nDense autoregressive language models have grown from GPT-3, with 175 billion parameters [1], to Megatron-Turing NLG with 530 billion parameters [2]. Scaling these models improves few-shot performance on many tasks [1]. Because a model of this size can usually be trained only once, the split of a fixed compute budget between parameters and training tokens has to be decided in advance. The standard answer comes from scaling laws: the loss scales as a power law with model size, dataset size and training compute [3], and under a fixed budget the best loss is reached by training very large models and stopping significantly short of convergence [3].\n\n## 2 Related Work\n\n### Scaling laws for language models\n\nBoth lines of scaling-law work fit power laws to the loss, but they differ in which variables are varied [3,4]. Kaplan et al. vary model size, data and compute, while all of their runs used a learning rate schedule with a 3000 step linear warmup followed by a cosine decay to zero [3]. Clark et al. extend the analysis to routed language models, in which the number of experts is an additional variable [4]. In contrast to our setting, neither analysis varies the training horizon of each model.\n\n### Large dense language models\n\nCompared with the scaling-law studies, the large-model papers report single training runs rather than fitted frontiers. GPT-3 [1], Gopher [5] and Megatron-Turing NLG [2] all increase the parameter count, whereas the number of training tokens stays in a similar range.\n\nThese studies share one limitation: the compute-optimal estimates were fitted with a single training schedule [3], so the effect of the number of training tokens on the optimal model size was never measured directly. If this effect is large, current large models may be undertrained for their budgets.\n\nOur contributions are:\n\n- We train over 400 language models from 70 million to over 16 billion parameters on 5 to 500 billion tokens, each with a schedule matched to its training horizon, and estimate the compute-optimal frontier with three independent approaches (Figure 3).\n- All three approaches predict that model size and training tokens should be scaled in equal proportions (Table 2).\n- We train Chinchilla, a 70B-parameter model on 1.4 trillion tokens with the Gopher compute budget; it reaches 67.6% average accuracy on MMLU, 7.6% above Gopher (Table 6).\n\n## References\n\n[1] T. Brown, B. Mann, N. Ryder, M. Subbiah, J. Kaplan, P. Dhariwal, et al., \"Language Models are Few-Shot Learners,\" *Advances in Neural Information Processing Systems*, vol. 33, pp. 1877-1901, 2020.\n[2] S. Smith, M. Patwary, B. Norick, et al., \"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model,\" *arXiv preprint arXiv:2201.11990*, 2022.\n[3] J. Kaplan, S. McCandlish, T. Henighan, T. B. Brown, B. Chess, R. Child, et al., \"Scaling Laws for Neural Language Models,\" *arXiv preprint arXiv:2001.08361*, 2020.\n[4] A. Clark, D. de las Casas, A. Guy, et al., \"Unified Scaling Laws for Routed Language Models,\" *arXiv preprint arXiv:2202.01169*, 2022.\n[5] J. W. Rae, S. Borgeaud, T. Cai, K. Millican, et al., \"Scaling Language Models: Methods, Analysis & Insights from Training Gopher,\" *arXiv preprint arXiv:2112.11446*, 2021.\n",
  "parts": {
@@ -213,11 +213,11 @@
     },
     {
      "key": "smith2022",
-     "evidence": "E:smith2022:p1:2",
+     "evidence": "E:smith2022:p1:3",
      "page": 1,
-     "quote": "Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models.",
-     "support": 0.54,
-     "source_text": "abstract_only",
+     "quote": "We present details on the training of the largest monolithic transformer based language model, Megatron-Turing NLG 530B (MT-NLG), with 530 billion parameters.",
+     "support": 0.69,
+     "source_text": "secondary",
      "link": "auto"
     }
    ],
@@ -225,7 +225,8 @@
     {
      "value": "175",
      "found_in": [
-      "brown2020"
+      "brown2020",
+      "smith2022"
      ],
      "elsewhere": []
     },
@@ -310,9 +311,10 @@
      "key": "clark2022",
      "evidence": null,
      "page": null,
-     "quote": null,
-     "support": null,
-     "source_text": "metadata_only"
+     "quote": "",
+     "support": 0.0,
+     "source_text": "secondary",
+     "link": "auto"
     }
    ],
    "numbers": [],
@@ -351,11 +353,12 @@
    "citations": [
     {
      "key": "clark2022",
-     "evidence": null,
-     "page": null,
-     "quote": null,
-     "support": null,
-     "source_text": "metadata_only"
+     "evidence": "E:clark2022:p1:1",
+     "page": 1,
+     "quote": "[own paper p3] Recently, Clark et al. (2022) specifically looked in to the scaling properties of Mixture of Expert [own paper p4] However, for very large models the computational benefits of routed models seems to diminish (Clark et al., 2022).",
+     "support": 0.3,
+     "source_text": "secondary",
+     "link": "auto"
     }
    ],
    "numbers": [],
@@ -393,11 +396,12 @@
     },
     {
      "key": "rae2021",
-     "evidence": null,
-     "page": null,
-     "quote": null,
-     "support": null,
-     "source_text": "metadata_only"
+     "evidence": "E:rae2021:p1:3",
+     "page": 1,
+     "quote": "[own paper p3] LaMDA (Thoppilan et al., 2022) 137 Billion 168 Billion GPT-3 (Brown et al., 2020) 175 Billion 300 Billion Jurassic (Lieber et al., 2021) 178 Billion 300 Billion Gopher (Rae et al., 2021) 280 Billion 300 Billion MT-NLG 530B (Smith et al., 2022) 530 Billion 270 Billion [own paper p3] These include both dense transformer models (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021…",
+     "support": 0.29,
+     "source_text": "secondary",
+     "link": "auto"
     },
     {
      "key": "smith2022",
@@ -405,7 +409,7 @@
      "page": 1,
      "quote": "Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models.",
      "support": 0.21,
-     "source_text": "abstract_only",
+     "source_text": "secondary",
      "link": "auto"
     }
    ],
@@ -549,6 +553,13 @@
   {
    "check": "S5b",
    "level": "warn",
+   "message": "low lexical support (0.0) of [@clark2022] for this sentence: give an explicit #evidence id or rephrase",
+   "where": "P2.S1",
+   "sentence": "Both lines of scaling-law work fit power laws to the loss, but they differ in which variables are varied."
+  },
+  {
+   "check": "S5b",
+   "level": "warn",
    "message": "sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase",
    "where": "P4.S1",
    "sentence": "These studies share one limitation: the compute-optimal estimates were fitted with a single training schedule, so the effect of the number of training tokens on the optimal model size was never measured directly."
@@ -556,14 +567,19 @@
  ],
  "needs_review": [
   {
-   "type": "claim_unverifiable",
-   "ref": "clark2022",
-   "note": "no source text: the statement about this work was checked against metadata only"
+   "type": "secondary_evidence",
+   "ref": "smith2022",
+   "note": "checked against abstract + citing_context (how the own paper / notes describe it), not against the original work"
   },
   {
-   "type": "claim_unverifiable",
+   "type": "secondary_evidence",
+   "ref": "clark2022",
+   "note": "checked against citing_context (how the own paper / notes describe it), not against the original work"
+  },
+  {
+   "type": "secondary_evidence",
    "ref": "rae2021",
-   "note": "no source text: the statement about this work was checked against metadata only"
+   "note": "checked against citing_context (how the own paper / notes describe it), not against the original work"
   },
   {
    "type": "author_note",
@@ -596,20 +612,206 @@
   }
  ],
  "missing_materials": [],
- "parse_problems": [],
- "uncited_library_records": [],
+ "parse_problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
+ "uncited_library_records": [
+  {
+   "key": "artetxe2021",
+   "reason": null
+  },
+  {
+   "key": "bender2021",
+   "reason": null
+  },
+  {
+   "key": "bisk2020",
+   "reason": null
+  },
+  {
+   "key": "lespiau2021",
+   "reason": null
+  },
+  {
+   "key": "bradbury2018",
+   "reason": null
+  },
+  {
+   "key": "clark2022a",
+   "reason": null
+  },
+  {
+   "key": "clark2019",
+   "reason": null
+  },
+  {
+   "key": "du2021",
+   "reason": null
+  },
+  {
+   "key": "fedus2021",
+   "reason": null
+  },
+  {
+   "key": "gao2020",
+   "reason": null
+  },
+  {
+   "key": "gehman2020",
+   "reason": null
+  },
+  {
+   "key": "guu2020",
+   "reason": null
+  },
+  {
+   "key": "hendrycks2020",
+   "reason": null
+  },
+  {
+   "key": "hennigan2020",
+   "reason": null
+  },
+  {
+   "key": "hernandez2020",
+   "reason": null
+  },
+  {
+   "key": "joshi2017",
+   "reason": null
+  },
+  {
+   "key": "jouppi2017",
+   "reason": null
+  },
+  {
+   "key": "kwiatkowski2019",
+   "reason": null
+  },
+  {
+   "key": "lai2017",
+   "reason": null
+  },
+  {
+   "key": "levine2020",
+   "reason": null
+  },
+  {
+   "key": "lewis2020",
+   "reason": null
+  },
+  {
+   "key": "lieber2021",
+   "reason": null
+  },
+  {
+   "key": "lin2019",
+   "reason": null
+  },
+  {
+   "key": "mccandlish2018",
+   "reason": null
+  },
+  {
+   "key": "merity2017",
+   "reason": null
+  },
+  {
+   "key": "mitchell1980",
+   "reason": null
+  },
+  {
+   "key": "paperno2016",
+   "reason": null
+  },
+  {
+   "key": "rae2020",
+   "reason": null
+  },
+  {
+   "key": "raffel2020",
+   "reason": null
+  },
+  {
+   "key": "rajbhandari1951",
+   "reason": null
+  },
+  {
+   "key": "rudinger2018",
+   "reason": null
+  },
+  {
+   "key": "sakaguchi2020",
+   "reason": null
+  },
+  {
+   "key": "sap2019",
+   "reason": null
+  },
+  {
+   "key": "shallue2018",
+   "reason": null
+  },
+  {
+   "key": "smith2021",
+   "reason": null
+  },
+  {
+   "key": "tay2021",
+   "reason": null
+  },
+  {
+   "key": "thoppilan2022",
+   "reason": null
+  },
+  {
+   "key": "vaswani2017",
+   "reason": null
+  },
+  {
+   "key": "weidinger2021",
+   "reason": null
+  },
+  {
+   "key": "welbl2021",
+   "reason": null
+  },
+  {
+   "key": "xu2021",
+   "reason": null
+  },
+  {
+   "key": "yang2021",
+   "reason": null
+  },
+  {
+   "key": "zellers2019",
+   "reason": null
+  },
+  {
+   "key": "zhang2019",
+   "reason": null
+  },
+  {
+   "key": "zoph2022",
+   "reason": null
+  }
+ ],
  "uncertainty": [
-  "2 citation(s) were auto-linked to a source sentence with low lexical overlap; page locators are approximate: P3.S2, P3.S2",
-  "statements about clark2022, rae2021 rest on library metadata only (no source text provided)",
+  "4 citation(s) were auto-linked to a source sentence with low lexical overlap; page locators are approximate: P2.S1, P3.S2, P3.S2, P3.S2",
+  "1 input parse problem(s): see parse_problems",
   "support scores are lexical; semantic faithfulness of paraphrases was judged by the agent, not proven by the script"
  ],
  "changes": [
   {
    "version": 1,
-   "at": "2026-11-23T05:27:26Z",
+   "at": "2026-11-25T09:38:28Z",
    "note": "first draft",
    "fails": 0,
-   "warns": 1
+   "warns": 2
   }
  ],
  "inputs": {
@@ -627,7 +829,9 @@
   "bib": "references.bib",
   "references": "references_ieee.txt",
   "html_preview": "intro_related_work.html",
+  "docx": "intro_related_work.docx",
   "pdf_preview": null,
+  "png_previews": [],
   "source_map": "source_map.json",
   "matrix": "related_work_matrix.md",
   "gap_derivation": "gap_derivation.md",
@@ -636,8 +840,8 @@
   "diff": null
  },
  "preview_note": "skipped (--no-pdf)",
- "updated": "2026-11-23T05:27:27Z",
- "seconds": 0.4,
+ "updated": "2026-11-25T09:38:30Z",
+ "seconds": 1.0,
  "introduction": "## 1 Introduction\n\nDense autoregressive language models have grown from GPT-3, with 175 billion parameters [1], to Megatron-Turing NLG with 530 billion parameters [2]. Scaling these models improves few-shot performance on many tasks [1]. Because a model of this size can usually be trained only once, the split of a fixed compute budget between parameters and training tokens has to be decided in advance. The standard answer comes from scaling laws: the loss scales as a power law with model size, dataset size and training compute [3], and under a fixed budget the best loss is reached by training very large models and stopping significantly short of convergence [3].\n\n## 2 Related Work\n\n### Scaling laws for language models\n\nBoth lines of scaling-law work fit power laws to the loss, but they differ in which variables are varied [3,4]. Kaplan et al. vary model size, data and compute, while all of their runs used a learning rate schedule with a 3000 step linear warmup followed by a cosine decay to zero [3]. Clark et al. extend the analysis to routed language models, in which the number of experts is an additional variable [4]. In contrast to our setting, neither analysis varies the training horizon of each model.\n\n### Large dense language models\n\nCompared with the scaling-law studies, the large-model papers report single training runs rather than fitted frontiers. GPT-3 [1], Gopher [5] and Megatron-Turing NLG [2] all increase the parameter count, whereas the number of training tokens stays in a similar range.\n\nThese studies share one limitation: the compute-optimal estimates were fitted with a single training schedule [3], so the effect of the number of training tokens on the optimal model size was never measured directly. If this effect is large, current large models may be undertrained for their budgets.\n\nOur contributions are:\n\n- We train over 400 language models from 70 million to over 16 billion parameters on 5 to 500 billion tokens, each with a schedule matched to its training horizon, and estimate the compute-optimal frontier with three independent approaches (Figure 3).\n- All three approaches predict that model size and training tokens should be scaled in equal proportions (Table 2).\n- We train Chinchilla, a 70B-parameter model on 1.4 trillion tokens with the Gopher compute budget; it reaches 67.6% average accuracy on MMLU, 7.6% above Gopher (Table 6).\n\n## References\n\n[1] T. Brown, B. Mann, N. Ryder, M. Subbiah, J. Kaplan, P. Dhariwal, et al., \"Language Models are Few-Shot Learners,\" *Advances in Neural Information Processing Systems*, vol. 33, pp. 1877-1901, 2020.\n[2] S. Smith, M. Patwary, B. Norick, et al., \"Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model,\" *arXiv preprint arXiv:2201.11990*, 2022.\n[3] J. Kaplan, S. McCandlish, T. Henighan, T. B. Brown, B. Chess, R. Child, et al., \"Scaling Laws for Neural Language Models,\" *arXiv preprint arXiv:2001.08361*, 2020.\n[4] A. Clark, D. de las Casas, A. Guy, et al., \"Unified Scaling Laws for Routed Language Models,\" *arXiv preprint arXiv:2202.01169*, 2022.\n[5] J. W. Rae, S. Borgeaud, T. Cai, K. Millican, et al., \"Scaling Language Models: Methods, Analysis & Insights from Training Gopher,\" *arXiv preprint arXiv:2112.11446*, 2021.\n",
  "unmapped_contract_fields": []
 }

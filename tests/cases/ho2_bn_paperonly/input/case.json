@@ -1,0 +1,3 @@
+{"case_id": "ho2_bn_paperonly", "language": "zh", "citation_style": "GB/T 7714-2015",
+ "materials": ["paper.pdf"],
+ "output_contract": {"introduction_zh": "中文引言（背景、研究空白、贡献）", "related_work_zh": "中文相关工作（按技术路线分组）", "references": "GB/T 7714 参考文献表", "evidence_map": "论断-来源对应", "human_check": "需人工确认事项"}}

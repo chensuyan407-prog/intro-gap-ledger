@@ -8,16 +8,16 @@
   "dev_en": {
    "fails": 0,
    "status": "complete",
-   "warns": 1,
-   "needs_review": 8,
-   "check_seconds": 0.59
+   "warns": 2,
+   "needs_review": 9,
+   "check_seconds": 1.13
   },
   "dev_zh": {
    "fails": 0,
    "status": "complete",
-   "warns": 3,
-   "needs_review": 5,
-   "check_seconds": 0.26
+   "warns": 5,
+   "needs_review": 7,
+   "check_seconds": 0.33
   }
  },
  "defects": 32,
@@ -55,5 +55,5 @@
   "uncited_number": "1/1",
   "wrong_number_cited": "2/2"
  },
- "wall_seconds": 22.0
+ "wall_seconds": 38.2
 }

@@ -1,4 +1,4 @@
-# intro-gap-ledger 0.1.0 — method, usage, results, limits
+# intro-gap-ledger 0.2.1 — method, usage, results, limits
 
 Skill for **写作08｜引言与相关工作写作**: drafting the Introduction and Related Work of a paper so that each of the
 four parts — background, related work, research gap, contributions — is tied to evidence that a reviewer can

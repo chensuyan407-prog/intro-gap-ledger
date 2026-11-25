@@ -1,0 +1,4 @@
+Hestness, Joel, Narang, Sharan, Ardalani, Newsha, Diamos, Gregory, Jun, Heewoo, Kianinejad, Hassan, Patwary, Ali, M. M., Yang, Yang, Zhou, & Yanqi (2017). Deep Learning Scaling is Predictable, Empirically. *arXiv preprint arXiv:1712.00409*.
+Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019). Language Models are Unsupervised Multitask Learners. *OpenAI Technical Report*.
+Rosenfeld, J. S., Rosenfeld, A., Belinkov, Y., & Shavit, N. (2019). A Constructive Prediction of the Generalization Error Across Scales. *arXiv preprint arXiv:1909.12673*.
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł. U., & Polosukhin, I. (2017). Attention is all you need. *In I. Guyon, U. V. Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, and R. Garnett, editors, Advances in Neural Information Processing Systems 30, pages 5998–6008*, 5998-6008.

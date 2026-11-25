@@ -22,6 +22,8 @@
    "pdf": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\he2016.pdf",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
    "notes": "",
+   "label": "11",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -45,6 +47,8 @@
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
    "notes": "",
+   "label": "2",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -70,6 +74,8 @@
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
    "notes": "",
+   "label": "9",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -92,6 +98,8 @@
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
    "notes": "",
+   "label": "4",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -115,6 +123,8 @@
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
    "notes": "",
+   "label": "38",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -126,7 +136,7 @@
     "Kiros, Jamie Ryan",
     "Hinton, Geoffrey E."
    ],
-   "year": "",
+   "year": "2016",
    "venue": "arXiv preprint arXiv:1607.06450",
    "volume": "",
    "issue": "",
@@ -138,9 +148,888 @@
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\references.json",
    "notes": "",
-   "missing_fields": [
+   "label": "1",
+   "label_doc": "self",
+   "filled_from_reflist": [
     "year"
+   ],
+   "missing_fields": []
+  },
+  {
+   "key": "dennybritz2017",
+   "type": "article",
+   "title": "Massive exploration of neural machine translation architectures",
+   "authors": [
+    "Denny Britz, Anna Goldie",
+    "Minh-Thang Luong, Quoc V. Le"
+   ],
+   "year": "2017",
+   "venue": "CoRR, abs/1703.03906",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Denny Britz, Anna Goldie, Minh-Thang Luong, and Quoc V. Le. Massive exploration of neural machine translation architectures. CoRR, abs/1703.03906, 2017.",
+   "year_label": "2017",
+   "label": "3",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "kyunghyuncho2014",
+   "type": "article",
+   "title": "Learning phrase representations using rnn encoder-decoder for statistical machine translation",
+   "authors": [
+    "Kyunghyun Cho, Bart van Merrienboer",
+    "Caglar Gulcehre, Fethi Bougares",
+    "Holger Schwenk, Yoshua Bengio"
+   ],
+   "year": "2014",
+   "venue": "CoRR, abs/1406.1078",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. Learning phrase representations using rnn encoder-decoder for statistical machine translation. CoRR, abs/1406.1078, 2014.",
+   "year_label": "2014",
+   "label": "5",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "chollet2016",
+   "type": "article",
+   "title": "Xception: Deep learning with depthwise separable convolutions",
+   "authors": [
+    "Francois Chollet"
+   ],
+   "year": "2016",
+   "venue": "arXiv preprint arXiv:1610.02357",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1610.02357",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Francois Chollet. Xception: Deep learning with depthwise separable convolutions. arXiv preprint arXiv:1610.02357, 2016.",
+   "year_label": "2016",
+   "label": "6",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "chung2014",
+   "type": "article",
+   "title": "Empirical evaluation of gated recurrent neural networks on sequence modeling",
+   "authors": [
+    "Junyoung Chung",
+    "Çaglar Gülçehre",
+    "Kyunghyun Cho",
+    "Yoshua Bengio"
+   ],
+   "year": "2014",
+   "venue": "CoRR, abs/1412.3555",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Junyoung Chung, Çaglar Gülçehre, Kyunghyun Cho, and Yoshua Bengio. Empirical evaluation of gated recurrent neural networks on sequence modeling. CoRR, abs/1412.3555, 2014.",
+   "year_label": "2014",
+   "label": "7",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "chrisdyer2016",
+   "type": "inproceedings",
+   "title": "Recurrent neural network grammars",
+   "authors": [
+    "Chris Dyer, Adhiguna Kuncoro",
+    "Miguel Ballesteros, Noah A. Smith"
+   ],
+   "year": "2016",
+   "venue": "In Proc. of NAACL",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Chris Dyer, Adhiguna Kuncoro, Miguel Ballesteros, and Noah A. Smith. Recurrent neural network grammars. In Proc. of NAACL, 2016.",
+   "year_label": "2016",
+   "label": "8",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "graves2013",
+   "type": "article",
+   "title": "Generating sequences with recurrent neural networks",
+   "authors": [
+    "Alex Graves"
+   ],
+   "year": "2013",
+   "venue": "arXiv preprint arXiv:1308.0850",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1308.0850",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Alex Graves. Generating sequences with recurrent neural networks. arXiv preprint arXiv:1308.0850, 2013.",
+   "year_label": "2013",
+   "label": "10",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "sepphochreiter2001",
+   "type": "misc",
+   "title": "Gradient flow in recurrent nets: the difficulty of learning long-term dependencies, 2001",
+   "authors": [
+    "Sepp Hochreiter, Yoshua Bengio",
+    "Paolo Frasconi, Jürgen Schmidhuber"
+   ],
+   "year": "2001",
+   "venue": "",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Sepp Hochreiter, Yoshua Bengio, Paolo Frasconi, and Jürgen Schmidhuber. Gradient flow in recurrent nets: the difficulty of learning long-term dependencies, 2001.",
+   "year_label": "2001",
+   "label": "12",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": [
+    "venue"
    ]
+  },
+  {
+   "key": "huang2009",
+   "type": "inproceedings",
+   "title": "Self-training PCFG grammars with latent annotations across languages",
+   "authors": [
+    "Zhongqiang Huang",
+    "Mary Harper"
+   ],
+   "year": "2009",
+   "venue": "In Proceedings of the 2009 Conference on Empirical Methods in Natural Language Processing, pages 832–841",
+   "volume": "",
+   "issue": "",
+   "pages": "832-841",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Zhongqiang Huang and Mary Harper. Self-training PCFG grammars with latent annotations across languages. In Proceedings of the 2009 Conference on Empirical Methods in Natural Language Processing, pages 832–841. ACL, August 2009.",
+   "year_label": "2009",
+   "label": "14",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "jozefowicz2016",
+   "type": "article",
+   "title": "Exploring the limits of language modeling",
+   "authors": [
+    "Rafal Jozefowicz",
+    "Oriol Vinyals",
+    "Mike Schuster",
+    "Noam Shazeer",
+    "Yonghui Wu"
+   ],
+   "year": "2016",
+   "venue": "arXiv preprint arXiv:1602.02410",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1602.02410",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Rafal Jozefowicz, Oriol Vinyals, Mike Schuster, Noam Shazeer, and Yonghui Wu. Exploring the limits of language modeling. arXiv preprint arXiv:1602.02410, 2016.",
+   "year_label": "2016",
+   "label": "15",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "nalkalchbrenner2017",
+   "type": "article",
+   "title": "Neural machine translation in linear time",
+   "authors": [
+    "Nal Kalchbrenner, Lasse Espeholt",
+    "Karen Simonyan, Aaron van den Oord",
+    "Alex Graves, Koray Kavukcuoglu"
+   ],
+   "year": "2017",
+   "venue": "arXiv preprint arXiv:1610.10099v2",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1610.10099",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Nal Kalchbrenner, Lasse Espeholt, Karen Simonyan, Aaron van den Oord, Alex Graves, and Koray Kavukcuoglu. Neural machine translation in linear time. arXiv preprint arXiv:1610.10099v2, 2017.",
+   "year_label": "2017",
+   "label": "18",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "yoonkim2017",
+   "type": "inproceedings",
+   "title": "Structured attention networks",
+   "authors": [
+    "Yoon Kim, Carl Denton",
+    "Luong Hoang, Alexander M. Rush"
+   ],
+   "year": "2017",
+   "venue": "In International Conference on Learning Representations",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Yoon Kim, Carl Denton, Luong Hoang, and Alexander M. Rush. Structured attention networks. In International Conference on Learning Representations, 2017.",
+   "year_label": "2017",
+   "label": "19",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "kingma2015",
+   "type": "inproceedings",
+   "title": "Adam: A method for stochastic optimization",
+   "authors": [
+    "Diederik Kingma",
+    "Jimmy Ba"
+   ],
+   "year": "2015",
+   "venue": "In ICLR",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Diederik Kingma and Jimmy Ba. Adam: A method for stochastic optimization. In ICLR, 2015.",
+   "year_label": "2015",
+   "label": "20",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "kuchaiev2017",
+   "type": "article",
+   "title": "Factorization tricks for LSTM networks",
+   "authors": [
+    "Oleksii Kuchaiev",
+    "Boris Ginsburg"
+   ],
+   "year": "2017",
+   "venue": "arXiv preprint arXiv:1703.10722",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1703.10722",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Oleksii Kuchaiev and Boris Ginsburg. Factorization tricks for LSTM networks. arXiv preprint arXiv:1703.10722, 2017.",
+   "year_label": "2017",
+   "label": "21",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "lin2017",
+   "type": "article",
+   "title": "A structured self-attentive sentence embedding",
+   "authors": [
+    "Zhouhan Lin",
+    "Minwei Feng",
+    "Cicero Nogueira dos Santos",
+    "Mo Yu",
+    "Bing Xiang",
+    "Bowen Zhou",
+    "Yoshua Bengio"
+   ],
+   "year": "2017",
+   "venue": "arXiv preprint arXiv:1703.03130",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1703.03130",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou, and Yoshua Bengio. A structured self-attentive sentence embedding. arXiv preprint arXiv:1703.03130, 2017.",
+   "year_label": "2017",
+   "label": "22",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "luong2015",
+   "type": "article",
+   "title": "Multi-task sequence to sequence learning",
+   "authors": [
+    "Minh-Thang Luong",
+    "Quoc V. Le",
+    "Ilya Sutskever",
+    "Oriol Vinyals",
+    "Lukasz Kaiser"
+   ],
+   "year": "2015",
+   "venue": "arXiv preprint arXiv:1511.06114",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1511.06114",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Minh-Thang Luong, Quoc V. Le, Ilya Sutskever, Oriol Vinyals, and Lukasz Kaiser. Multi-task sequence to sequence learning. arXiv preprint arXiv:1511.06114, 2015.",
+   "year_label": "2015",
+   "label": "23",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "luong2015a",
+   "type": "article",
+   "title": "Effective approaches to attentionbased neural machine translation",
+   "authors": [
+    "Minh-Thang Luong",
+    "Hieu Pham",
+    "Christopher D Manning"
+   ],
+   "year": "2015",
+   "venue": "arXiv preprint arXiv:1508.04025",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1508.04025",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Minh-Thang Luong, Hieu Pham, and Christopher D Manning. Effective approaches to attentionbased neural machine translation. arXiv preprint arXiv:1508.04025, 2015.",
+   "year_label": "2015",
+   "label": "24",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "marcus1993",
+   "type": "article",
+   "title": "Building a large annotated corpus of english: The penn treebank",
+   "authors": [
+    "Mitchell P Marcus",
+    "Mary Ann Marcinkiewicz",
+    "Beatrice Santorini"
+   ],
+   "year": "1993",
+   "venue": "Computational linguistics, 19(2):313–330",
+   "volume": "19",
+   "issue": "2",
+   "pages": "313-330",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Mitchell P Marcus, Mary Ann Marcinkiewicz, and Beatrice Santorini. Building a large annotated corpus of english: The penn treebank. Computational linguistics, 19(2):313–330, 1993.",
+   "year_label": "1993",
+   "label": "25",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "mcclosky2006",
+   "type": "inproceedings",
+   "title": "Effective self-training for parsing",
+   "authors": [
+    "David McClosky",
+    "Eugene Charniak",
+    "Mark Johnson"
+   ],
+   "year": "2006",
+   "venue": "In Proceedings of the Human Language Technology Conference of the NAACL, Main Conference, pages 152–159",
+   "volume": "",
+   "issue": "",
+   "pages": "152-159",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "David McClosky, Eugene Charniak, and Mark Johnson. Effective self-training for parsing. In Proceedings of the Human Language Technology Conference of the NAACL, Main Conference, pages 152–159. ACL, June 2006.",
+   "year_label": "2006",
+   "label": "26",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "ankurparikh2016",
+   "type": "article",
+   "title": "A decomposable attention model",
+   "authors": [
+    "Ankur Parikh, Oscar Täckström",
+    "Dipanjan Das, Jakob Uszkoreit"
+   ],
+   "year": "2016",
+   "venue": "In Empirical Methods in Natural Language Processing",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Ankur Parikh, Oscar Täckström, Dipanjan Das, and Jakob Uszkoreit. A decomposable attention model. In Empirical Methods in Natural Language Processing, 2016.",
+   "year_label": "2016",
+   "label": "27",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "paulus2017",
+   "type": "article",
+   "title": "A deep reinforced model for abstractive summarization",
+   "authors": [
+    "Romain Paulus",
+    "Caiming Xiong",
+    "Richard Socher"
+   ],
+   "year": "2017",
+   "venue": "arXiv preprint arXiv:1705.04304",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1705.04304",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Romain Paulus, Caiming Xiong, and Richard Socher. A deep reinforced model for abstractive summarization. arXiv preprint arXiv:1705.04304, 2017.",
+   "year_label": "2017",
+   "label": "28",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "slavpetrov2006",
+   "type": "inproceedings",
+   "title": "Learning accurate, compact, and interpretable tree annotation",
+   "authors": [
+    "Slav Petrov, Leon Barrett",
+    "Romain Thibaux, Dan Klein"
+   ],
+   "year": "2006",
+   "venue": "In Proceedings of the 21st International Conference on Computational Linguistics and 44th Annual Meeting of the ACL, pages 433–440",
+   "volume": "",
+   "issue": "",
+   "pages": "433-440",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Slav Petrov, Leon Barrett, Romain Thibaux, and Dan Klein. Learning accurate, compact, and interpretable tree annotation. In Proceedings of the 21st International Conference on Computational Linguistics and 44th Annual Meeting of the ACL, pages 433–440. ACL, July 2006.",
+   "year_label": "2006",
+   "label": "29",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "press2016",
+   "type": "article",
+   "title": "Using the output embedding to improve language models",
+   "authors": [
+    "Ofir Press",
+    "Lior Wolf"
+   ],
+   "year": "2016",
+   "venue": "arXiv preprint arXiv:1608.05859",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1608.05859",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Ofir Press and Lior Wolf. Using the output embedding to improve language models. arXiv preprint arXiv:1608.05859, 2016.",
+   "year_label": "2016",
+   "label": "30",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "sennrich2015",
+   "type": "article",
+   "title": "Neural machine translation of rare words with subword units",
+   "authors": [
+    "Rico Sennrich",
+    "Barry Haddow",
+    "Alexandra Birch"
+   ],
+   "year": "2015",
+   "venue": "arXiv preprint arXiv:1508.07909",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1508.07909",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural machine translation of rare words with subword units. arXiv preprint arXiv:1508.07909, 2015.",
+   "year_label": "2015",
+   "label": "31",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "shazeer2017",
+   "type": "article",
+   "title": "Outrageously large neural networks: The sparsely-gated mixture-of-experts layer",
+   "authors": [
+    "Noam Shazeer",
+    "Azalia Mirhoseini",
+    "Krzysztof Maziarz",
+    "Andy Davis",
+    "Quoc Le",
+    "Geoffrey Hinton",
+    "Jeff Dean"
+   ],
+   "year": "2017",
+   "venue": "arXiv preprint arXiv:1701.06538",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1701.06538",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, and Jeff Dean. Outrageously large neural networks: The sparsely-gated mixture-of-experts layer. arXiv preprint arXiv:1701.06538, 2017.",
+   "year_label": "2017",
+   "label": "32",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "srivastava2014",
+   "type": "article",
+   "title": "Dropout: a simple way to prevent neural networks from overfitting",
+   "authors": [
+    "Nitish Srivastava",
+    "Geoffrey E Hinton",
+    "Alex Krizhevsky",
+    "Ilya Sutskever",
+    "Ruslan Salakhutdinov"
+   ],
+   "year": "2014",
+   "venue": "Journal of Machine Learning Research, 15(1):1929–1958",
+   "volume": "15",
+   "issue": "1",
+   "pages": "1929-1958",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Nitish Srivastava, Geoffrey E Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan Salakhutdinov. Dropout: a simple way to prevent neural networks from overfitting. Journal of Machine Learning Research, 15(1):1929–1958, 2014.",
+   "year_label": "2014",
+   "label": "33",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "sainbayarsukhbaatar2015",
+   "type": "article",
+   "title": "End-to-end memory networks",
+   "authors": [
+    "Sainbayar Sukhbaatar, Arthur Szlam",
+    "Jason Weston, Rob Fergus"
+   ],
+   "year": "2015",
+   "venue": "In C. Cortes, N. D. Lawrence, D. D. Lee, M. Sugiyama, and R. Garnett, editors, Advances in Neural Information Processing Systems 28, pages 2440–2448",
+   "volume": "",
+   "issue": "",
+   "pages": "2440-2448",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Sainbayar Sukhbaatar, Arthur Szlam, Jason Weston, and Rob Fergus. End-to-end memory networks. In C. Cortes, N. D. Lawrence, D. D. Lee, M. Sugiyama, and R. Garnett, editors, Advances in Neural Information Processing Systems 28, pages 2440–2448. Curran Associates, Inc., 2015.",
+   "year_label": "2015",
+   "label": "34",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "sutskever2014",
+   "type": "article",
+   "title": "Sequence to sequence learning with neural networks",
+   "authors": [
+    "Ilya Sutskever",
+    "Oriol Vinyals",
+    "Quoc VV Le"
+   ],
+   "year": "2014",
+   "venue": "In Advances in Neural Information Processing Systems, pages 3104–3112",
+   "volume": "",
+   "issue": "",
+   "pages": "3104-3112",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Ilya Sutskever, Oriol Vinyals, and Quoc VV Le. Sequence to sequence learning with neural networks. In Advances in Neural Information Processing Systems, pages 3104–3112, 2014.",
+   "year_label": "2014",
+   "label": "35",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "szegedy2015",
+   "type": "article",
+   "title": "Rethinking the inception architecture for computer vision",
+   "authors": [
+    "Christian Szegedy",
+    "Vincent Vanhoucke",
+    "Sergey Ioffe",
+    "Jonathon Shlens",
+    "Zbigniew Wojna"
+   ],
+   "year": "2015",
+   "venue": "CoRR, abs/1512.00567",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and Zbigniew Wojna. Rethinking the inception architecture for computer vision. CoRR, abs/1512.00567, 2015.",
+   "year_label": "2015",
+   "label": "36",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "vinyals2015",
+   "type": "article",
+   "title": "Grammar as a foreign language",
+   "authors": [
+    "Vinyals, Kaiser",
+    "Koo, Petrov",
+    "Sutskever, Hinton"
+   ],
+   "year": "2015",
+   "venue": "In Advances in Neural Information Processing Systems",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Vinyals & Kaiser, Koo, Petrov, Sutskever, and Hinton. Grammar as a foreign language. In Advances in Neural Information Processing Systems, 2015.",
+   "year_label": "2015",
+   "label": "37",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "zhou2016",
+   "type": "article",
+   "title": "Deep recurrent models with fast-forward connections for neural machine translation",
+   "authors": [
+    "Jie Zhou",
+    "Ying Cao",
+    "Xuguang Wang",
+    "Peng Li",
+    "Wei Xu"
+   ],
+   "year": "2016",
+   "venue": "CoRR, abs/1606.04199",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Jie Zhou, Ying Cao, Xuguang Wang, Peng Li, and Wei Xu. Deep recurrent models with fast-forward connections for neural machine translation. CoRR, abs/1606.04199, 2016.",
+   "year_label": "2016",
+   "label": "39",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "zhu2013",
+   "type": "inproceedings",
+   "title": "Fast and accurate shift-reduce constituent parsing",
+   "authors": [
+    "Muhua Zhu",
+    "Yue Zhang",
+    "Wenliang Chen",
+    "Min Zhang",
+    "Jingbo Zhu"
+   ],
+   "year": "2013",
+   "venue": "In Proceedings of the 51st Annual Meeting of the ACL (Volume 1: Long Papers), pages 434–443",
+   "volume": "1",
+   "issue": "",
+   "pages": "434-443",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Muhua Zhu, Yue Zhang, Wenliang Chen, Min Zhang, and Jingbo Zhu. Fast and accurate shift-reduce constituent parsing. In Proceedings of the 51st Annual Meeting of the ACL (Volume 1: Long Papers), pages 434–443. ACL, August 2013.",
+   "year_label": "2013",
+   "label": "40",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
   }
  ],
  "style": "apa",
@@ -163,7 +1052,12 @@
  ],
  "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\task.md",
  "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\case.json",
- "problems": [],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "31 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
  "missing": [],
  "src_status": {
   "self": {
@@ -181,21 +1075,145 @@
   },
   "bahdanau2015": {
    "path": null,
-   "text": "abstract_only"
+   "text": "abstract+citing_context"
   },
   "gehring2017": {
    "path": null,
-   "text": "abstract_only"
+   "text": "abstract+citing_context"
   },
   "hochreiter1997": {
    "path": null,
-   "text": "metadata_only"
+   "text": "citing_context"
   },
   "wu2016": {
    "path": null,
-   "text": "metadata_only"
+   "text": "citing_context"
   },
   "ba2016": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "dennybritz2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "kyunghyuncho2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "chollet2016": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "chung2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "chrisdyer2016": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "graves2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "sepphochreiter2001": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "huang2009": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "jozefowicz2016": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "nalkalchbrenner2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "yoonkim2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "kingma2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "kuchaiev2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lin2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "luong2015": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "luong2015a": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "marcus1993": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "mcclosky2006": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "ankurparikh2016": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "paulus2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "slavpetrov2006": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "press2016": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "sennrich2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "shazeer2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "srivastava2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "sainbayarsukhbaatar2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "sutskever2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "szegedy2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "vinyals2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "zhou2016": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "zhu2013": {
    "path": null,
    "text": "metadata_only"
   }

@@ -2,7 +2,7 @@
  "case_id": "empty_lib",
  "status": "partial",
  "status_reason": "2 blocking check(s) failed - see review.md",
- "skill": "intro-gap-ledger 0.1.0",
+ "skill": "intro-gap-ledger 0.2.1",
  "language": "en",
  "citation_style": "numeric",
  "summary": {
@@ -48,7 +48,7 @@
     {
      "id": "E:self:p1:4",
      "page": 1,
-     "quote": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens should also be doubled.",
+     "quote": "We train over 400 language models.",
      "verified": true
     }
    ]
@@ -163,15 +163,15 @@
  "changes": [
   {
    "version": 1,
-   "at": "2026-11-23T05:27:22Z",
+   "at": "2026-11-25T09:38:23Z",
    "note": "first draft",
    "fails": 2,
    "warns": 3
   }
  ],
  "inputs": {
-  "case.json": "fe6b06a3582e2d84891d8675e28772250c04247a26649eb2b7903cb44dd4f95b",
-  "paper.pdf": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4"
+  "case.json": "544d987a3868762f5697ebe7b10b313a10977d7f09cba7b7d04fc1404f61034e",
+  "paper.md": "19f727575dbdf1041a870ff967985c36018996cc58b20b5f65646b4f5eb67372"
  },
  "artifacts": {
   "draft_md": "intro_related_work.md",
@@ -180,7 +180,9 @@
   "bib": "references.bib",
   "references": "references_ieee.txt",
   "html_preview": "intro_related_work.html",
+  "docx": "intro_related_work.docx",
   "pdf_preview": null,
+  "png_previews": [],
   "source_map": "source_map.json",
   "matrix": "related_work_matrix.md",
   "gap_derivation": "gap_derivation.md",
@@ -189,7 +191,7 @@
   "diff": null
  },
  "preview_note": "skipped (--no-pdf)",
- "updated": "2026-11-23T05:27:22Z",
+ "updated": "2026-11-25T09:38:23Z",
  "seconds": 0.1,
  "unmapped_contract_fields": []
 }

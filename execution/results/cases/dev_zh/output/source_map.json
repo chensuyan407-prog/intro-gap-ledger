@@ -10,7 +10,7 @@
     "page": 1,
     "quote": "Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.",
     "support": null,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "cross_lingual": true,
     "link": "explicit"
    }
@@ -44,7 +44,7 @@
     "page": 1,
     "quote": "However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem.",
     "support": null,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "cross_lingual": true,
     "link": "explicit"
    }
@@ -71,7 +71,7 @@
     "page": null,
     "quote": null,
     "support": null,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "cross_lingual": true
    },
    {
@@ -80,7 +80,8 @@
     "page": null,
     "quote": null,
     "support": null,
-    "source_text": "metadata_only"
+    "source_text": "secondary",
+    "cross_lingual": true
    }
   ],
   "numbers": [],
@@ -97,7 +98,7 @@
     "page": 1,
     "quote": "Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.",
     "support": null,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "cross_lingual": true,
     "link": "explicit"
    }
@@ -116,7 +117,8 @@
     "page": null,
     "quote": null,
     "support": null,
-    "source_text": "metadata_only"
+    "source_text": "secondary",
+    "cross_lingual": true
    }
   ],
   "numbers": [],
@@ -150,7 +152,7 @@
     "page": null,
     "quote": null,
     "support": null,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "cross_lingual": true
    }
   ],
@@ -207,7 +209,7 @@
     "page": 1,
     "quote": "They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow.",
     "support": null,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "cross_lingual": true,
     "link": "explicit"
    }
@@ -244,7 +246,7 @@
     "page": 1,
     "quote": "They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow.",
     "support": null,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "cross_lingual": true,
     "link": "explicit"
    },
@@ -254,7 +256,7 @@
     "page": 1,
     "quote": "However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem.",
     "support": null,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "cross_lingual": true,
     "link": "explicit"
    }

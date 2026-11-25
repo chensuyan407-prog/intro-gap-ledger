@@ -1,20 +1,55 @@
-# Evidence tables (intro-gap-ledger 0.1.0)
+# Evidence tables (intro-gap-ledger 0.2.1)
 
 language: en | style: apa | case: holdout_transformer | own paper: C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\tests\cases\holdout_transformer\input\main_paper.pdf
 
 Cite only keys listed here. Use evidence ids (E:<key>:p<page>:<n>) in plan.json; quote them, do not paraphrase numbers.
 More sentences: `irw.py find --work W --source <key> --query "..."`.
 
+## parse problems
+
+- reference lists: 31 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission
+
 ## Library
 
 | key | year | first author | title | venue | text | missing |
 |-|-|-|-|-|-|-|
 | he2016 | 2016 | He, Kaiming | Deep Residual Learning for Image Recognition | Proceedings of the IEEE Conference on Co… | full_text | - |
-| bahdanau2015 | 2015 | Bahdanau, Dzmitry | Neural Machine Translation by Jointly Learning to Align and Translate | International Conference on Learning Rep… | abstract_only | - |
-| gehring2017 | 2017 | Gehring, Jonas | Convolutional Sequence to Sequence Learning | Proceedings of the 34th International Co… | abstract_only | - |
-| hochreiter1997 | 1997 | Hochreiter, Sepp | Long Short-Term Memory | Neural Computation | metadata_only | - |
-| wu2016 | 2016 | Wu, Yonghui | Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Tra… | arXiv preprint arXiv:1609.08144 | metadata_only | - |
-| ba2016 |  | Ba, Jimmy Lei | Layer Normalization | arXiv preprint arXiv:1607.06450 | metadata_only | year |
+| bahdanau2015 | 2015 | Bahdanau, Dzmitry | Neural Machine Translation by Jointly Learning to Align and Translate | International Conference on Learning Rep… | abstract+citing_context | - |
+| gehring2017 | 2017 | Gehring, Jonas | Convolutional Sequence to Sequence Learning | Proceedings of the 34th International Co… | abstract+citing_context | - |
+| hochreiter1997 | 1997 | Hochreiter, Sepp | Long Short-Term Memory | Neural Computation | citing_context | - |
+| wu2016 | 2016 | Wu, Yonghui | Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Tra… | arXiv preprint arXiv:1609.08144 | citing_context | - |
+| ba2016 | 2016 | Ba, Jimmy Lei | Layer Normalization | arXiv preprint arXiv:1607.06450 | citing_context | - |
+| dennybritz2017 | 2017 | Denny Britz, Anna Goldie | Massive exploration of neural machine translation architectures | CoRR, abs/1703.03906 | citing_context | - |
+| kyunghyuncho2014 | 2014 | Kyunghyun Cho, Bart van Merrienboer | Learning phrase representations using rnn encoder-decoder for statistical machine translat… | CoRR, abs/1406.1078 | citing_context | - |
+| chollet2016 | 2016 | Francois Chollet | Xception: Deep learning with depthwise separable convolutions | arXiv preprint arXiv:1610.02357 | citing_context | - |
+| chung2014 | 2014 | Junyoung Chung | Empirical evaluation of gated recurrent neural networks on sequence modeling | CoRR, abs/1412.3555 | citing_context | - |
+| chrisdyer2016 | 2016 | Chris Dyer, Adhiguna Kuncoro | Recurrent neural network grammars | In Proc. of NAACL | metadata_only | - |
+| graves2013 | 2013 | Alex Graves | Generating sequences with recurrent neural networks | arXiv preprint arXiv:1308.0850 | citing_context | - |
+| sepphochreiter2001 | 2001 | Sepp Hochreiter, Yoshua Bengio | Gradient flow in recurrent nets: the difficulty of learning long-term dependencies, 2001 |  | citing_context | venue |
+| huang2009 | 2009 | Zhongqiang Huang | Self-training PCFG grammars with latent annotations across languages | In Proceedings of the 2009 Conference on… | metadata_only | - |
+| jozefowicz2016 | 2016 | Rafal Jozefowicz | Exploring the limits of language modeling | arXiv preprint arXiv:1602.02410 | citing_context | - |
+| nalkalchbrenner2017 | 2017 | Nal Kalchbrenner, Lasse Espeholt | Neural machine translation in linear time | arXiv preprint arXiv:1610.10099v2 | citing_context | - |
+| yoonkim2017 | 2017 | Yoon Kim, Carl Denton | Structured attention networks | In International Conference on Learning … | citing_context | - |
+| kingma2015 | 2015 | Diederik Kingma | Adam: A method for stochastic optimization | In ICLR | citing_context | - |
+| kuchaiev2017 | 2017 | Oleksii Kuchaiev | Factorization tricks for LSTM networks | arXiv preprint arXiv:1703.10722 | citing_context | - |
+| lin2017 | 2017 | Zhouhan Lin | A structured self-attentive sentence embedding | arXiv preprint arXiv:1703.03130 | citing_context | - |
+| luong2015 | 2015 | Minh-Thang Luong | Multi-task sequence to sequence learning | arXiv preprint arXiv:1511.06114 | metadata_only | - |
+| luong2015a | 2015 | Minh-Thang Luong | Effective approaches to attentionbased neural machine translation | arXiv preprint arXiv:1508.04025 | citing_context | - |
+| marcus1993 | 1993 | Mitchell P Marcus | Building a large annotated corpus of english: The penn treebank | Computational linguistics, 19(2):313–330 | citing_context | - |
+| mcclosky2006 | 2006 | David McClosky | Effective self-training for parsing | In Proceedings of the Human Language Tec… | metadata_only | - |
+| ankurparikh2016 | 2016 | Ankur Parikh, Oscar Täckström | A decomposable attention model | In Empirical Methods in Natural Language… | citing_context | - |
+| paulus2017 | 2017 | Romain Paulus | A deep reinforced model for abstractive summarization | arXiv preprint arXiv:1705.04304 | citing_context | - |
+| slavpetrov2006 | 2006 | Slav Petrov, Leon Barrett | Learning accurate, compact, and interpretable tree annotation | In Proceedings of the 21st International… | metadata_only | - |
+| press2016 | 2016 | Ofir Press | Using the output embedding to improve language models | arXiv preprint arXiv:1608.05859 | citing_context | - |
+| sennrich2015 | 2015 | Rico Sennrich | Neural machine translation of rare words with subword units | arXiv preprint arXiv:1508.07909 | citing_context | - |
+| shazeer2017 | 2017 | Noam Shazeer | Outrageously large neural networks: The sparsely-gated mixture-of-experts layer | arXiv preprint arXiv:1701.06538 | citing_context | - |
+| srivastava2014 | 2014 | Nitish Srivastava | Dropout: a simple way to prevent neural networks from overfitting | Journal of Machine Learning Research, 15… | citing_context | - |
+| sainbayarsukhbaatar2015 | 2015 | Sainbayar Sukhbaatar, Arthur Szlam | End-to-end memory networks | In C. Cortes, N. D. Lawrence, D. D. Lee,… | citing_context | - |
+| sutskever2014 | 2014 | Ilya Sutskever | Sequence to sequence learning with neural networks | In Advances in Neural Information Proces… | citing_context | - |
+| szegedy2015 | 2015 | Christian Szegedy | Rethinking the inception architecture for computer vision | CoRR, abs/1512.00567 | citing_context | - |
+| vinyals2015 | 2015 | Vinyals, Kaiser | Grammar as a foreign language | In Advances in Neural Information Proces… | citing_context | - |
+| zhou2016 | 2016 | Jie Zhou | Deep recurrent models with fast-forward connections for neural machine translation | CoRR, abs/1606.04199 | citing_context | - |
+| zhu2013 | 2013 | Muhua Zhu | Fast and accurate shift-reduce constituent parsing | In Proceedings of the 51st Annual Meetin… | metadata_only | - |
 
 ## OWN PAPER (self) - contributions must map to these
 
@@ -120,7 +155,7 @@ abstract: the dominant sequence transduction models are based on complex recurre
 - E:self:p7:122: Separable convolutions [6], however, decrease the complexity considerably, to O(k · n · d + n · d2).
 - E:self:p7:123: Even with k = n, however, the complexity of a separable convolution is equal to the combination of a self-attention layer and a point-wise feed-forward layer, the approach we take in our model.
 
-## [he2016] Deep Residual Learning for Image Recognition (2016)
+## [he2016] Deep Residual Learning for Image Recognition (2016) - evidence: full_text
 
 abstract: deeper neural networks are more difficult to train. we present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. we explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. we provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. on the imagenet dataset we evaluate residual nets with a depth of up to 152 layers-8x deeper than vgg nets [41] but still having lower complexity. an ensemble of these residual nets achieves 3.57% error on the imagenet test set. this result won the 1st place on the ilsvrc 2015 classification task. we also present analysis on cifar-10 with 100 and 1000 layers. the depth of representations is of central i…
 
@@ -168,16 +203,150 @@ limitations/assumptions:
 - E:he2016:p4:132: We do not use dropout [14], following the practice in [16].
 - E:he2016:p4:145: We have observed the degradation problem - the
 
-## [bahdanau2015] Neural Machine Translation by Jointly Learning to Align and Translate (2015)
+## [bahdanau2015] Neural Machine Translation by Jointly Learning to Align and Translate (2015) - evidence: abstract+citing_context
 
-claims/results:
+- E:bahdanau2015:p1:1: Neural machine translation is a recently proposed approach to machine translation.
+- E:bahdanau2015:p1:2: Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance.
+- E:bahdanau2015:p1:3: The models proposed recently for neural machine translation often belong to a family of encoder-decoders and consists of an encoder that encodes a source sentence into a fixed-length vector from which a decoder generates a translation.
+- E:bahdanau2015:p1:5: [own paper p2] Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling an…
+- E:bahdanau2015:p1:6: [own paper p2] Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19].
+- E:bahdanau2015:p1:7: [own paper p2] Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].
+- E:bahdanau2015:p1:8: [own paper p4] The two most commonly used attention functions are additive attention [2], and dot-product (multiplicative) attention.
+- E:bahdanau2015:p1:9: [own paper p5] This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models such as [38, 2, 9].
 
-limitations/assumptions:
-- E:bahdanau2015:p1:4: In this paper, we conjecture that the use of a fixed-length vector is a bottleneck in improving the performance of this basic encoder-decoder architecture, and propose to extend this by allowing a model to automatically (soft-)sea…
+## [gehring2017] Convolutional Sequence to Sequence Learning (2017) - evidence: abstract+citing_context
 
-## [gehring2017] Convolutional Sequence to Sequence Learning (2017)
-
-claims/results:
+- E:gehring2017:p1:1: The prevalent approach to sequence to sequence learning maps an input sequence to a variable length output sequence via recurrent neural networks.
 - E:gehring2017:p1:2: We introduce an architecture based entirely on convolutional neural networks.
+- E:gehring2017:p1:3: Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.
+- E:gehring2017:p1:4: [own paper p2] The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in para…
+- E:gehring2017:p1:5: [own paper p2] In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].
+- E:gehring2017:p1:6: [own paper p5] This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models such as [38, 2, 9].
+- E:gehring2017:p1:7: [own paper p6] There are many choices of positional encodings, learned and fixed [9].
+- E:gehring2017:p1:8: [own paper p6] We also experimented with using learned positional embeddings [9] instead, and found that the two versions produced nearly identical results (see Table 3 row (E)).
 
-limitations/assumptions:
+## [hochreiter1997] Long Short-Term Memory (1997) - evidence: citing_context
+
+- E:hochreiter1997:p1:1: [own paper p2] Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].
+
+## [wu2016] Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation (2016) - evidence: citing_context
+
+- E:wu2016:p1:1: [own paper p2] Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].
+- E:wu2016:p1:2: [own paper p5] This mimics the typical encoder-decoder attention mechanisms in sequence-to-sequence models such as [38, 2, 9].
+- E:wu2016:p1:3: [own paper p7] length n is smaller than the representation dimensionality d, which is most often the case with sentence representations used by state-of-the-art models in machine translations, such as word-piece [38] and byte-pair [31] representations.
+- E:wu2016:p1:4: [own paper p7] For English-French, we used the significantly larger WMT 2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece vocabulary [38].
+- E:wu2016:p1:5: [own paper p8] We used beam search with a beam size of 4 and length penalty α = 0.6 [38].
+- E:wu2016:p1:6: [own paper p8] We set the maximum output length during inference to input length + 50, but terminate early when possible [38].
+
+## [ba2016] Layer Normalization (2016) - evidence: citing_context
+
+- E:ba2016:p1:1: [own paper p3] We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1].
+
+## [dennybritz2017] Massive exploration of neural machine translation architectures (2017) - evidence: citing_context
+
+- E:dennybritz2017:p1:1: [own paper p4] While for small values of dk the two mechanisms perform similarly, additive attention outperforms dot product attention without scaling for larger values of dk [3].
+- E:dennybritz2017:p1:2: [own paper p7] Sentences were encoded using byte-pair encoding [3], which has a shared sourcetarget vocabulary of about 37000 tokens.
+
+## [kyunghyuncho2014] Learning phrase representations using rnn encoder-decoder for statistical machine translation (2014) - evidence: citing_context
+
+- E:kyunghyuncho2014:p1:1: [own paper p2] Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling an…
+- E:kyunghyuncho2014:p1:2: [own paper p2] Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].
+
+## [chollet2016] Xception: Deep learning with depthwise separable convolutions (2016) - evidence: citing_context
+
+- E:chollet2016:p1:1: [own paper p7] Separable convolutions [6], however, decrease the complexity considerably, to O(k · n · d + n · d2).
+
+## [chung2014] Empirical evaluation of gated recurrent neural networks on sequence modeling (2014) - evidence: citing_context
+
+- E:chung2014:p1:1: [own paper p2] Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling an…
+
+## [graves2013] Generating sequences with recurrent neural networks (2013) - evidence: citing_context
+
+- E:graves2013:p1:1: [own paper p2] At each step the model is auto-regressive [10], consuming the previously generated symbols as additional input when generating the next.
+
+## [sepphochreiter2001] Gradient flow in recurrent nets: the difficulty of learning long-term dependencies, 2001 (2001) - evidence: citing_context
+
+- E:sepphochreiter2001:p1:2: [own paper p6] The shorter these paths between any combination of positions in the input and output sequences, the easier it is to learn long-range dependencies [12].
+- E:sepphochreiter2001:p1:1: [own paper p2] This makes it more difficult to learn dependencies between distant positions [12].
+
+## [jozefowicz2016] Exploring the limits of language modeling (2016) - evidence: citing_context
+
+- E:jozefowicz2016:p1:1: [own paper p2] Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].
+
+## [nalkalchbrenner2017] Neural machine translation in linear time (2017) - evidence: citing_context
+
+- E:nalkalchbrenner2017:p1:1: [own paper p2] The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in para…
+- E:nalkalchbrenner2017:p1:2: [own paper p2] In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].
+- E:nalkalchbrenner2017:p1:4: [own paper p8] EN-DE EN-FR EN-DE EN-FR ByteNet [18] 23.75 Deep-Att + PosUnk [39] 39.2 1.0 · 1020
+- E:nalkalchbrenner2017:p1:3: [own paper p7] Doing so requires a stack of O(n/k) convolutional layers in the case of contiguous kernels, or O(logk(n)) in the case of dilated convolutions [18], increasing the length of the longest paths between any two positions in the network.
+
+## [yoonkim2017] Structured attention networks (2017) - evidence: citing_context
+
+- E:yoonkim2017:p1:1: [own paper p2] Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19].
+
+## [kingma2015] Adam: A method for stochastic optimization (2015) - evidence: citing_context
+
+- E:kingma2015:p1:1: [own paper p7] We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ε = 10−9.
+
+## [kuchaiev2017] Factorization tricks for LSTM networks (2017) - evidence: citing_context
+
+- E:kuchaiev2017:p1:1: [own paper p2] Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter.
+
+## [lin2017] A structured self-attentive sentence embedding (2017) - evidence: citing_context
+
+- E:lin2017:p1:1: [own paper p2] Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].
+
+## [luong2015a] Effective approaches to attentionbased neural machine translation (2015) - evidence: citing_context
+
+- E:luong2015a:p1:1: [own paper p2] Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].
+
+## [marcus1993] Building a large annotated corpus of english: The penn treebank (1993) - evidence: citing_context
+
+- E:marcus1993:p1:1: [own paper p9] We trained a 4-layer transformer with dmodel = 1024 on the Wall Street Journal (WSJ) portion of the Penn Treebank [25], about 40K training sentences.
+
+## [ankurparikh2016] A decomposable attention model (2016) - evidence: citing_context
+
+- E:ankurparikh2016:p1:2: [own paper p2] Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].
+- E:ankurparikh2016:p1:1: [own paper p2] In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network.
+
+## [paulus2017] A deep reinforced model for abstractive summarization (2017) - evidence: citing_context
+
+- E:paulus2017:p1:1: [own paper p2] Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].
+
+## [press2016] Using the output embedding to improve language models (2016) - evidence: citing_context
+
+- E:press2016:p1:1: [own paper p5] In our model, we share the same weight matrix between the two embedding layers and the pre-softmax linear transformation, similar to [30].
+
+## [sennrich2015] Neural machine translation of rare words with subword units (2015) - evidence: citing_context
+
+- E:sennrich2015:p1:1: [own paper p7] length n is smaller than the representation dimensionality d, which is most often the case with sentence representations used by state-of-the-art models in machine translations, such as word-piece [38] and byte-pair [31] representations.
+
+## [shazeer2017] Outrageously large neural networks: The sparsely-gated mixture-of-experts layer (2017) - evidence: citing_context
+
+- E:shazeer2017:p1:1: [own paper p2] Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter.
+
+## [srivastava2014] Dropout: a simple way to prevent neural networks from overfitting (2014) - evidence: citing_context
+
+- E:srivastava2014:p1:1: [own paper p8] Residual Dropout We apply dropout [33] to the output of each sub-layer, before it is added to the sub-layer input and normalized.
+
+## [sainbayarsukhbaatar2015] End-to-end memory networks (2015) - evidence: citing_context
+
+- E:sainbayarsukhbaatar2015:p1:1: [own paper p2] End-to-end memory networks are based on a recurrent attention mechanism instead of sequencealigned recurrence and have been shown to perform well on simple-language question answering and language modeling tasks [34].
+
+## [sutskever2014] Sequence to sequence learning with neural networks (2014) - evidence: citing_context
+
+- E:sutskever2014:p1:1: [own paper p2] Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling an…
+- E:sutskever2014:p1:2: [own paper p2] Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35].
+
+## [szegedy2015] Rethinking the inception architecture for computer vision (2015) - evidence: citing_context
+
+- E:szegedy2015:p1:1: [own paper p8] Label Smoothing During training, we employed label smoothing of value εls = 0.1 [36].
+
+## [vinyals2015] Grammar as a foreign language (2015) - evidence: citing_context
+
+- E:vinyals2015:p1:1: [own paper p9] Furthermore, RNN sequence-to-sequence models have not been able to attain state-of-the-art results in small-data regimes [37].
+- E:vinyals2015:p1:2: [own paper p9] We also trained it in a semi-supervised setting, using the larger high-confidence and BerkleyParser corpora from with approximately 17M sentences [37].
+
+## [zhou2016] Deep recurrent models with fast-forward connections for neural machine translation (2016) - evidence: citing_context
+
+- E:zhou2016:p1:1: [own paper p8] EN-DE EN-FR EN-DE EN-FR ByteNet [18] 23.75 Deep-Att + PosUnk [39] 39.2 1.0 · 1020

@@ -345,7 +345,7 @@
   "caught": true,
   "caught_any_new_fail": true,
   "new_fails": [
-   "S2 P2.S3: citation key 'krizhevsky2012' is not in the library (no invented references)"
+   "S2 P2.S3: citation key 'krizhevsky2013' is not in the library (no invented references)"
   ],
   "b1": true,
   "b2": true,

@@ -19,6 +19,8 @@
    "abstract": "",
    "pdf": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\ioffe2015.pdf",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "label": "16",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -40,6 +42,8 @@
    "abstract": "In this work we investigate the effect of the convolutional network depth on its accuracy in the large-scale image recognition setting. Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers.",
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "label": "41",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -62,6 +66,8 @@
    "abstract": "Theoretical and empirical evidence indicates that the depth of neural networks is crucial for their success. However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem. Here we introduce a new architecture designed to overcome this. Our so-called highway networks allow unimpeded information flow across many layers on information highways. They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow. Even with hundreds of layers, highway networks can be trained directly through simple gradient descent.",
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "label": "42",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -86,6 +92,8 @@
    "abstract": "",
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
+   "label": "44",
+   "label_doc": "self",
    "missing_fields": []
   },
   {
@@ -107,6 +115,1294 @@
    "pdf": "",
    "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\library.ris",
    "missing_fields": []
+  },
+  {
+   "key": "bengio1994",
+   "type": "article",
+   "title": "Learning long-term dependencies with gradient descent is difficult",
+   "authors": [
+    "Y. Bengio",
+    "P. Simard",
+    "P. Frasconi"
+   ],
+   "year": "1994",
+   "venue": "IEEE Transactions on Neural Networks, 5(2):157–166",
+   "volume": "5",
+   "issue": "2",
+   "pages": "157-166",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Y. Bengio, P. Simard, and P. Frasconi. Learning long-term dependencies with gradient descent is difficult. IEEE Transactions on Neural Networks, 5(2):157–166, 1994.",
+   "year_label": "1994",
+   "label": "1",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "bishop1995",
+   "type": "article",
+   "title": "Neural networks for pattern recognition",
+   "authors": [
+    "C. M. Bishop"
+   ],
+   "year": "1995",
+   "venue": "Oxford university press",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "C. M. Bishop. Neural networks for pattern recognition. Oxford university press, 1995.",
+   "year_label": "1995",
+   "label": "2",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "briggs2000",
+   "type": "article",
+   "title": "A Multigrid Tutorial",
+   "authors": [
+    "W. L. Briggs",
+    "S. F. McCormick"
+   ],
+   "year": "2000",
+   "venue": "Siam",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "W. L. Briggs, S. F. McCormick, et al. A Multigrid Tutorial. Siam, 2000.",
+   "year_label": "2000",
+   "label": "3",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "chatfield2011",
+   "type": "article",
+   "title": "The devil is in the details: an evaluation of recent feature encoding methods",
+   "authors": [
+    "K. Chatfield",
+    "V. Lempitsky",
+    "A. Vedaldi",
+    "A. Zisserman"
+   ],
+   "year": "2011",
+   "venue": "In BMVC",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "K. Chatfield, V. Lempitsky, A. Vedaldi, and A. Zisserman. The devil is in the details: an evaluation of recent feature encoding methods. In BMVC, 2011.",
+   "year_label": "2011",
+   "label": "4",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "everingham2010",
+   "type": "article",
+   "title": "The Pascal Visual Object Classes (VOC) Challenge",
+   "authors": [
+    "M. Everingham",
+    "L. Van Gool",
+    "C. K. Williams",
+    "J. Winn",
+    "A. Zisserman"
+   ],
+   "year": "2010",
+   "venue": "IJCV, pages 303–338",
+   "volume": "",
+   "issue": "",
+   "pages": "303-338",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zisserman. The Pascal Visual Object Classes (VOC) Challenge. IJCV, pages 303–338, 2010.",
+   "year_label": "2010",
+   "label": "5",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "gidaris2015",
+   "type": "inproceedings",
+   "title": "Object detection via a multi-region & semantic segmentation-aware cnn model",
+   "authors": [
+    "S. Gidaris",
+    "N. Komodakis"
+   ],
+   "year": "2015",
+   "venue": "In ICCV",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "S. Gidaris and N. Komodakis. Object detection via a multi-region & semantic segmentation-aware cnn model. In ICCV, 2015.",
+   "year_label": "2015",
+   "label": "6",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "girshick2015",
+   "type": "misc",
+   "title": "Fast R-CNN. In ICCV, 2015",
+   "authors": [
+    "R. Girshick"
+   ],
+   "year": "2015",
+   "venue": "",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "R. Girshick. Fast R-CNN. In ICCV, 2015.",
+   "year_label": "2015",
+   "label": "7",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": [
+    "venue"
+   ]
+  },
+  {
+   "key": "girshick2014",
+   "type": "inproceedings",
+   "title": "Rich feature hierarchies for accurate object detection and semantic segmentation",
+   "authors": [
+    "R. Girshick",
+    "J. Donahue",
+    "T. Darrell",
+    "J. Malik"
+   ],
+   "year": "2014",
+   "venue": "In CVPR",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. In CVPR, 2014.",
+   "year_label": "2014",
+   "label": "8",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "glorot2010",
+   "type": "article",
+   "title": "Understanding the difficulty of training deep feedforward neural networks",
+   "authors": [
+    "X. Glorot",
+    "Y. Bengio"
+   ],
+   "year": "2010",
+   "venue": "In AISTATS",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "X. Glorot and Y. Bengio. Understanding the difficulty of training deep feedforward neural networks. In AISTATS, 2010.",
+   "year_label": "2010",
+   "label": "9",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "goodfellow2013",
+   "type": "article",
+   "title": "Maxout networks",
+   "authors": [
+    "I. J. Goodfellow",
+    "D. Warde-Farley",
+    "M. Mirza",
+    "A. Courville",
+    "Y. Bengio"
+   ],
+   "year": "2013",
+   "venue": "arXiv:1302.4389",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1302.4389",
+   "abstract": "",
+   "pdf": "",
+   "raw": "I. J. Goodfellow, D. Warde-Farley, M. Mirza, A. Courville, and Y. Bengio. Maxout networks. arXiv:1302.4389, 2013.",
+   "year_label": "2013",
+   "label": "10",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "he2015",
+   "type": "inproceedings",
+   "title": "Convolutional neural networks at constrained time cost",
+   "authors": [
+    "K. He",
+    "J. Sun"
+   ],
+   "year": "2015",
+   "venue": "In CVPR",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "K. He and J. Sun. Convolutional neural networks at constrained time cost. In CVPR, 2015.",
+   "year_label": "2015",
+   "label": "11",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "he2014",
+   "type": "inproceedings",
+   "title": "Spatial pyramid pooling in deep convolutional networks for visual recognition",
+   "authors": [
+    "K. He",
+    "X. Zhang",
+    "S. Ren",
+    "J. Sun"
+   ],
+   "year": "2014",
+   "venue": "In ECCV",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. In ECCV, 2014.",
+   "year_label": "2014",
+   "label": "12",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "he2015a",
+   "type": "inproceedings",
+   "title": "Delving deep into rectifiers: Surpassing human-level performance on imagenet classification",
+   "authors": [
+    "K. He",
+    "X. Zhang",
+    "S. Ren",
+    "J. Sun"
+   ],
+   "year": "2015",
+   "venue": "In ICCV",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "K. He, X. Zhang, S. Ren, and J. Sun. Delving deep into rectifiers: Surpassing human-level performance on imagenet classification. In ICCV, 2015.",
+   "year_label": "2015",
+   "label": "13",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "hinton2012",
+   "type": "article",
+   "title": "Improving neural networks by preventing coadaptation of feature detectors",
+   "authors": [
+    "G. E. Hinton",
+    "N. Srivastava",
+    "A. Krizhevsky",
+    "I. Sutskever",
+    "R. R. Salakhutdinov"
+   ],
+   "year": "2012",
+   "venue": "arXiv:1207.0580",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1207.0580",
+   "abstract": "",
+   "pdf": "",
+   "raw": "G. E. Hinton, N. Srivastava, A. Krizhevsky, I. Sutskever, and R. R. Salakhutdinov. Improving neural networks by preventing coadaptation of feature detectors. arXiv:1207.0580, 2012.",
+   "year_label": "2012",
+   "label": "14",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "hochreiter1997",
+   "type": "article",
+   "title": "Long short-term memory",
+   "authors": [
+    "S. Hochreiter",
+    "J. Schmidhuber"
+   ],
+   "year": "1997",
+   "venue": "Neural computation, 9(8):1735–1780",
+   "volume": "9",
+   "issue": "8",
+   "pages": "1735-1780",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "S. Hochreiter and J. Schmidhuber. Long short-term memory. Neural computation, 9(8):1735–1780, 1997.",
+   "year_label": "1997",
+   "label": "15",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "jegou2011",
+   "type": "article",
+   "title": "Product quantization for nearest neighbor search",
+   "authors": [
+    "H. Jegou",
+    "M. Douze",
+    "C. Schmid"
+   ],
+   "year": "2011",
+   "venue": "TPAMI, 33",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "H. Jegou, M. Douze, and C. Schmid. Product quantization for nearest neighbor search. TPAMI, 33, 2011.",
+   "year_label": "2011",
+   "label": "17",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "jegou2012",
+   "type": "article",
+   "title": "Aggregating local image descriptors into compact codes",
+   "authors": [
+    "H. Jegou",
+    "F. Perronnin",
+    "M. Douze",
+    "J. Sanchez",
+    "P. Perez",
+    "C. Schmid"
+   ],
+   "year": "2012",
+   "venue": "TPAMI",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "H. Jegou, F. Perronnin, M. Douze, J. Sanchez, P. Perez, and C. Schmid. Aggregating local image descriptors into compact codes. TPAMI, 2012.",
+   "year_label": "2012",
+   "label": "18",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "jia2014",
+   "type": "article",
+   "title": "Caffe: Convolutional architecture for fast feature embedding",
+   "authors": [
+    "Y. Jia",
+    "E. Shelhamer",
+    "J. Donahue",
+    "S. Karayev",
+    "J. Long",
+    "R. Girshick",
+    "S. Guadarrama",
+    "T. Darrell"
+   ],
+   "year": "2014",
+   "venue": "arXiv:1408.5093",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1408.5093",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Y. Jia, E. Shelhamer, J. Donahue, S. Karayev, J. Long, R. Girshick, S. Guadarrama, and T. Darrell. Caffe: Convolutional architecture for fast feature embedding. arXiv:1408.5093, 2014.",
+   "year_label": "2014",
+   "label": "19",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "krizhevsky2009",
+   "type": "article",
+   "title": "Learning multiple layers of features from tiny images",
+   "authors": [
+    "A. Krizhevsky"
+   ],
+   "year": "2009",
+   "venue": "Tech Report",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "A. Krizhevsky. Learning multiple layers of features from tiny images. Tech Report, 2009.",
+   "year_label": "2009",
+   "label": "20",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "krizhevsky2012",
+   "type": "inproceedings",
+   "title": "Imagenet classification with deep convolutional neural networks",
+   "authors": [
+    "A. Krizhevsky",
+    "I. Sutskever",
+    "G. Hinton"
+   ],
+   "year": "2012",
+   "venue": "In NIPS",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "A. Krizhevsky, I. Sutskever, and G. Hinton. Imagenet classification with deep convolutional neural networks. In NIPS, 2012.",
+   "year_label": "2012",
+   "label": "21",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "lecun1989",
+   "type": "article",
+   "title": "Backpropagation applied to handwritten zip code recognition",
+   "authors": [
+    "Y. LeCun",
+    "B. Boser",
+    "J. S. Denker",
+    "D. Henderson",
+    "R. E. Howard",
+    "W. Hubbard",
+    "L. D. Jackel"
+   ],
+   "year": "1989",
+   "venue": "Neural computation",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Y. LeCun, B. Boser, J. S. Denker, D. Henderson, R. E. Howard, W. Hubbard, and L. D. Jackel. Backpropagation applied to handwritten zip code recognition. Neural computation, 1989.",
+   "year_label": "1989",
+   "label": "22",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "lecun1998",
+   "type": "article",
+   "title": "Efficient backprop",
+   "authors": [
+    "Y. LeCun",
+    "L. Bottou",
+    "G. B. Orr",
+    "K.-R. Muller"
+   ],
+   "year": "1998",
+   "venue": "In Neural Networks: Tricks of the Trade, pages 9–50",
+   "volume": "",
+   "issue": "",
+   "pages": "9-50",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "Y. LeCun, L. Bottou, G. B. Orr, and K.-R. Muller. Efficient backprop. In Neural Networks: Tricks of the Trade, pages 9–50. Springer, 1998.",
+   "year_label": "1998",
+   "label": "23",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "lee2014",
+   "type": "article",
+   "title": "Deeplysupervised nets",
+   "authors": [
+    "C.-Y. Lee",
+    "S. Xie",
+    "P. Gallagher",
+    "Z. Zhang",
+    "Z. Tu"
+   ],
+   "year": "2014",
+   "venue": "arXiv:1409.5185",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1409.5185",
+   "abstract": "",
+   "pdf": "",
+   "raw": "C.-Y. Lee, S. Xie, P. Gallagher, Z. Zhang, and Z. Tu. Deeplysupervised nets. arXiv:1409.5185, 2014.",
+   "year_label": "2014",
+   "label": "24",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "lin2013",
+   "type": "article",
+   "title": "Network in network",
+   "authors": [
+    "M. Lin",
+    "Q. Chen",
+    "S. Yan"
+   ],
+   "year": "2013",
+   "venue": "arXiv:1312.4400",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1312.4400",
+   "abstract": "",
+   "pdf": "",
+   "raw": "M. Lin, Q. Chen, and S. Yan. Network in network. arXiv:1312.4400, 2013.",
+   "year_label": "2013",
+   "label": "25",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "lin2014",
+   "type": "inproceedings",
+   "title": "Microsoft COCO: Common objects in context",
+   "authors": [
+    "T.-Y. Lin",
+    "M. Maire",
+    "S. Belongie",
+    "J. Hays",
+    "P. Perona",
+    "D. Ramanan",
+    "P. Dollar",
+    "C. L. Zitnick"
+   ],
+   "year": "2014",
+   "venue": "In ECCV",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft COCO: Common objects in context. In ECCV. 2014.",
+   "year_label": "2014",
+   "label": "26",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "long2015",
+   "type": "inproceedings",
+   "title": "Fully convolutional networks for semantic segmentation",
+   "authors": [
+    "J. Long",
+    "E. Shelhamer",
+    "T. Darrell"
+   ],
+   "year": "2015",
+   "venue": "In CVPR",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "J. Long, E. Shelhamer, and T. Darrell. Fully convolutional networks for semantic segmentation. In CVPR, 2015.",
+   "year_label": "2015",
+   "label": "27",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "montufar2014",
+   "type": "inproceedings",
+   "title": "On the number of linear regions of deep neural networks",
+   "authors": [
+    "G. Montufar",
+    "R. Pascanu",
+    "K. Cho",
+    "Y. Bengio"
+   ],
+   "year": "2014",
+   "venue": "In NIPS",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "G. Montufar, R. Pascanu, K. Cho, and Y. Bengio. On the number of linear regions of deep neural networks. In NIPS, 2014.",
+   "year_label": "2014",
+   "label": "28",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "nair2010",
+   "type": "inproceedings",
+   "title": "Rectified linear units improve restricted boltzmann machines",
+   "authors": [
+    "V. Nair",
+    "G. E. Hinton"
+   ],
+   "year": "2010",
+   "venue": "In ICML",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "V. Nair and G. E. Hinton. Rectified linear units improve restricted boltzmann machines. In ICML, 2010.",
+   "year_label": "2010",
+   "label": "29",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "perronnin2007",
+   "type": "inproceedings",
+   "title": "Fisher kernels on visual vocabularies for image categorization",
+   "authors": [
+    "F. Perronnin",
+    "C. Dance"
+   ],
+   "year": "2007",
+   "venue": "In CVPR",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "F. Perronnin and C. Dance. Fisher kernels on visual vocabularies for image categorization. In CVPR, 2007.",
+   "year_label": "2007",
+   "label": "30",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "raiko2012",
+   "type": "article",
+   "title": "Deep learning made easier by linear transformations in perceptrons",
+   "authors": [
+    "T. Raiko",
+    "H. Valpola",
+    "Y. LeCun"
+   ],
+   "year": "2012",
+   "venue": "In AISTATS",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "T. Raiko, H. Valpola, and Y. LeCun. Deep learning made easier by linear transformations in perceptrons. In AISTATS, 2012.",
+   "year_label": "2012",
+   "label": "31",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "ren2015",
+   "type": "inproceedings",
+   "title": "Faster R-CNN: Towards real-time object detection with region proposal networks",
+   "authors": [
+    "S. Ren",
+    "K. He",
+    "R. Girshick",
+    "J. Sun"
+   ],
+   "year": "2015",
+   "venue": "In NIPS",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "S. Ren, K. He, R. Girshick, and J. Sun. Faster R-CNN: Towards real-time object detection with region proposal networks. In NIPS, 2015.",
+   "year_label": "2015",
+   "label": "32",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "ren2015a",
+   "type": "article",
+   "title": "Object detection networks on convolutional feature maps",
+   "authors": [
+    "S. Ren",
+    "K. He",
+    "R. Girshick",
+    "X. Zhang",
+    "J. Sun"
+   ],
+   "year": "2015",
+   "venue": "arXiv:1504.06066",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1504.06066",
+   "abstract": "",
+   "pdf": "",
+   "raw": "S. Ren, K. He, R. Girshick, X. Zhang, and J. Sun. Object detection networks on convolutional feature maps. arXiv:1504.06066, 2015.",
+   "year_label": "2015",
+   "label": "33",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "ripley1996",
+   "type": "article",
+   "title": "Pattern recognition and neural networks",
+   "authors": [
+    "B. D. Ripley"
+   ],
+   "year": "1996",
+   "venue": "Cambridge university press",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "B. D. Ripley. Pattern recognition and neural networks. Cambridge university press, 1996.",
+   "year_label": "1996",
+   "label": "34",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "romero2015",
+   "type": "inproceedings",
+   "title": "Fitnets: Hints for thin deep nets",
+   "authors": [
+    "A. Romero",
+    "N. Ballas",
+    "S. E. Kahou",
+    "A. Chassang",
+    "C. Gatta",
+    "Y. Bengio"
+   ],
+   "year": "2015",
+   "venue": "In ICLR",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "A. Romero, N. Ballas, S. E. Kahou, A. Chassang, C. Gatta, and Y. Bengio. Fitnets: Hints for thin deep nets. In ICLR, 2015.",
+   "year_label": "2015",
+   "label": "35",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "russakovsky2014",
+   "type": "article",
+   "title": "Imagenet large scale visual recognition challenge",
+   "authors": [
+    "O. Russakovsky",
+    "J. Deng",
+    "H. Su",
+    "J. Krause",
+    "S. Satheesh",
+    "S. Ma",
+    "Z. Huang",
+    "A. Karpathy",
+    "A. Khosla",
+    "M. Bernstein"
+   ],
+   "year": "2014",
+   "venue": "arXiv:1409.0575",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1409.0575",
+   "abstract": "",
+   "pdf": "",
+   "raw": "O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang, A. Karpathy, A. Khosla, M. Bernstein, et al. Imagenet large scale visual recognition challenge. arXiv:1409.0575, 2014.",
+   "year_label": "2014",
+   "label": "36",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "saxe2013",
+   "type": "article",
+   "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks",
+   "authors": [
+    "A. M. Saxe",
+    "J. L. McClelland",
+    "S. Ganguli"
+   ],
+   "year": "2013",
+   "venue": "arXiv:1312.6120",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "1312.6120",
+   "abstract": "",
+   "pdf": "",
+   "raw": "A. M. Saxe, J. L. McClelland, and S. Ganguli. Exact solutions to the nonlinear dynamics of learning in deep linear neural networks. arXiv:1312.6120, 2013.",
+   "year_label": "2013",
+   "label": "37",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "schraudolph1998",
+   "type": "article",
+   "title": "Accelerated gradient descent by factor-centering decomposition",
+   "authors": [
+    "N. N. Schraudolph"
+   ],
+   "year": "1998",
+   "venue": "Technical report",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "N. N. Schraudolph. Accelerated gradient descent by factor-centering decomposition. Technical report, 1998.",
+   "year_label": "1998",
+   "label": "38",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "schraudolph1998a",
+   "type": "article",
+   "title": "Centering neural network gradient factors",
+   "authors": [
+    "N. N. Schraudolph"
+   ],
+   "year": "1998",
+   "venue": "In Neural Networks: Tricks of the Trade, pages 207–226",
+   "volume": "",
+   "issue": "",
+   "pages": "207-226",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "N. N. Schraudolph. Centering neural network gradient factors. In Neural Networks: Tricks of the Trade, pages 207–226. Springer, 1998.",
+   "year_label": "1998",
+   "label": "39",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "sermanet2014",
+   "type": "inproceedings",
+   "title": "Overfeat: Integrated recognition, localization and detection using convolutional networks",
+   "authors": [
+    "P. Sermanet",
+    "D. Eigen",
+    "X. Zhang",
+    "M. Mathieu",
+    "R. Fergus",
+    "Y. LeCun"
+   ],
+   "year": "2014",
+   "venue": "In ICLR",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "P. Sermanet, D. Eigen, X. Zhang, M. Mathieu, R. Fergus, and Y. LeCun. Overfeat: Integrated recognition, localization and detection using convolutional networks. In ICLR, 2014.",
+   "year_label": "2014",
+   "label": "40",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "szeliski1990",
+   "type": "article",
+   "title": "Fast surface interpolation using hierarchical basis functions",
+   "authors": [
+    "R. Szeliski"
+   ],
+   "year": "1990",
+   "venue": "TPAMI",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "R. Szeliski. Fast surface interpolation using hierarchical basis functions. TPAMI, 1990.",
+   "year_label": "1990",
+   "label": "45",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "szeliski2006",
+   "type": "article",
+   "title": "Locally adapted hierarchical basis preconditioning",
+   "authors": [
+    "R. Szeliski"
+   ],
+   "year": "2006",
+   "venue": "In SIGGRAPH",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "R. Szeliski. Locally adapted hierarchical basis preconditioning. In SIGGRAPH, 2006.",
+   "year_label": "2006",
+   "label": "46",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "vatanen2013",
+   "type": "article",
+   "title": "Pushing stochastic gradient towards second-order methods–backpropagation learning with transformations in nonlinearities",
+   "authors": [
+    "T. Vatanen",
+    "T. Raiko",
+    "H. Valpola",
+    "Y. LeCun"
+   ],
+   "year": "2013",
+   "venue": "In Neural Information Processing",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "T. Vatanen, T. Raiko, H. Valpola, and Y. LeCun. Pushing stochastic gradient towards second-order methods–backpropagation learning with transformations in nonlinearities. In Neural Information Processing, 2013.",
+   "year_label": "2013",
+   "label": "47",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
+  },
+  {
+   "key": "vedaldi2008",
+   "type": "misc",
+   "title": "VLFeat: An open and portable library of computer vision algorithms, 2008",
+   "authors": [
+    "A. Vedaldi",
+    "B. Fulkerson"
+   ],
+   "year": "2008",
+   "venue": "",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "A. Vedaldi and B. Fulkerson. VLFeat: An open and portable library of computer vision algorithms, 2008.",
+   "year_label": "2008",
+   "label": "48",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": [
+    "venue"
+   ]
+  },
+  {
+   "key": "venables1999",
+   "type": "misc",
+   "title": "Modern applied statistics with s-plus",
+   "authors": [
+    "W. Venables",
+    "B. Ripley"
+   ],
+   "year": "1999",
+   "venue": "",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "W. Venables and B. Ripley. Modern applied statistics with s-plus. 1999.",
+   "year_label": "1999",
+   "label": "49",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": [
+    "venue"
+   ]
+  },
+  {
+   "key": "zeiler2014",
+   "type": "inproceedings",
+   "title": "Visualizing and understanding convolutional neural networks",
+   "authors": [
+    "M. D. Zeiler",
+    "R. Fergus"
+   ],
+   "year": "2014",
+   "venue": "In ECCV",
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "doi": "",
+   "url": "",
+   "arxiv": "",
+   "abstract": "",
+   "pdf": "",
+   "raw": "M. D. Zeiler and R. Fergus. Visualizing and understanding convolutional neural networks. In ECCV, 2014.",
+   "year_label": "2014",
+   "label": "50",
+   "source_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "meta_from_reflist": true,
+   "label_doc": "self",
+   "reflist_of": "own paper",
+   "missing_fields": []
   }
  ],
  "style": "gbt7714",
@@ -124,7 +1420,12 @@
  },
  "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\task.md",
  "case_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\case.json",
- "problems": [],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
  "missing": [],
  "src_status": {
   "self": {
@@ -142,19 +1443,199 @@
   },
   "simonyan2015": {
    "path": null,
-   "text": "abstract_only"
+   "text": "abstract+citing_context"
   },
   "srivastava2015": {
    "path": null,
-   "text": "abstract_only"
+   "text": "abstract+citing_context"
   },
   "szegedy2015": {
    "path": null,
-   "text": "metadata_only"
+   "text": "citing_context"
   },
   "zhou2016": {
    "path": null,
    "text": "metadata_only"
+  },
+  "bengio1994": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "bishop1995": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "briggs2000": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "chatfield2011": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "everingham2010": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "gidaris2015": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "girshick2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "girshick2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "glorot2010": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "goodfellow2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "he2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "he2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "he2015a": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "hinton2012": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "hochreiter1997": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "jegou2011": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "jegou2012": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "jia2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "krizhevsky2009": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "krizhevsky2012": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lecun1989": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lecun1998": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lee2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lin2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lin2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "long2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "montufar2014": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "nair2010": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "perronnin2007": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "raiko2012": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "ren2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "ren2015a": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "ripley1996": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "romero2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "russakovsky2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "saxe2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "schraudolph1998": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "schraudolph1998a": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "sermanet2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "szeliski1990": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "szeliski2006": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "vatanen2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "vedaldi2008": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "venables1999": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "zeiler2014": {
+   "path": null,
+   "text": "citing_context"
   }
  },
  "inputs": {

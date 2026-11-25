@@ -1,0 +1,69 @@
+[
+ {
+  "id": "k1",
+  "text": "We show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:6",
+    "page": 1,
+    "quote": "The loss scales as a power-law with model size, dataset size, and the amount of compute used for training, with some trends spanning more than seven orders of magnitude.",
+    "verified": true
+   },
+   {
+    "loc": "Figure 1",
+    "quote": "Language modeling performance improves smoothly",
+    "page": 3,
+    "match": 1.0,
+    "verified": true,
+    "loc_exists": true
+   }
+  ]
+ },
+ {
+  "id": "k2",
+  "text": "We find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p3:21",
+    "page": 3,
+    "quote": "Performance depends strongly on scale, weakly on model shape: Model performance depends most strongly on scale, which consists of three factors: the number of model parameters N (excluding embeddings), the size of the dataset D, and the amount of compute C used for training.",
+    "verified": true
+   },
+   {
+    "id": "E:self:p3:26",
+    "page": 3,
+    "quote": "The performance penalty depends predictably on the ratio N 0.74/D, meaning that every time we increase the model size 8x, we only need to increase the data by roughly 5x to avoid a penalty.",
+    "verified": true
+   }
+  ]
+ },
+ {
+  "id": "k3",
+  "text": "Under a fixed compute budget, the best performance comes from training very large models and stopping well before convergence.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p3:31",
+    "page": 3,
+    "quote": "Convergence is inefficient: When working within a fixed compute budget C but without any other restrictions on the model size N or available data D, we attain optimal performance by training very large models and stopping significantly short of convergence (see Figure 3).",
+    "verified": true
+   },
+   {
+    "loc": "Figure 3",
+    "quote": "optimal",
+    "page": 1,
+    "match": 1.0,
+    "verified": true,
+    "loc_exists": true
+   }
+  ]
+ }
+]

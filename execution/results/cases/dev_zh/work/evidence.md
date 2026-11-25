@@ -1,19 +1,68 @@
-# Evidence tables (intro-gap-ledger 0.1.0)
+# Evidence tables (intro-gap-ledger 0.2.1)
 
 language: zh | style: gbt7714 | case: dev_zh_residual | own paper: C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\tests\cases\dev_zh\input\本文_resnet.pdf
 
 Cite only keys listed here. Use evidence ids (E:<key>:p<page>:<n>) in plan.json; quote them, do not paraphrase numbers.
 More sentences: `irw.py find --work W --source <key> --query "..."`.
 
+## parse problems
+
+- reference lists: 45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission
+
 ## Library
 
 | key | year | first author | title | venue | text | missing |
 |-|-|-|-|-|-|-|
 | ioffe2015 | 2015 | Ioffe, Sergey | Batch normalization: Accelerating deep network training by reducing internal covariate shi… | Proceedings of the 32nd International Co… | full_text | - |
-| simonyan2015 | 2015 | Simonyan, Karen | Very deep convolutional networks for large-scale image recognition | International Conference on Learning Rep… | abstract_only | - |
-| srivastava2015 | 2015 | Srivastava, Rupesh K. | Training very deep networks | Advances in Neural Information Processin… | abstract_only | - |
-| szegedy2015 | 2015 | Szegedy, Christian | Going deeper with convolutions | Proceedings of the IEEE Conference on Co… | metadata_only | - |
+| simonyan2015 | 2015 | Simonyan, Karen | Very deep convolutional networks for large-scale image recognition | International Conference on Learning Rep… | abstract+citing_context | - |
+| srivastava2015 | 2015 | Srivastava, Rupesh K. | Training very deep networks | Advances in Neural Information Processin… | abstract+citing_context | - |
+| szegedy2015 | 2015 | Szegedy, Christian | Going deeper with convolutions | Proceedings of the IEEE Conference on Co… | citing_context | - |
 | zhou2016 | 2016 | 周志华 | 机器学习 | 清华大学出版社 | metadata_only | - |
+| bengio1994 | 1994 | Y. Bengio | Learning long-term dependencies with gradient descent is difficult | IEEE Transactions on Neural Networks, 5(… | citing_context | - |
+| bishop1995 | 1995 | C. M. Bishop | Neural networks for pattern recognition | Oxford university press | citing_context | - |
+| briggs2000 | 2000 | W. L. Briggs | A Multigrid Tutorial | Siam | citing_context | - |
+| chatfield2011 | 2011 | K. Chatfield | The devil is in the details: an evaluation of recent feature encoding methods | In BMVC | citing_context | - |
+| everingham2010 | 2010 | M. Everingham | The Pascal Visual Object Classes (VOC) Challenge | IJCV, pages 303–338 | citing_context | - |
+| gidaris2015 | 2015 | S. Gidaris | Object detection via a multi-region & semantic segmentation-aware cnn model | In ICCV | metadata_only | - |
+| girshick2015 | 2015 | R. Girshick | Fast R-CNN. In ICCV, 2015 |  | citing_context | venue |
+| girshick2014 | 2014 | R. Girshick | Rich feature hierarchies for accurate object detection and semantic segmentation | In CVPR | citing_context | - |
+| glorot2010 | 2010 | X. Glorot | Understanding the difficulty of training deep feedforward neural networks | In AISTATS | citing_context | - |
+| goodfellow2013 | 2013 | I. J. Goodfellow | Maxout networks | arXiv:1302.4389 | citing_context | - |
+| he2015 | 2015 | K. He | Convolutional neural networks at constrained time cost | In CVPR | citing_context | - |
+| he2014 | 2014 | K. He | Spatial pyramid pooling in deep convolutional networks for visual recognition | In ECCV | citing_context | - |
+| he2015a | 2015 | K. He | Delving deep into rectifiers: Surpassing human-level performance on imagenet classificatio… | In ICCV | citing_context | - |
+| hinton2012 | 2012 | G. E. Hinton | Improving neural networks by preventing coadaptation of feature detectors | arXiv:1207.0580 | citing_context | - |
+| hochreiter1997 | 1997 | S. Hochreiter | Long short-term memory | Neural computation, 9(8):1735–1780 | citing_context | - |
+| jegou2011 | 2011 | H. Jegou | Product quantization for nearest neighbor search | TPAMI, 33 | citing_context | - |
+| jegou2012 | 2012 | H. Jegou | Aggregating local image descriptors into compact codes | TPAMI | citing_context | - |
+| jia2014 | 2014 | Y. Jia | Caffe: Convolutional architecture for fast feature embedding | arXiv:1408.5093 | citing_context | - |
+| krizhevsky2009 | 2009 | A. Krizhevsky | Learning multiple layers of features from tiny images | Tech Report | citing_context | - |
+| krizhevsky2012 | 2012 | A. Krizhevsky | Imagenet classification with deep convolutional neural networks | In NIPS | citing_context | - |
+| lecun1989 | 1989 | Y. LeCun | Backpropagation applied to handwritten zip code recognition | Neural computation | citing_context | - |
+| lecun1998 | 1998 | Y. LeCun | Efficient backprop | In Neural Networks: Tricks of the Trade,… | citing_context | - |
+| lee2014 | 2014 | C.-Y. Lee | Deeplysupervised nets | arXiv:1409.5185 | citing_context | - |
+| lin2013 | 2013 | M. Lin | Network in network | arXiv:1312.4400 | citing_context | - |
+| lin2014 | 2014 | T.-Y. Lin | Microsoft COCO: Common objects in context | In ECCV | citing_context | - |
+| long2015 | 2015 | J. Long | Fully convolutional networks for semantic segmentation | In CVPR | citing_context | - |
+| montufar2014 | 2014 | G. Montufar | On the number of linear regions of deep neural networks | In NIPS | metadata_only | - |
+| nair2010 | 2010 | V. Nair | Rectified linear units improve restricted boltzmann machines | In ICML | citing_context | - |
+| perronnin2007 | 2007 | F. Perronnin | Fisher kernels on visual vocabularies for image categorization | In CVPR | citing_context | - |
+| raiko2012 | 2012 | T. Raiko | Deep learning made easier by linear transformations in perceptrons | In AISTATS | citing_context | - |
+| ren2015 | 2015 | S. Ren | Faster R-CNN: Towards real-time object detection with region proposal networks | In NIPS | citing_context | - |
+| ren2015a | 2015 | S. Ren | Object detection networks on convolutional feature maps | arXiv:1504.06066 | metadata_only | - |
+| ripley1996 | 1996 | B. D. Ripley | Pattern recognition and neural networks | Cambridge university press | citing_context | - |
+| romero2015 | 2015 | A. Romero | Fitnets: Hints for thin deep nets | In ICLR | citing_context | - |
+| russakovsky2014 | 2014 | O. Russakovsky | Imagenet large scale visual recognition challenge | arXiv:1409.0575 | citing_context | - |
+| saxe2013 | 2013 | A. M. Saxe | Exact solutions to the nonlinear dynamics of learning in deep linear neural networks | arXiv:1312.6120 | citing_context | - |
+| schraudolph1998 | 1998 | N. N. Schraudolph | Accelerated gradient descent by factor-centering decomposition | Technical report | citing_context | - |
+| schraudolph1998a | 1998 | N. N. Schraudolph | Centering neural network gradient factors | In Neural Networks: Tricks of the Trade,… | citing_context | - |
+| sermanet2014 | 2014 | P. Sermanet | Overfeat: Integrated recognition, localization and detection using convolutional networks | In ICLR | citing_context | - |
+| szeliski1990 | 1990 | R. Szeliski | Fast surface interpolation using hierarchical basis functions | TPAMI | citing_context | - |
+| szeliski2006 | 2006 | R. Szeliski | Locally adapted hierarchical basis preconditioning | In SIGGRAPH | citing_context | - |
+| vatanen2013 | 2013 | T. Vatanen | Pushing stochastic gradient towards second-order methods–backpropagation learning with tra… | In Neural Information Processing | citing_context | - |
+| vedaldi2008 | 2008 | A. Vedaldi | VLFeat: An open and portable library of computer vision algorithms, 2008 |  | citing_context | venue |
+| venables1999 | 1999 | W. Venables | Modern applied statistics with s-plus |  | citing_context | venue |
+| zeiler2014 | 2014 | M. D. Zeiler | Visualizing and understanding convolutional neural networks | In ECCV | citing_context | - |
 
 ## OWN PAPER (self) - contributions must map to these
 
@@ -143,7 +192,7 @@ abstract: deeper neural networks are more difficult to train. we present a resid
 - E:self:p6:183: When the net is “not overly deep” (18 layers here), the current SGD solver is still able to find good solutions to the plain net.
 - E:self:p6:188: Right: a “bottleneck” building block for ResNet-50/101/152. parameter-free, identity shortcuts help with training.
 
-## [ioffe2015] Batch normalization: Accelerating deep network training by reducing internal covariate shift (2015)
+## [ioffe2015] Batch normalization: Accelerating deep network training by reducing internal covariate shift (2015) - evidence: full_text
 
 abstract: training deep neural networks is complicated by the fact that the distribution of each layer's inputs changes during training, as the parameters of the previous layers change. this slows down the training by requiring lower learning rates and careful parameter initialization, and makes it notoriously hard to train models with saturating nonlinearities. we refer to this phenomenon as internal covariate shift, and address the problem by normalizing layer inputs. our method draws its strength from making normalization a part of the model architecture and performing the normalization for each training mini-batch. batch normalization allows us to use much higher learning rates and be less careful about initialization. it also acts as a regularizer, in some cases eliminating the need for dropout. applied to a state-of-the-art image classification model, batch normalization achieves the same ac…
 
@@ -191,18 +240,226 @@ limitations/assumptions:
 - E:ioffe2015:p4:111: Neglecting ǫ, these normalized activations have the same mean 0 and variance 1 as during training.
 - E:ioffe2015:p5:128: Note that, since we normalize Wu+b, the bias b can be ignored since its effect will be canceled by the subsequent mean subtraction (the role of the bias is subsumed by β in Alg.
 
-## [simonyan2015] Very deep convolutional networks for large-scale image recognition (2015)
+## [simonyan2015] Very deep convolutional networks for large-scale image recognition (2015) - evidence: abstract+citing_context
 
-claims/results:
 - E:simonyan2015:p1:1: In this work we investigate the effect of the convolutional network depth on its accuracy in the large-scale image recognition setting.
-- E:simonyan2015:p1:2: Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achi…
+- E:simonyan2015:p1:2: Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 1…
+- E:simonyan2015:p1:4: [own paper p1] Recent evidence [41, 44] reveals that network depth is of crucial importance, and the leading results [41, 44, 13, 16] on the challenging ImageNet dataset [36] all exploit “very deep” [41] models, with a depth of sixteen [41] to thirty [16].
+- E:simonyan2015:p1:6: [own paper p3] Our plain baselines (Fig. 3, middle) are mainly inspired by the philosophy of VGG nets [41] (Fig. 3, left).
+- E:simonyan2015:p1:7: [own paper p3] It is worth noticing that our model has fewer filters and lower complexity than VGG nets [41] (Fig. 3, left).
+- E:simonyan2015:p1:8: [own paper p4] Left: the VGG-19 model [41] (19.6 billion FLOPs) as a reference.
+- E:simonyan2015:p1:3: [own paper p1] On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers—8× deeper than VGG nets [41] but still having lower complexity.
+- E:simonyan2015:p1:5: [own paper p2] Our 152layer residual net is the deepest network ever presented on ImageNet, while still having lower complexity than VGG nets [41].
 
-limitations/assumptions:
+## [srivastava2015] Training very deep networks (2015) - evidence: abstract+citing_context
 
-## [srivastava2015] Training very deep networks (2015)
-
-claims/results:
+- E:srivastava2015:p1:1: Theoretical and empirical evidence indicates that the depth of neural networks is crucial for their success.
 - E:srivastava2015:p1:3: Here we introduce a new architecture designed to overcome this.
-
-limitations/assumptions:
+- E:srivastava2015:p1:4: Our so-called highway networks allow unimpeded information flow across many layers on information highways.
+- E:srivastava2015:p1:5: They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow.
+- E:srivastava2015:p1:6: Even with hundreds of layers, highway networks can be trained directly through simple gradient descent.
+- E:srivastava2015:p1:8: [own paper p2] Concurrent with our work, “highway networks” [42, 43] present shortcut connections with gating functions [15].
+- E:srivastava2015:p1:10: [own paper p8] networks such as FitNet [35] and Highway [42] (Table 6), yet is among the state-of-the-art results (6.43%, Table 6).
 - E:srivastava2015:p1:2: However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem.
+
+## [szegedy2015] Going deeper with convolutions (2015) - evidence: citing_context
+
+- E:szegedy2015:p1:1: [own paper p1] Recent evidence [41, 44] reveals that network depth is of crucial importance, and the leading results [41, 44, 13, 16] on the challenging ImageNet dataset [36] all exploit “very deep” [41] models, with a depth of sixteen [41] to thirty [16].
+- E:szegedy2015:p1:2: [own paper p2] In [44, 24], a few intermediate layers are directly connected to auxiliary classifiers for addressing vanishing/exploding gradients.
+- E:szegedy2015:p1:3: [own paper p2] In [44], an “inception” layer is composed of a shortcut branch and a few deeper branches.
+- E:szegedy2015:p1:4: [own paper p6] GoogLeNet [44] (ILSVRC’14) [own paper p6] (test) VGG [41] (ILSVRC’14) 7.32 GoogLeNet [44] (ILSVRC’14) 6.66 VGG [41] (v5) 6.8 PReLU-net [13] 4.94 BN-inception [16] 4.82 ResNet (ILSVRC’15) 3.57
+
+## [bengio1994] Learning long-term dependencies with gradient descent is difficult (1994) - evidence: citing_context
+
+- E:bengio1994:p1:1: [own paper p1] An obstacle to answering this question was the notorious problem of vanishing/exploding gradients [1, 9], which hamper convergence from the beginning.
+
+## [bishop1995] Neural networks for pattern recognition (1995) - evidence: citing_context
+
+- E:bishop1995:p1:1: [own paper p2] Shortcut connections [2, 34, 49] are those skipping one or more layers.
+- E:bishop1995:p1:2: [own paper p2] Practices and theories that lead to shortcut connections [2, 34, 49] have been studied for a long time.
+
+## [briggs2000] A Multigrid Tutorial (2000) - evidence: citing_context
+
+- E:briggs2000:p1:1: [own paper p2] In low-level vision and computer graphics, for solving Partial Differential Equations (PDEs), the widely used Multigrid method [3] reformulates the system as subproblems at multiple scales, where each subproblem is responsible for the residual s…
+- E:briggs2000:p1:2: [own paper p2] It has been shown [3, 45, 46] that these solvers converge much faster than standard solvers that are unaware of the residual nature of the solutions.
+
+## [chatfield2011] The devil is in the details: an evaluation of recent feature encoding methods (2011) - evidence: citing_context
+
+- E:chatfield2011:p1:1: [own paper p2] Both of them are powerful shallow representations for image retrieval and classification [4, 48].
+
+## [everingham2010] The Pascal Visual Object Classes (VOC) Challenge (2010) - evidence: citing_context
+
+- E:everingham2010:p1:1: [own paper p8] Table 7 and 8 show the object detection baseline results on PASCAL VOC 2007 and 2012 [5] and COCO [26].
+
+## [girshick2015] Fast R-CNN. In ICCV, 2015 (2015) - evidence: citing_context
+
+- E:girshick2015:p1:1: [own paper p1] Many other nontrivial visual recognition tasks [8, 12, 7, 32, 27] have also
+
+## [girshick2014] Rich feature hierarchies for accurate object detection and semantic segmentation (2014) - evidence: citing_context
+
+- E:girshick2014:p1:1: [own paper p1] Many other nontrivial visual recognition tasks [8, 12, 7, 32, 27] have also
+
+## [glorot2010] Understanding the difficulty of training deep feedforward neural networks (2010) - evidence: citing_context
+
+- E:glorot2010:p1:1: [own paper p1] An obstacle to answering this question was the notorious problem of vanishing/exploding gradients [1, 9], which hamper convergence from the beginning.
+- E:glorot2010:p1:2: [own paper p1] This problem, however, has been largely addressed by normalized initialization [23, 9, 37, 13] and intermediate normalization layers [16], which enable networks with tens of layers to start converging for stochastic gradient descent (SGD) with b…
+
+## [goodfellow2013] Maxout networks (2013) - evidence: citing_context
+
+- E:goodfellow2013:p1:1: [own paper p7] method error (%) Maxout [10] 9.38 NIN [25] 8.81 DSN [24] 8.22 [own paper p8] Strong regularization such as maxout [10] or dropout [14] is applied to obtain the best results ([10, 25, 24, 35]) on this dataset.
+
+## [he2015] Convolutional neural networks at constrained time cost (2015) - evidence: citing_context
+
+- E:he2015:p1:1: [own paper p1] Unexpectedly, such degradation is not caused by overfitting, and adding more layers to a suitably deep model leads to higher training error, as reported in [11, 42] and thoroughly verified by our experiments.
+
+## [he2014] Spatial pyramid pooling in deep convolutional networks for visual recognition (2014) - evidence: citing_context
+
+- E:he2014:p1:1: [own paper p1] Many other nontrivial visual recognition tasks [8, 12, 7, 32, 27] have also
+
+## [he2015a] Delving deep into rectifiers: Surpassing human-level performance on imagenet classification (2015) - evidence: citing_context
+
+- E:he2015a:p1:1: [own paper p1] Recent evidence [41, 44] reveals that network depth is of crucial importance, and the leading results [41, 44, 13, 16] on the challenging ImageNet dataset [36] all exploit “very deep” [41] models, with a depth of sixteen [41] to thirty [16].
+- E:he2015a:p1:3: [own paper p4] We initialize the weights as in [13] and train all plain/residual nets from scratch.
+- E:he2015a:p1:4: [own paper p4] For best results, we adopt the fullyconvolutional form as in [41, 13], and average the scores at multiple scales (images are resized such that the shorter side is in {224, 256, 384, 480, 640}).
+- E:he2015a:p1:5: [own paper p6] PReLU-net [13] 24.27 7.38 [own paper p6] (test) VGG [41] (ILSVRC’14) 7.32 GoogLeNet [44] (ILSVRC’14) 6.66 VGG [41] (v5) 6.8 PReLU-net [13] 4.94 BN-inception [16] 4.82 ResNet (ILSVRC’15) 3.57
+- E:he2015a:p1:2: [own paper p1] This problem, however, has been largely addressed by normalized initialization [23, 9, 37, 13] and intermediate normalization layers [16], which enable networks with tens of layers to start converging for stochastic gradient descent (SGD) with b…
+
+## [hinton2012] Improving neural networks by preventing coadaptation of feature detectors (2012) - evidence: citing_context
+
+- E:hinton2012:p1:2: [own paper p8] Strong regularization such as maxout [10] or dropout [14] is applied to obtain the best results ([10, 25, 24, 35]) on this dataset.
+- E:hinton2012:p1:1: [own paper p4] We do not use dropout [14], following the practice in [16].
+
+## [hochreiter1997] Long short-term memory (1997) - evidence: citing_context
+
+- E:hochreiter1997:p1:1: [own paper p2] Concurrent with our work, “highway networks” [42, 43] present shortcut connections with gating functions [15].
+
+## [jegou2011] Product quantization for nearest neighbor search (2011) - evidence: citing_context
+
+- E:jegou2011:p1:1: [own paper p2] For vector quantization, encoding residual vectors [17] is shown to be more effective than encoding original vectors.
+
+## [jegou2012] Aggregating local image descriptors into compact codes (2012) - evidence: citing_context
+
+- E:jegou2012:p1:1: [own paper p2] In image recognition, VLAD [18] is a representation that encodes by the residual vectors with respect to a dictionary, and Fisher Vector [30] can be formulated as a probabilistic version [18] of VLAD.
+
+## [jia2014] Caffe: Convolutional architecture for fast feature embedding (2014) - evidence: citing_context
+
+- E:jia2014:p1:1: [own paper p2] The entire network can still be trained end-to-end by SGD with backpropagation, and can be easily implemented using common libraries (e.g., Caffe [19]) without modifying the solvers.
+
+## [krizhevsky2009] Learning multiple layers of features from tiny images (2009) - evidence: citing_context
+
+- E:krizhevsky2009:p1:2: [own paper p7] We conducted more studies on the CIFAR-10 dataset [20], which consists of 50k training images and 10k testing images in 10 classes.
+- E:krizhevsky2009:p1:1: [own paper p2] Similar phenomena are also shown on the CIFAR-10 set [20], suggesting that the optimization difficulties and the effects of our method are not just akin to a particular dataset.
+
+## [krizhevsky2012] Imagenet classification with deep convolutional neural networks (2012) - evidence: citing_context
+
+- E:krizhevsky2012:p1:1: [own paper p1] Deep convolutional neural networks [22, 21] have led to a series of breakthroughs for image classification [21, 50, 40].
+- E:krizhevsky2012:p1:2: [own paper p4] Our implementation for ImageNet follows the practice in [21, 41].
+- E:krizhevsky2012:p1:3: [own paper p4] A 224×224 crop is randomly sampled from an image or its horizontal flip, with the per-pixel mean subtracted [21].
+- E:krizhevsky2012:p1:4: [own paper p4] The standard color augmentation in [21] is used.
+- E:krizhevsky2012:p1:5: [own paper p4] In testing, for comparison studies we adopt the standard 10-crop testing [21].
+
+## [lecun1989] Backpropagation applied to handwritten zip code recognition (1989) - evidence: citing_context
+
+- E:lecun1989:p1:1: [own paper p1] Deep convolutional neural networks [22, 21] have led to a series of breakthroughs for image classification [21, 50, 40].
+- E:lecun1989:p1:2: [own paper p1] This problem, however, has been largely addressed by normalized initialization [23, 9, 37, 13] and intermediate normalization layers [16], which enable networks with tens of layers to start converging for stochastic gradient descent (SGD) with b…
+
+## [lecun1998] Efficient backprop (1998) - evidence: citing_context
+
+- E:lecun1998:p1:1: [own paper p1] This problem, however, has been largely addressed by normalized initialization [23, 9, 37, 13] and intermediate normalization layers [16], which enable networks with tens of layers to start converging for stochastic gradient descent (SGD) with b…
+
+## [lee2014] Deeplysupervised nets (2014) - evidence: citing_context
+
+- E:lee2014:p1:1: [own paper p2] In [44, 24], a few intermediate layers are directly connected to auxiliary classifiers for addressing vanishing/exploding gradients.
+- E:lee2014:p1:2: [own paper p7] method error (%) Maxout [10] 9.38 NIN [25] 8.81 DSN [24] 8.22 [own paper p7] We follow the simple data augmentation in [24] for training: 4 pixels are padded on each side, and a 32×32 crop is randomly sampled from the padded image or its horizon…
+- E:lee2014:p1:3: [own paper p8] Strong regularization such as maxout [10] or dropout [14] is applied to obtain the best results ([10, 25, 24, 35]) on this dataset.
+
+## [lin2013] Network in network (2013) - evidence: citing_context
+
+- E:lin2013:p1:1: [own paper p7] method error (%) Maxout [10] 9.38 NIN [25] 8.81 DSN [24] 8.22 [own paper p8] Strong regularization such as maxout [10] or dropout [14] is applied to obtain the best results ([10, 25, 24, 35]) on this dataset.
+
+## [lin2014] Microsoft COCO: Common objects in context (2014) - evidence: citing_context
+
+- E:lin2014:p1:1: [own paper p8] Table 7 and 8 show the object detection baseline results on PASCAL VOC 2007 and 2012 [5] and COCO [26].
+
+## [long2015] Fully convolutional networks for semantic segmentation (2015) - evidence: citing_context
+
+- E:long2015:p1:1: [own paper p1] Many other nontrivial visual recognition tasks [8, 12, 7, 32, 27] have also
+
+## [nair2010] Rectified linear units improve restricted boltzmann machines (2010) - evidence: citing_context
+
+- E:nair2010:p1:1: [own paper p3] ReLU [29] and the biases are omitted for simplifying notations.
+
+## [perronnin2007] Fisher kernels on visual vocabularies for image categorization (2007) - evidence: citing_context
+
+- E:perronnin2007:p1:1: [own paper p2] In image recognition, VLAD [18] is a representation that encodes by the residual vectors with respect to a dictionary, and Fisher Vector [30] can be formulated as a probabilistic version [18] of VLAD.
+
+## [raiko2012] Deep learning made easier by linear transformations in perceptrons (2012) - evidence: citing_context
+
+- E:raiko2012:p1:1: [own paper p2] The papers of [39, 38, 31, 47] propose methods for centering layer responses, gradients, and propagated errors, implemented by shortcut connections.
+
+## [ren2015] Faster R-CNN: Towards real-time object detection with region proposal networks (2015) - evidence: citing_context
+
+- E:ren2015:p1:1: [own paper p1] Many other nontrivial visual recognition tasks [8, 12, 7, 32, 27] have also [own paper p8] We adopt Faster R-CNN [32] as the detection method.
+
+## [ripley1996] Pattern recognition and neural networks (1996) - evidence: citing_context
+
+- E:ripley1996:p1:1: [own paper p2] Shortcut connections [2, 34, 49] are those skipping one or more layers.
+- E:ripley1996:p1:2: [own paper p2] Practices and theories that lead to shortcut connections [2, 34, 49] have been studied for a long time.
+- E:ripley1996:p1:3: [own paper p2] An early practice of training multi-layer perceptrons (MLPs) is to add a linear layer connected from the network input to the output [34, 49].
+
+## [romero2015] Fitnets: Hints for thin deep nets (2015) - evidence: citing_context
+
+- E:romero2015:p1:1: [own paper p8] networks such as FitNet [35] and Highway [42] (Table 6), yet is among the state-of-the-art results (6.43%, Table 6).
+- E:romero2015:p1:2: [own paper p8] Strong regularization such as maxout [10] or dropout [14] is applied to obtain the best results ([10, 25, 24, 35]) on this dataset.
+
+## [russakovsky2014] Imagenet large scale visual recognition challenge (2014) - evidence: citing_context
+
+- E:russakovsky2014:p1:1: [own paper p1] Recent evidence [41, 44] reveals that network depth is of crucial importance, and the leading results [41, 44, 13, 16] on the challenging ImageNet dataset [36] all exploit “very deep” [41] models, with a depth of sixteen [41] to thirty [16].
+- E:russakovsky2014:p1:3: [own paper p2] On the ImageNet classification dataset [36], we obtain excellent results by extremely deep residual nets.
+- E:russakovsky2014:p1:4: [own paper p4] We evaluate our method on the ImageNet 2012 classification dataset [36] that consists of 1000 classes.
+- E:russakovsky2014:p1:2: [own paper p2] We present comprehensive experiments on ImageNet [36] to show the degradation problem and evaluate our method.
+
+## [saxe2013] Exact solutions to the nonlinear dynamics of learning in deep linear neural networks (2013) - evidence: citing_context
+
+- E:saxe2013:p1:1: [own paper p1] This problem, however, has been largely addressed by normalized initialization [23, 9, 37, 13] and intermediate normalization layers [16], which enable networks with tens of layers to start converging for stochastic gradient descent (SGD) with b…
+
+## [schraudolph1998] Accelerated gradient descent by factor-centering decomposition (1998) - evidence: citing_context
+
+- E:schraudolph1998:p1:1: [own paper p2] The papers of [39, 38, 31, 47] propose methods for centering layer responses, gradients, and propagated errors, implemented by shortcut connections.
+
+## [schraudolph1998a] Centering neural network gradient factors (1998) - evidence: citing_context
+
+- E:schraudolph1998a:p1:1: [own paper p2] The papers of [39, 38, 31, 47] propose methods for centering layer responses, gradients, and propagated errors, implemented by shortcut connections.
+
+## [sermanet2014] Overfeat: Integrated recognition, localization and detection using convolutional networks (2014) - evidence: citing_context
+
+- E:sermanet2014:p1:1: [own paper p1] Deep convolutional neural networks [22, 21] have led to a series of breakthroughs for image classification [21, 50, 40].
+
+## [szeliski1990] Fast surface interpolation using hierarchical basis functions (1990) - evidence: citing_context
+
+- E:szeliski1990:p1:1: [own paper p2] An alternative to Multigrid is hierarchical basis preconditioning [45, 46], which relies on variables that represent residual vectors between two scales.
+- E:szeliski1990:p1:2: [own paper p2] It has been shown [3, 45, 46] that these solvers converge much faster than standard solvers that are unaware of the residual nature of the solutions.
+
+## [szeliski2006] Locally adapted hierarchical basis preconditioning (2006) - evidence: citing_context
+
+- E:szeliski2006:p1:1: [own paper p2] An alternative to Multigrid is hierarchical basis preconditioning [45, 46], which relies on variables that represent residual vectors between two scales.
+- E:szeliski2006:p1:2: [own paper p2] It has been shown [3, 45, 46] that these solvers converge much faster than standard solvers that are unaware of the residual nature of the solutions.
+
+## [vatanen2013] Pushing stochastic gradient towards second-order methods–backpropagation learning with transformations in nonlinearities (2013) - evidence: citing_context
+
+- E:vatanen2013:p1:1: [own paper p2] The papers of [39, 38, 31, 47] propose methods for centering layer responses, gradients, and propagated errors, implemented by shortcut connections.
+
+## [vedaldi2008] VLFeat: An open and portable library of computer vision algorithms, 2008 (2008) - evidence: citing_context
+
+- E:vedaldi2008:p1:1: [own paper p2] Both of them are powerful shallow representations for image retrieval and classification [4, 48].
+
+## [venables1999] Modern applied statistics with s-plus (1999) - evidence: citing_context
+
+- E:venables1999:p1:1: [own paper p2] Shortcut connections [2, 34, 49] are those skipping one or more layers.
+- E:venables1999:p1:2: [own paper p2] Practices and theories that lead to shortcut connections [2, 34, 49] have been studied for a long time.
+- E:venables1999:p1:3: [own paper p2] An early practice of training multi-layer perceptrons (MLPs) is to add a linear layer connected from the network input to the output [34, 49].
+
+## [zeiler2014] Visualizing and understanding convolutional neural networks (2014) - evidence: citing_context
+
+- E:zeiler2014:p1:1: [own paper p1] Deep convolutional neural networks [22, 21] have led to a series of breakthroughs for image classification [21, 50, 40].
+- E:zeiler2014:p1:2: [own paper p1] Deep networks naturally integrate low/mid/highlevel features [50] and classifiers in an end-to-end multilayer fashion, and the “levels” of features can be enriched by the number of stacked layers (depth).

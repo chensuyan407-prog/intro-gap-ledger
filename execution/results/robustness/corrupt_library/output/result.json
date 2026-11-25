@@ -2,7 +2,7 @@
  "case_id": "corrupt",
  "status": "partial",
  "status_reason": "init only: evidence extracted, no draft written yet",
- "skill": "intro-gap-ledger 0.1.0",
+ "skill": "intro-gap-ledger 0.2.1",
  "missing_materials": [],
  "parse_problems": [
   {
@@ -12,6 +12,10 @@
   {
    "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\more.ris",
    "problem": "RIS record without ER at end of file; kept"
+  },
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
   }
  ],
  "sources": {
@@ -23,28 +27,208 @@
   },
   "kaplan2020": {
    "path": null,
-   "text": "metadata_only"
+   "text": "citing_context"
   },
   "brown2020": {
    "path": null,
-   "text": "metadata_only"
+   "text": "citing_context"
   },
   "rae2021": {
    "path": null,
-   "text": "metadata_only"
+   "text": "citing_context"
   },
   "smith2022": {
    "path": null,
-   "text": "abstract_only"
+   "text": "abstract+citing_context"
   },
   "clark2022": {
    "path": null,
-   "text": "metadata_only"
+   "text": "citing_context"
   },
   "doe2021": {
    "path": null,
    "text": "metadata_only"
+  },
+  "artetxe2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "bender2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "bisk2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lespiau2021": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "bradbury2018": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "clark2022a": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "clark2019": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "du2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "fedus2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "gao2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "gehman2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "guu2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "hendrycks2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "hennigan2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "hernandez2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "joshi2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "jouppi2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "kwiatkowski2019": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lai2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "levine2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "lewis2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lieber2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lin2019": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "mccandlish2018": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "merity2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "mitchell1980": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "paperno2016": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "rae2020": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "raffel2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "rajbhandari1951": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "rudinger2018": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "sakaguchi2020": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "sap2019": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "shallue2018": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "smith2021": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "tay2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "thoppilan2022": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "vaswani2017": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "weidinger2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "welbl2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "xu2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "yang2021": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "zellers2019": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "zhang2019": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "zoph2022": {
+   "path": null,
+   "text": "citing_context"
   }
  },
- "updated": "2026-11-23T05:27:25Z"
+ "updated": "2026-11-25T09:38:26Z"
 }

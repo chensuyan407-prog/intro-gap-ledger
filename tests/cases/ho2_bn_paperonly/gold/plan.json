@@ -1,0 +1,30 @@
+{"language": "zh", "style": "gbt7714",
+ "groups": [
+  {"id": "g1", "name": "改进优化器与初始化", "basis": "method",
+   "dimension": "通过改变优化算法、激活函数或初始化来缓解深层网络训练困难，而不改变各层输入的分布",
+   "refs": ["sutskever2013", "duchi2011", "nair2010", "bengio2010"],
+   "comparison": "动量与 Adagrad 改变参数更新方式；ReLU 与精细初始化减轻饱和；都需要较小学习率与仔细初始化配合",
+   "evidence": [{"ref": "sutskever2013", "id": "E:sutskever2013:p1:1", "use": "result"}, {"ref": "nair2010", "id": "E:nair2010:p1:1", "use": "method"}]},
+  {"id": "g2", "name": "输入白化与归一化", "basis": "method",
+   "dimension": "归一化统计量在哪里计算：整个训练集的输入、单个样本，还是网络各层",
+   "refs": ["lecun1998a", "wiesler2011", "lyu2008"],
+   "comparison": "LeCun 与 Wiesler 白化网络输入以加速收敛；Lyu 与 Simoncelli 在单个样本上计算统计量",
+   "evidence": [{"ref": "lecun1998a", "id": "E:lecun1998a:p1:1", "use": "result"}, {"ref": "lyu2008", "id": "E:lyu2008:p1:1", "use": "setting"}]}
+ ],
+ "gaps": [
+  {"id": "gap1", "statement": "已有方法要么只白化网络输入、要么在单个样本上计算统计量，深层网络各层输入分布随训练变化的问题仍需依靠小学习率与仔细初始化来应对。",
+   "type": "uncovered_setting",
+   "from": [{"ref": "lecun1998a", "id": "E:lecun1998a:p1:1", "kind": "setting"}, {"ref": "lyu2008", "id": "E:lyu2008:p1:1", "kind": "setting"}, {"ref": "nair2010", "id": "E:nair2010:p1:1", "kind": "setting"}],
+   "author_judgment": false}
+ ],
+ "contributions": [
+  {"id": "k1", "text": "提出批归一化（Batch Normalization），在每个小批量上对各层激活做归一化，以减小内部协变量偏移并加速深层网络训练。", "gaps": ["gap1"],
+   "evidence": [{"id": "E:self:p2:35"}, {"id": "E:self:p3:90"}]},
+  {"id": "k2", "text": "在 ImageNet 分类网络上，批归一化以原模型 7% 的训练步数达到相同精度。", "gaps": ["gap1"],
+   "evidence": [{"id": "E:self:p2:41"}, {"id": "E:self:p1:6"}]},
+  {"id": "k3", "text": "批归一化网络的集成模型在 ImageNet 上取得 4.9% 的 top-5 验证错误率和 4.82% 的测试错误率。", "gaps": ["gap1"],
+   "evidence": [{"id": "E:self:p7:221"}, {"id": "E:self:p2:42"}]}
+ ],
+ "omitted_refs": {},
+ "author_notes": ["本案例只有论文本身：所有对他人工作的转述都基于论文正文中的引用句（二级证据），参考文献表由论文印刷版解析得到，需核对作者、题名与出处。"]
+}

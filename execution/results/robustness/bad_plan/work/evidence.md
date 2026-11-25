@@ -1,9 +1,13 @@
-# Evidence tables (intro-gap-ledger 0.1.0)
+# Evidence tables (intro-gap-ledger 0.2.1)
 
 language: en | style: ieee | case: dev_en_compute_optimal | own paper: C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\execution\results\robustness\bad_plan\input\paper.pdf
 
 Cite only keys listed here. Use evidence ids (E:<key>:p<page>:<n>) in plan.json; quote them, do not paraphrase numbers.
 More sentences: `irw.py find --work W --source <key> --query "..."`.
+
+## parse problems
+
+- reference lists: 45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission
 
 ## Library
 
@@ -11,9 +15,54 @@ More sentences: `irw.py find --work W --source <key> --query "..."`.
 |-|-|-|-|-|-|-|
 | kaplan2020 | 2020 | Kaplan, Jared | Scaling Laws for Neural Language Models | arXiv preprint arXiv:2001.08361 | full_text | - |
 | brown2020 | 2020 | Brown, Tom | Language Models are Few-Shot Learners | Advances in Neural Information Processin… | full_text | - |
-| rae2021 | 2021 | Rae, Jack W. | Scaling Language Models: Methods, Analysis & Insights from Training Gopher | arXiv preprint arXiv:2112.11446 | metadata_only | - |
-| smith2022 | 2022 | Smith, Shaden | Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative L… | arXiv preprint arXiv:2201.11990 | abstract_only | - |
-| clark2022 | 2022 | Clark, Aidan | Unified Scaling Laws for Routed Language Models | arXiv preprint arXiv:2202.01169 | metadata_only | - |
+| rae2021 | 2021 | Rae, Jack W. | Scaling Language Models: Methods, Analysis & Insights from Training Gopher | arXiv preprint arXiv:2112.11446 | citing_context | - |
+| smith2022 | 2022 | Smith, Shaden | Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative L… | arXiv preprint arXiv:2201.11990 | abstract+citing_context | - |
+| clark2022 | 2022 | Clark, Aidan | Unified Scaling Laws for Routed Language Models | arXiv preprint arXiv:2202.01169 | citing_context | - |
+| artetxe2021 | 2021 | M. Artetxe | Efficient Large Scale Language Modeling with Mixtures of Experts | arXiv:2112.10684 | citing_context | - |
+| bender2021 | 2021 | E. M. Bender | On the dangers of stochastic parrots: Can language models be too big? In Proceedings of th… | BIG-bench collaboration | citing_context | - |
+| bisk2020 | 2020 | Y. Bisk | PIQA: Reasoning about physical commonsense in natural language | In Proceedings of the AAAI Conference on… | citing_context | - |
+| lespiau2021 | 2021 | Lespiau | Improving language models by retrieving from trillions of tokens | arXiv 2112.04426 | metadata_only | - |
+| bradbury2018 | 2018 | J. Bradbury | JAX: composable transformations of Python+NumPy programs |  | citing_context | venue |
+| clark2022a | 2022 | A. Clark | Casas, A. Guy, A. Mensch, M. Paganini, J. Hoffmann, B. Damoc, B. Hechtman, T. Cai, S. Borg… | Driessche, E. Rutherford, T. Hennigan, M… | citing_context | - |
+| clark2019 | 2019 | C. Clark | Boolq: Exploring the surprising difficulty of natural yes/no questions | In Proceedings of the 2019 Conference of… | citing_context | - |
+| du2021 | 2021 | N. Du | Glam: Efficient scaling of language models with mixture-of-experts, 2021 | URL https://arxiv.org/abs/2112.06905 | citing_context | - |
+| fedus2021 | 2021 | W. Fedus | Switch transformers: Scaling to trillion parameter models with simple and efficient sparsi… | arXiv preprint arXiv:2101.03961 | citing_context | - |
+| gao2020 | 2020 | L. Gao | The Pile: An 800GB dataset of diverse text for language modeling | arXiv preprint arXiv:2101.00027 | citing_context | - |
+| gehman2020 | 2020 | S. Gehman | RealToxicityPrompts: Evaluating neural toxic degeneration in language models | In Findings of the Association for Compu… | citing_context | - |
+| guu2020 | 2020 | K. Guu | REALM: Retrieval-augmented language model pre-training, 2020 | URL https://www.sciencedirect.com/scienc… | citing_context | - |
+| hendrycks2020 | 2020 | D. Hendrycks | Measuring massive multitask language understanding | arXiv preprint arXiv:2009.03300 | citing_context | - |
+| hennigan2020 | 2020 | T. Hennigan | Haiku: Sonnet for JAX. 2020 | URL http: //github.com/deepmind/dm-haiku | citing_context | - |
+| hernandez2020 | 2020 | D. Hernandez | Scaling laws for transfer, 2021 | P. J. Huber | metadata_only | - |
+| joshi2017 | 2017 | M. Joshi | TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension | arXiv e-prints, art | citing_context | - |
+| jouppi2017 | 2017 | N. P. Jouppi | Cantin, C. Chao, C. Clark, J. Coriell, M. Daley, M. Dau, J. Dean, B. Gelb, T. V. Ghaemmagh… | In-datacenter performance analysis of a … | citing_context | - |
+| kwiatkowski2019 | 2019 | T. Kwiatkowski | Natural questions: a benchmark for question answering research | Transactions of the Association of Compu… | citing_context | - |
+| lai2017 | 2017 | G. Lai | RACE: Large-scale ReAding comprehension dataset from examinations | In Proceedings of the 2017 Conference on… | citing_context | - |
+| levine2020 | 2020 | Y. Levine | The depth-to-width interplay in self-attention | arXiv preprint arXiv:2006.12467 | metadata_only | - |
+| lewis2020 | 2020 | P. Lewis | Yih, T. Rocktäschel, S. Riedel, and D. Kiela | Retrieval-augmented generation for knowl… | citing_context | - |
+| lieber2021 | 2021 | O. Lieber | Jurassic-1: Technical details and evaluation | White Paper | citing_context | - |
+| lin2019 | 2019 | S. Lin | TruthfulQA: Measuring how models mimic human falsehoods | arXiv preprint arXiv:2109.07958 | metadata_only | - |
+| mccandlish2018 | 2018 | S. McCandlish | An empirical model of large-batch training, 2018 |  | citing_context | venue |
+| merity2017 | 2017 | S. Merity | Pointer sentinel mixture models | International Conference on Learning Rep… | citing_context | - |
+| mitchell1980 | 1980 | M. Mitchell | Model cards for model reporting | In Proceedings of the conference on fair… | metadata_only | - |
+| paperno2016 | 2016 | D. Paperno | The LAMBADA dataset: Word prediction requiring a broad discourse context, 2016 |  | citing_context | venue |
+| rae2020 | 2020 | J. W. Rae | Compressive transformers for long-range sequence modelling | Advances in Neural Information Processin… | metadata_only | - |
+| raffel2020 | 2020 | C. Raffel | Exploring the limits of transfer learning with a unified text-to-text transformer | Journal of Machine Learning Research, 21… | citing_context | - |
+| rajbhandari1951 | 1951 | S. Rajbhandari | Zero: Memory optimizations toward training trillion parameter models | In SC20: International Conference for Hi… | metadata_only | - |
+| rudinger2018 | 2018 | R. Rudinger | Gender bias in coreference resolution | In Proceedings of the 2018 Conference of… | citing_context | - |
+| sakaguchi2020 | 2020 | K. Sakaguchi | Winogrande: An adversarial winograd schema challenge at scale | In Proceedings of the AAAI Conference on… | citing_context | - |
+| sap2019 | 2019 | M. Sap | SocialIQA: Commonsense reasoning about social interactions | Proceedings of the 2019 Conference on Em… | metadata_only | - |
+| shallue2018 | 2018 | C. J. Shallue | Measuring the effects of data parallelism on neural network training | arXiv preprint arXiv:1811.03600 | citing_context | - |
+| smith2021 | 2021 | S. Smith | Using Deepspeed and Megatron to Train Megatronturing NLG 530b, A Large-Scale Generative La… | arXiv preprint arXiv:2201.11990 | metadata_only | - |
+| tay2021 | 2021 | Y. Tay | Scale efficiently: Insights from pre-training and fine-tuning transformers, 2021 |  | citing_context | venue |
+| thoppilan2022 | 2022 | R. Thoppilan | LaMDA: Language models for dialog applications, 2022 |  | citing_context | venue |
+| vaswani2017 | 2017 | A. Vaswani | Attention is all you need | In Advances in neural information proces… | citing_context | - |
+| weidinger2021 | 2021 | L. Weidinger | Ethical and social risks of harm from language models | arXiv submission | citing_context | - |
+| welbl2021 | 2021 | J. Welbl | Challenges in detoxifying language models | In Findings of the Association for Compu… | citing_context | - |
+| xu2021 | 2021 | A. Xu | Detoxifying language models risks marginalizing minority voices | In Proceedings of the 2021 Conference of… | citing_context | - |
+| yang2021 | 2021 | G. Yang | Tuning large neural networks via zero-shot hyperparameter transfer | In A. Beygelzimer, Y. Dauphin, P. Liang,… | citing_context | - |
+| zellers2019 | 2019 | R. Zellers | HellaSwag: Can a machine really finish your sentence? In Proceedings of the 57th Annual Me… |  | citing_context | venue |
+| zhang2019 | 2019 | G. Zhang | Which algorithmic choices matter at which batch sizes? insights from a noisy quadratic mod… | In H. Wallach, H. Larochelle, A. Beygelz… | citing_context | - |
+| zoph2022 | 2022 | B. Zoph | Designing effective sparse expert models, 2022 |  | citing_context | venue |
 
 ## OWN PAPER (self) - contributions must map to these
 
@@ -130,7 +179,7 @@ More sentences: `irw.py find --work W --source <key> --query "..."`.
 - E:self:p15:288: Nopt Finally, the training runs for our analysis have all been trained on less than an epoch of data; future work may consider the multiple epoch regime.
 - E:self:p15:289: Despite these limitations, the comparison of Chinchilla to Gopher validates our performance predictions, that have thus enabled training a better (and more 15
 
-## [kaplan2020] Scaling Laws for Neural Language Models (2020)
+## [kaplan2020] Scaling Laws for Neural Language Models (2020) - evidence: full_text
 
 abstract: contents 1 introduction 2 2 background and methods 6 3 empirical results and basic power laws 7 4 charting the infinite data limit and overfitting 10 5 scaling laws with model size and training time 12 6 optimal allocation of the compute budget 14 7 related work 18 8 discussion 18 appendices 20 a summary of power laws 20 b empirical model of compute-efficient frontier 20 c caveats 22 d supplemental figures 23
 
@@ -178,7 +227,7 @@ limitations/assumptions:
 - E:kaplan2020:p11:168: Similarly, a model with fixed size will be capacity-limited.
 - E:kaplan2020:p11:175: However, this argument assumes that 1/D corrections dominate over other sources of variance, such as the finite batch size and other limits on the efficacy of optimization.
 
-## [brown2020] Language Models are Few-Shot Learners (2020)
+## [brown2020] Language Models are Few-Shot Learners (2020) - evidence: full_text
 
 abstract: recent work has demonstrated substantial gains on many nlp tasks and benchmarks by pre-training on a large corpus of text followed by fine-tuning on a specific task. while typically task-agnostic in architecture, this method still requires task-specific fine-tuning datasets of thousands or tens of thousands of examples. by contrast, humans can generally perform a new language task from only a few examples or from simple instructions - something which current nlp systems still largely struggle to do. here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art finetuning approaches. specifically, we train gpt-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting. for all t…
 
@@ -226,10 +275,184 @@ limitations/assumptions:
 - E:brown2020:p5:54: GPT-3 could also in principle be evaluated in the traditional fine-tuning setting, but we leave this to future work.
 - E:brown2020:p5:63: GPT-3 also displays one-shot and few-shot proficiency at tasks designed to test rapid adaption or on-the-fly reasoning, which include unscrambling words, performing arithmetic, and using novel words in a sentence after seeing them…
 
-## [smith2022] Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model (2022)
+## [rae2021] Scaling Language Models: Methods, Analysis & Insights from Training Gopher (2021) - evidence: citing_context
 
-claims/results:
+- E:rae2021:p1:1: [own paper p1] Recently a series of Large Language Models (LLMs) have been introduced (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021; Smith et al., 2022; Thoppilan et al., 2022), with the largest dense language models now having over 500 billion pa…
+- E:rae2021:p1:2: [own paper p1] The compute and energy cost for training large language models is substantial (Rae et al., 2021; Thoppilan et al., 2022) and rises with increasing model size.
+- E:rae2021:p1:3: [own paper p3] LaMDA (Thoppilan et al., 2022) 137 Billion 168 Billion GPT-3 (Brown et al., 2020) 175 Billion 300 Billion Jurassic (Lieber et al., 2021) 178 Billion 300 Billion Gopher (Rae et al., 2021) 280 Billion 300 Billion MT-NLG 530B (Smith et al., 2022) 5…
+- E:rae2021:p1:4: [own paper p3] Nonetheless, large language models face several challenges, including their overwhelming computational requirements (the cost of training and inference increase with model size) (Rae et al., 2021; Thoppilan et al., 2022) and the need for acquiri…
+- E:rae2021:p1:5: [own paper p8] In Appendix C, we reproduce the IsoFLOP analysis on two additional datasets: C4 (Raffel et al., 2020a) and GitHub code (Rae et al., 2021).
+
+## [smith2022] Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model (2022) - evidence: abstract+citing_context
+
 - E:smith2022:p1:1: Pretrained general-purpose language models can achieve state-of-the-art accuracies in various natural language processing domains by adapting to downstream tasks via zero-shot, few-shot and fine-tuning techniques.
+- E:smith2022:p1:2: Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models.
 - E:smith2022:p1:3: We present details on the training of the largest monolithic transformer based language model, Megatron-Turing NLG 530B (MT-NLG), with 530 billion parameters.
+- E:smith2022:p1:4: [own paper p1] Recently a series of Large Language Models (LLMs) have been introduced (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021; Smith et al., 2022; Thoppilan et al., 2022), with the largest dense language models now having over 500 billion pa…
+- E:smith2022:p1:5: [own paper p3] LaMDA (Thoppilan et al., 2022) 137 Billion 168 Billion GPT-3 (Brown et al., 2020) 175 Billion 300 Billion Jurassic (Lieber et al., 2021) 178 Billion 300 Billion Gopher (Rae et al., 2021) 280 Billion 300 Billion MT-NLG 530B (Smith et al., 2022) 5…
+- E:smith2022:p1:6: [own paper p3] The largest dense transformers have passed 500 billion parameters (Smith et al., 2022).
 
-limitations/assumptions:
+## [clark2022] Unified Scaling Laws for Routed Language Models (2022) - evidence: citing_context
+
+- E:clark2022:p1:1: [own paper p3] Recently, Clark et al. (2022) specifically looked in to the scaling properties of Mixture of Expert [own paper p4] However, for very large models the computational benefits of routed models seems to diminish (Clark et al., 2022).
+- E:clark2022:p1:2: [own paper p4] We assume a power-law relationship between compute and model size as done in Clark et al. (2022);
+
+## [artetxe2021] Efficient Large Scale Language Modeling with Mixtures of Experts (2021) - evidence: citing_context
+
+- E:artetxe2021:p1:1: [own paper p4] For example, through the use of conditional computation large MoE models like the 1.7 trillion parameter Switch transformer (Fedus et al., 2021), the 1.2 Trillion parameter GLaM model (Du et al., 2021), and others (Artetxe et al., 2021; Zoph et …
+
+## [bender2021] On the dangers of stochastic parrots: Can language models be too big? In Proceedings of the 2021 ACM Conference on Fairn… (2021) - evidence: citing_context
+
+- E:bender2021:p1:1: [own paper p13] Large Language Models carry potential risks such as outputting offensive language, propagating social biases, and leaking private information (Bender et al., 2021; Weidinger et al., 2021).
+
+## [bisk2020] PIQA: Reasoning about physical commonsense in natural language (2020) - evidence: citing_context
+
+- E:bisk2020:p1:1: [own paper p12] We evaluate Chinchilla on various common sense benchmarks: PIQA (Bisk et al., 2020), SIQA (Sap
+
+## [bradbury2018] JAX: composable transformations of Python+NumPy programs (2018) - evidence: citing_context
+
+- E:bradbury2018:p1:1: [own paper p9] All models in this analysis have been trained on TPUv3/TPUv4 (Jouppi et al., 2017) with JAX (Bradbury et al., 2018) and Haiku (Hennigan et al., 2020).
+
+## [clark2022a] Casas, A. Guy, A. Mensch, M. Paganini, J. Hoffmann, B. Damoc, B. Hechtman, T. Cai, S. Borgeaud, G. v. d (2022) - evidence: citing_context
+
+- E:clark2022a:p1:1: [own paper p3] Recently, Clark et al. (2022) specifically looked in to the scaling properties of Mixture of Expert [own paper p4] However, for very large models the computational benefits of routed models seems to diminish (Clark et al., 2022).
+- E:clark2022a:p1:2: [own paper p4] We assume a power-law relationship between compute and model size as done in Clark et al. (2022);
+
+## [clark2019] Boolq: Exploring the surprising difficulty of natural yes/no questions (2019) - evidence: citing_context
+
+- E:clark2019:p1:1: [own paper p12] et al., 2019), Winogrande (Sakaguchi et al., 2020), HellaSwag (Zellers et al., 2019), and BoolQ (Clark et al., 2019).
+
+## [du2021] Glam: Efficient scaling of language models with mixture-of-experts, 2021 (2021) - evidence: citing_context
+
+- E:du2021:p1:1: [own paper p3] These include both dense transformer models (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021; Smith et al., 2022; Thoppilan et al., 2022) and mixture-of-expert (MoE) models (Du et al., 2021; Fedus et al., 2021; Zoph et al., 2022).
+- E:du2021:p1:2: [own paper p4] For example, through the use of conditional computation large MoE models like the 1.7 trillion parameter Switch transformer (Fedus et al., 2021), the 1.2 Trillion parameter GLaM model (Du et al., 2021), and others (Artetxe et al., 2021; Zoph et …
+
+## [fedus2021] Switch transformers: Scaling to trillion parameter models with simple and efficient sparsity (2021) - evidence: citing_context
+
+- E:fedus2021:p1:1: [own paper p3] These include both dense transformer models (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021; Smith et al., 2022; Thoppilan et al., 2022) and mixture-of-expert (MoE) models (Du et al., 2021; Fedus et al., 2021; Zoph et al., 2022).
+- E:fedus2021:p1:2: [own paper p4] For example, through the use of conditional computation large MoE models like the 1.7 trillion parameter Switch transformer (Fedus et al., 2021), the 1.2 Trillion parameter GLaM model (Du et al., 2021), and others (Artetxe et al., 2021; Zoph et …
+
+## [gao2020] The Pile: An 800GB dataset of diverse text for language modeling (2020) - evidence: citing_context
+
+- E:gao2020:p1:1: [own paper p10] For the different evaluation sets in The Pile (Gao et al., 2020), we show the bits-per-byte (bpb) improvement (decrease) of Chinchilla compared to Gopher.
+- E:gao2020:p1:2: [own paper p10] Chinchilla significantly outperforms Gopher on all evaluation subsets of The Pile (Gao et al., 2020), as shown in Figure 5.
+
+## [gehman2020] RealToxicityPrompts: Evaluating neural toxic degeneration in language models (2020) - evidence: citing_context
+
+- E:gehman2020:p1:1: [own paper p14] Language models are capable of generating toxic language—including insults, hate speech, profanities and threats (Gehman et al., 2020; Rae et al., 2021).
+
+## [guu2020] REALM: Retrieval-augmented language model pre-training, 2020 (2020) - evidence: citing_context
+
+- E:guu2020:p1:1: [own paper p4] An orthogonal approach to improving language models is to augment transformers with explicit retrieval mechanisms, as done by Borgeaud et al. (2021); Guu et al. (2020); Lewis et al. (2020).
+
+## [hendrycks2020] Measuring massive multitask language understanding (2020) - evidence: citing_context
+
+- E:hendrycks2020:p1:1: [own paper p11] We report the average 5-shot accuracy over 57 tasks with model and human accuracy comparisons taken from Hendrycks et al. (2020).
+- E:hendrycks2020:p1:2: [own paper p11] tasks for which leakage is less of a concern, such as MMLU (Hendrycks et al., 2020) and BIG-bench (BIG-bench collaboration, 2021) along with various closed-book question answering and common [own paper p11] The Massive Multitask Language Unders…
+
+## [hennigan2020] Haiku: Sonnet for JAX. 2020 (2020) - evidence: citing_context
+
+- E:hennigan2020:p1:1: [own paper p9] All models in this analysis have been trained on TPUv3/TPUv4 (Jouppi et al., 2017) with JAX (Bradbury et al., 2018) and Haiku (Hennigan et al., 2020).
+
+## [joshi2017] TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension (2017) - evidence: citing_context
+
+- E:joshi2017:p1:1: [own paper p13] On TriviaQA (Joshi et al., 2017) we show results for both the filtered (previously used in retrieval and open-book work) and unfiltered set (previously used in large language model evaluations).
+- E:joshi2017:p1:2: [own paper p14] For Natural Questions (Kwiatkowski et al., 2019) and TriviaQA (Joshi et al., 2017), Chinchilla outperforms Gopher in all cases.
+
+## [jouppi2017] Cantin, C. Chao, C. Clark, J. Coriell, M. Daley, M. Dau, J. Dean, B. Gelb, T. V. Ghaemmaghami, R. Gottipati, W. Gulland,… (2017) - evidence: citing_context
+
+- E:jouppi2017:p1:1: [own paper p9] All models in this analysis have been trained on TPUv3/TPUv4 (Jouppi et al., 2017) with JAX (Bradbury et al., 2018) and Haiku (Hennigan et al., 2020).
+
+## [kwiatkowski2019] Natural questions: a benchmark for question answering research (2019) - evidence: citing_context
+
+- E:kwiatkowski2019:p1:1: [own paper p13] On the Natural Questions dataset (Kwiatkowski et al., 2019), Chinchilla achieves new closed-book SOTA accuracies: 31.5% 5-shot and 35.5% 64-shot, compared to 21% and 28% respectively, for Gopher.
+- E:kwiatkowski2019:p1:2: [own paper p14] For Natural Questions (Kwiatkowski et al., 2019) and TriviaQA (Joshi et al., 2017), Chinchilla outperforms Gopher in all cases.
+
+## [lai2017] RACE: Large-scale ReAding comprehension dataset from examinations (2017) - evidence: citing_context
+
+- E:lai2017:p1:1: [own paper p11] On RACE-h and RACE-m (Lai et al., 2017), Chinchilla greatly outperforms Gopher, improving accuracy by more than 10% in both cases—see Table 7.
+- E:lai2017:p1:2: [own paper p12] On RACE-h and RACE-m (Lai et al., 2017), Chinchilla considerably improves performance over Gopher.
+
+## [lewis2020] Yih, T. Rocktäschel, S. Riedel, and D. Kiela (2020) - evidence: citing_context
+
+- E:lewis2020:p1:1: [own paper p4] An orthogonal approach to improving language models is to augment transformers with explicit retrieval mechanisms, as done by Borgeaud et al. (2021); Guu et al. (2020); Lewis et al. (2020).
+
+## [lieber2021] Jurassic-1: Technical details and evaluation (2021) - evidence: citing_context
+
+- E:lieber2021:p1:1: [own paper p1] Recently a series of Large Language Models (LLMs) have been introduced (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021; Smith et al., 2022; Thoppilan et al., 2022), with the largest dense language models now having over 500 billion pa…
+- E:lieber2021:p1:2: [own paper p3] LaMDA (Thoppilan et al., 2022) 137 Billion 168 Billion GPT-3 (Brown et al., 2020) 175 Billion 300 Billion Jurassic (Lieber et al., 2021) 178 Billion 300 Billion Gopher (Rae et al., 2021) 280 Billion 300 Billion MT-NLG 530B (Smith et al., 2022) 5…
+- E:lieber2021:p1:3: [own paper p10] Compared to Jurassic-1 (178B) Lieber et al. (2021), Chinchilla is more performant on all but two subsets– dm_mathematics and ubuntu_irc– see Table A5 for a raw bits-per-byte comparison.
+
+## [mccandlish2018] An empirical model of large-batch training, 2018 (2018) - evidence: citing_context
+
+- E:mccandlish2018:p1:1: [own paper p4] McCandlish et al. (2018) finds only a weak dependence between optimal batch size and model size.
+
+## [merity2017] Pointer sentinel mixture models (2017) - evidence: citing_context
+
+- E:merity2017:p1:1: [own paper p10] On Wikitext103 (Merity et al., 2017), Chinchilla achieves a perplexity of 7.16 compared to 7.75 for Gopher.
+
+## [paperno2016] The LAMBADA dataset: Word prediction requiring a broad discourse context, 2016 (2016) - evidence: citing_context
+
+- E:paperno2016:p1:1: [own paper p11] On the final word prediction dataset LAMBADA (Paperno et al., 2016), Chinchilla achieves 77.4% accuracy, compared to 74.5% accuracy from Gopher and 76.6% from MT-NLG 530B (see Table 7).
+- E:paperno2016:p1:2: [own paper p12] On LAMBADA (Paperno et al., 2016), Chinchilla outperforms both Gopher and MT-NLG 530B.
+
+## [raffel2020] Exploring the limits of transfer learning with a unified text-to-text transformer (2020) - evidence: citing_context
+
+- E:raffel2020:p1:1: [own paper p8] In Appendix C, we reproduce the IsoFLOP analysis on two additional datasets: C4 (Raffel et al., 2020a) and GitHub code (Rae et al., 2021).
+
+## [rudinger2018] Gender bias in coreference resolution (2018) - evidence: citing_context
+
+- E:rudinger2018:p1:1: [own paper p14] Here, we test if potential gender and occupation biases manifest in unfair outcomes on coreference resolutions, using the Winogender dataset (Rudinger et al., 2018) in a zero-shot setting.
+
+## [sakaguchi2020] Winogrande: An adversarial winograd schema challenge at scale (2020) - evidence: citing_context
+
+- E:sakaguchi2020:p1:1: [own paper p12] et al., 2019), Winogrande (Sakaguchi et al., 2020), HellaSwag (Zellers et al., 2019), and BoolQ (Clark et al., 2019).
+
+## [shallue2018] Measuring the effects of data parallelism on neural network training (2018) - evidence: citing_context
+
+- E:shallue2018:p1:1: [own paper p4] Shallue et al. (2018); Zhang et al. (2019) suggest that using larger batch-sizes than those we use is possible.
+
+## [tay2021] Scale efficiently: Insights from pre-training and fine-tuning transformers, 2021 (2021) - evidence: citing_context
+
+- E:tay2021:p1:1: [own paper p1] Since it is typically only feasible to train these large models once, accurately estimating the best model hyperparameters for a given compute budget is critical (Tay et al., 2021).
+
+## [thoppilan2022] LaMDA: Language models for dialog applications, 2022 (2022) - evidence: citing_context
+
+- E:thoppilan2022:p1:1: [own paper p1] Recently a series of Large Language Models (LLMs) have been introduced (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021; Smith et al., 2022; Thoppilan et al., 2022), with the largest dense language models now having over 500 billion pa…
+- E:thoppilan2022:p1:2: [own paper p1] The compute and energy cost for training large language models is substantial (Rae et al., 2021; Thoppilan et al., 2022) and rises with increasing model size.
+- E:thoppilan2022:p1:3: [own paper p3] Other than LaMDA (Thoppilan et al., 2022), most models are trained for approximately 300 billion tokens.
+- E:thoppilan2022:p1:4: [own paper p3] LaMDA (Thoppilan et al., 2022) 137 Billion 168 Billion GPT-3 (Brown et al., 2020) 175 Billion 300 Billion Jurassic (Lieber et al., 2021) 178 Billion 300 Billion Gopher (Rae et al., 2021) 280 Billion 300 Billion MT-NLG 530B (Smith et al., 2022) 5…
+- E:thoppilan2022:p1:5: [own paper p3] Nonetheless, large language models face several challenges, including their overwhelming computational requirements (the cost of training and inference increase with model size) (Rae et al., 2021; Thoppilan et al., 2022) and the need for acquiri…
+
+## [vaswani2017] Attention is all you need (2017) - evidence: citing_context
+
+- E:vaswani2017:p1:1: [own paper p1] These large autoregressive transformers (Vaswani et al., 2017) have demonstrated impressive performance on many tasks using a variety of
+
+## [weidinger2021] Ethical and social risks of harm from language models (2021) - evidence: citing_context
+
+- E:weidinger2021:p1:1: [own paper p13] Large Language Models carry potential risks such as outputting offensive language, propagating social biases, and leaking private information (Bender et al., 2021; Weidinger et al., 2021).
+
+## [welbl2021] Challenges in detoxifying language models (2021) - evidence: citing_context
+
+- E:welbl2021:p1:1: [own paper p14] While toxicity is an umbrella term, and its evaluation in LMs comes with challenges (Welbl et al., 2021; Xu et al., 2021), automatic classifier scores can provide an indication for the levels of harmful text that a LM generates.
+
+## [xu2021] Detoxifying language models risks marginalizing minority voices (2021) - evidence: citing_context
+
+- E:xu2021:p1:1: [own paper p14] While toxicity is an umbrella term, and its evaluation in LMs comes with challenges (Welbl et al., 2021; Xu et al., 2021), automatic classifier scores can provide an indication for the levels of harmful text that a LM generates.
+
+## [yang2021] Tuning large neural networks via zero-shot hyperparameter transfer (2021) - evidence: citing_context
+
+- E:yang2021:p1:1: [own paper p4] Yang et al. (2021) investigates how to choose a variety of these parameters for training an autoregressive transformer, including the learning rate and batch size.
+
+## [zellers2019] HellaSwag: Can a machine really finish your sentence? In Proceedings of the 57th Annual Meeting of the Association for C… (2019) - evidence: citing_context
+
+- E:zellers2019:p1:1: [own paper p12] et al., 2019), Winogrande (Sakaguchi et al., 2020), HellaSwag (Zellers et al., 2019), and BoolQ (Clark et al., 2019).
+
+## [zhang2019] Which algorithmic choices matter at which batch sizes? insights from a noisy quadratic model (2019) - evidence: citing_context
+
+- E:zhang2019:p1:1: [own paper p4] Shallue et al. (2018); Zhang et al. (2019) suggest that using larger batch-sizes than those we use is possible.
+
+## [zoph2022] Designing effective sparse expert models, 2022 (2022) - evidence: citing_context
+
+- E:zoph2022:p1:1: [own paper p3] These include both dense transformer models (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021; Smith et al., 2022; Thoppilan et al., 2022) and mixture-of-expert (MoE) models (Du et al., 2021; Fedus et al., 2021; Zoph et al., 2022).
+- E:zoph2022:p1:2: [own paper p4] For example, through the use of conditional computation large MoE models like the 1.7 trillion parameter Switch transformer (Fedus et al., 2021), the 1.2 Trillion parameter GLaM model (Du et al., 2021), and others (Artetxe et al., 2021; Zoph et …

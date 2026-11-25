@@ -1,0 +1,1062 @@
+{
+ "case_id": "ho3_kaplan_notes",
+ "status": "partial",
+ "status_reason": "draft passes the checks; items need human confirmation (needs_review / missing_materials)",
+ "skill": "intro-gap-ledger 0.2.1",
+ "language": "en",
+ "citation_style": "apa",
+ "summary": {
+  "sentences": 14,
+  "cited_sentences": 6,
+  "author_judgments": 4,
+  "references": 4,
+  "groups": 2,
+  "gaps": 1,
+  "contributions": 3,
+  "fails": 0,
+  "warns": 0
+ },
+ "draft": "## 1 Introduction\n\nTransformer language models are the basis of recent progress in language modeling (Vaswani et al., 2017). A 1.5B-parameter Transformer language model trained on WebText already performs downstream tasks zero-shot (Radford et al., 2019). How the loss of such models depends on model size, data and compute is therefore a practical question for anyone with a fixed training budget.\n\n## 2 Related Work\n\n### Empirical scaling of generalization error\n\nBoth empirical scaling studies fit power laws to generalization error, but they differ in the variables they fit (Hestness et al., 2017; Rosenfeld et al., 2019). Hestness et al. find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition (Hestness et al., 2017), whereas Rosenfeld et al. propose a joint functional form in model size and data size that extrapolates across scales (Rosenfeld et al., 2019). In contrast to our setting, neither study treats compute as the constraint.\n\n### Large Transformer language models\n\nThe large-model line shares the Transformer architecture (Vaswani et al., 2017), and GPT-2 scales it to 1.5B parameters with zero-shot task transfer (Radford et al., 2019). These reports show gains with size but give no rule for allocating compute between model size and data.\n\nThus existing scaling studies relate error to data and model size but leave training time and compute allocation unmodelled (Rosenfeld et al., 2019), and their estimates disagree: Hestness et al. found super-linear scaling of dataset size with model size (Hestness et al., 2017). How a fixed compute budget should be split between model size, data and training time remains open.\n\nOur contributions are:\n\n- We show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude (Figure 1).\n- We find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.\n- Under a fixed compute budget, the best performance comes from training very large models and stopping well before convergence (Figure 3).\n\n## References\n\nHestness, Joel, Narang, Sharan, Ardalani, Newsha, Diamos, Gregory, Jun, Heewoo, Kianinejad, Hassan, Patwary, Ali, M. M., Yang, Yang, Zhou, & Yanqi (2017). Deep Learning Scaling is Predictable, Empirically. *arXiv preprint arXiv:1712.00409*.\nRadford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019). Language Models are Unsupervised Multitask Learners. *OpenAI Technical Report*.\nRosenfeld, J. S., Rosenfeld, A., Belinkov, Y., & Shavit, N. (2019). A Constructive Prediction of the Generalization Error Across Scales. *arXiv preprint arXiv:1909.12673*.\nVaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł. U., & Polosukhin, I. (2017). Attention is all you need. *In I. Guyon, U. V. Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, and R. Garnett, editors, Advances in Neural Information Processing Systems 30, pages 5998–6008*, 5998-6008.\n",
+ "parts": {
+  "background": "Transformer language models are the basis of recent progress in language modeling (Vaswani et al., 2017).\nA 1.5B-parameter Transformer language model trained on WebText already performs downstream tasks zero-shot (Radford et al., 2019).\nHow the loss of such models depends on model size, data and compute is therefore a practical question for anyone with a fixed training budget.\n",
+  "related": "Both empirical scaling studies fit power laws to generalization error, but they differ in the variables they fit (Hestness et al., 2017; Rosenfeld et al., 2019).\nHestness et al. find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition (Hestness et al., 2017), whereas Rosenfeld et al. propose a joint functional form in model size and data size that extrapolates across scales (Rosenfeld et al., 2019).\nIn contrast to our setting, neither study treats compute as the constraint.\nThe large-model line shares the Transformer architecture (Vaswani et al., 2017), and GPT-2 scales it to 1.5B parameters with zero-shot task transfer (Radford et al., 2019).\nThese reports show gains with size but give no rule for allocating compute between model size and data.\n",
+  "gap": "Thus existing scaling studies relate error to data and model size but leave training time and compute allocation unmodelled (Rosenfeld et al., 2019), and their estimates disagree: Hestness et al. found super-linear scaling of dataset size with model size (Hestness et al., 2017).\nHow a fixed compute budget should be split between model size, data and training time remains open.\n",
+  "contrib": "Our contributions are:\nWe show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude (Figure 1).\nWe find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.\nUnder a fixed compute budget, the best performance comes from training very large models and stopping well before convergence (Figure 3).\n"
+ },
+ "references": [
+  "Hestness, Joel, Narang, Sharan, Ardalani, Newsha, Diamos, Gregory, Jun, Heewoo, Kianinejad, Hassan, Patwary, Ali, M. M., Yang, Yang, Zhou, & Yanqi (2017). Deep Learning Scaling is Predictable, Empirically. *arXiv preprint arXiv:1712.00409*.",
+  "Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019). Language Models are Unsupervised Multitask Learners. *OpenAI Technical Report*.",
+  "Rosenfeld, J. S., Rosenfeld, A., Belinkov, Y., & Shavit, N. (2019). A Constructive Prediction of the Generalization Error Across Scales. *arXiv preprint arXiv:1909.12673*.",
+  "Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł. U., & Polosukhin, I. (2017). Attention is all you need. *In I. Guyon, U. V. Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, and R. Garnett, editors, Advances in Neural Information Processing Systems 30, pages 5998–6008*, 5998-6008."
+ ],
+ "related_work_groups": [
+  {
+   "id": "g1",
+   "name": "Empirical scaling of generalization error",
+   "basis": "method",
+   "dimension": "which scale variables are fitted (data size, model size, compute) and whether compute allocation is modelled",
+   "refs": [
+    "hestness2017",
+    "rosenfeld2019"
+   ],
+   "comparison": "Hestness et al. fit error against training-set size across four domains; Rosenfeld et al. fit a joint form in model and data size; neither models training time or compute allocation",
+   "evidence": [
+    {
+     "ref": "hestness2017",
+     "id": "E:hestness2017:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "rosenfeld2019",
+     "id": "E:rosenfeld2019:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "name": "Large Transformer language models",
+   "basis": "problem",
+   "dimension": "how far model size is pushed and what is reported about the benefit of scale",
+   "refs": [
+    "vaswani2017",
+    "radford2019"
+   ],
+   "comparison": "the Transformer architecture is the common base; GPT-2 scales it to 1.5B parameters and reports zero-shot transfer, without a rule for splitting compute between size and data",
+   "evidence": [
+    {
+     "ref": "radford2019",
+     "id": "E:radford2019:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "vaswani2017",
+     "id": "E:vaswani2017:p1:4",
+     "use": "method"
+    }
+   ]
+  }
+ ],
+ "gap_derivation": [
+  {
+   "id": "gap1",
+   "statement": "Existing scaling studies relate error to data and model size but do not model training time or how a fixed compute budget should be split, and their data-model scaling estimates disagree.",
+   "type": "conflict",
+   "author_judgment": false,
+   "derived_from": [
+    {
+     "ref": "rosenfeld2019",
+     "evidence": "E:rosenfeld2019:p1:1",
+     "page": 1,
+     "quote": "finding: Proposes a joint functional form of generalization error in model size and data size that extrapolates across scales. limitation: Fits small-scale models. training time and compute allocation are not modelled.",
+     "verified": true
+    },
+    {
+     "ref": "hestness2017",
+     "evidence": "E:hestness2017:p1:1",
+     "page": 1,
+     "quote": "finding: Generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition. limitation: Model size is tuned per data size. compute budget is not treated as the constraint.",
+     "verified": true
+    },
+    {
+     "ref": "hestness2017",
+     "evidence": "E:hestness2017:p1:3",
+     "page": 1,
+     "quote": "[own paper p18] Note, however, that [HNA+17] found super-linear scaling of dataset size with model size, whereas we find a sub-linear scaling.",
+     "verified": true
+    }
+   ],
+   "filled_by": [
+    "k1",
+    "k2",
+    "k3"
+   ]
+  }
+ ],
+ "contributions": [
+  {
+   "id": "k1",
+   "text": "We show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:6",
+     "page": 1,
+     "quote": "The loss scales as a power-law with model size, dataset size, and the amount of compute used for training, with some trends spanning more than seven orders of magnitude.",
+     "verified": true
+    },
+    {
+     "loc": "Figure 1",
+     "quote": "Language modeling performance improves smoothly",
+     "page": 3,
+     "match": 1.0,
+     "verified": true,
+     "loc_exists": true
+    }
+   ]
+  },
+  {
+   "id": "k2",
+   "text": "We find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p3:21",
+     "page": 3,
+     "quote": "Performance depends strongly on scale, weakly on model shape: Model performance depends most strongly on scale, which consists of three factors: the number of model parameters N (excluding embeddings), the size of the dataset D, and the amount of compute C used for training.",
+     "verified": true
+    },
+    {
+     "id": "E:self:p3:26",
+     "page": 3,
+     "quote": "The performance penalty depends predictably on the ratio N 0.74/D, meaning that every time we increase the model size 8x, we only need to increase the data by roughly 5x to avoid a penalty.",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "id": "k3",
+   "text": "Under a fixed compute budget, the best performance comes from training very large models and stopping well before convergence.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p3:31",
+     "page": 3,
+     "quote": "Convergence is inefficient: When working within a fixed compute budget C but without any other restrictions on the model size N or available data D, we attain optimal performance by training very large models and stopping significantly short of convergence (see Figure 3).",
+     "verified": true
+    },
+    {
+     "loc": "Figure 3",
+     "quote": "optimal",
+     "page": 1,
+     "match": 1.0,
+     "verified": true,
+     "loc_exists": true
+    }
+   ]
+  }
+ ],
+ "source_map": [
+  {
+   "id": "P1.S1",
+   "part": "background",
+   "text": "Transformer language models are the basis of recent progress in language modeling.",
+   "citations": [
+    {
+     "key": "vaswani2017",
+     "evidence": "E:vaswani2017:p1:4",
+     "page": 1,
+     "quote": "[notes notes.md p1] Vaswani et al. (2017) introduced the Transformer architecture used by all our models.",
+     "support": 0.29,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [],
+   "type": "cited"
+  },
+  {
+   "id": "P1.S2",
+   "part": "background",
+   "text": "A 1.5B-parameter Transformer language model trained on WebText already performs downstream tasks zero-shot.",
+   "citations": [
+    {
+     "key": "radford2019",
+     "evidence": "E:radford2019:p1:1",
+     "page": 1,
+     "quote": "finding: A 1.5B-parameter Transformer language model trained on WebText performs downstream tasks zero-shot. limitation: Gains with size are reported, but no rule for allocating compute between size and data.",
+     "support": 0.92,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "1.5",
+     "found_in": [
+      "radford2019"
+     ],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P1.S3",
+   "part": "background",
+   "text": "How the loss of such models depends on model size, data and compute is therefore a practical question for anyone with a fixed training budget.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P2.S1",
+   "part": "related",
+   "text": "Both empirical scaling studies fit power laws to generalization error, but they differ in the variables they fit.",
+   "citations": [
+    {
+     "key": "hestness2017",
+     "evidence": "E:hestness2017:p1:3",
+     "page": 1,
+     "quote": "[own paper p18] Note, however, that [HNA+17] found super-linear scaling of dataset size with model size, whereas we find a sub-linear scaling.",
+     "support": 0.5,
+     "source_text": "secondary",
+     "link": "auto"
+    },
+    {
+     "key": "rosenfeld2019",
+     "evidence": "E:rosenfeld2019:p1:2",
+     "page": 1,
+     "quote": "[own paper p18] 8After this work was completed, [RRBS19a] also appeared, which makes similar predictions for the dependence of loss on both model and dataset size.",
+     "support": 0.5,
+     "source_text": "secondary",
+     "link": "auto"
+    }
+   ],
+   "numbers": [],
+   "type": "cited"
+  },
+  {
+   "id": "P2.S2",
+   "part": "related",
+   "text": "Hestness et al. find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition, whereas Rosenfeld et al. propose a joint functional form in model size and data size that extrapolates across scales.",
+   "citations": [
+    {
+     "key": "hestness2017",
+     "evidence": "E:hestness2017:p1:1",
+     "page": 1,
+     "quote": "finding: Generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition. limitation: Model size is tuned per data size. compute budget is not treated as the constraint.",
+     "support": 0.64,
+     "source_text": "secondary",
+     "link": "explicit"
+    },
+    {
+     "key": "rosenfeld2019",
+     "evidence": "E:rosenfeld2019:p1:1",
+     "page": 1,
+     "quote": "finding: Proposes a joint functional form of generalization error in model size and data size that extrapolates across scales. limitation: Fits small-scale models. training time and compute allocation are not modelled.",
+     "support": 0.43,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [],
+   "type": "cited"
+  },
+  {
+   "id": "P2.S3",
+   "part": "related",
+   "text": "In contrast to our setting, neither study treats compute as the constraint.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P3.S1",
+   "part": "related",
+   "text": "The large-model line shares the Transformer architecture, and GPT-2 scales it to 1.5B parameters with zero-shot task transfer.",
+   "citations": [
+    {
+     "key": "vaswani2017",
+     "evidence": "E:vaswani2017:p1:4",
+     "page": 1,
+     "quote": "[notes notes.md p1] Vaswani et al. (2017) introduced the Transformer architecture used by all our models.",
+     "support": 0.17,
+     "source_text": "secondary",
+     "link": "explicit"
+    },
+    {
+     "key": "radford2019",
+     "evidence": "E:radford2019:p1:1",
+     "page": 1,
+     "quote": "finding: A 1.5B-parameter Transformer language model trained on WebText performs downstream tasks zero-shot. limitation: Gains with size are reported, but no rule for allocating compute between size and data.",
+     "support": 0.25,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "1.5",
+     "found_in": [
+      "radford2019"
+     ],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P3.S2",
+   "part": "related",
+   "text": "These reports show gains with size but give no rule for allocating compute between model size and data.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P4.S1",
+   "part": "gap",
+   "text": "Thus existing scaling studies relate error to data and model size but leave training time and compute allocation unmodelled, and their estimates disagree: Hestness et al. found super-linear scaling of dataset size with model size.",
+   "citations": [
+    {
+     "key": "rosenfeld2019",
+     "evidence": "E:rosenfeld2019:p1:1",
+     "page": 1,
+     "quote": "finding: Proposes a joint functional form of generalization error in model size and data size that extrapolates across scales. limitation: Fits small-scale models. training time and compute allocation are not modelled.",
+     "support": 0.4,
+     "source_text": "secondary",
+     "link": "explicit"
+    },
+    {
+     "key": "hestness2017",
+     "evidence": "E:hestness2017:p1:3",
+     "page": 1,
+     "quote": "[own paper p18] Note, however, that [HNA+17] found super-linear scaling of dataset size with model size, whereas we find a sub-linear scaling.",
+     "support": 0.3,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [],
+   "type": "cited"
+  },
+  {
+   "id": "P4.S2",
+   "part": "gap",
+   "text": "How a fixed compute budget should be split between model size, data and training time remains open.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P5.S1",
+   "part": "contrib",
+   "text": "Our contributions are:",
+   "citations": [],
+   "numbers": [],
+   "type": "statement"
+  },
+  {
+   "id": "P6.S1",
+   "part": "contrib",
+   "text": "We show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude.",
+   "citations": [],
+   "numbers": [],
+   "type": "own_paper",
+   "self_refs": [
+    "Figure 1"
+   ]
+  },
+  {
+   "id": "P7.S1",
+   "part": "contrib",
+   "text": "We find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "8",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    },
+    {
+     "value": "5",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    }
+   ],
+   "type": "statement"
+  },
+  {
+   "id": "P8.S1",
+   "part": "contrib",
+   "text": "Under a fixed compute budget, the best performance comes from training very large models and stopping well before convergence.",
+   "citations": [],
+   "numbers": [],
+   "type": "own_paper",
+   "self_refs": [
+    "Figure 3"
+   ]
+  }
+ ],
+ "checks": [],
+ "needs_review": [
+  {
+   "type": "secondary_evidence",
+   "ref": "vaswani2017",
+   "note": "checked against citing_context (how the own paper / notes describe it), not against the original work"
+  },
+  {
+   "type": "metadata_from_reference_list",
+   "ref": "vaswani2017",
+   "note": "record parsed from the printed reference list of the own paper; confirm fields"
+  },
+  {
+   "type": "secondary_evidence",
+   "ref": "radford2019",
+   "note": "checked against table_note + citing_context (how the own paper / notes describe it), not against the original work"
+  },
+  {
+   "type": "secondary_evidence",
+   "ref": "hestness2017",
+   "note": "checked against table_note + citing_context (how the own paper / notes describe it), not against the original work"
+  },
+  {
+   "type": "secondary_evidence",
+   "ref": "rosenfeld2019",
+   "note": "checked against table_note + citing_context (how the own paper / notes describe it), not against the original work"
+  },
+  {
+   "type": "author_note",
+   "note": "Findings and limitations of hestness2017, rosenfeld2019 and radford2019 come from literature.csv (author's table), not from the original papers: confirm before submission."
+  },
+  {
+   "type": "author_judgment",
+   "where": "P1.S3",
+   "note": "How the loss of such models depends on model size, data and compute is therefore a practical question for anyone with a fixed training budget."
+  },
+  {
+   "type": "author_judgment",
+   "where": "P2.S3",
+   "note": "In contrast to our setting, neither study treats compute as the constraint."
+  },
+  {
+   "type": "author_judgment",
+   "where": "P3.S2",
+   "note": "These reports show gains with size but give no rule for allocating compute between model size and data."
+  },
+  {
+   "type": "author_judgment",
+   "where": "P4.S2",
+   "note": "How a fixed compute budget should be split between model size, data and training time remains open."
+  }
+ ],
+ "missing_materials": [],
+ "parse_problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
+ "uncited_library_records": [
+  {
+   "key": "altmann2012",
+   "reason": null
+  },
+  {
+   "key": "advani2017",
+   "reason": null
+  },
+  {
+   "key": "banko2001",
+   "reason": null
+  },
+  {
+   "key": "mikhailbelkin2018",
+   "reason": null
+  },
+  {
+   "key": "biau2012",
+   "reason": null
+  },
+  {
+   "key": "rewonchild2019",
+   "reason": null
+  },
+  {
+   "key": "jacobdevlin2018",
+   "reason": null
+  },
+  {
+   "key": "dehghani2018",
+   "reason": null
+  },
+  {
+   "key": "ebeling1994",
+   "reason": null
+  },
+  {
+   "key": "gurari2018",
+   "reason": null
+  },
+  {
+   "key": "geiger2019",
+   "reason": null
+  },
+  {
+   "key": "ghorbani2019",
+   "reason": null
+  },
+  {
+   "key": "goodman2001",
+   "reason": null
+  },
+  {
+   "key": "gray2017",
+   "reason": null
+  },
+  {
+   "key": "hestness2019",
+   "reason": null
+  },
+  {
+   "key": "huang2018",
+   "reason": null
+  },
+  {
+   "key": "jacot2018",
+   "reason": null
+  },
+  {
+   "key": "kingma2014",
+   "reason": null
+  },
+  {
+   "key": "komatsuzaki2019",
+   "reason": null
+  },
+  {
+   "key": "krizhevsky2012",
+   "reason": null
+  },
+  {
+   "key": "zhenzhonglan2019",
+   "reason": null
+  },
+  {
+   "key": "yinhanliu2019",
+   "reason": null
+  },
+  {
+   "key": "liu2018",
+   "reason": null
+  },
+  {
+   "key": "lin2016",
+   "reason": null
+  },
+  {
+   "key": "lee2019",
+   "reason": null
+  },
+  {
+   "key": "mccandlish2018",
+   "reason": null
+  },
+  {
+   "key": "papyan2018",
+   "reason": null
+  },
+  {
+   "key": "alecradford2018",
+   "reason": null
+  },
+  {
+   "key": "raffel2019",
+   "reason": null
+  },
+  {
+   "key": "noamshazeer2018",
+   "reason": null
+  },
+  {
+   "key": "sennrich2015",
+   "reason": null
+  },
+  {
+   "key": "shallue2018",
+   "reason": null
+  },
+  {
+   "key": "shazeer2018",
+   "reason": null
+  },
+  {
+   "key": "thurner2018",
+   "reason": null
+  },
+  {
+   "key": "tan2019",
+   "reason": null
+  },
+  {
+   "key": "veit2016",
+   "reason": null
+  },
+  {
+   "key": "wasserman2006",
+   "reason": null
+  },
+  {
+   "key": "alexwang2019",
+   "reason": null
+  },
+  {
+   "key": "wang2017",
+   "reason": null
+  },
+  {
+   "key": "wen2019",
+   "reason": null
+  },
+  {
+   "key": "zhilinyang2019",
+   "reason": null
+  },
+  {
+   "key": "zagoruyko2016",
+   "reason": null
+  },
+  {
+   "key": "zhu2015",
+   "reason": null
+  },
+  {
+   "key": "zhang2019",
+   "reason": null
+  }
+ ],
+ "uncertainty": [
+  "1 input parse problem(s): see parse_problems",
+  "support scores are lexical; semantic faithfulness of paraphrases was judged by the agent, not proven by the script"
+ ],
+ "changes": [
+  {
+   "version": 1,
+   "at": "2026-11-25T09:38:02Z",
+   "note": "first draft",
+   "fails": 0,
+   "warns": 0
+  }
+ ],
+ "inputs": {
+  "case.json": "00b516a01eea2ab5ff95e5767b0edab4366de9e608fd3ca174a335aaf9cfff60",
+  "literature.csv": "fc330bdf35196386f622eea0dbb31d2fcd1d7710b7886a3b099ccef1a6e5ef97",
+  "notes.md": "01a2b7d938e6a262b4b31281d405cbd0009dcf13faaa58fcd2215191278a5b82",
+  "paper.pdf": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+  "task.md": "2921ee80c1a55cf2c68b6f6a35e5d3503c4a86c8669689a341e50de10e07251c"
+ },
+ "artifacts": {
+  "draft_md": "intro_related_work.md",
+  "draft_annotated": "intro_related_work_annotated.md",
+  "latex": "intro_related_work.tex",
+  "bib": "references.bib",
+  "references": "references_apa.txt",
+  "html_preview": "intro_related_work.html",
+  "docx": "intro_related_work.docx",
+  "pdf_preview": null,
+  "png_previews": [],
+  "source_map": "source_map.json",
+  "matrix": "related_work_matrix.md",
+  "gap_derivation": "gap_derivation.md",
+  "contribution_map": "contribution_map.json",
+  "review": "review.md",
+  "diff": null
+ },
+ "preview_note": "skipped (--no-pdf)",
+ "updated": "2026-11-25T09:38:02Z",
+ "seconds": 0.2,
+ "introduction": "## 1 Introduction\n\nTransformer language models are the basis of recent progress in language modeling (Vaswani et al., 2017). A 1.5B-parameter Transformer language model trained on WebText already performs downstream tasks zero-shot (Radford et al., 2019). How the loss of such models depends on model size, data and compute is therefore a practical question for anyone with a fixed training budget.\n\n## 2 Related Work\n\n### Empirical scaling of generalization error\n\nBoth empirical scaling studies fit power laws to generalization error, but they differ in the variables they fit (Hestness et al., 2017; Rosenfeld et al., 2019). Hestness et al. find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition (Hestness et al., 2017), whereas Rosenfeld et al. propose a joint functional form in model size and data size that extrapolates across scales (Rosenfeld et al., 2019). In contrast to our setting, neither study treats compute as the constraint.\n\n### Large Transformer language models\n\nThe large-model line shares the Transformer architecture (Vaswani et al., 2017), and GPT-2 scales it to 1.5B parameters with zero-shot task transfer (Radford et al., 2019). These reports show gains with size but give no rule for allocating compute between model size and data.\n\nThus existing scaling studies relate error to data and model size but leave training time and compute allocation unmodelled (Rosenfeld et al., 2019), and their estimates disagree: Hestness et al. found super-linear scaling of dataset size with model size (Hestness et al., 2017). How a fixed compute budget should be split between model size, data and training time remains open.\n\nOur contributions are:\n\n- We show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude (Figure 1).\n- We find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.\n- Under a fixed compute budget, the best performance comes from training very large models and stopping well before convergence (Figure 3).\n\n## References\n\nHestness, Joel, Narang, Sharan, Ardalani, Newsha, Diamos, Gregory, Jun, Heewoo, Kianinejad, Hassan, Patwary, Ali, M. M., Yang, Yang, Zhou, & Yanqi (2017). Deep Learning Scaling is Predictable, Empirically. *arXiv preprint arXiv:1712.00409*.\nRadford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019). Language Models are Unsupervised Multitask Learners. *OpenAI Technical Report*.\nRosenfeld, J. S., Rosenfeld, A., Belinkov, Y., & Shavit, N. (2019). A Constructive Prediction of the Generalization Error Across Scales. *arXiv preprint arXiv:1909.12673*.\nVaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł. U., & Polosukhin, I. (2017). Attention is all you need. *In I. Guyon, U. V. Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, and R. Garnett, editors, Advances in Neural Information Processing Systems 30, pages 5998–6008*, 5998-6008.\n",
+ "related_work": "Both empirical scaling studies fit power laws to generalization error, but they differ in the variables they fit (Hestness et al., 2017; Rosenfeld et al., 2019).\nHestness et al. find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition (Hestness et al., 2017), whereas Rosenfeld et al. propose a joint functional form in model size and data size that extrapolates across scales (Rosenfeld et al., 2019).\nIn contrast to our setting, neither study treats compute as the constraint.\nThe large-model line shares the Transformer architecture (Vaswani et al., 2017), and GPT-2 scales it to 1.5B parameters with zero-shot task transfer (Radford et al., 2019).\nThese reports show gains with size but give no rule for allocating compute between model size and data.\n",
+ "research_gap": {
+  "text": "Thus existing scaling studies relate error to data and model size but leave training time and compute allocation unmodelled (Rosenfeld et al., 2019), and their estimates disagree: Hestness et al. found super-linear scaling of dataset size with model size (Hestness et al., 2017).\nHow a fixed compute budget should be split between model size, data and training time remains open.\n",
+  "derivation": [
+   {
+    "id": "gap1",
+    "statement": "Existing scaling studies relate error to data and model size but do not model training time or how a fixed compute budget should be split, and their data-model scaling estimates disagree.",
+    "type": "conflict",
+    "author_judgment": false,
+    "derived_from": [
+     {
+      "ref": "rosenfeld2019",
+      "evidence": "E:rosenfeld2019:p1:1",
+      "page": 1,
+      "quote": "finding: Proposes a joint functional form of generalization error in model size and data size that extrapolates across scales. limitation: Fits small-scale models. training time and compute allocation are not modelled.",
+      "verified": true
+     },
+     {
+      "ref": "hestness2017",
+      "evidence": "E:hestness2017:p1:1",
+      "page": 1,
+      "quote": "finding: Generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition. limitation: Model size is tuned per data size. compute budget is not treated as the constraint.",
+      "verified": true
+     },
+     {
+      "ref": "hestness2017",
+      "evidence": "E:hestness2017:p1:3",
+      "page": 1,
+      "quote": "[own paper p18] Note, however, that [HNA+17] found super-linear scaling of dataset size with model size, whereas we find a sub-linear scaling.",
+      "verified": true
+     }
+    ],
+    "filled_by": [
+     "k1",
+     "k2",
+     "k3"
+    ]
+   }
+  ]
+ },
+ "bibliography": [
+  "Hestness, Joel, Narang, Sharan, Ardalani, Newsha, Diamos, Gregory, Jun, Heewoo, Kianinejad, Hassan, Patwary, Ali, M. M., Yang, Yang, Zhou, & Yanqi (2017). Deep Learning Scaling is Predictable, Empirically. *arXiv preprint arXiv:1712.00409*.",
+  "Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019). Language Models are Unsupervised Multitask Learners. *OpenAI Technical Report*.",
+  "Rosenfeld, J. S., Rosenfeld, A., Belinkov, Y., & Shavit, N. (2019). A Constructive Prediction of the Generalization Error Across Scales. *arXiv preprint arXiv:1909.12673*.",
+  "Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł. U., & Polosukhin, I. (2017). Attention is all you need. *In I. Guyon, U. V. Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, and R. Garnett, editors, Advances in Neural Information Processing Systems 30, pages 5998–6008*, 5998-6008."
+ ],
+ "claim_source_map": [
+  {
+   "id": "P1.S1",
+   "part": "background",
+   "text": "Transformer language models are the basis of recent progress in language modeling.",
+   "citations": [
+    {
+     "key": "vaswani2017",
+     "evidence": "E:vaswani2017:p1:4",
+     "page": 1,
+     "quote": "[notes notes.md p1] Vaswani et al. (2017) introduced the Transformer architecture used by all our models.",
+     "support": 0.29,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [],
+   "type": "cited"
+  },
+  {
+   "id": "P1.S2",
+   "part": "background",
+   "text": "A 1.5B-parameter Transformer language model trained on WebText already performs downstream tasks zero-shot.",
+   "citations": [
+    {
+     "key": "radford2019",
+     "evidence": "E:radford2019:p1:1",
+     "page": 1,
+     "quote": "finding: A 1.5B-parameter Transformer language model trained on WebText performs downstream tasks zero-shot. limitation: Gains with size are reported, but no rule for allocating compute between size and data.",
+     "support": 0.92,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "1.5",
+     "found_in": [
+      "radford2019"
+     ],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P1.S3",
+   "part": "background",
+   "text": "How the loss of such models depends on model size, data and compute is therefore a practical question for anyone with a fixed training budget.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P2.S1",
+   "part": "related",
+   "text": "Both empirical scaling studies fit power laws to generalization error, but they differ in the variables they fit.",
+   "citations": [
+    {
+     "key": "hestness2017",
+     "evidence": "E:hestness2017:p1:3",
+     "page": 1,
+     "quote": "[own paper p18] Note, however, that [HNA+17] found super-linear scaling of dataset size with model size, whereas we find a sub-linear scaling.",
+     "support": 0.5,
+     "source_text": "secondary",
+     "link": "auto"
+    },
+    {
+     "key": "rosenfeld2019",
+     "evidence": "E:rosenfeld2019:p1:2",
+     "page": 1,
+     "quote": "[own paper p18] 8After this work was completed, [RRBS19a] also appeared, which makes similar predictions for the dependence of loss on both model and dataset size.",
+     "support": 0.5,
+     "source_text": "secondary",
+     "link": "auto"
+    }
+   ],
+   "numbers": [],
+   "type": "cited"
+  },
+  {
+   "id": "P2.S2",
+   "part": "related",
+   "text": "Hestness et al. find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition, whereas Rosenfeld et al. propose a joint functional form in model size and data size that extrapolates across scales.",
+   "citations": [
+    {
+     "key": "hestness2017",
+     "evidence": "E:hestness2017:p1:1",
+     "page": 1,
+     "quote": "finding: Generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition. limitation: Model size is tuned per data size. compute budget is not treated as the constraint.",
+     "support": 0.64,
+     "source_text": "secondary",
+     "link": "explicit"
+    },
+    {
+     "key": "rosenfeld2019",
+     "evidence": "E:rosenfeld2019:p1:1",
+     "page": 1,
+     "quote": "finding: Proposes a joint functional form of generalization error in model size and data size that extrapolates across scales. limitation: Fits small-scale models. training time and compute allocation are not modelled.",
+     "support": 0.43,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [],
+   "type": "cited"
+  },
+  {
+   "id": "P2.S3",
+   "part": "related",
+   "text": "In contrast to our setting, neither study treats compute as the constraint.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P3.S1",
+   "part": "related",
+   "text": "The large-model line shares the Transformer architecture, and GPT-2 scales it to 1.5B parameters with zero-shot task transfer.",
+   "citations": [
+    {
+     "key": "vaswani2017",
+     "evidence": "E:vaswani2017:p1:4",
+     "page": 1,
+     "quote": "[notes notes.md p1] Vaswani et al. (2017) introduced the Transformer architecture used by all our models.",
+     "support": 0.17,
+     "source_text": "secondary",
+     "link": "explicit"
+    },
+    {
+     "key": "radford2019",
+     "evidence": "E:radford2019:p1:1",
+     "page": 1,
+     "quote": "finding: A 1.5B-parameter Transformer language model trained on WebText performs downstream tasks zero-shot. limitation: Gains with size are reported, but no rule for allocating compute between size and data.",
+     "support": 0.25,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "1.5",
+     "found_in": [
+      "radford2019"
+     ],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P3.S2",
+   "part": "related",
+   "text": "These reports show gains with size but give no rule for allocating compute between model size and data.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P4.S1",
+   "part": "gap",
+   "text": "Thus existing scaling studies relate error to data and model size but leave training time and compute allocation unmodelled, and their estimates disagree: Hestness et al. found super-linear scaling of dataset size with model size.",
+   "citations": [
+    {
+     "key": "rosenfeld2019",
+     "evidence": "E:rosenfeld2019:p1:1",
+     "page": 1,
+     "quote": "finding: Proposes a joint functional form of generalization error in model size and data size that extrapolates across scales. limitation: Fits small-scale models. training time and compute allocation are not modelled.",
+     "support": 0.4,
+     "source_text": "secondary",
+     "link": "explicit"
+    },
+    {
+     "key": "hestness2017",
+     "evidence": "E:hestness2017:p1:3",
+     "page": 1,
+     "quote": "[own paper p18] Note, however, that [HNA+17] found super-linear scaling of dataset size with model size, whereas we find a sub-linear scaling.",
+     "support": 0.3,
+     "source_text": "secondary",
+     "link": "explicit"
+    }
+   ],
+   "numbers": [],
+   "type": "cited"
+  },
+  {
+   "id": "P4.S2",
+   "part": "gap",
+   "text": "How a fixed compute budget should be split between model size, data and training time remains open.",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P5.S1",
+   "part": "contrib",
+   "text": "Our contributions are:",
+   "citations": [],
+   "numbers": [],
+   "type": "statement"
+  },
+  {
+   "id": "P6.S1",
+   "part": "contrib",
+   "text": "We show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude.",
+   "citations": [],
+   "numbers": [],
+   "type": "own_paper",
+   "self_refs": [
+    "Figure 1"
+   ]
+  },
+  {
+   "id": "P7.S1",
+   "part": "contrib",
+   "text": "We find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "8",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    },
+    {
+     "value": "5",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    }
+   ],
+   "type": "statement"
+  },
+  {
+   "id": "P8.S1",
+   "part": "contrib",
+   "text": "Under a fixed compute budget, the best performance comes from training very large models and stopping well before convergence.",
+   "citations": [],
+   "numbers": [],
+   "type": "own_paper",
+   "self_refs": [
+    "Figure 3"
+   ]
+  }
+ ],
+ "open_issues": {
+  "needs_review": [
+   {
+    "type": "secondary_evidence",
+    "ref": "vaswani2017",
+    "note": "checked against citing_context (how the own paper / notes describe it), not against the original work"
+   },
+   {
+    "type": "metadata_from_reference_list",
+    "ref": "vaswani2017",
+    "note": "record parsed from the printed reference list of the own paper; confirm fields"
+   },
+   {
+    "type": "secondary_evidence",
+    "ref": "radford2019",
+    "note": "checked against table_note + citing_context (how the own paper / notes describe it), not against the original work"
+   },
+   {
+    "type": "secondary_evidence",
+    "ref": "hestness2017",
+    "note": "checked against table_note + citing_context (how the own paper / notes describe it), not against the original work"
+   },
+   {
+    "type": "secondary_evidence",
+    "ref": "rosenfeld2019",
+    "note": "checked against table_note + citing_context (how the own paper / notes describe it), not against the original work"
+   },
+   {
+    "type": "author_note",
+    "note": "Findings and limitations of hestness2017, rosenfeld2019 and radford2019 come from literature.csv (author's table), not from the original papers: confirm before submission."
+   },
+   {
+    "type": "author_judgment",
+    "where": "P1.S3",
+    "note": "How the loss of such models depends on model size, data and compute is therefore a practical question for anyone with a fixed training budget."
+   },
+   {
+    "type": "author_judgment",
+    "where": "P2.S3",
+    "note": "In contrast to our setting, neither study treats compute as the constraint."
+   },
+   {
+    "type": "author_judgment",
+    "where": "P3.S2",
+    "note": "These reports show gains with size but give no rule for allocating compute between model size and data."
+   },
+   {
+    "type": "author_judgment",
+    "where": "P4.S2",
+    "note": "How a fixed compute budget should be split between model size, data and training time remains open."
+   }
+  ],
+  "uncertainty": [
+   "1 input parse problem(s): see parse_problems",
+   "support scores are lexical; semantic faithfulness of paraphrases was judged by the agent, not proven by the script"
+  ],
+  "missing_materials": []
+ },
+ "unmapped_contract_fields": []
+}

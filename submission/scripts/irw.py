@@ -18,11 +18,13 @@ import sys
 import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from irw_refs import parse_reflist, reference_section, citation_contexts, parse_table, match_record  # noqa: E402
 from irw_common import (VERSION, J, W, sha, has_cjk, norm, tokens, overlap, numbers, num_in_text, split_sentences,  # noqa: E402
                         text_pages, parse_library, missing_fields, extract_evidence, all_sentence_index, find_quote,
                         load_rules)
 
 LIB_EXT = (".bib", ".ris", ".enw")
+TABLE_EXT = (".csv", ".tsv", ".xlsx", ".xlsm")
 TEXT_EXT = (".md", ".txt", ".tex", ".docx")
 OWN_HINT = re.compile(r"(own|paper|manuscript|main|this|本文|论文|稿)", re.I)
 
@@ -124,6 +126,11 @@ def init(a):
         recs += parse_json_lib(inline, problems, "case.json")
     for l in libs:
         recs += parse_library(l, problems, )
+    for t in [f for f in files if f.lower().endswith(TABLE_EXT)]:  # literature tables (title + author/year columns)
+        got = parse_table(t, problems, {r.get("key") for r in recs})
+        if got:
+            libs.append(t)
+            recs += got
     # de-duplicate by key / doi / title
     seen, uniq, used = {}, [], set()
     for r in recs:
@@ -208,6 +215,39 @@ def init(a):
         else:
             notes.append(p)
 
+    # reference lists of the own paper and of notes -> records (flagged) + citing sentences as secondary evidence
+    used = {r["key"] for r in recs}
+    contexts = {}
+    reflist_docs = [("self", own, "own paper")] if own else []
+    reflist_docs += [("note_" + re.sub(r"\W", "", os.path.splitext(os.path.basename(p))[0])[:20], p, "notes " + os.path.basename(p)) for p in notes]
+    added_from_lists = 0
+    for did, p, label in reflist_docs:
+        pg, _ = pages_of(p)
+        if p.lower().endswith(".pdf"):
+            sec = reference_section(pg)
+        else:
+            full = "\n".join(pg)
+            parts_ = re.split(r"(?im)^\s*#*\s*(?:references|bibliography|参考文献|文献列表)\s*:?\s*$", full)
+            sec = parts_[-1] if len(parts_) > 1 else full
+        for r in parse_reflist(sec, p, used):
+            hit = match_record(r, recs)
+            if hit:
+                if r.get("label") and not hit.get("label"):
+                    hit.update(label=r["label"], label_doc=did)
+                for f in ("authors", "year", "title", "venue", "doi"):
+                    if not hit.get(f) and r.get(f):
+                        hit[f] = r[f]
+                        hit.setdefault("filled_from_reflist", []).append(f)
+            else:
+                r.update(label_doc=did, reflist_of=label)
+                recs.append(r)
+                used.add(r["key"])
+                added_from_lists += 1
+        for k, v in citation_contexts(did, pg, recs).items():
+            contexts.setdefault(k, []).extend((label, pg_no, sent) for pg_no, sent in v)
+    if added_from_lists:
+        problems.append({"file": "reference lists", "problem": f"{added_from_lists} record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"})
+
     # extract text + evidence
     evidence = {}
     src_status = {}
@@ -228,12 +268,28 @@ def init(a):
             src_status[r["key"]] = {"path": r["pdf"], "pages": len(pg), "chars": sum(map(len, pg)), "problem": prob, "text": "full_text" if pg and not prob else "unreadable"}
             if prob:
                 problems.append({"file": r["pdf"], "problem": prob})
-        elif r.get("abstract"):
-            W(os.path.join(work, "sources", r["key"] + ".json"), {"path": None, "pages": [r["abstract"]], "abstract_only": True})
-            evidence[r["key"]] = extract_evidence(r["key"], [r["abstract"]], rules)
-            src_status[r["key"]] = {"path": None, "text": "abstract_only"}
+        elif r.get("abstract") or r.get("table_note") or contexts.get(r["key"]):
+            parts_, kinds = [], []
+            if r.get("abstract"):
+                parts_.append(r["abstract"])
+                kinds.append("abstract")
+            if r.get("table_note"):
+                parts_.append(re.sub(r"\s*;\s*", ". ", r["table_note"]).rstrip(".") + ".")
+                kinds.append("table_note")
+            for lab, pg_no, sent in contexts.get(r["key"], []):
+                parts_.append(f"[{lab} p{pg_no}] {sent}")
+            if contexts.get(r["key"]):
+                kinds.append("citing_context")
+            text = "\n".join(parts_)
+            W(os.path.join(work, "sources", r["key"] + ".json"), {"path": None, "pages": [text], "abstract_only": kinds == ["abstract"],
+                                                                  "context": kinds != ["abstract"]})
+            evidence[r["key"]] = extract_evidence(r["key"], [text], rules, keep_all=kinds != ["abstract"])
+            src_status[r["key"]] = {"path": None, "text": "abstract_only" if kinds == ["abstract"] else "+".join(kinds)}
         else:
             src_status[r["key"]] = {"path": None, "text": "metadata_only"}
+        if contexts.get(r["key"]):
+            evidence.setdefault(r["key"], {"claims": [], "limitations": [], "captions": [], "headings": [], "abstract": ""})["cited_as"] = [
+                f"{lab} p{pg_no}: {sent}" for lab, pg_no, sent in contexts[r["key"]][:4]]
         r["missing_fields"] = missing_fields(r)
     if not recs:
         missing.append("library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]")
@@ -245,7 +301,7 @@ def init(a):
 
     lib = {"records": recs, "style": style, "language": lang, "case_id": case_id, "own": own, "notes": notes,
            "required_refs": first_of(case, ["required_refs", "key_works", "must_cite", "required_citations"]) or [],
-           "contract": case.get("output_contract") or case.get("outputs") or {}, "task_file": task_file, "case_file": a.case,
+           "contract": case.get("output_contract") or case.get("outputs") or case.get("deliverables") or case.get("schema") or {}, "task_file": task_file, "case_file": a.case,
            "problems": problems, "missing": missing, "src_status": src_status,
            "inputs": {os.path.relpath(f, base): sha(f) for f in files if os.path.getsize(f) < 200e6}}
     W(os.path.join(work, "library.json"), lib)
@@ -273,12 +329,36 @@ def init(a):
     print(json.dumps(summ, ensure_ascii=False, indent=1))
 
 
-def contract_names(c):
-    if isinstance(c, dict):
-        return list(c.keys())
+def contract_schema(c):
+    """Normalize flat dict, JSON Schema (properties/required), deliverables dict, or list contract into {field: spec}."""
     if isinstance(c, list):
-        return [x if isinstance(x, str) else (x.get("name") or x.get("field")) for x in c if x]
-    return []
+        out = {}
+        for x in c:
+            nm = x if isinstance(x, str) else (x.get("name") or x.get("field") if isinstance(x, dict) else None)
+            if nm:
+                out[nm] = x if isinstance(x, dict) else None
+        return out
+    if not isinstance(c, dict):
+        return {}
+    src = c.get("deliverables") if isinstance(c.get("deliverables"), dict) and len(c) == 1 else c
+    if "properties" in src or ("required" in src and isinstance(src.get("required"), list)):
+        fields = {}
+        if isinstance(src.get("properties"), dict):
+            fields.update(src["properties"])
+        if isinstance(src.get("required"), list):
+            for nm in src["required"]:
+                if isinstance(nm, str) and nm not in fields:
+                    fields[nm] = None
+        if isinstance(src.get("deliverables"), dict):
+            for nm, spec in src["deliverables"].items():
+                if isinstance(nm, str) and nm not in fields:
+                    fields[nm] = spec
+        return fields
+    return src
+
+
+def contract_names(c):
+    return list(contract_schema(c).keys())
 
 
 def short(s, n=260):
@@ -313,9 +393,13 @@ def evidence_md(lib, ev):
         e = ev.get(r["key"])
         if not e:
             continue
-        L += [f"## [{r['key']}] {short(r['title'], 120)} ({r['year']})", ""]
+        kind = lib["src_status"].get(r["key"], {}).get("text")
+        L += [f"## [{r['key']}] {short(r['title'], 120)} ({r['year']}) - evidence: {kind}", ""]
         if e["abstract"]:
             L += ["abstract: " + short(e["abstract"], 900), ""]
+        if kind and kind != "full_text" and kind != "abstract_only":
+            L += [f"- {c['id']}: {short(c['text'], 260)}" for c in (e["claims"] + e["limitations"])[:8]] + [""]
+            continue  # secondary evidence (how the own paper / notes / table describe this work): all its sentences
         L += ["claims/results:"] + [f"- {c['id']}: {short(c['text'], 230)}" for c in e["claims"][:22]]
         L += ["", "limitations/assumptions:"] + [f"- {c['id']}: {short(c['text'], 230)}" for c in e["limitations"][:18]] + [""]
     return "\n".join(L)
@@ -351,6 +435,111 @@ def draft_template(lang):
 
 
 # =============================================================== find
+CONTRIB_CUES = re.compile(r"(?i)\b(we propose|we present|we introduce|we show|we find|we demonstrate|we develop|we train|we verify|we study|we observe|we achieve|we report|our (main |key )?(contributions?|findings?|results?)|in this (paper|work),? we)|本文提出|我们提出|本文的?贡献|本文设计|我们发现|结果表明")
+RW_HEAD = re.compile(r"(?im)^\s*(\d+\.?\s*)?(related work|related works|background and related work|background|prior work|literature review|相关工作|研究现状|研究背景)\s*$")
+
+
+def related_work_chunks(pages):
+    """the own paper's Related Work section split into its subsections / run-in paragraphs -> [(heading, text)]."""
+    full = "\n".join(pages[:references_start_safe(pages)])
+    m = RW_HEAD.search(full)
+    if not m:
+        return []
+    rest = full[m.end():]
+    end = re.search(r"(?m)^[ \t]*\d+\.?[ \t]+[A-Z][A-Za-z ,:&\-]{3,60}$|^\s*\d+\s*[一-鿿]{2,12}\s*$", rest)
+    sec = rest[:end.start()] if end and end.start() > 200 else rest[:8000]
+    heads = list(re.finditer(r"(?m)^[ \t]*((?:\d+\.\d+\.?[ \t]+)?[A-Z][^.\n]{3,70}\.)\s|^[ \t]*(\d+\.\d+\.?[ \t]+[^\n]{3,70})$", sec))
+    if not heads:
+        return [("Related work", sec)]
+    out = []
+    for i, h in enumerate(heads):
+        body = sec[h.end():heads[i + 1].start() if i + 1 < len(heads) else len(sec)]
+        name = (h.group(1) or h.group(2) or "").strip().rstrip(".")
+        if len(body) > 150 and len(name.split()) <= 8 and "," not in name and "et al" not in name and not name.lower().startswith(("recently", "however", "in ", "for ", "we ", "this ", "these ")):
+            out.append((name, body))
+    return out or [("Related work", sec)]
+
+
+def references_start_safe(pages):
+    from irw_common import references_start
+    return references_start(pages) if pages else 0
+
+
+def scaffold(a):
+    """pre-fill work/plan.json and work/draft.md from the evidence (only files that do not exist, unless --force)."""
+    work = os.path.abspath(a.work)
+    lib = J(os.path.join(work, "library.json"))
+    ev = J(os.path.join(work, "evidence.json"), {})
+    if not lib:
+        print(json.dumps({"error": "run init first"}))
+        return 2
+    lang = lib["language"]
+    recs = lib["records"]
+    byk = {r["key"]: r for r in recs}
+    selfsrc = J(os.path.join(work, "sources", "self.json"), {}) or {}
+    pages = selfsrc.get("pages") or []
+    primary = [r["key"] for r in recs if not r.get("reflist_of")]  # records the case supplied
+    groups = []
+    for name, body in related_work_chunks(pages):
+        ks = list(citation_contexts("self", [body], recs).keys())
+        ks = [k for k in ks if k in byk]
+        ks.sort(key=lambda k: (k not in primary, -len(ev.get(k, {}).get("claims", []))))
+        if len(ks) >= 1:
+            groups.append({"id": f"g{len(groups) + 1}", "name": name, "basis": "method",
+                           "dimension": "<axis on which these works are compared - from the own paper's discussion: " + short(body.replace("\n", " "), 160) + ">",
+                           "refs": ks[:6], "comparison": "<how they differ / what they share on that axis>",
+                           "evidence": [{"ref": k, "id": c["id"], "use": "result"} for k in ks[:4] for c in (ev.get(k, {}).get("claims") or [])[:1]]})
+    rest = [k for k in primary if not any(k in g["refs"] for g in groups)]
+    if not primary and not groups:  # paper only: the works the paper discusses most (secondary evidence)
+        rest = sorted([r["key"] for r in recs], key=lambda k: -len(ev.get(k, {}).get("claims", []) + ev.get(k, {}).get("limitations", [])))[:8]
+    if rest or not groups:
+        groups.append({"id": f"g{len(groups) + 1}", "name": "<group name: problem / method route / data & evaluation>", "basis": "problem|method|data|evaluation",
+                       "dimension": "<comparison axis>", "refs": rest[:6] or primary[:6], "comparison": "<...>", "evidence": []})
+    cand = []
+    for g in groups:
+        for k in g["refs"]:
+            for c in (ev.get(k, {}).get("limitations") or [])[:2]:
+                cand.append({"ref": k, "id": c["id"], "text": short(c["text"], 200)})
+    gaps = [{"id": "gap1", "statement": "<one-sentence gap that follows from the shared limitation of the cited works>", "type": "common_limitation",
+             "from": [{"ref": c["ref"], "id": c["id"]} for c in cand[:2]], "author_judgment": False,
+             "_candidates": cand[:12]}]
+    own_ev = ev.get("self", {})
+    contribs = []
+    seen = set()
+    for c in own_ev.get("claims", []) + own_ev.get("limitations", []):
+        if CONTRIB_CUES.search(c["text"]) and c["page"] <= 3 and len(contribs) < 4 and c["text"][:60] not in seen:
+            seen.add(c["text"][:60])
+            contribs.append({"id": f"k{len(contribs) + 1}", "text": short(c["text"], 300), "gaps": ["gap1"], "evidence": [{"id": c["id"]}]})
+    if not contribs:
+        contribs = [{"id": "k1", "text": "<contribution>", "gaps": ["gap1"], "evidence": [{"id": "E:self:p<page>:<n>"}]}]
+    plan = {"language": lang, "style": lib["style"], "groups": groups, "gaps": gaps, "contributions": contribs,
+            "omitted_refs": {}, "author_notes": [],
+            "_doc": "scaffold: every <...> must be replaced; check groups/refs/evidence against evidence.md; drop _candidates when done"}
+    zh = lang == "zh"
+    D = ["<!-- part:background -->", "## 1 引言" if zh else "## 1 Introduction", "",
+         "<领域脉络 → 具体问题 → 技术约束，每个事实句带 [@key #E:...] 或 [作者判断]>" if zh else "<field context -> concrete problem -> technical constraint; each factual sentence with [@key #E:...] or [author judgment]>", "",
+         "<!-- part:related -->", "## 2 相关工作" if zh else "## 2 Related Work", ""]
+    for g in groups:
+        D += [f"### {g['name'] if not g['name'].startswith('<') else ('<分组名>' if zh else '<group name>')}", "",
+              f"<!-- refs: {', '.join(g['refs'])} | evidence: {', '.join(e['id'] for e in g['evidence'][:4])} -->",
+              "<在同一维度上比较这些工作：结论、适用条件、局限 [@k1; @k2]>" if zh else "<compare these works on the group's axis: findings, conditions, limits [@k1; @k2]>", ""]
+    D += ["<!-- part:gap -->", f"<!-- candidate limitation evidence: {', '.join(c['id'] for c in cand[:8])} -->",
+          "<研究空白：由上述工作的共同局限推出 [@k #E:...]>" if zh else "<gap derived from the shared limitation of the works above [@k #E:...]>", "",
+          "<!-- part:contrib -->", "本文的贡献如下：" if zh else "Our contributions are:", ""]
+    D += [f"- {k['text']}" for k in contribs]
+    wrote = []
+    for name, content in (("plan.json", plan), ("draft.md", "\n".join(D) + "\n")):
+        p = os.path.join(work, name)
+        if os.path.exists(p) and not a.force:
+            continue
+        W(p, content)
+        wrote.append(name)
+    print(json.dumps({"wrote": wrote, "groups": [(g["name"], g["refs"]) for g in groups], "gap_candidates": len(cand), "contributions": len(contribs),
+                      "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run check"},
+                     ensure_ascii=False, indent=1))
+    return 0
+
+
 def find(a):
     work = os.path.abspath(a.work)
     src = J(os.path.join(work, "sources", a.source + ".json"))
@@ -422,10 +611,12 @@ def parse_draft(text, rules):
                 paras.append((part, heading, " ".join(cur)))
                 cur = []
             continue
-        cur.append(line.strip().lstrip("-*0123456789.) ").strip() if re.match(r"^\s*([-*]|\d+[.)])\s", line) else line.strip())
-        if re.match(r"^\s*([-*]|\d+[.)]|（\d+）|\(\d+\))\s*", line):  # list item = own paragraph
+        if re.match(r"^\s*([-*]|\d+[.)]|（\d+）|\(\d+\))\s+", line):
+            cur.append(re.sub(r"^\s*(?:[-*]|\d+[.)]|（\d+）|\(\d+\))\s+", "", line).strip())
             paras.append((part, heading, " ".join(cur)))
             cur = []
+        else:
+            cur.append(line.strip())
     sents = []
     for pi, (part, heading, ptxt) in enumerate(paras):
         for si, s in enumerate(split_sentences(ptxt)):
@@ -448,7 +639,7 @@ def load_sources(work, keys):
         k = os.path.splitext(os.path.basename(f))[0]
         o = J(f) or {}
         pg = o.get("pages") or []
-        S[k] = {"pages": pg, "norm": norm(" ".join(pg)), "abstract_only": o.get("abstract_only", False), "note": o.get("note", False),
+        S[k] = {"pages": pg, "norm": norm(" ".join(pg)), "abstract_only": o.get("abstract_only", False), "note": o.get("note", False), "context": o.get("context", False),
                 "idx": all_sentence_index(k, pg)}
     return S
 
@@ -476,11 +667,11 @@ def num_in_context(n, sentence, src, eid=None, cross=False):
     if eid and eid in pos:
         i = pos[eid]
         win = " ".join(items[j][1][1] for j in range(max(0, i - 1), min(len(items), i + 2)))
-        if num_in_text(n, norm(win)):
+        if num_in_text(n, norm(win), sentence):
             return True, None
-    hits = [(p, t) for _, (p, t) in items if num_in_text(n, norm(t))]
+    hits = [(p, t) for _, (p, t) in items if num_in_text(n, norm(t), sentence)]
     if not hits:
-        if not items and num_in_text(n, src["norm"]):
+        if not items and num_in_text(n, src["norm"], sentence):
             return True, None
         return False, None
     if cross and not eid:
@@ -499,7 +690,7 @@ def num_in_evidence(n, k, own):
         if ev.get("id") and ev["id"] in own["idx"]:
             p, q = own["idx"][ev["id"]]
             txt.append(q)
-            pages.add(p)
+            pass  # id evidence: the number must be in that sentence, not just on its page
         elif ev.get("quote"):
             p, sc = find_quote(ev["quote"], own["pages"])
             if p and sc >= 0.85:
@@ -511,9 +702,9 @@ def num_in_evidence(n, k, own):
                 for i, pg in enumerate(own["pages"]):
                     if re.search(r"(?im)^\s*" + kind + re.escape(lm.group(2)) + r"", pg):
                         pages.add(i + 1)
-    if num_in_text(n, norm(" ".join(txt))) or any(num_in_text(n, norm(own["pages"][p - 1])) for p in pages if 0 < p <= len(own["pages"])):
+    if num_in_text(n, norm(" ".join(txt)), k.get("text") or "") or any(num_in_text(n, norm(own["pages"][p - 1]), k.get("text") or "") for p in pages if 0 < p <= len(own["pages"])):
         return True, None
-    hit = next((i + 1 for i, pg in enumerate(own["pages"]) if num_in_text(n, norm(pg))), None)
+    hit = next((i + 1 for i, pg in enumerate(own["pages"]) if num_in_text(n, norm(pg), k.get("text") or "")), None)
     return False, hit
 
 
@@ -699,6 +890,113 @@ def to_latex(text, recs):
     return "\n".join(res) + "\n"
 
 
+def write_docx(md, path, lang):
+    """minimal editable .docx (headings, paragraphs, bullet lists) written as WordprocessingML - no extra package."""
+    import zipfile
+    from xml.sax.saxutils import escape as X
+    font = "SimSun" if lang == "zh" else "Times New Roman"
+
+    def run(t, bold=False, italic=False):
+        rp = f'<w:rPr><w:rFonts w:ascii="{font}" w:hAnsi="{font}" w:eastAsia="SimSun"/>' + ("<w:b/>" if bold else "") + ("<w:i/>" if italic else "") + "</w:rPr>"
+        return f'<w:r>{rp}<w:t xml:space="preserve">{X(t)}</w:t></w:r>'
+
+    def inline(t):
+        out = []
+        for part in re.split(r"(\*[^*]+\*)", t):
+            if part.startswith("*") and part.endswith("*") and len(part) > 2:
+                out.append(run(part[1:-1], italic=True))
+            elif part:
+                out.append(run(part))
+        return "".join(out)
+    paras = []
+    for block in md.split("\n"):
+        b = block.rstrip()
+        if not b.strip():
+            continue
+        m = re.match(r"^(#{1,6})\s+(.*)", b)
+        if m:
+            lvl = min(len(m.group(1)), 3)
+            paras.append(f'<w:p><w:pPr><w:pStyle w:val="Heading{lvl}"/></w:pPr>{run(m.group(2), bold=True)}</w:p>')
+        elif re.match(r"^\s*[-*]\s+", b):
+            paras.append(f'<w:p><w:pPr><w:pStyle w:val="ListBullet"/><w:ind w:left="360" w:hanging="360"/></w:pPr>{run("• ")}{inline(re.sub(r"^\s*[-*]\s+", "", b))}</w:p>')
+        else:
+            paras.append(f'<w:p><w:pPr><w:spacing w:after="120" w:line="300" w:lineRule="auto"/><w:jc w:val="both"/></w:pPr>{inline(b)}</w:p>')
+    W_NS = 'xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"'
+    doc = f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document {W_NS}><w:body>{"".join(paras)}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/></w:sectPr></w:body></w:document>'
+    styles = (f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles {W_NS}>'
+              f'<w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="{font}" w:hAnsi="{font}" w:eastAsia="SimSun"/><w:sz w:val="22"/></w:rPr></w:rPrDefault></w:docDefaults>'
+              '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style>'
+              + "".join(f'<w:style w:type="paragraph" w:styleId="Heading{i}"><w:name w:val="heading {i}"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:qFormat/>'
+                        f'<w:pPr><w:keepNext/><w:spacing w:before="240" w:after="120"/><w:outlineLvl w:val="{i - 1}"/></w:pPr><w:rPr><w:b/><w:sz w:val="{36 - 4 * i}"/></w:rPr></w:style>' for i in (1, 2, 3))
+              + '<w:style w:type="paragraph" w:styleId="ListBullet"><w:name w:val="List Bullet"/><w:basedOn w:val="Normal"/></w:style></w:styles>')
+    ct = ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+          '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/>'
+          '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'
+          '<Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>')
+    rels = ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>')
+    drels = ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+             '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>')
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
+        z.writestr("[Content_Types].xml", ct)
+        z.writestr("_rels/.rels", rels)
+        z.writestr("word/document.xml", doc)
+        z.writestr("word/styles.xml", styles)
+        z.writestr("word/_rels/document.xml.rels", drels)
+
+
+def fallback_pdf(out, html_md, lang):
+    """preview PDF when LaTeX is missing: LibreOffice on the .docx, else PyMuPDF Story from HTML."""
+    import subprocess
+    docx = os.path.join(out, "intro_related_work.docx")
+    so = shutil.which("soffice") or shutil.which("libreoffice")
+    if so and os.path.exists(docx):
+        try:
+            subprocess.run([so, "--headless", "--convert-to", "pdf", "--outdir", out, docx], capture_output=True, timeout=120)
+            p = os.path.join(out, "intro_related_work.pdf")
+            if os.path.exists(p):
+                shutil.move(p, os.path.join(out, "intro_related_work_preview.pdf"))
+                return "intro_related_work_preview.pdf", None
+        except Exception:  # noqa
+            pass
+    try:
+        try:
+            import pymupdf as fitz
+        except ImportError:
+            import fitz
+        story = fitz.Story(html=html_md)
+        wr = fitz.DocumentWriter(os.path.join(out, "intro_related_work_preview.pdf"))
+        more = 1
+        while more:
+            dev = wr.begin_page(fitz.paper_rect("a4"))
+            more, _ = story.place(fitz.paper_rect("a4") + (56, 56, -56, -56))
+            story.draw(dev)
+            wr.end_page()
+        wr.close()
+        return "intro_related_work_preview.pdf", "preview rendered with PyMuPDF (no LaTeX/LibreOffice); CJK glyphs depend on installed fonts"
+    except Exception as e:  # noqa
+        return None, f"no preview renderer available: {e}"
+
+
+def png_previews(out, pdf_name, max_pages=3):
+    try:
+        try:
+            import pymupdf as fitz
+        except ImportError:
+            import fitz
+        d = fitz.open(os.path.join(out, pdf_name))
+        names = []
+        for i, pg in enumerate(d):
+            if i >= max_pages:
+                break
+            n = f"intro_related_work_preview_p{i + 1}.png"
+            pg.get_pixmap(dpi=110).save(os.path.join(out, n))
+            names.append(n)
+        return names
+    except Exception:  # noqa
+        return []
+
+
 def try_pdf(tex_body, bib, out, lang, style="numeric"):
     """compile a preview PDF with xelatex/pdflatex + bibtex when available (best effort)."""
     eng = shutil.which("xelatex") or shutil.which("pdflatex")
@@ -760,6 +1058,22 @@ def check(a):
     sents, paras = parse_draft(draft, rules)
     parts = {p: [s for s in sents if s["part"] == p] for p in ("background", "related", "gap", "contrib")}
 
+    # ---- S0 template placeholders left in the draft or plan
+    body_ = re.sub(r"<!--.*?-->", "", draft, flags=re.S)
+    for m in re.finditer(r"<[^<>\n]{3,}>", body_):
+        C.add("S0", "fail", f"template placeholder left in the draft: {short(m.group(0), 80)}")
+    def _ph(o, path=""):
+        if isinstance(o, dict):
+            for k, v in o.items():
+                if not str(k).startswith("_"):
+                    _ph(v, f"{path}.{k}")
+        elif isinstance(o, list):
+            for i, v in enumerate(o):
+                _ph(v, f"{path}[{i}]")
+        elif isinstance(o, str) and re.search(r"<[^<>]{3,}>", o):
+            C.add("S0", "fail", f"template placeholder left in plan{path}: {short(o, 80)}")
+    _ph({k: v for k, v in plan.items() if k in ("groups", "gaps", "contributions")})
+
     # ---- S1 structure
     for p, ss in parts.items():
         if not ss:
@@ -785,7 +1099,7 @@ def check(a):
             src = S.get(k)
             cinfo = {"key": k, "evidence": None, "page": None, "quote": None, "support": None, "source_text": "none"}
             if src and not src["note"]:
-                cinfo["source_text"] = "abstract_only" if src["abstract_only"] else "full_text"
+                cinfo["source_text"] = "abstract_only" if src["abstract_only"] else ("secondary" if src.get("context") else "full_text")
                 xl = has_cjk(s["text"]) != has_cjk(src["norm"][:4000])  # zh sentence about an en source (or vice versa)
                 if xl:
                     cinfo["cross_lingual"] = True
@@ -854,7 +1168,7 @@ def check(a):
                     C.add("S4c", "fail", f"number {n} in an uncited sentence (cite its source or remove)", s["id"], sentence=s["text"])
         # misattribution
         for c in entry["citations"]:
-            if c.get("support") is None or c["source_text"] != "full_text" or c.get("link") == "explicit":
+            if c.get("support") is None or c["source_text"] not in ("full_text", "secondary") or c.get("link") == "explicit":
                 continue
             alts = []
             for k2, src2 in S.items():
@@ -1065,6 +1379,10 @@ def check(a):
         st = lib["src_status"].get(k, {}).get("text")
         if st in ("metadata_only", None):
             needs.append({"type": "claim_unverifiable", "ref": k, "note": "no source text: the statement about this work was checked against metadata only"})
+        elif "citing_context" in st or "table_note" in st:
+            needs.append({"type": "secondary_evidence", "ref": k, "note": f"checked against {st.replace('+', ' + ')} (how the own paper / notes describe it), not against the original work"})
+        if r.get("reflist_of"):
+            needs.append({"type": "metadata_from_reference_list", "ref": k, "note": f"record parsed from the printed reference list of the {r['reflist_of']}; confirm fields"})
     req = lib.get("required_refs") or []
     req = [req] if isinstance(req, str) else req
     for r in req:
@@ -1073,7 +1391,7 @@ def check(a):
     uncited = [r["key"] for r in recs if r["key"] not in cited_keys]
     omitted = plan.get("omitted_refs") or {}
     for k in uncited:
-        if k not in omitted:
+        if k not in omitted and not byk[k].get("reflist_of"):
             C.add("S13b", "warn", f"library record [@{k}] not cited and no reason in plan.omitted_refs")
     years = [int(byk[k]["year"]) for k in cited_keys if str(byk[k].get("year", "")).isdigit()]
     lib_years = [int(r["year"]) for r in recs if str(r.get("year", "")).isdigit()]
@@ -1101,8 +1419,16 @@ def check(a):
     W(os.path.join(out, "references.bib"), bib)
     tex = to_latex(draft, recs)
     W(os.path.join(out, "intro_related_work.tex"), tex)
-    preview, prev_err = (None, "skipped (--no-pdf)") if a.no_pdf else try_pdf(tex, bib, out, lang, style)
     W(os.path.join(out, "intro_related_work.html"), html_preview(full_md, lang))
+    write_docx(full_md, os.path.join(out, "intro_related_work.docx"), lang)
+    preview, prev_err, pngs = None, "skipped (--no-pdf)", []
+    if not a.no_pdf:
+        preview, prev_err = try_pdf(tex, bib, out, lang, style)
+        if not preview:
+            preview, err2 = fallback_pdf(out, html_preview(full_md, lang), lang)
+            prev_err = "; ".join(x for x in (prev_err, err2) if x)
+        if preview:
+            pngs = png_previews(out, preview)
     W(os.path.join(out, "source_map.json"), sent_map)
     W(os.path.join(out, "related_work_matrix.md"), matrix_md(groups, byk, S, sent_map, lang))
     W(os.path.join(out, "gap_derivation.md"), gap_md(gap_rows, contrib_rows, lang))
@@ -1130,7 +1456,7 @@ def check(a):
     W(os.path.join(work, "changes.json"), changes)
 
     # ---- result
-    status = "complete" if nf == 0 and not lib["missing"] and not [n for n in needs if n["type"] in ("missing_metadata", "metadata_from_pdf", "S10b")] else "partial"
+    status = "complete" if nf == 0 and not lib["missing"] and not [n for n in needs if n["type"] in ("missing_metadata", "metadata_from_pdf", "metadata_from_reference_list", "S10b")] else "partial"
     if nf:
         reason = f"{nf} blocking check(s) failed - see review.md"
     elif status == "partial":
@@ -1157,7 +1483,7 @@ def check(a):
            "changes": changes, "inputs": lib["inputs"],
            "artifacts": {"draft_md": "intro_related_work.md", "draft_annotated": "intro_related_work_annotated.md", "latex": "intro_related_work.tex",
                          "bib": "references.bib", "references": f"references_{ref_style}.txt", "html_preview": "intro_related_work.html",
-                         "pdf_preview": preview, "source_map": "source_map.json", "matrix": "related_work_matrix.md", "gap_derivation": "gap_derivation.md",
+                         "docx": "intro_related_work.docx", "pdf_preview": preview, "png_previews": pngs, "source_map": "source_map.json", "matrix": "related_work_matrix.md", "gap_derivation": "gap_derivation.md",
                          "contribution_map": "contribution_map.json", "review": "review.md", "diff": "changes.diff" if os.path.exists(os.path.join(out, "changes.diff")) else None},
            "preview_note": prev_err, "updated": now(), "seconds": round(time.time() - t0, 1)}
     fill_contract(res, lib.get("contract"), os.path.join(work, "contract_overrides.json"))
@@ -1191,6 +1517,7 @@ CONTRACT_MAP = [
     (r"contrib|贡献", lambda r: {"text": r["parts"]["contrib"], "map": r["contributions"]}),
     (r"reference|bib|citation_list|引用|文献", lambda r: r["references"]),
     (r"source|evidence|map|来源|证据|溯源", lambda r: r["source_map"]),
+    (r"verification_notes|notes|审阅|注释", lambda r: [f"[{i['level']}] {i['check']} {i.get('where') or ''}: {i['message']}" for i in r["checks"]] + [n.get("note") or str(n) for n in r["needs_review"]]),
     (r"check|verif|核对|核验", lambda r: {"summary": r["summary"], "checks": r["checks"]}),
     (r"review|confirm|uncertain|limit|question|open_|issue|todo|确认|不确定|问题", lambda r: {"needs_review": r["needs_review"], "uncertainty": r["uncertainty"], "missing_materials": r["missing_materials"]}),
     (r"change|revision|diff|修改|版本", lambda r: r["changes"]),
@@ -1198,22 +1525,81 @@ CONTRACT_MAP = [
 ]
 
 
+def _want_type(spec):
+    if isinstance(spec, dict) and isinstance(spec.get("type"), str):
+        spec = spec["type"]
+    s = json.dumps(spec, ensure_ascii=False).lower() if not isinstance(spec, str) else spec.lower()
+    if isinstance(spec, list) or re.search(r"\blist\b|array|\[\]|列表|数组", s):
+        return "list"
+    if isinstance(spec, dict) or re.search(r"\bobject\b|\bdict\b|\bmap\b|对象|字典", s):
+        return "object"
+    if re.search(r"\bstring\b|\bstr\b|\btext\b|字符串|文本", s):
+        return "string"
+    if re.search(r"number|float|\bint|integer|数值|数字", s):
+        return "number"
+    if re.search(r"bool", s):
+        return "boolean"
+    return None
+
+
+def _coerce_contract_val(val, want):
+    if want is None or val is None:
+        return val
+    if want == "string":
+        if isinstance(val, str):
+            return val
+        if isinstance(val, dict) and isinstance(val.get("text"), str):
+            return val["text"]
+        if isinstance(val, list) and all(isinstance(x, str) for x in val):
+            return "\n".join(val)
+        return json.dumps(val, ensure_ascii=False)
+    if want == "list":
+        if isinstance(val, list):
+            return val
+        if isinstance(val, dict):
+            lists = [x for v in val.values() if isinstance(v, list) for x in v]
+            return lists if lists else [{"key": k, "value": v} for k, v in val.items()]
+        return [val]
+    if want == "object":
+        if isinstance(val, dict):
+            return val
+        return {"items": val} if isinstance(val, list) else {"value": val}
+    if want == "number":
+        if isinstance(val, (int, float)) and not isinstance(val, bool):
+            return val
+        if isinstance(val, str) and re.fullmatch(r"\s*[-+]?\d+(?:\.\d+)?\s*%?\s*", val):
+            return float(val.strip().rstrip("%")) / (100 if "%" in val else 1)
+    if want == "boolean" and isinstance(val, str):
+        low = val.strip().lower()
+        if low in ("true", "yes", "1", "是"):
+            return True
+        if low in ("false", "no", "0", "否"):
+            return False
+    return val
+
+
 def fill_contract(res, contract, overrides_p):
-    names = contract_names(contract)
+    schema = contract_schema(contract)
+    st_spec = schema.get("status") if isinstance(schema, dict) else None
+    if isinstance(st_spec, dict) and isinstance(st_spec.get("enum"), list):
+        if res.get("status") == "complete" and "success" in st_spec["enum"] and "complete" not in st_spec["enum"]:
+            res["status"] = "success"
     unm = []
-    for n in names:
+    for n, spec in schema.items():
         if n in res and res[n] is not None and n not in ("status",):
+            res[n] = _coerce_contract_val(res[n], _want_type(spec))
             continue
         for pat, fn in CONTRACT_MAP:
             if re.search(pat, n, re.I):
-                res[n] = fn(res)
+                res[n] = _coerce_contract_val(fn(res), _want_type(spec))
                 break
         else:
-            unm.append(n)
+            if n != "status":
+                unm.append(n)
             res.setdefault(n, None)
     ov = J(overrides_p, {})
     for k, v in (ov or {}).items():
-        res[k] = v
+        res[k] = _coerce_contract_val(v, _want_type(schema.get(k))) if k in schema else v
         if k in unm:
             unm.remove(k)
     res["unmapped_contract_fields"] = unm
@@ -1293,12 +1679,15 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sp = ap.add_subparsers(dest="cmd", required=True)
     p = sp.add_parser("init")
-    p.add_argument("--case", default="/input/case.json")
+    p.add_argument("--case", default="/input/case.json" if os.path.exists("/input/case.json") else "case.json")
     p.add_argument("--out", default="/app/output")
     p.add_argument("--work", default="/app/work")
     p.add_argument("--own", help="own paper file (overrides detection)")
     p.add_argument("--library", action="append", help="extra library file(s)")
     p.add_argument("--case-id")
+    p = sp.add_parser("scaffold")
+    p.add_argument("--work", default="/app/work")
+    p.add_argument("--force", action="store_true", help="overwrite existing plan.json / draft.md")
     p = sp.add_parser("find")
     p.add_argument("--work", default="/app/work")
     p.add_argument("--source", required=True)
@@ -1313,7 +1702,7 @@ def main():
     p.add_argument("--case-id")
     p.add_argument("--no-pdf", action="store_true", help="skip the LaTeX preview build")
     a = ap.parse_args()
-    return {"init": init, "find": find, "check": check}[a.cmd](a) or 0
+    return {"init": init, "scaffold": scaffold, "find": find, "check": check}[a.cmd](a) or 0
 
 
 if __name__ == "__main__":

@@ -1,0 +1,130 @@
+{
+ "language": "en",
+ "style": "apa",
+ "groups": [
+  {
+   "id": "g1",
+   "name": "Empirical scaling of generalization error",
+   "basis": "method",
+   "dimension": "which scale variables are fitted (data size, model size, compute) and whether compute allocation is modelled",
+   "refs": [
+    "hestness2017",
+    "rosenfeld2019"
+   ],
+   "comparison": "Hestness et al. fit error against training-set size across four domains; Rosenfeld et al. fit a joint form in model and data size; neither models training time or compute allocation",
+   "evidence": [
+    {
+     "ref": "hestness2017",
+     "id": "E:hestness2017:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "rosenfeld2019",
+     "id": "E:rosenfeld2019:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "name": "Large Transformer language models",
+   "basis": "problem",
+   "dimension": "how far model size is pushed and what is reported about the benefit of scale",
+   "refs": [
+    "vaswani2017",
+    "radford2019"
+   ],
+   "comparison": "the Transformer architecture is the common base; GPT-2 scales it to 1.5B parameters and reports zero-shot transfer, without a rule for splitting compute between size and data",
+   "evidence": [
+    {
+     "ref": "radford2019",
+     "id": "E:radford2019:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "vaswani2017",
+     "id": "E:vaswani2017:p1:4",
+     "use": "method"
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "id": "gap1",
+   "statement": "Existing scaling studies relate error to data and model size but do not model training time or how a fixed compute budget should be split, and their data-model scaling estimates disagree.",
+   "type": "conflict",
+   "from": [
+    {
+     "ref": "rosenfeld2019",
+     "id": "E:rosenfeld2019:p1:1",
+     "kind": "setting"
+    },
+    {
+     "ref": "hestness2017",
+     "id": "E:hestness2017:p1:1",
+     "kind": "setting"
+    },
+    {
+     "ref": "hestness2017",
+     "id": "E:hestness2017:p1:3",
+     "kind": "conflict"
+    }
+   ],
+   "author_judgment": false
+  }
+ ],
+ "contributions": [
+  {
+   "id": "k1",
+   "text": "We show that the language-modeling loss scales as a power law with model size, dataset size and training compute, with some trends spanning more than seven orders of magnitude.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:6"
+    },
+    {
+     "loc": "Figure 1",
+     "quote": "Language modeling performance improves smoothly"
+    }
+   ]
+  },
+  {
+   "id": "k2",
+   "text": "We find that performance depends strongly on scale and weakly on model shape, and that every 8x increase in model size needs only about a 5x increase in data to avoid an overfitting penalty.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p3:21"
+    },
+    {
+     "id": "E:self:p3:26"
+    }
+   ]
+  },
+  {
+   "id": "k3",
+   "text": "Under a fixed compute budget, the best performance comes from training very large models and stopping well before convergence.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p3:31"
+    },
+    {
+     "loc": "Figure 3",
+     "quote": "optimal"
+    }
+   ]
+  }
+ ],
+ "omitted_refs": {},
+ "author_notes": [
+  "Findings and limitations of hestness2017, rosenfeld2019 and radford2019 come from literature.csv (author's table), not from the original papers: confirm before submission."
+ ]
+}

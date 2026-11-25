@@ -1,0 +1,7 @@
+[1] Sutskever I, Martens J, Dahl GE, et al. On the importance of initialization and momentum in deep learning[C]//In ICML (3), volume 28 of JMLR Proceedings, pp, 2013: 1139-1147.
+[2] Duchi J, Hazan E, Singer Y. Adaptive subgradient methods for online learning and stochastic optimization[J]. J. Mach, 2011: 2121-2159.
+[3] Nair V, Hinton GE. Rectified linear units improve restricted boltzmann machines[C]//In ICML, pp, 2010: 807-814.
+[4] Bengio Y, Glorot X. Understanding the difficulty of training deep feedforward neural networks[C]//In Proceedings of AISTATS 2010, volume 9, pp, 2010: 249-256.
+[5] LeCun Y, Bottou L, Orr G, et al. Efficient backprop[J]. In Orr, G. and K., Muller (eds.), Neural Networks: Tricks of the trade, 1998.
+[6] Lyu S, Simoncelli EP. Nonlinear image representation using divisive normalization[C]//In Proc, 2008: 1-8. DOI: 10.1109/CVPR.
+[7] Wiesler S, Ney H. A convergence analysis of log-linear training[C]//In Shawe-Taylor, J., Zemel, R.S., Bartlett, P., Pereira, F.C.N., and Weinberger, K.Q. (eds.), Advances in Neural Information Processing Systems 24, pp, 2011: 657-665.

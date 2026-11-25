@@ -10,7 +10,7 @@ import unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SKILL_DIR = os.path.dirname(HERE)
-VERSION = "0.1.0"
+VERSION = "0.2.1"
 
 
 def load_rules():
@@ -100,14 +100,42 @@ def numbers(s):
     return out
 
 
-def num_in_text(v, text_norm):
+NUM_SCALE = {"k": 1e3, "thousand": 1e3, "m": 1e6, "million": 1e6, "b": 1e9, "billion": 1e9,
+             "t": 1e12, "trillion": 1e12, "千": 1e3, "万": 1e4, "十万": 1e5, "百万": 1e6, "千万": 1e7, "亿": 1e8, "十亿": 1e9, "万亿": 1e12}
+NUM_WITH_SCALE_RE = re.compile(r"(?<![A-Za-z0-9_.\-])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s*(thousand|million|billion|trillion|[kKMBT](?![A-Za-z0-9])|十万|百万|千万|十亿|万亿|千|万|亿)?")
+
+
+def _scaled_vals(text_norm, match_base=None):
+    vals = set()
+    for m in NUM_WITH_SCALE_RE.finditer(text_norm or ""):
+        raw = m.group(1).replace(",", "")
+        sc = NUM_SCALE.get((m.group(2) or "").lower()) or NUM_SCALE.get(m.group(2) or "")
+        if not sc:
+            continue
+        try:
+            v = float(raw)
+        except ValueError:
+            continue
+        if match_base is not None and abs(v - match_base) > 1e-9:
+            continue
+        vals.add(v * sc)
+    return vals
+
+
+def num_in_text(v, text_norm, sentence_ctx=""):
     v = v.replace(",", "")
     if re.search(r"(?<![\d.])" + re.escape(v) + r"(?![\d])", text_norm.replace(",", "")):
         return True
-    try:  # 70 -> "70b", 1.4 -> "1.4 trillion" are covered above; also accept 0.5 <-> 50%
+    try:  # also accept 0.5 <-> 50% and EN/ZH scale equivalents (6 billion <-> 60 亿)
         f = float(v)
         alts = {("%g" % (f * 100)), ("%g" % (f / 100))}
-        return any(re.search(r"(?<![\d.])" + re.escape(a) + r"(?![\d])", text_norm) for a in alts if a not in ("0", v))
+        if any(re.search(r"(?<![\d.])" + re.escape(a) + r"(?![\d])", text_norm) for a in alts if a not in ("0", v)):
+            return True
+        if sentence_ctx:
+            cand = _scaled_vals(norm(sentence_ctx), match_base=f)
+            if cand and any(abs(sv - cv) <= 1e-6 * max(1.0, abs(cv)) for cv in cand for sv in _scaled_vals(text_norm)):
+                return True
+        return False
     except ValueError:
         return False
 
@@ -430,7 +458,7 @@ def references_start(pages):
     return len(pages)
 
 
-def extract_evidence(sid, pages, rules, own=False, cap_claim=45, cap_lim=35):
+def extract_evidence(sid, pages, rules, own=False, cap_claim=45, cap_lim=35, keep_all=False):
     lim_cues, res_cues = rules["limitation_cues"], rules["result_cues"]
     stop = references_start(pages)
     ev = {"claims": [], "limitations": [], "captions": [], "headings": [], "abstract": ""}
@@ -450,7 +478,7 @@ def extract_evidence(sid, pages, rules, own=False, cap_claim=45, cap_lim=35):
         n += 1
         eid = f"E:{sid}:p{page}:{n}"
         lim = cue_hit(s, lim_cues)
-        res = cue_hit(s, res_cues) or (bool(numbers(s)) and own)
+        res = cue_hit(s, res_cues) or (bool(numbers(s)) and own) or (["context"] if keep_all else [])
         if lim and len(ev["limitations"]) < cap_lim * (3 if own else 1):
             ev["limitations"].append({"id": eid, "page": page, "text": s, "cues": lim[:3]})
         elif res and len(ev["claims"]) < cap_claim * (3 if own else 1):

@@ -7,9 +7,9 @@
   "holdout_transformer": {
    "fails": 0,
    "status": "complete",
-   "warns": 0,
-   "needs_review": 7,
-   "check_seconds": 0.19
+   "warns": 1,
+   "needs_review": 9,
+   "check_seconds": 0.3
   }
  },
  "defects": 15,
@@ -47,5 +47,5 @@
   "unsupported_novelty_scope": "1/1",
   "wrong_number_contribution": "1/1"
  },
- "wall_seconds": 4.7
+ "wall_seconds": 7.5
 }

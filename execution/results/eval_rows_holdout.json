@@ -11,7 +11,7 @@
   "caught": true,
   "caught_any_new_fail": true,
   "new_fails": [
-   "S2 P2.S1: citation key 'sutskever2014' is not in the library (no invented references)"
+   "S2 P2.S1: citation key 'sutskever2015' is not in the library (no invented references)"
   ],
   "b1": true,
   "b2": true,
@@ -103,6 +103,7 @@
   "caught": true,
   "caught_any_new_fail": true,
   "new_fails": [
+   "S5 P2.S1: citation [@hochreiter1997] weakly supports this sentence (0.0); source 'sutskever2014' matches much better (0.57) - misattributed?",
    "S8 P2: related-work paragraph 2 is a list of one-paper summaries (3 in a row, no comparison words): compare the works on the group's dimension"
   ],
   "b1": false,
@@ -211,6 +212,7 @@
   "caught": true,
   "caught_any_new_fail": true,
   "new_fails": [
+   "S5 P1.S1: citation [@hochreiter1997] weakly supports this sentence (0.11); source 'sutskever2014' matches much better (0.78) - misattributed?",
    "S13 : required reference 'gehring2017' not cited"
   ],
   "b1": false,

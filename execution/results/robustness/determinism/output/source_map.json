@@ -15,11 +15,11 @@
    },
    {
     "key": "smith2022",
-    "evidence": "E:smith2022:p1:2",
+    "evidence": "E:smith2022:p1:3",
     "page": 1,
-    "quote": "Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models.",
-    "support": 0.54,
-    "source_text": "abstract_only",
+    "quote": "We present details on the training of the largest monolithic transformer based language model, Megatron-Turing NLG 530B (MT-NLG), with 530 billion parameters.",
+    "support": 0.69,
+    "source_text": "secondary",
     "link": "auto"
    }
   ],
@@ -27,7 +27,8 @@
    {
     "value": "175",
     "found_in": [
-     "brown2020"
+     "brown2020",
+     "smith2022"
     ],
     "elsewhere": []
    },
@@ -112,9 +113,10 @@
     "key": "clark2022",
     "evidence": null,
     "page": null,
-    "quote": null,
-    "support": null,
-    "source_text": "metadata_only"
+    "quote": "",
+    "support": 0.0,
+    "source_text": "secondary",
+    "link": "auto"
    }
   ],
   "numbers": [],
@@ -153,11 +155,12 @@
   "citations": [
    {
     "key": "clark2022",
-    "evidence": null,
-    "page": null,
-    "quote": null,
-    "support": null,
-    "source_text": "metadata_only"
+    "evidence": "E:clark2022:p1:1",
+    "page": 1,
+    "quote": "[own paper p3] Recently, Clark et al. (2022) specifically looked in to the scaling properties of Mixture of Expert [own paper p4] However, for very large models the computational benefits of routed models seems to diminish (Clark et al., 2022).",
+    "support": 0.3,
+    "source_text": "secondary",
+    "link": "auto"
    }
   ],
   "numbers": [],
@@ -195,11 +198,12 @@
    },
    {
     "key": "rae2021",
-    "evidence": null,
-    "page": null,
-    "quote": null,
-    "support": null,
-    "source_text": "metadata_only"
+    "evidence": "E:rae2021:p1:3",
+    "page": 1,
+    "quote": "[own paper p3] LaMDA (Thoppilan et al., 2022) 137 Billion 168 Billion GPT-3 (Brown et al., 2020) 175 Billion 300 Billion Jurassic (Lieber et al., 2021) 178 Billion 300 Billion Gopher (Rae et al., 2021) 280 Billion 300 Billion MT-NLG 530B (Smith et al., 2022) 530 Billion 270 Billion [own paper p3] These include both dense transformer models (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021…",
+    "support": 0.29,
+    "source_text": "secondary",
+    "link": "auto"
    },
    {
     "key": "smith2022",
@@ -207,7 +211,7 @@
     "page": 1,
     "quote": "Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models.",
     "support": 0.21,
-    "source_text": "abstract_only",
+    "source_text": "secondary",
     "link": "auto"
    }
   ],

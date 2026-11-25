@@ -1,0 +1,290 @@
+{
+ "_doc": "v0.2 cases (paper-only zh; paper + notes + CSV en). Written after the v0.2 parser fixes on these inputs; check logic unchanged.",
+ "mutations": [
+  {
+   "id": "V01",
+   "case": "ho2_bn_paperonly",
+   "type": "fabricated_citation",
+   "expect": [
+    "S2"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "[@nair2010 #E:nair2010:p1:1; @bengio2010 #E:bengio2010:p1:1]。\n\n<!-- part:related -->",
+      "[@nair2010 #E:nair2010:p1:1; @glorot2011]。\n\n<!-- part:related -->"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V02",
+   "case": "ho2_bn_paperonly",
+   "type": "wrong_number_contribution",
+   "expect": [
+    "S4"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "以原模型 7% 的训练步数达到相同精度",
+      "以原模型 5% 的训练步数达到相同精度"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V03",
+   "case": "ho2_bn_paperonly",
+   "type": "empty_padding",
+   "expect": [
+    "S7"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "## 1 引言\n\n",
+      "## 1 引言\n\n近年来，深度神经网络受到了广泛关注，在图像识别等领域发挥着重要作用。"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V04",
+   "case": "ho2_bn_paperonly",
+   "type": "evidence_from_wrong_source",
+   "expect": [
+    "S5c"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "[@lyu2008 #E:lyu2008:p1:1]。\n\n<!-- part:gap -->",
+      "[@lyu2008 #E:wiesler2011:p1:1]。\n\n<!-- part:gap -->"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V05",
+   "case": "ho2_bn_paperonly",
+   "type": "uncited_claim",
+   "expect": [
+    "S3"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "可以加快训练收敛[@lecun1998a #E:lecun1998a:p1:1; @wiesler2011 #E:wiesler2011:p1:1]",
+      "可以加快训练收敛"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V06",
+   "case": "ho2_bn_paperonly",
+   "type": "overclaim_first",
+   "expect": [
+    "S11j"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "4.82% 的测试错误率。",
+      "4.82% 的测试错误率，为最优结果。"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V07",
+   "case": "ho2_bn_paperonly",
+   "type": "gap_without_derivation",
+   "expect": [
+    "S10"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "gaps.0.from",
+      []
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V08",
+   "case": "ho3_kaplan_notes",
+   "type": "misattributed_citation",
+   "expect": [
+    "S5"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition [@hestness2017 #E:hestness2017:p1:1]",
+      "find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition [@radford2019]"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V09",
+   "case": "ho3_kaplan_notes",
+   "type": "wrong_number_cited",
+   "expect": [
+    "S4"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "GPT-2 scales it to 1.5B parameters",
+      "GPT-2 scales it to 2.5B parameters"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V10",
+   "case": "ho3_kaplan_notes",
+   "type": "wrong_number_contribution",
+   "expect": [
+    "S4"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "only about a 5x increase in data",
+      "only about a 3x increase in data"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V11",
+   "case": "ho3_kaplan_notes",
+   "type": "summary_stitching",
+   "expect": [
+    "S8"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "Both empirical scaling studies fit power laws to generalization error, but they differ in the variables they fit [@hestness2017; @rosenfeld2019]. Hestness et al. find that generalization error falls as a power law of training set size in machine translation, language modeling, image classification and speech recognition [@hestness2017 #E:hestness2017:p1:1], whereas Rosenfeld et al. propose a joint functional form in model size and data size that extrapolates across scales [@rosenfeld2019 #E:rosenfeld2019:p1:1]. In contrast to our setting, neither study treats compute as the constraint [author judgment].",
+      "Hestness et al. studied deep learning scaling in four domains [@hestness2017 #E:hestness2017:p1:1]. Hestness et al. found that generalization error falls as a power law of training set size [@hestness2017 #E:hestness2017:p1:1]. Rosenfeld et al. proposed a joint functional form in model size and data size [@rosenfeld2019 #E:rosenfeld2019:p1:1]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V12",
+   "case": "ho3_kaplan_notes",
+   "type": "gap_quote_fabricated",
+   "expect": [
+    "S10e"
+   ],
+   "ops": [
+    {
+     "plan": [
+      "gaps.0.from",
+      [
+       {
+        "ref": "rosenfeld2019",
+        "quote": "our functional form fails beyond one billion parameters"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V13",
+   "case": "ho3_kaplan_notes",
+   "type": "contribution_wrong_figure",
+   "expect": [
+    "S11e"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "[@self:Figure 1]",
+      "[@self:Figure 41]"
+     ]
+    },
+    {
+     "plan": [
+      "contributions.0.evidence",
+      [
+       {
+        "id": "E:self:p1:6"
+       },
+       {
+        "loc": "Figure 41",
+        "quote": "Language modeling performance"
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "V14",
+   "case": "ho3_kaplan_notes",
+   "type": "padding",
+   "expect": [
+    "S7"
+   ],
+   "ops": [
+    {
+     "draft": [
+      "## 1 Introduction\n\n",
+      "## 1 Introduction\n\nLanguage models have attracted increasing attention in recent years. "
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VB1",
+   "case": "ho2_bn_paperonly",
+   "type": "benign_reword",
+   "benign": true,
+   "ops": [
+    {
+     "draft": [
+      "两类方法都没有直接控制中间层输入的分布[作者判断]。",
+      "这两类方法均未直接约束中间层输入的分布[作者判断]。"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VB2",
+   "case": "ho3_kaplan_notes",
+   "type": "benign_style_ieee",
+   "benign": true,
+   "ops": [
+    {
+     "plan": [
+      "style",
+      "ieee"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VB3",
+   "case": "ho3_kaplan_notes",
+   "type": "benign_paraphrase",
+   "benign": true,
+   "ops": [
+    {
+     "draft": [
+      "These reports show gains with size but give no rule",
+      "They report gains with size yet provide no rule"
+     ]
+    }
+   ]
+  }
+ ]
+}

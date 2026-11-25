@@ -9,12 +9,12 @@
 
 - P1.S1 [simonyan2015] p1 (explicit, support None): Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filte…
 - P1.S2 [srivastava2015] p1 (explicit, support None): However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem.
-- P2.S1 [simonyan2015] pNone (-, support None): abstract_only
-- P2.S1 [szegedy2015] pNone (-, support None): metadata_only
+- P2.S1 [simonyan2015] pNone (-, support None): secondary
+- P2.S1 [szegedy2015] pNone (-, support None): secondary
 - P2.S2 [simonyan2015] p1 (explicit, support None): Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filte…
-- P2.S3 [szegedy2015] pNone (-, support None): metadata_only
+- P2.S3 [szegedy2015] pNone (-, support None): secondary
 - P3.S1 [ioffe2015] pNone (-, support None): full_text
-- P3.S1 [srivastava2015] pNone (-, support None): abstract_only
+- P3.S1 [srivastava2015] pNone (-, support None): secondary
 - P3.S2 [ioffe2015] p1 (explicit, support None): Batch Normalization allows us to use much higher learning rates and be less careful about initialization.
 - P3.S2 [ioffe2015] p1 (explicit, support None): Applied to a state-of-the-art image classification model, Batch Normalization achieves the same accuracy with 14 times fewer training steps,…
 - P3.S3 [srivastava2015] p1 (explicit, support None): They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow.

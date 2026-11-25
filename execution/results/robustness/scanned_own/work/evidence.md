@@ -1,4 +1,4 @@
-# Evidence tables (intro-gap-ledger 0.1.0)
+# Evidence tables (intro-gap-ledger 0.2.1)
 
 language: en | style: numeric | case: scan | own paper: C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\execution\results\robustness\scanned_own\input\paper.pdf
 

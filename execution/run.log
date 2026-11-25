@@ -9,16 +9,16 @@ $ tests\run_eval.py --set dev
   "dev_en": {
    "fails": 0,
    "status": "complete",
-   "warns": 1,
-   "needs_review": 8,
-   "check_seconds": 0.59
+   "warns": 2,
+   "needs_review": 9,
+   "check_seconds": 1.13
   },
   "dev_zh": {
    "fails": 0,
    "status": "complete",
-   "warns": 3,
-   "needs_review": 5,
-   "check_seconds": 0.26
+   "warns": 5,
+   "needs_review": 7,
+   "check_seconds": 0.33
   }
  },
  "defects": 32,
@@ -56,7 +56,7 @@ $ tests\run_eval.py --set dev
   "uncited_number": "1/1",
   "wrong_number_cited": "2/2"
  },
- "wall_seconds": 22.0
+ "wall_seconds": 38.2
 }
 
 
@@ -72,9 +72,9 @@ $ tests\run_eval.py --set holdout
   "holdout_transformer": {
    "fails": 0,
    "status": "complete",
-   "warns": 0,
-   "needs_review": 7,
-   "check_seconds": 0.19
+   "warns": 1,
+   "needs_review": 9,
+   "check_seconds": 0.3
   }
  },
  "defects": 15,
@@ -112,7 +112,63 @@ $ tests\run_eval.py --set holdout
   "unsupported_novelty_scope": "1/1",
   "wrong_number_contribution": "1/1"
  },
- "wall_seconds": 4.7
+ "wall_seconds": 7.5
+}
+
+
+[exit 0]
+
+$ tests\run_eval.py --set v2
+{
+ "set": "v2",
+ "cases": [
+  "ho2_bn_paperonly",
+  "ho3_kaplan_notes"
+ ],
+ "gold": {
+  "ho2_bn_paperonly": {
+   "fails": 0,
+   "status": "partial",
+   "warns": 4,
+   "needs_review": 17,
+   "check_seconds": 0.21
+  },
+  "ho3_kaplan_notes": {
+   "fails": 0,
+   "status": "partial",
+   "warns": 0,
+   "needs_review": 10,
+   "check_seconds": 0.27
+  }
+ },
+ "defects": 14,
+ "caught_expected": 14,
+ "caught_any": 14,
+ "recall_expected": 1.0,
+ "baseline_b0": 0.0,
+ "baseline_b1_key_structure_lint": 0.0714,
+ "baseline_b2_plus_numbers_anywhere": 0.1429,
+ "benign": 3,
+ "benign_without_new_fail": 3,
+ "ops_not_applied": [],
+ "missed": [],
+ "benign_false_alarms": [],
+ "by_type": {
+  "contribution_wrong_figure": "1/1",
+  "empty_padding": "1/1",
+  "evidence_from_wrong_source": "1/1",
+  "fabricated_citation": "1/1",
+  "gap_quote_fabricated": "1/1",
+  "gap_without_derivation": "1/1",
+  "misattributed_citation": "1/1",
+  "overclaim_first": "1/1",
+  "padding": "1/1",
+  "summary_stitching": "1/1",
+  "uncited_claim": "1/1",
+  "wrong_number_cited": "1/1",
+  "wrong_number_contribution": "2/2"
+ },
+ "wall_seconds": 6.6
 }
 
 
@@ -126,17 +182,22 @@ $ submission\scripts\irw.py init --case tests\cases\dev_en\input\case.json --out
  "language": "en",
  "style": "ieee",
  "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_en\\input\\paper.pdf",
- "records": 5,
+ "records": 50,
  "with_text": [
   "kaplan2020",
   "brown2020"
  ],
- "abstract_only": [
-  "smith2022"
- ],
+ "abstract_only": [],
  "metadata_only": [
-  "rae2021",
-  "clark2022"
+  "lespiau2021",
+  "hernandez2020",
+  "levine2020",
+  "lin2019",
+  "mitchell1980",
+  "rae2020",
+  "rajbhandari1951",
+  "sap2019",
+  "smith2021"
  ],
  "notes": [],
  "contract_fields": [
@@ -146,10 +207,15 @@ $ submission\scripts\irw.py init --case tests\cases\dev_en\input\case.json --out
   "contributions",
   "needs_review"
  ],
- "problems": [],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
  "missing": [],
  "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.8
+ "seconds": 1.0
 }
 
 
@@ -159,14 +225,15 @@ $ submission\scripts\irw.py check --work execution\results\cases\dev_en\work --o
 {
  "status": "complete",
  "fails": 0,
- "warns": 1,
+ "warns": 2,
  "top": [],
  "warn_top": [
+  "S5b P2.S1: low lexical support (0.0) of [@clark2022] for this sentence: give an explicit #evidence id or rephrase",
   "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
  ],
- "needs_review": 8,
+ "needs_review": 9,
  "unmapped_contract_fields": [],
- "seconds": 3.9
+ "seconds": 4.6
 }
 
 
@@ -180,17 +247,16 @@ $ submission\scripts\irw.py init --case tests\cases\dev_zh\input\case.json --out
  "language": "zh",
  "style": "gbt7714",
  "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
- "records": 5,
+ "records": 50,
  "with_text": [
   "ioffe2015"
  ],
- "abstract_only": [
-  "simonyan2015",
-  "srivastava2015"
- ],
+ "abstract_only": [],
  "metadata_only": [
-  "szegedy2015",
-  "zhou2016"
+  "zhou2016",
+  "gidaris2015",
+  "montufar2014",
+  "ren2015a"
  ],
  "notes": [],
  "contract_fields": [
@@ -200,10 +266,15 @@ $ submission\scripts\irw.py init --case tests\cases\dev_zh\input\case.json --out
   "贡献对照",
   "待确认"
  ],
- "problems": [],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
  "missing": [],
  "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.2
+ "seconds": 0.3
 }
 
 
@@ -213,14 +284,16 @@ $ submission\scripts\irw.py check --work execution\results\cases\dev_zh\work --o
 {
  "status": "complete",
  "fails": 0,
- "warns": 3,
+ "warns": 5,
  "top": [],
  "warn_top": [
   "S5d P2.S1: cross-lingual citation [@simonyan2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+  "S5d P2.S1: cross-lingual citation [@szegedy2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+  "S5d P2.S3: cross-lingual citation [@szegedy2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
   "S5d P3.S1: cross-lingual citation [@ioffe2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
   "S5d P3.S1: cross-lingual citation [@srivastava2015] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence"
  ],
- "needs_review": 5,
+ "needs_review": 7,
  "unmapped_contract_fields": [],
  "seconds": 4.3
 }
@@ -236,18 +309,18 @@ $ submission\scripts\irw.py init --case tests\cases\holdout_transformer\input\ca
  "language": "en",
  "style": "apa",
  "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\holdout_transformer\\input\\main_paper.pdf",
- "records": 6,
+ "records": 37,
  "with_text": [
   "he2016"
  ],
- "abstract_only": [
-  "bahdanau2015",
-  "gehring2017"
- ],
+ "abstract_only": [],
  "metadata_only": [
-  "hochreiter1997",
-  "wu2016",
-  "ba2016"
+  "chrisdyer2016",
+  "huang2009",
+  "luong2015",
+  "mcclosky2006",
+  "slavpetrov2006",
+  "zhu2013"
  ],
  "notes": [],
  "contract_fields": [
@@ -259,7 +332,12 @@ $ submission\scripts\irw.py init --case tests\cases\holdout_transformer\input\ca
   "evidence_map",
   "open_questions"
  ],
- "problems": [],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "31 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
  "missing": [],
  "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
  "seconds": 0.3
@@ -272,12 +350,14 @@ $ submission\scripts\irw.py check --work execution\results\cases\holdout_transfo
 {
  "status": "complete",
  "fails": 0,
- "warns": 0,
+ "warns": 1,
  "top": [],
- "warn_top": [],
- "needs_review": 7,
+ "warn_top": [
+  "S5b P2.S3: low lexical support (0.0) of [@hochreiter1997] for this sentence: give an explicit #evidence id or rephrase"
+ ],
+ "needs_review": 9,
  "unmapped_contract_fields": [],
- "seconds": 3.5
+ "seconds": 3.6
 }
 
 
@@ -316,7 +396,7 @@ $ submission\scripts\irw.py init --case execution\results\robustness\empty_libra
  "task_file": null,
  "language": "en",
  "style": "numeric",
- "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.pdf",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\empty_library\\input\\paper.md",
  "records": 0,
  "with_text": [],
  "abstract_only": [],
@@ -328,7 +408,7 @@ $ submission\scripts\irw.py init --case execution\results\robustness\empty_libra
   "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
  ],
  "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.4
+ "seconds": 0.0
 }
 
 
@@ -364,18 +444,27 @@ $ submission\scripts\irw.py init --case execution\results\robustness\encrypted_s
  "language": "en",
  "style": "numeric",
  "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\paper.pdf",
- "records": 5,
+ "records": 50,
  "with_text": [],
  "abstract_only": [],
  "metadata_only": [
-  "kaplan2020",
-  "brown2020",
-  "rae2021",
-  "clark2022"
+  "lespiau2021",
+  "hernandez2020",
+  "levine2020",
+  "lin2019",
+  "mitchell1980",
+  "rae2020",
+  "rajbhandari1951",
+  "sap2019",
+  "smith2021"
  ],
  "notes": [],
  "contract_fields": [],
  "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  },
   {
    "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\encrypted_source\\input\\smith2022.pdf",
    "problem": "encrypted PDF (password required)"
@@ -427,17 +516,22 @@ $ submission\scripts\irw.py init --case execution\results\robustness\bad_plan\in
  "language": "en",
  "style": "ieee",
  "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\input\\paper.pdf",
- "records": 5,
+ "records": 50,
  "with_text": [
   "kaplan2020",
   "brown2020"
  ],
- "abstract_only": [
-  "smith2022"
- ],
+ "abstract_only": [],
  "metadata_only": [
-  "rae2021",
-  "clark2022"
+  "lespiau2021",
+  "hernandez2020",
+  "levine2020",
+  "lin2019",
+  "mitchell1980",
+  "rae2020",
+  "rajbhandari1951",
+  "sap2019",
+  "smith2021"
  ],
  "notes": [],
  "contract_fields": [
@@ -447,7 +541,12 @@ $ submission\scripts\irw.py init --case execution\results\robustness\bad_plan\in
   "contributions",
   "needs_review"
  ],
- "problems": [],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
  "missing": [],
  "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
  "seconds": 0.9
@@ -460,7 +559,7 @@ $ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\w
 {
  "status": "partial",
  "fails": 4,
- "warns": 6,
+ "warns": 7,
  "top": [
   "PLAN : C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\plan.json missing or invalid JSON",
   "S9 : plan.json has no related-work groups",
@@ -468,6 +567,7 @@ $ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\w
   "S11 : plan.json has no contributions"
  ],
  "warn_top": [
+  "S5b P2.S1: low lexical support (0.0) of [@clark2022] for this sentence: give an explicit #evidence id or rephrase",
   "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase",
   "S9f : [@brown2020] cited in related work but in no group of plan.json",
   "S9f : [@clark2022] cited in related work but in no group of plan.json",
@@ -475,16 +575,16 @@ $ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\w
   "S9f : [@rae2021] cited in related work but in no group of plan.json",
   "S9f : [@smith2022] cited in related work but in no group of plan.json"
  ],
- "needs_review": 7,
+ "needs_review": 8,
  "unmapped_contract_fields": [],
- "seconds": 0.4
+ "seconds": 1.0
 }
 
 
 [exit 0]
 
 $ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\work --out execution\results\robustness\bad_plan\output --no-pdf
-{"case_id": "dev_en_compute_optimal", "status": "failed", "status_reason": "no draft at C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\draft.md", "skill": "intro-gap-ledger 0.1.0"}
+{"case_id": "dev_en_compute_optimal", "status": "failed", "status_reason": "no draft at C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\draft.md", "skill": "intro-gap-ledger 0.2.1"}
 
 
 [exit 2]
@@ -503,17 +603,20 @@ $ submission\scripts\irw.py init --case execution\results\robustness\corrupt_lib
  "language": "en",
  "style": "numeric",
  "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\paper.pdf",
- "records": 6,
+ "records": 51,
  "with_text": [],
- "abstract_only": [
-  "smith2022"
- ],
+ "abstract_only": [],
  "metadata_only": [
-  "kaplan2020",
-  "brown2020",
-  "rae2021",
-  "clark2022",
-  "doe2021"
+  "doe2021",
+  "lespiau2021",
+  "hernandez2020",
+  "levine2020",
+  "lin2019",
+  "mitchell1980",
+  "rae2020",
+  "rajbhandari1951",
+  "sap2019",
+  "smith2021"
  ],
  "notes": [],
  "contract_fields": [],
@@ -525,11 +628,15 @@ $ submission\scripts\irw.py init --case execution\results\robustness\corrupt_lib
   {
    "file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\corrupt_library\\input\\more.ris",
    "problem": "RIS record without ER at end of file; kept"
+  },
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
   }
  ],
  "missing": [],
  "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.4
+ "seconds": 0.5
 }
 
 
@@ -543,17 +650,22 @@ $ submission\scripts\irw.py init --case execution\results\robustness\determinism
  "language": "en",
  "style": "ieee",
  "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\determinism\\input\\paper.pdf",
- "records": 5,
+ "records": 50,
  "with_text": [
   "kaplan2020",
   "brown2020"
  ],
- "abstract_only": [
-  "smith2022"
- ],
+ "abstract_only": [],
  "metadata_only": [
-  "rae2021",
-  "clark2022"
+  "lespiau2021",
+  "hernandez2020",
+  "levine2020",
+  "lin2019",
+  "mitchell1980",
+  "rae2020",
+  "rajbhandari1951",
+  "sap2019",
+  "smith2021"
  ],
  "notes": [],
  "contract_fields": [
@@ -563,7 +675,95 @@ $ submission\scripts\irw.py init --case execution\results\robustness\determinism
   "contributions",
   "needs_review"
  ],
- "problems": [],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
+ "missing": [],
+ "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "seconds": 0.8
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\robustness\determinism\work --out execution\results\robustness\determinism\output --no-pdf
+{
+ "status": "complete",
+ "fails": 0,
+ "warns": 2,
+ "top": [],
+ "warn_top": [
+  "S5b P2.S1: low lexical support (0.0) of [@clark2022] for this sentence: give an explicit #evidence id or rephrase",
+  "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
+ ],
+ "needs_review": 9,
+ "unmapped_contract_fields": [],
+ "seconds": 1.0
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py check --work execution\results\robustness\determinism\work --out execution\results\robustness\determinism\output --no-pdf
+{
+ "status": "complete",
+ "fails": 0,
+ "warns": 2,
+ "top": [],
+ "warn_top": [
+  "S5b P2.S1: low lexical support (0.0) of [@clark2022] for this sentence: give an explicit #evidence id or rephrase",
+  "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
+ ],
+ "needs_review": 9,
+ "unmapped_contract_fields": [],
+ "seconds": 1.0
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\json_schema_contract\input\case.json --out execution\results\robustness\json_schema_contract\output --work execution\results\robustness\json_schema_contract\work
+{
+ "case_id": "dev_en_compute_optimal",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\json_schema_contract\\input\\task.md",
+ "language": "en",
+ "style": "ieee",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\json_schema_contract\\input\\paper.pdf",
+ "records": 50,
+ "with_text": [
+  "kaplan2020",
+  "brown2020"
+ ],
+ "abstract_only": [],
+ "metadata_only": [
+  "lespiau2021",
+  "hernandez2020",
+  "levine2020",
+  "lin2019",
+  "mitchell1980",
+  "rae2020",
+  "rajbhandari1951",
+  "sap2019",
+  "smith2021"
+ ],
+ "notes": [],
+ "contract_fields": [
+  "case_id",
+  "status",
+  "verification_notes",
+  "gap_analysis",
+  "related_work_groups"
+ ],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
  "missing": [],
  "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
  "seconds": 0.9
@@ -572,35 +772,19 @@ $ submission\scripts\irw.py init --case execution\results\robustness\determinism
 
 [exit 0]
 
-$ submission\scripts\irw.py check --work execution\results\robustness\determinism\work --out execution\results\robustness\determinism\output --no-pdf
+$ submission\scripts\irw.py check --work execution\results\robustness\json_schema_contract\work --out execution\results\robustness\json_schema_contract\output --no-pdf
 {
  "status": "complete",
  "fails": 0,
- "warns": 1,
+ "warns": 2,
  "top": [],
  "warn_top": [
+  "S5b P2.S1: low lexical support (0.0) of [@clark2022] for this sentence: give an explicit #evidence id or rephrase",
   "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
  ],
- "needs_review": 8,
+ "needs_review": 9,
  "unmapped_contract_fields": [],
- "seconds": 0.5
-}
-
-
-[exit 0]
-
-$ submission\scripts\irw.py check --work execution\results\robustness\determinism\work --out execution\results\robustness\determinism\output --no-pdf
-{
- "status": "complete",
- "fails": 0,
- "warns": 1,
- "top": [],
- "warn_top": [
-  "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
- ],
- "needs_review": 8,
- "unmapped_contract_fields": [],
- "seconds": 0.4
+ "seconds": 1.1
 }
 
 

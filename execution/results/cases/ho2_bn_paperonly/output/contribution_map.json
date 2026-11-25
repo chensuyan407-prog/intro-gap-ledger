@@ -1,0 +1,65 @@
+[
+ {
+  "id": "k1",
+  "text": "提出批归一化（Batch Normalization），在每个小批量上对各层激活做归一化，以减小内部协变量偏移并加速深层网络训练。",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p2:35",
+    "page": 2,
+    "quote": "We propose a new mechanism, which we call Batch Normalization, that takes a step towards reducing internal covariate shift, and in doing so dramatically accelerates the training of deep neural nets.",
+    "verified": true
+   },
+   {
+    "id": "E:self:p3:90",
+    "page": 3,
+    "quote": "We present the BN Transform in Algorithm 1.",
+    "verified": true
+   }
+  ]
+ },
+ {
+  "id": "k2",
+  "text": "在 ImageNet 分类网络上，批归一化以原模型 7% 的训练步数达到相同精度。",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p2:41",
+    "page": 2,
+    "quote": "In Sec. 4.2, we apply Batch Normalization to the bestperforming ImageNet classification network, and show that we can match its performance using only 7% of the training steps, and can further exceed its accuracy by a substantial margin.",
+    "verified": true
+   },
+   {
+    "id": "E:self:p1:6",
+    "page": 1,
+    "quote": "Applied to a state-of-the-art image classification model, Batch Normalization achieves the same accuracy with 14 times fewer training steps, and beats the original model by a significant margin.",
+    "verified": true
+   }
+  ]
+ },
+ {
+  "id": "k3",
+  "text": "批归一化网络的集成模型在 ImageNet 上取得 4.9% 的 top-5 验证错误率和 4.82% 的测试错误率。",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p7:221",
+    "page": 7,
+    "quote": "Here we report a top-5 validation error of 4.9%, and test error of 4.82% (according to the ILSVRC server).",
+    "verified": true
+   },
+   {
+    "id": "E:self:p2:42",
+    "page": 2,
+    "quote": "Using an ensemble of such networks trained with Batch Normalization, we achieve the top-5 error rate that improves upon the best known results on ImageNet classification.",
+    "verified": true
+   }
+  ]
+ }
+]

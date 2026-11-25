@@ -46,7 +46,7 @@
    "actual_value": 1.0,
    "reference_value": 1.0,
    "score": 1.0,
-   "explanation": "missing_case_json=ok; empty_library=ok; encrypted_source_pdf=ok; scanned_own_paper=ok; invalid_plan_json=ok; no_draft=ok; check_before_init=ok; corrupt_library=ok; determinism=ok",
+   "explanation": "missing_case_json=ok; empty_library=ok; encrypted_source_pdf=ok; scanned_own_paper=ok; invalid_plan_json=ok; no_draft=ok; check_before_init=ok; corrupt_library=ok; determinism=ok; v021_schema_scale_list=ok",
    "evidence_artifact": "metrics",
    "tolerance": 0.1
   }

@@ -1,4 +1,4 @@
-# intro-gap-ledger 0.1.0 — submission bundle for 写作08｜引言与相关工作写作
+# intro-gap-ledger 0.2.1 — submission bundle for 写作08｜引言与相关工作写作
 
 Skill for drafting the **Introduction and Related Work** of a paper with an evidence ledger: scripts extract located
 sentences (page + id) from the own paper and the cited PDFs; the agent writes a plan (related-work groups with a
@@ -9,7 +9,7 @@ derivation and contribution evidence, then renders Markdown, LaTeX + BibTeX, HTM
 
 | path | content |
 |---|---|
-| `submission/` | **the Skill** (`SKILL.md`, `scripts/irw.py`, `scripts/irw_common.py`, `rules/lexicon.json`, `examples/`, `README.md` = method, field dictionary, results, limits) |
+| `submission/` | **the Skill** (`SKILL.md`, `scripts/irw.py`, `scripts/irw_common.py`, `scripts/irw_refs.py`, `rules/lexicon.json`, `examples/`, `README.md` = method, field dictionary, results, limits) |
 | `skills/SKILL.md` | copy of the Skill entry file |
 | `src/reproduce.py` | reruns the whole self-evaluation (≈ 50 s, CPU) |
 | `tests/` | 3 cases (`cases/*/input` + `gold/plan.json`, `gold/draft.md`), planted defects (`eval/mutations_dev.json`, `eval/mutations_holdout.json`), `run_eval.py`, `FREEZE_holdout.sha256`, `SOURCES.md` (arXiv PDFs to download), `fixtures/`, `make_zip.py` |
