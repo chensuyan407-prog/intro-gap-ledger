@@ -1,4 +1,4 @@
-# Evidence tables (intro-gap-ledger 0.2.1)
+# Evidence tables (intro-gap-ledger 0.3.0)
 
 language: zh | style: gbt7714 | case: dev_zh_residual | own paper: C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\tests\cases\dev_zh\input\本文_resnet.pdf
 

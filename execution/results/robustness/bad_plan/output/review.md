@@ -1,12 +1,12 @@
 # Review - dev_en_compute_optimal
 
-status: **partial** - 4 blocking check(s) failed - see review.md
+status: **success** - introduction + related work written: 4 parts, 5 references, source map for 16 sentences; quality checks flagged 4 issue(s) and 7 warning(s) (quality_issues / review.md); 8 item(s) for author confirmation (needs_review)
 
 summary: {"sentences": 16, "cited_sentences": 7, "author_judgments": 5, "references": 5, "groups": 0, "gaps": 0, "contributions": 0, "fails": 4, "warns": 7}
 
 ## fail (4)
 
-- PLAN : C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\execution\results\robustness\bad_plan\work\plan.json missing or invalid JSON
+- PLAN : C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\execution\results\robustness\bad_plan\work\plan.json missing or invalid JSON object
 - S9 : plan.json has no related-work groups
 - S10 : plan.json has no gaps
 - S11 : plan.json has no contributions

@@ -31,14 +31,14 @@
    "tolerance": 0.25
   },
   {
-   "target": "gold ledgers without fail (3 cases)",
+   "target": "gold ledgers without fail (5 cases)",
    "metric": "absolute_error",
    "actual_value": 1.0,
    "reference_value": 1.0,
    "score": 1.0,
    "explanation": "gold drafts written by following SKILL.md; two real source conflicts (67.5 vs 67.6 MMLU; 41.8 vs 41.0 BLEU) found by the checker and recorded as author notes",
    "evidence_artifact": "metrics",
-   "tolerance": 0.34
+   "tolerance": 0.2
   },
   {
    "target": "robustness checks passed",
@@ -46,7 +46,7 @@
    "actual_value": 1.0,
    "reference_value": 1.0,
    "score": 1.0,
-   "explanation": "missing_case_json=ok; empty_library=ok; encrypted_source_pdf=ok; scanned_own_paper=ok; invalid_plan_json=ok; no_draft=ok; check_before_init=ok; corrupt_library=ok; determinism=ok; v021_schema_scale_list=ok",
+   "explanation": "missing_case_json=ok; empty_library=ok; encrypted_source_pdf=ok; scanned_own_paper=ok; invalid_plan_json=ok; no_draft_keeps_result=ok; check_before_init=ok; corrupt_library=ok; determinism=ok; quality_findings_non_blocking=ok; build_without_init_scaffold_partial=ok; v021_schema_scale_list=ok",
    "evidence_artifact": "metrics",
    "tolerance": 0.1
   }

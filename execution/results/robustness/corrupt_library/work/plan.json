@@ -1,0 +1,238 @@
+{
+ "language": "en",
+ "style": "numeric",
+ "groups": [
+  {
+   "id": "g1",
+   "name": "Large language models",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: A variety of large language models have been introduced in the last few years. These include both dense transformer models (Brown et al., 2020; Lieber et al., 2…>",
+   "refs": [
+    "smith2022",
+    "rae2021",
+    "brown2020",
+    "thoppilan2022",
+    "lieber2021",
+    "du2021"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "smith2022",
+     "id": "E:smith2022:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "rae2021",
+     "id": "E:rae2021:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "brown2020",
+     "id": "E:brown2020:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "thoppilan2022",
+     "id": "E:thoppilan2022:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "name": "Modelling the scaling behavior",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Understanding the scaling behaviour of language models and their transfer properties has been important in the development of recent large models (Hernandez et …>",
+   "refs": [
+    "kaplan2020"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "kaplan2020",
+     "id": "E:kaplan2020:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g3",
+   "name": "Estimating hyperparameters for large models",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: The model size and the number of training tokens are not the only two parameters to chose when selecting a language model and a procedure to train it. Other imp…>",
+   "refs": [
+    "yang2021",
+    "mccandlish2018",
+    "shallue2018",
+    "zhang2019"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "yang2021",
+     "id": "E:yang2021:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "mccandlish2018",
+     "id": "E:mccandlish2018:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "shallue2018",
+     "id": "E:shallue2018:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "zhang2019",
+     "id": "E:zhang2019:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "name": "Improved model architectures",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Recently, various promising alternatives to traditional dense trans- formers have been proposed. For example, through the use of conditional computation large M…>",
+   "refs": [
+    "clark2022",
+    "fedus2021",
+    "du2021",
+    "zoph2022",
+    "artetxe2021",
+    "guu2020"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "fedus2021",
+     "id": "E:fedus2021:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "du2021",
+     "id": "E:du2021:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "zoph2022",
+     "id": "E:zoph2022:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g5",
+   "name": "Efficient frontier",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: We can approximate the functions Noptand Doptby minimizing the parametric loss ˆLunder the constraint FLOPs(N, D) ≈6ND(Kaplan et al., 2020). The resulting Nopta…>",
+   "refs": [
+    "kaplan2020"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "kaplan2020",
+     "id": "E:kaplan2020:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g6",
+   "name": "<group name: problem / method route / data & evaluation>",
+   "basis": "problem|method|data|evaluation",
+   "dimension": "<comparison axis>",
+   "refs": [
+    "doe2021"
+   ],
+   "comparison": "<...>",
+   "evidence": []
+  }
+ ],
+ "gaps": [
+  {
+   "id": "gap1",
+   "statement": "<one-sentence gap that follows from the shared limitation of the cited works>",
+   "type": "common_limitation",
+   "from": [
+    {
+     "ref": "clark2022",
+     "id": "E:clark2022:p1:1"
+    },
+    {
+     "ref": "clark2022",
+     "id": "E:clark2022:p1:2"
+    }
+   ],
+   "author_judgment": false,
+   "_candidates": [
+    {
+     "ref": "clark2022",
+     "id": "E:clark2022:p1:1",
+     "text": "[own paper p3] Recently, Clark et al. (2022) specifically looked in to the scaling properties of Mixture of Expert [own paper p4] However, for very large models the computational benefits of routed mo…"
+    },
+    {
+     "ref": "clark2022",
+     "id": "E:clark2022:p1:2",
+     "text": "[own paper p4] We assume a power-law relationship between compute and model size as done in Clark et al. (2022);"
+    }
+   ]
+  }
+ ],
+ "contributions": [
+  {
+   "id": "k1",
+   "text": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:3"
+    }
+   ]
+  },
+  {
+   "id": "k2",
+   "text": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens …",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:4"
+    }
+   ]
+  },
+  {
+   "id": "k3",
+   "text": "Instead, we find that model size and the number of training tokens should be scaled in equal proportions.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:18"
+    }
+   ]
+  },
+  {
+   "id": "k4",
+   "text": "We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p2:22"
+    }
+   ]
+  }
+ ],
+ "omitted_refs": {},
+ "author_notes": [],
+ "_doc": "scaffold: every <...> must be replaced; check groups/refs/evidence against evidence.md; drop _candidates when done"
+}

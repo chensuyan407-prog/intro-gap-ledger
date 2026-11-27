@@ -1,0 +1,340 @@
+[
+ {
+  "id": "P1.S1",
+  "part": "background",
+  "text": "Dense autoregressive language models have grown from GPT-3, with 170 billion parameters, to Megatron-Turing NLG with 530 billion parameters.",
+  "citations": [
+   {
+    "key": "brown2020",
+    "evidence": "E:brown2020:p1:6",
+    "page": 1,
+    "quote": "Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting.",
+    "support": 0.38,
+    "source_text": "full_text",
+    "link": "explicit"
+   },
+   {
+    "key": "smith2022",
+    "evidence": "E:smith2022:p1:3",
+    "page": 1,
+    "quote": "We present details on the training of the largest monolithic transformer based language model, Megatron-Turing NLG 530B (MT-NLG), with 530 billion parameters.",
+    "support": 0.69,
+    "source_text": "secondary",
+    "link": "auto"
+   }
+  ],
+  "numbers": [
+   {
+    "value": "170",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "530",
+    "found_in": [
+     "smith2022"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "cited"
+ },
+ {
+  "id": "P1.S2",
+  "part": "background",
+  "text": "Scaling these models improves few-shot performance on many tasks.",
+  "citations": [],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P1.S3",
+  "part": "background",
+  "text": "Because a model of this size can usually be trained only once, the split of a fixed compute budget between parameters and training tokens has to be decided in advance.",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P1.S4",
+  "part": "background",
+  "text": "The standard answer comes from scaling laws: the loss scales as a power law with model size, dataset size and training compute, and under a fixed budget the best loss is reached by training very large models and stopping significantly short of convergence.",
+  "citations": [
+   {
+    "key": "kaplan2020",
+    "evidence": "E:kaplan2020:p1:6",
+    "page": 1,
+    "quote": "The loss scales as a power-law with model size, dataset size, and the amount of compute used for training, with some trends spanning more than seven orders of magnitude.",
+    "support": 0.29,
+    "source_text": "full_text",
+    "link": "explicit"
+   },
+   {
+    "key": "kaplan2020",
+    "evidence": "E:kaplan2020:p3:31",
+    "page": 3,
+    "quote": "Convergence is inefficient: When working within a fixed compute budget C but without any other restrictions on the model size N or available data D, we attain optimal performance by training very large models and stopping significantly short of convergence (see Figure 3).",
+    "support": 0.5,
+    "source_text": "full_text",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S1",
+  "part": "related",
+  "text": "Both lines of scaling-law work fit power laws to the loss, but they differ in which variables are varied.",
+  "citations": [
+   {
+    "key": "kaplan2020",
+    "evidence": "E:kaplan2020:p2:12",
+    "page": 2,
+    "quote": "One might expect language modeling performance to depend on model architecture, the size of neural models, the computing power used to train them, and the data available for this training process.",
+    "support": 0.3,
+    "source_text": "full_text",
+    "link": "auto"
+   },
+   {
+    "key": "clark2022",
+    "evidence": null,
+    "page": null,
+    "quote": "",
+    "support": 0.0,
+    "source_text": "secondary",
+    "link": "auto"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S2",
+  "part": "related",
+  "text": "Kaplan et al. vary model size, data and compute, while all of their runs used a learning rate schedule with a 3000 step linear warmup followed by a cosine decay to zero.",
+  "citations": [
+   {
+    "key": "kaplan2020",
+    "evidence": "E:kaplan2020:p7:91",
+    "page": 7,
+    "quote": "Unless otherwise noted, all training runs included in our data used a learning rate schedule with a 3000 step linear warmup followed by a cosine decay to zero.",
+    "support": 0.74,
+    "source_text": "full_text",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [
+   {
+    "value": "3000",
+    "found_in": [
+     "kaplan2020"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S3",
+  "part": "related",
+  "text": "Clark et al. extend the analysis to routed language models, in which the number of experts is an additional variable.",
+  "citations": [
+   {
+    "key": "clark2022",
+    "evidence": "E:clark2022:p1:1",
+    "page": 1,
+    "quote": "[own paper p3] Recently, Clark et al. (2022) specifically looked in to the scaling properties of Mixture of Expert [own paper p4] However, for very large models the computational benefits of routed models seems to diminish (Clark et al., 2022).",
+    "support": 0.3,
+    "source_text": "secondary",
+    "link": "auto"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P2.S4",
+  "part": "related",
+  "text": "In contrast to our setting, neither analysis varies the training horizon of each model.",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P3.S1",
+  "part": "related",
+  "text": "Compared with the scaling-law studies, the large-model papers report single training runs rather than fitted frontiers.",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P3.S2",
+  "part": "related",
+  "text": "GPT-3, Gopher and Megatron-Turing NLG all increase the parameter count, whereas the number of training tokens stays in a similar range.",
+  "citations": [
+   {
+    "key": "brown2020",
+    "evidence": "E:brown2020:p10:172",
+    "page": 10,
+    "quote": "Below, we evaluate the 8 models described in Section 2 (the 175 billion parameter parameter GPT-3 and 7 smaller models) on a wide range of datasets.",
+    "support": 0.29,
+    "source_text": "full_text",
+    "link": "auto"
+   },
+   {
+    "key": "rae2021",
+    "evidence": "E:rae2021:p1:3",
+    "page": 1,
+    "quote": "[own paper p3] LaMDA (Thoppilan et al., 2022) 137 Billion 168 Billion GPT-3 (Brown et al., 2020) 175 Billion 300 Billion Jurassic (Lieber et al., 2021) 178 Billion 300 Billion Gopher (Rae et al., 2021) 280 Billion 300 Billion MT-NLG 530B (Smith et al., 2022) 530 Billion 270 Billion [own paper p3] These include both dense transformer models (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021…",
+    "support": 0.29,
+    "source_text": "secondary",
+    "link": "auto"
+   },
+   {
+    "key": "smith2022",
+    "evidence": "E:smith2022:p1:2",
+    "page": 1,
+    "quote": "Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models.",
+    "support": 0.21,
+    "source_text": "secondary",
+    "link": "auto"
+   }
+  ],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P4.S1",
+  "part": "gap",
+  "text": "These studies share one limitation: the compute-optimal estimates were fitted with a single training schedule, so the effect of the number of training tokens on the optimal model size was never measured directly.",
+  "citations": [
+   {
+    "key": "kaplan2020",
+    "evidence": "E:kaplan2020:p7:91",
+    "page": 7,
+    "quote": "Unless otherwise noted, all training runs included in our data used a learning rate schedule with a 3000 step linear warmup followed by a cosine decay to zero.",
+    "support": 0.1,
+    "source_text": "full_text",
+    "link": "explicit"
+   }
+  ],
+  "numbers": [],
+  "type": "cited"
+ },
+ {
+  "id": "P4.S2",
+  "part": "gap",
+  "text": "If this effect is large, current large models may be undertrained for their budgets.",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P5.S1",
+  "part": "contrib",
+  "text": "Our contributions are:",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ },
+ {
+  "id": "P6.S1",
+  "part": "contrib",
+  "text": "We train over 400 language models from 70 million to over 16 billion parameters on 5 to 500 billion tokens, each with a schedule matched to its training horizon, and estimate the compute-optimal frontier with three independent approaches.",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "400",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "70",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "16",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "5",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "500",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "own_paper",
+  "self_refs": [
+   "Figure 3"
+  ]
+ },
+ {
+  "id": "P7.S1",
+  "part": "contrib",
+  "text": "All three approaches predict that model size and training tokens should be scaled in equal proportions.",
+  "citations": [],
+  "numbers": [],
+  "type": "own_paper",
+  "self_refs": [
+   "Table 2"
+  ]
+ },
+ {
+  "id": "P8.S1",
+  "part": "contrib",
+  "text": "We train Chinchilla, a 70B-parameter model on 1.4 trillion tokens with the Gopher compute budget; it reaches 67.6% average accuracy on MMLU, 7.6% above Gopher.",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "70",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "1.4",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "67.6",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "7.6",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "own_paper",
+  "self_refs": [
+   "Table 6"
+  ]
+ }
+]

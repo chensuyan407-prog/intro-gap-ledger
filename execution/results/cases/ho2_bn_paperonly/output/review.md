@@ -1,6 +1,6 @@
 # Review - ho2_bn_paperonly
 
-status: **partial** - draft passes the checks; items need human confirmation (needs_review / missing_materials)
+status: **success** - introduction + related work written: 4 parts, 7 references, source map for 15 sentences; quality checks flagged 0 issue(s) and 4 warning(s) (quality_issues / review.md); 17 item(s) for author confirmation (needs_review)
 
 summary: {"sentences": 15, "cited_sentences": 9, "author_judgments": 2, "references": 7, "groups": 2, "gaps": 1, "contributions": 3, "fails": 0, "warns": 4}
 

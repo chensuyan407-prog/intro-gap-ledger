@@ -7,17 +7,17 @@
  "gold": {
   "ho2_bn_paperonly": {
    "fails": 0,
-   "status": "partial",
+   "status": "success",
    "warns": 4,
    "needs_review": 17,
-   "check_seconds": 0.21
+   "check_seconds": 0.4
   },
   "ho3_kaplan_notes": {
    "fails": 0,
-   "status": "partial",
+   "status": "success",
    "warns": 0,
    "needs_review": 10,
-   "check_seconds": 0.27
+   "check_seconds": 0.37
   }
  },
  "defects": 14,
@@ -47,5 +47,5 @@
   "wrong_number_cited": "1/1",
   "wrong_number_contribution": "2/2"
  },
- "wall_seconds": 6.6
+ "wall_seconds": 9.9
 }

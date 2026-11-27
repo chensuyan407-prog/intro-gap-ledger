@@ -1,0 +1,1991 @@
+{
+ "case_id": "dev_en_compute_optimal",
+ "status": "partial",
+ "status_reason": "core deliverable incomplete: template placeholder left in the draft: <field context ->; template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…; template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+ "skill": "intro-gap-ledger 0.3.0",
+ "language": "en",
+ "citation_style": "ieee",
+ "summary": {
+  "sentences": 12,
+  "cited_sentences": 6,
+  "author_judgments": 1,
+  "references": 0,
+  "groups": 5,
+  "gaps": 1,
+  "contributions": 4,
+  "fails": 56,
+  "warns": 30
+ },
+ "draft": "## 1 Introduction\n\n<field context -> concrete problem -> technical constraint; each factual sentence with [citation needed] or >\n\n## 2 Related Work\n\n### Large language models\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n### Modelling the scaling behavior\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n### Estimating hyperparameters for large models\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n### Improved model architectures\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n### Efficient frontier\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n<gap derived from the shared limitation of the works above [citation needed]>\n\nOur contributions are:\n\n- We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.\n- By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens …\n- Instead, we find that model size and the number of training tokens should be scaled in equal proportions.\n- We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.\n\n## References\n\n\n",
+ "parts": {
+  "background": "<field context -> concrete problem -> technical constraint; each factual sentence with [citation needed] or >\n",
+  "related": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits [citation needed]>\n<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits [citation needed]>\n<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits [citation needed]>\n<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits [citation needed]>\n<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits [citation needed]>\n",
+  "gap": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above [citation needed]>\n",
+  "contrib": "Our contributions are:\nWe find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.\nBy training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens …\nInstead, we find that model size and the number of training tokens should be scaled in equal proportions.\nWe find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.\n"
+ },
+ "references": [],
+ "related_work_groups": [
+  {
+   "id": "g1",
+   "name": "Large language models",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: A variety of large language models have been introduced in the last few years. These include both dense transformer models (Brown et al., 2020; Lieber et al., 2…>",
+   "refs": [
+    "brown2020",
+    "smith2022",
+    "rae2021",
+    "thoppilan2022",
+    "lieber2021",
+    "du2021"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "brown2020",
+     "id": "E:brown2020:p1:5",
+     "use": "result"
+    },
+    {
+     "ref": "smith2022",
+     "id": "E:smith2022:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "rae2021",
+     "id": "E:rae2021:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "thoppilan2022",
+     "id": "E:thoppilan2022:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "name": "Modelling the scaling behavior",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Understanding the scaling behaviour of language models and their transfer properties has been important in the development of recent large models (Hernandez et …>",
+   "refs": [
+    "kaplan2020"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "kaplan2020",
+     "id": "E:kaplan2020:p1:6",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g3",
+   "name": "Estimating hyperparameters for large models",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: The model size and the number of training tokens are not the only two parameters to chose when selecting a language model and a procedure to train it. Other imp…>",
+   "refs": [
+    "yang2021",
+    "mccandlish2018",
+    "shallue2018",
+    "zhang2019"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "yang2021",
+     "id": "E:yang2021:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "mccandlish2018",
+     "id": "E:mccandlish2018:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "shallue2018",
+     "id": "E:shallue2018:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "zhang2019",
+     "id": "E:zhang2019:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "name": "Improved model architectures",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Recently, various promising alternatives to traditional dense trans- formers have been proposed. For example, through the use of conditional computation large M…>",
+   "refs": [
+    "clark2022",
+    "fedus2021",
+    "du2021",
+    "zoph2022",
+    "artetxe2021",
+    "guu2020"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "fedus2021",
+     "id": "E:fedus2021:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "du2021",
+     "id": "E:du2021:p1:1",
+     "use": "result"
+    },
+    {
+     "ref": "zoph2022",
+     "id": "E:zoph2022:p1:1",
+     "use": "result"
+    }
+   ]
+  },
+  {
+   "id": "g5",
+   "name": "Efficient frontier",
+   "basis": "method",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: We can approximate the functions Noptand Doptby minimizing the parametric loss ˆLunder the constraint FLOPs(N, D) ≈6ND(Kaplan et al., 2020). The resulting Nopta…>",
+   "refs": [
+    "kaplan2020"
+   ],
+   "comparison": "<how they differ / what they share on that axis>",
+   "evidence": [
+    {
+     "ref": "kaplan2020",
+     "id": "E:kaplan2020:p1:6",
+     "use": "result"
+    }
+   ]
+  }
+ ],
+ "gap_derivation": [
+  {
+   "id": "gap1",
+   "statement": "<one-sentence gap that follows from the shared limitation of the cited works>",
+   "type": "common_limitation",
+   "author_judgment": false,
+   "derived_from": [
+    {
+     "ref": "brown2020",
+     "evidence": "E:brown2020:p1:3",
+     "page": 1,
+     "quote": "While typically task-agnostic in architecture, this method still requires task-specific fine-tuning datasets of thousands or tens of thousands of examples.",
+     "verified": true
+    },
+    {
+     "ref": "brown2020",
+     "evidence": "E:brown2020:p1:4",
+     "page": 1,
+     "quote": "By contrast, humans can generally perform a new language task from only a few examples or from simple instructions – something which current NLP systems still largely struggle to do.",
+     "verified": true
+    }
+   ],
+   "filled_by": [
+    "k1",
+    "k2",
+    "k3",
+    "k4"
+   ]
+  }
+ ],
+ "contributions": [
+  {
+   "id": "k1",
+   "text": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:3",
+     "page": 1,
+     "quote": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "id": "k2",
+   "text": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens …",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:4",
+     "page": 1,
+     "quote": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens should also be doubled.",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "id": "k3",
+   "text": "Instead, we find that model size and the number of training tokens should be scaled in equal proportions.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p1:18",
+     "page": 1,
+     "quote": "Instead, we find that model size and the number of training tokens should be scaled in equal proportions.",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "id": "k4",
+   "text": "We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p2:22",
+     "page": 2,
+     "quote": "We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.",
+     "verified": true
+    }
+   ]
+  }
+ ],
+ "source_map": [
+  {
+   "id": "P1.S1",
+   "part": "background",
+   "text": "<field context -> concrete problem -> technical constraint; each factual sentence with or >",
+   "citations": [],
+   "numbers": [],
+   "type": "author_judgment"
+  },
+  {
+   "id": "P2.S1",
+   "part": "related",
+   "text": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "5",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P3.S1",
+   "part": "related",
+   "text": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "6",
+     "found_in": [],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P4.S1",
+   "part": "related",
+   "text": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P5.S1",
+   "part": "related",
+   "text": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P6.S1",
+   "part": "related",
+   "text": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "6",
+     "found_in": [],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P7.S1",
+   "part": "gap",
+   "text": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "3",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "4",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "20",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "23",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "1",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "2",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "20",
+     "found_in": [],
+     "elsewhere": []
+    },
+    {
+     "value": "23",
+     "found_in": [],
+     "elsewhere": []
+    }
+   ],
+   "type": "cited"
+  },
+  {
+   "id": "P8.S1",
+   "part": "contrib",
+   "text": "Our contributions are:",
+   "citations": [],
+   "numbers": [],
+   "type": "statement"
+  },
+  {
+   "id": "P9.S1",
+   "part": "contrib",
+   "text": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.",
+   "citations": [],
+   "numbers": [],
+   "type": "statement"
+  },
+  {
+   "id": "P10.S1",
+   "part": "contrib",
+   "text": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens …",
+   "citations": [],
+   "numbers": [
+    {
+     "value": "400",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    },
+    {
+     "value": "70",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    },
+    {
+     "value": "16",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    },
+    {
+     "value": "5",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    },
+    {
+     "value": "500",
+     "found_in": [
+      "self"
+     ],
+     "elsewhere": []
+    }
+   ],
+   "type": "statement"
+  },
+  {
+   "id": "P11.S1",
+   "part": "contrib",
+   "text": "Instead, we find that model size and the number of training tokens should be scaled in equal proportions.",
+   "citations": [],
+   "numbers": [],
+   "type": "statement"
+  },
+  {
+   "id": "P12.S1",
+   "part": "contrib",
+   "text": "We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.",
+   "citations": [],
+   "numbers": [],
+   "type": "statement"
+  }
+ ],
+ "comparison_table": [
+  {
+   "group": "Large language models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: A variety of large language models have been introduced in the last few years. These include both dense transformer models (Brown et al., 2020; Lieber et al., 2…>",
+   "key": "brown2020",
+   "work": "Brown et al.",
+   "year": "2020",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "full_text",
+   "limitation_used_for_gap": "While typically task-agnostic in architecture, this method still requires task-specific fine-tuning datasets of thousands or tens of thousands of examples."
+  },
+  {
+   "group": "Large language models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: A variety of large language models have been introduced in the last few years. These include both dense transformer models (Brown et al., 2020; Lieber et al., 2…>",
+   "key": "smith2022",
+   "work": "Smith et al.",
+   "year": "2022",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "abstract+citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Large language models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: A variety of large language models have been introduced in the last few years. These include both dense transformer models (Brown et al., 2020; Lieber et al., 2…>",
+   "key": "rae2021",
+   "work": "Rae et al.",
+   "year": "2021",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Large language models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: A variety of large language models have been introduced in the last few years. These include both dense transformer models (Brown et al., 2020; Lieber et al., 2…>",
+   "key": "thoppilan2022",
+   "work": "Thoppilan et al.",
+   "year": "2022",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Large language models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: A variety of large language models have been introduced in the last few years. These include both dense transformer models (Brown et al., 2020; Lieber et al., 2…>",
+   "key": "lieber2021",
+   "work": "Lieber et al.",
+   "year": "2021",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Large language models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: A variety of large language models have been introduced in the last few years. These include both dense transformer models (Brown et al., 2020; Lieber et al., 2…>",
+   "key": "du2021",
+   "work": "Du et al.",
+   "year": "2021",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Modelling the scaling behavior",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Understanding the scaling behaviour of language models and their transfer properties has been important in the development of recent large models (Hernandez et …>",
+   "key": "kaplan2020",
+   "work": "Kaplan et al.",
+   "year": "2020",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "full_text",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Estimating hyperparameters for large models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: The model size and the number of training tokens are not the only two parameters to chose when selecting a language model and a procedure to train it. Other imp…>",
+   "key": "yang2021",
+   "work": "Yang et al.",
+   "year": "2021",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Estimating hyperparameters for large models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: The model size and the number of training tokens are not the only two parameters to chose when selecting a language model and a procedure to train it. Other imp…>",
+   "key": "mccandlish2018",
+   "work": "McCandlish et al.",
+   "year": "2018",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Estimating hyperparameters for large models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: The model size and the number of training tokens are not the only two parameters to chose when selecting a language model and a procedure to train it. Other imp…>",
+   "key": "shallue2018",
+   "work": "Shallue et al.",
+   "year": "2018",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Estimating hyperparameters for large models",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: The model size and the number of training tokens are not the only two parameters to chose when selecting a language model and a procedure to train it. Other imp…>",
+   "key": "zhang2019",
+   "work": "Zhang et al.",
+   "year": "2019",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Improved model architectures",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Recently, various promising alternatives to traditional dense trans- formers have been proposed. For example, through the use of conditional computation large M…>",
+   "key": "clark2022",
+   "work": "Clark et al.",
+   "year": "2022",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Improved model architectures",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Recently, various promising alternatives to traditional dense trans- formers have been proposed. For example, through the use of conditional computation large M…>",
+   "key": "fedus2021",
+   "work": "Fedus et al.",
+   "year": "2021",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Improved model architectures",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Recently, various promising alternatives to traditional dense trans- formers have been proposed. For example, through the use of conditional computation large M…>",
+   "key": "du2021",
+   "work": "Du et al.",
+   "year": "2021",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Improved model architectures",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Recently, various promising alternatives to traditional dense trans- formers have been proposed. For example, through the use of conditional computation large M…>",
+   "key": "zoph2022",
+   "work": "Zoph et al.",
+   "year": "2022",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Improved model architectures",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Recently, various promising alternatives to traditional dense trans- formers have been proposed. For example, through the use of conditional computation large M…>",
+   "key": "artetxe2021",
+   "work": "Artetxe et al.",
+   "year": "2021",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Improved model architectures",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: Recently, various promising alternatives to traditional dense trans- formers have been proposed. For example, through the use of conditional computation large M…>",
+   "key": "guu2020",
+   "work": "Guu et al.",
+   "year": "2020",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "citing_context",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Efficient frontier",
+   "dimension": "<axis on which these works are compared - from the own paper's discussion: We can approximate the functions Noptand Doptby minimizing the parametric loss ˆLunder the constraint FLOPs(N, D) ≈6ND(Kaplan et al., 2020). The resulting Nopta…>",
+   "key": "kaplan2020",
+   "work": "Kaplan et al.",
+   "year": "2020",
+   "what_the_draft_says": "",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "full_text",
+   "limitation_used_for_gap": ""
+  }
+ ],
+ "quality_issues": [
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <field context ->",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <gap derived from the shared limitation of the works above [@k #E:...]>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[0].dimension: <axis on which these works are compared - from the own paper's discussion: A var…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[0].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[1].dimension: <axis on which these works are compared - from the own paper's discussion: Under…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[1].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[2].dimension: <axis on which these works are compared - from the own paper's discussion: The m…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[2].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[3].dimension: <axis on which these works are compared - from the own paper's discussion: Recen…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[3].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[4].dimension: <axis on which these works are compared - from the own paper's discussion: We ca…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[4].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.gaps[0].statement: <one-sentence gap that follows from the shared limitation of the cited works>",
+   "where": null
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'key' is not in the library (no invented references)",
+   "where": "P1.S1",
+   "sentence": "<field context -> concrete problem -> technical constraint; each factual sentence with or >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P2.S1",
+   "sentence": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P2.S1",
+   "sentence": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P3.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P3.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P4.S1",
+   "sentence": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P4.S1",
+   "sentence": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P5.S1",
+   "sentence": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P5.S1",
+   "sentence": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P6.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P6.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k' is not in the library (no invented references)",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g1: comparison dimension missing",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@brown2020] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@smith2022] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@rae2021] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@thoppilan2022] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@lieber2021] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@du2021] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g2: comparison dimension missing",
+   "where": "g2"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g2: [@kaplan2020] is in the group but not cited in the related-work part",
+   "where": "g2"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g3: comparison dimension missing",
+   "where": "g3"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g3: [@yang2021] is in the group but not cited in the related-work part",
+   "where": "g3"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g3: [@mccandlish2018] is in the group but not cited in the related-work part",
+   "where": "g3"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g3: [@shallue2018] is in the group but not cited in the related-work part",
+   "where": "g3"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g3: [@zhang2019] is in the group but not cited in the related-work part",
+   "where": "g3"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g4: comparison dimension missing",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@clark2022] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@fedus2021] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@du2021] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@zoph2022] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@artetxe2021] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@guu2020] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g5: comparison dimension missing",
+   "where": "g5"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g5: [@kaplan2020] is in the group but not cited in the related-work part",
+   "where": "g5"
+  },
+  {
+   "check": "S10c",
+   "level": "fail",
+   "message": "gap gap1: derived from [@brown2020] which is never cited in the draft",
+   "where": "gap1"
+  },
+  {
+   "check": "S10c",
+   "level": "fail",
+   "message": "gap gap1: derived from [@brown2020] which is never cited in the draft",
+   "where": "gap1"
+  },
+  {
+   "check": "S11h",
+   "level": "fail",
+   "message": "'significantly' but the own paper reports no significance test / error bars",
+   "where": "P9.S1",
+   "sentence": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant."
+  }
+ ],
+ "checks": [
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <field context ->",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in the draft: <gap derived from the shared limitation of the works above [@k #E:...]>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[0].dimension: <axis on which these works are compared - from the own paper's discussion: A var…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[0].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[1].dimension: <axis on which these works are compared - from the own paper's discussion: Under…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[1].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[2].dimension: <axis on which these works are compared - from the own paper's discussion: The m…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[2].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[3].dimension: <axis on which these works are compared - from the own paper's discussion: Recen…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[3].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[4].dimension: <axis on which these works are compared - from the own paper's discussion: We ca…",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.groups[4].comparison: <how they differ / what they share on that axis>",
+   "where": null
+  },
+  {
+   "check": "S0",
+   "level": "fail",
+   "message": "template placeholder left in plan.gaps[0].statement: <one-sentence gap that follows from the shared limitation of the cited works>",
+   "where": null
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'key' is not in the library (no invented references)",
+   "where": "P1.S1",
+   "sentence": "<field context -> concrete problem -> technical constraint; each factual sentence with or >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P2.S1",
+   "sentence": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P2.S1",
+   "sentence": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 5 cannot be verified: cited source text not provided",
+   "where": "P2.S1",
+   "sentence": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P2.S1",
+   "sentence": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P2.S1",
+   "sentence": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P2.S1",
+   "sentence": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P3.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P3.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 6 cannot be verified: cited source text not provided",
+   "where": "P3.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P4.S1",
+   "sentence": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P4.S1",
+   "sentence": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P4.S1",
+   "sentence": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P4.S1",
+   "sentence": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P4.S1",
+   "sentence": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P4.S1",
+   "sentence": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P5.S1",
+   "sentence": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P5.S1",
+   "sentence": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P5.S1",
+   "sentence": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P5.S1",
+   "sentence": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P5.S1",
+   "sentence": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k1' is not in the library (no invented references)",
+   "where": "P6.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k2' is not in the library (no invented references)",
+   "where": "P6.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 6 cannot be verified: cited source text not provided",
+   "where": "P6.S1",
+   "sentence": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >"
+  },
+  {
+   "check": "S2",
+   "level": "fail",
+   "message": "citation key 'k' is not in the library (no invented references)",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 3 cannot be verified: cited source text not provided",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 4 cannot be verified: cited source text not provided",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 20 cannot be verified: cited source text not provided",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 23 cannot be verified: cited source text not provided",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 1 cannot be verified: cited source text not provided",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 2 cannot be verified: cited source text not provided",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 20 cannot be verified: cited source text not provided",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S4b",
+   "level": "warn",
+   "message": "number 23 cannot be verified: cited source text not provided",
+   "where": "P7.S1",
+   "sentence": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g1: comparison dimension missing",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@brown2020] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@smith2022] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@rae2021] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@thoppilan2022] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@lieber2021] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g1: [@du2021] is in the group but not cited in the related-work part",
+   "where": "g1"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g2: comparison dimension missing",
+   "where": "g2"
+  },
+  {
+   "check": "S9c",
+   "level": "warn",
+   "message": "group g2 has 1 reference(s): a group compares at least two works",
+   "where": "g2"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g2: [@kaplan2020] is in the group but not cited in the related-work part",
+   "where": "g2"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g3: comparison dimension missing",
+   "where": "g3"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g3: [@yang2021] is in the group but not cited in the related-work part",
+   "where": "g3"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g3: [@mccandlish2018] is in the group but not cited in the related-work part",
+   "where": "g3"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g3: [@shallue2018] is in the group but not cited in the related-work part",
+   "where": "g3"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g3: [@zhang2019] is in the group but not cited in the related-work part",
+   "where": "g3"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g4: comparison dimension missing",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@clark2022] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@fedus2021] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@du2021] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@zoph2022] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@artetxe2021] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g4: [@guu2020] is in the group but not cited in the related-work part",
+   "where": "g4"
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "group g5: comparison dimension missing",
+   "where": "g5"
+  },
+  {
+   "check": "S9c",
+   "level": "warn",
+   "message": "group g5 has 1 reference(s): a group compares at least two works",
+   "where": "g5"
+  },
+  {
+   "check": "S9d",
+   "level": "fail",
+   "message": "group g5: [@kaplan2020] is in the group but not cited in the related-work part",
+   "where": "g5"
+  },
+  {
+   "check": "S9f",
+   "level": "warn",
+   "message": "[@k1] cited in related work but in no group of plan.json",
+   "where": null
+  },
+  {
+   "check": "S9f",
+   "level": "warn",
+   "message": "[@k2] cited in related work but in no group of plan.json",
+   "where": null
+  },
+  {
+   "check": "S10c",
+   "level": "fail",
+   "message": "gap gap1: derived from [@brown2020] which is never cited in the draft",
+   "where": "gap1"
+  },
+  {
+   "check": "S10c",
+   "level": "fail",
+   "message": "gap gap1: derived from [@brown2020] which is never cited in the draft",
+   "where": "gap1"
+  },
+  {
+   "check": "S11h",
+   "level": "fail",
+   "message": "'significantly' but the own paper reports no significance test / error bars",
+   "where": "P9.S1",
+   "sentence": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant."
+  },
+  {
+   "check": "S13b",
+   "level": "warn",
+   "message": "library record [@kaplan2020] not cited and no reason in plan.omitted_refs",
+   "where": null
+  },
+  {
+   "check": "S13b",
+   "level": "warn",
+   "message": "library record [@brown2020] not cited and no reason in plan.omitted_refs",
+   "where": null
+  },
+  {
+   "check": "S13b",
+   "level": "warn",
+   "message": "library record [@rae2021] not cited and no reason in plan.omitted_refs",
+   "where": null
+  },
+  {
+   "check": "S13b",
+   "level": "warn",
+   "message": "library record [@smith2022] not cited and no reason in plan.omitted_refs",
+   "where": null
+  },
+  {
+   "check": "S13b",
+   "level": "warn",
+   "message": "library record [@clark2022] not cited and no reason in plan.omitted_refs",
+   "where": null
+  }
+ ],
+ "needs_review": [
+  {
+   "type": "S4b",
+   "where": "P2.S1",
+   "note": "number 5 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P2.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P2.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P2.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P3.S1",
+   "note": "number 6 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P4.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P4.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P4.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P4.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P5.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P5.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P5.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P6.S1",
+   "note": "number 6 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P7.S1",
+   "note": "number 3 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P7.S1",
+   "note": "number 4 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P7.S1",
+   "note": "number 20 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P7.S1",
+   "note": "number 23 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P7.S1",
+   "note": "number 1 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P7.S1",
+   "note": "number 2 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P7.S1",
+   "note": "number 20 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "S4b",
+   "where": "P7.S1",
+   "note": "number 23 cannot be verified: cited source text not provided"
+  },
+  {
+   "type": "author_judgment",
+   "where": "P1.S1",
+   "note": "<field context -> concrete problem -> technical constraint; each factual sentence with or >"
+  }
+ ],
+ "missing_materials": [],
+ "parse_problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
+ "uncited_library_records": [
+  {
+   "key": "kaplan2020",
+   "reason": null
+  },
+  {
+   "key": "brown2020",
+   "reason": null
+  },
+  {
+   "key": "rae2021",
+   "reason": null
+  },
+  {
+   "key": "smith2022",
+   "reason": null
+  },
+  {
+   "key": "clark2022",
+   "reason": null
+  },
+  {
+   "key": "artetxe2021",
+   "reason": null
+  },
+  {
+   "key": "bender2021",
+   "reason": null
+  },
+  {
+   "key": "bisk2020",
+   "reason": null
+  },
+  {
+   "key": "lespiau2021",
+   "reason": null
+  },
+  {
+   "key": "bradbury2018",
+   "reason": null
+  },
+  {
+   "key": "clark2022a",
+   "reason": null
+  },
+  {
+   "key": "clark2019",
+   "reason": null
+  },
+  {
+   "key": "du2021",
+   "reason": null
+  },
+  {
+   "key": "fedus2021",
+   "reason": null
+  },
+  {
+   "key": "gao2020",
+   "reason": null
+  },
+  {
+   "key": "gehman2020",
+   "reason": null
+  },
+  {
+   "key": "guu2020",
+   "reason": null
+  },
+  {
+   "key": "hendrycks2020",
+   "reason": null
+  },
+  {
+   "key": "hennigan2020",
+   "reason": null
+  },
+  {
+   "key": "hernandez2020",
+   "reason": null
+  },
+  {
+   "key": "joshi2017",
+   "reason": null
+  },
+  {
+   "key": "jouppi2017",
+   "reason": null
+  },
+  {
+   "key": "kwiatkowski2019",
+   "reason": null
+  },
+  {
+   "key": "lai2017",
+   "reason": null
+  },
+  {
+   "key": "levine2020",
+   "reason": null
+  },
+  {
+   "key": "lewis2020",
+   "reason": null
+  },
+  {
+   "key": "lieber2021",
+   "reason": null
+  },
+  {
+   "key": "lin2019",
+   "reason": null
+  },
+  {
+   "key": "mccandlish2018",
+   "reason": null
+  },
+  {
+   "key": "merity2017",
+   "reason": null
+  },
+  {
+   "key": "mitchell1980",
+   "reason": null
+  },
+  {
+   "key": "paperno2016",
+   "reason": null
+  },
+  {
+   "key": "rae2020",
+   "reason": null
+  },
+  {
+   "key": "raffel2020",
+   "reason": null
+  },
+  {
+   "key": "rajbhandari1951",
+   "reason": null
+  },
+  {
+   "key": "rudinger2018",
+   "reason": null
+  },
+  {
+   "key": "sakaguchi2020",
+   "reason": null
+  },
+  {
+   "key": "sap2019",
+   "reason": null
+  },
+  {
+   "key": "shallue2018",
+   "reason": null
+  },
+  {
+   "key": "smith2021",
+   "reason": null
+  },
+  {
+   "key": "tay2021",
+   "reason": null
+  },
+  {
+   "key": "thoppilan2022",
+   "reason": null
+  },
+  {
+   "key": "vaswani2017",
+   "reason": null
+  },
+  {
+   "key": "weidinger2021",
+   "reason": null
+  },
+  {
+   "key": "welbl2021",
+   "reason": null
+  },
+  {
+   "key": "xu2021",
+   "reason": null
+  },
+  {
+   "key": "yang2021",
+   "reason": null
+  },
+  {
+   "key": "zellers2019",
+   "reason": null
+  },
+  {
+   "key": "zhang2019",
+   "reason": null
+  },
+  {
+   "key": "zoph2022",
+   "reason": null
+  }
+ ],
+ "uncertainty": [
+  "1 input parse problem(s): see parse_problems",
+  "support scores are lexical; semantic faithfulness of paraphrases was judged by the agent, not proven by the script"
+ ],
+ "changes": [
+  {
+   "version": 1,
+   "at": "2026-11-27T02:53:19Z",
+   "note": "first draft",
+   "fails": 56,
+   "warns": 30
+  }
+ ],
+ "inputs": {
+  "brown2020.pdf": "97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+  "case.json": "6ac03d3c0fedfbe0f15db6cb9f476597936dcd06a9a2076e5b39643f4b80bffa",
+  "kaplan2020.pdf": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+  "library.bib": "7092368b03f5860cf70143858aba657f49a54dd45ac7b26ad546fcec7e72ef43",
+  "paper.pdf": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4",
+  "task.md": "e042b56477083140bd597ca4984dbe9d8c54451bd8282d579272b76dc55c69b5"
+ },
+ "artifacts": {
+  "draft_md": "intro_related_work.md",
+  "draft_annotated": "intro_related_work_annotated.md",
+  "latex": "intro_related_work.tex",
+  "bib": "references.bib",
+  "references": "references_ieee.txt",
+  "html_preview": "intro_related_work.html",
+  "docx": "intro_related_work.docx",
+  "pdf_preview": null,
+  "png_previews": [],
+  "source_map": "source_map.json",
+  "matrix": "related_work_matrix.md",
+  "gap_derivation": "gap_derivation.md",
+  "contribution_map": "contribution_map.json",
+  "comparison_table": "comparison_table.md",
+  "comparison_csv": "comparison_table.csv",
+  "review": "review.md",
+  "diff": null
+ },
+ "preview_note": "skipped (--no-pdf)",
+ "updated": "2026-11-27T02:53:19Z",
+ "seconds": 1.8,
+ "introduction": "## 1 Introduction\n\n<field context -> concrete problem -> technical constraint; each factual sentence with [citation needed] or >\n\n## 2 Related Work\n\n### Large language models\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n### Modelling the scaling behavior\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n### Estimating hyperparameters for large models\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n### Improved model architectures\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n### Efficient frontier\n\n<compare these works on the group's axis: findings, conditions, limits [citation needed]>\n\n<gap derived from the shared limitation of the works above [citation needed]>\n\nOur contributions are:\n\n- We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.\n- By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens …\n- Instead, we find that model size and the number of training tokens should be scaled in equal proportions.\n- We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.\n\n## References\n\n\n",
+ "unmapped_contract_fields": []
+}

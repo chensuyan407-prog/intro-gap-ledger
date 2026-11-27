@@ -1,8 +1,8 @@
 {
  "case_id": "ho2_bn_paperonly",
- "status": "partial",
- "status_reason": "draft passes the checks; items need human confirmation (needs_review / missing_materials)",
- "skill": "intro-gap-ledger 0.2.1",
+ "status": "success",
+ "status_reason": "introduction + related work written: 4 parts, 7 references, source map for 15 sentences; quality checks flagged 0 issue(s) and 4 warning(s) (quality_issues / review.md); 17 item(s) for author confirmation (needs_review)",
+ "skill": "intro-gap-ledger 0.3.0",
  "language": "zh",
  "citation_style": "gbt7714",
  "summary": {
@@ -512,6 +512,93 @@
    "type": "statement"
   }
  ],
+ "comparison_table": [
+  {
+   "group": "改进优化器与初始化",
+   "dimension": "通过改变优化算法、激活函数或初始化来缓解深层网络训练困难，而不改变各层输入的分布",
+   "key": "sutskever2013",
+   "work": "Sutskever et al.",
+   "year": "2013",
+   "what_the_draft_says": "这一路线不改变各层输入的分布，而是改变参数更新方式或减轻激活饱和。",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "改进优化器与初始化",
+   "dimension": "通过改变优化算法、激活函数或初始化来缓解深层网络训练困难，而不改变各层输入的分布",
+   "key": "duchi2011",
+   "work": "Duchi et al.",
+   "year": "2011",
+   "what_the_draft_says": "动量法与 Adagrad 属于随机梯度下降的变体；",
+   "evidence": "[own paper p1] Stochastic gradient descent (SGD) has proved to be an effective way of training deep networks, and SGD variants such as momentum (Sutskever et al., 2013) and Adagrad (Duchi et al., 2011) have been used to achieve state of the art performance.",
+   "page": 1,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "改进优化器与初始化",
+   "dimension": "通过改变优化算法、激活函数或初始化来缓解深层网络训练困难，而不改变各层输入的分布",
+   "key": "nair2010",
+   "work": "Nair et al.",
+   "year": "2010",
+   "what_the_draft_says": "这一路线不改变各层输入的分布，而是改变参数更新方式或减轻激活饱和。",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": "[own paper p2] In practice, the saturation problem and the resulting vanishing gradients are usually addressed by using Rectified Linear Units (Nair & Hinton, 2010) ReLU(x) = max(x, 0), careful initialization (Bengio & Glorot, 2010; Saxe et al., 2013), and small learning rates."
+  },
+  {
+   "group": "改进优化器与初始化",
+   "dimension": "通过改变优化算法、激活函数或初始化来缓解深层网络训练困难，而不改变各层输入的分布",
+   "key": "bengio2010",
+   "work": "Bengio et al.",
+   "year": "2010",
+   "what_the_draft_says": "ReLU 与仔细的初始化则针对饱和问题。",
+   "evidence": "[own paper p2] In practice, the saturation problem and the resulting vanishing gradients are usually addressed by using Rectified Linear Units (Nair & Hinton, 2010) ReLU(x) = max(x, 0), careful initialization (Bengio & Glorot, 2010; Saxe et al., 2013), and small learning rates.",
+   "page": 1,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "输入白化与归一化",
+   "dimension": "归一化统计量在哪里计算：整个训练集的输入、单个样本，还是网络各层",
+   "key": "lecun1998a",
+   "work": "LeCun et al.",
+   "year": "1998",
+   "what_the_draft_says": "另一条路线直接规范输入的分布，区别在于统计量在哪里计算。",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": "[own paper p2] It has been long known (LeCun et al., 1998b; Wiesler & Ney, [own paper p3] As shown in (LeCun et al., 1998b), such normalization speeds up convergence, even when the features are not decorrelated."
+  },
+  {
+   "group": "输入白化与归一化",
+   "dimension": "归一化统计量在哪里计算：整个训练集的输入、单个样本，还是网络各层",
+   "key": "wiesler2011",
+   "work": "Wiesler et al.",
+   "year": "2011",
+   "what_the_draft_says": "早有研究表明，将网络输入白化（零均值、单位方差并去相关）可以加快训练收敛；",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "metadata_only",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "输入白化与归一化",
+   "dimension": "归一化统计量在哪里计算：整个训练集的输入、单个样本，还是网络各层",
+   "key": "lyu2008",
+   "work": "Lyu et al.",
+   "year": "2008",
+   "what_the_draft_says": "另一条路线直接规范输入的分布，区别在于统计量在哪里计算。",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": "[own paper p3] Some of the previous approaches (e.g. (Lyu & Simoncelli, 2008)) use statistics computed over a single training example, or, in the case of image networks, over different feature maps at a given location."
+  }
+ ],
+ "quality_issues": [],
  "checks": [
   {
    "check": "S5d",
@@ -705,7 +792,7 @@
  "changes": [
   {
    "version": 1,
-   "at": "2026-11-25T09:38:01Z",
+   "at": "2026-11-27T02:52:57Z",
    "note": "first draft",
    "fails": 0,
    "warns": 4
@@ -724,18 +811,23 @@
   "references": "references_gbt7714.txt",
   "html_preview": "intro_related_work.html",
   "docx": "intro_related_work.docx",
-  "pdf_preview": null,
-  "png_previews": [],
+  "pdf_preview": "intro_related_work_preview.pdf",
+  "png_previews": [
+   "intro_related_work_preview_p1.png",
+   "intro_related_work_preview_p2.png"
+  ],
   "source_map": "source_map.json",
   "matrix": "related_work_matrix.md",
   "gap_derivation": "gap_derivation.md",
   "contribution_map": "contribution_map.json",
+  "comparison_table": "comparison_table.md",
+  "comparison_csv": "comparison_table.csv",
   "review": "review.md",
   "diff": null
  },
- "preview_note": "skipped (--no-pdf)",
- "updated": "2026-11-25T09:38:01Z",
- "seconds": 0.1,
+ "preview_note": null,
+ "updated": "2026-11-27T02:52:57Z",
+ "seconds": 6.5,
  "introduction_zh": "## 1 引言\n\n随机梯度下降及其变体（如动量法和 Adagrad）已被用于在深层网络上取得领先结果[1,2]。然而，训练深层网络时每一层的输入分布会随前面各层参数的变化而改变，这使训练需要较小的学习率和仔细的参数初始化。实践中，饱和与梯度消失通常依靠 ReLU、仔细的初始化和较小的学习率来缓解[3,4]。\n\n## 2 相关工作\n\n### 2.1 改进优化器与初始化\n\n这一路线不改变各层输入的分布，而是改变参数更新方式或减轻激活饱和[1,3]。动量法与 Adagrad 属于随机梯度下降的变体[1,2]；ReLU 与仔细的初始化则针对饱和问题[3,4]。两类方法都没有直接控制中间层输入的分布。\n\n### 2.2 输入白化与归一化\n\n另一条路线直接规范输入的分布，区别在于统计量在哪里计算[5,6]。早有研究表明，将网络输入白化（零均值、单位方差并去相关）可以加快训练收敛[5,7]；与之不同，部分已有方法在单个训练样本上计算统计量[6]。\n\n已有方法要么只白化网络输入[5]，要么在单个样本上计算统计量[6]，深层网络各层输入分布随训练变化的问题仍需依靠小学习率与仔细初始化来应对[3]。\n\n本文的贡献如下：\n\n- 提出批归一化（Batch Normalization），在每个小批量上对各层激活做归一化，以减小内部协变量偏移并加速深层网络训练。\n- 在 ImageNet 分类网络上，批归一化以原模型 7% 的训练步数达到相同精度。\n- 批归一化网络的集成模型在 ImageNet 上取得 4.9% 的 top-5 验证错误率和 4.82% 的测试错误率。\n\n## 参考文献\n\n[1] Sutskever I, Martens J, Dahl GE, et al. On the importance of initialization and momentum in deep learning[C]//In ICML (3), volume 28 of JMLR Proceedings, pp, 2013: 1139-1147.\n[2] Duchi J, Hazan E, Singer Y. Adaptive subgradient methods for online learning and stochastic optimization[J]. J. Mach, 2011: 2121-2159.\n[3] Nair V, Hinton GE. Rectified linear units improve restricted boltzmann machines[C]//In ICML, pp, 2010: 807-814.\n[4] Bengio Y, Glorot X. Understanding the difficulty of training deep feedforward neural networks[C]//In Proceedings of AISTATS 2010, volume 9, pp, 2010: 249-256.\n[5] LeCun Y, Bottou L, Orr G, et al. Efficient backprop[J]. In Orr, G. and K., Muller (eds.), Neural Networks: Tricks of the trade, 1998.\n[6] Lyu S, Simoncelli EP. Nonlinear image representation using divisive normalization[C]//In Proc, 2008: 1-8. DOI: 10.1109/CVPR.\n[7] Wiesler S, Ney H. A convergence analysis of log-linear training[C]//In Shawe-Taylor, J., Zemel, R.S., Bartlett, P., Pereira, F.C.N., and Weinberger, K.Q. (eds.), Advances in Neural Information Processing Systems 24, pp, 2011: 657-665.\n",
  "related_work_zh": "这一路线不改变各层输入的分布，而是改变参数更新方式或减轻激活饱和[1,2]。\n动量法与 Adagrad 属于随机梯度下降的变体[1,3]；\nReLU 与仔细的初始化则针对饱和问题[2,4]。\n两类方法都没有直接控制中间层输入的分布。\n另一条路线直接规范输入的分布，区别在于统计量在哪里计算[5,6]。\n早有研究表明，将网络输入白化（零均值、单位方差并去相关）可以加快训练收敛[5,7]；\n与之不同，部分已有方法在单个训练样本上计算统计量[6]。\n",
  "evidence_map": [

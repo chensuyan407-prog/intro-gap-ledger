@@ -10,7 +10,7 @@ import unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SKILL_DIR = os.path.dirname(HERE)
-VERSION = "0.2.1"
+VERSION = "0.3.0"
 
 
 def load_rules():
@@ -236,8 +236,30 @@ def _text_pages(path):
             import docx  # python-docx
             d = docx.Document(path)
             return ["\n".join(p.text for p in d.paragraphs)], None
+        except ImportError:
+            pass
         except Exception as e:  # noqa
             return [], f"cannot read docx: {e}"
+        try:  # no python-docx: read word/document.xml directly
+            import zipfile
+            xml = zipfile.ZipFile(path).read("word/document.xml").decode("utf-8", "replace")
+            paras = re.findall(r"<w:p[ >].*?</w:p>", xml, flags=re.S)
+            txt = "\n".join("".join(re.findall(r"<w:t[^>]*>([^<]*)</w:t>", p)) for p in paras)
+            import html as _h
+            return [_h.unescape(txt)], None
+        except Exception as e:  # noqa
+            return [], f"cannot read docx: {e}"
+    if ext == ".tex":
+        try:
+            t = open(path, encoding="utf-8-sig", errors="replace").read()
+        except OSError as e:
+            return [], str(e)
+        t = re.sub(r"(?<!\\)%.*", "", t)  # comments
+        t = re.sub(r"\\(?:sub)*section\*?\{([^}]*)\}", r"\n\1\n", t)
+        t = re.sub(r"\\begin\{thebibliography\}.*?\n", "\nReferences\n", t)
+        t = re.sub(r"\\bibitem(?:\[[^\]]*\])?\{([^}]*)\}", r"\n[\1] ", t)
+        t = re.sub(r"\\(?:textbf|textit|emph|texttt)\{([^}]*)\}", r"\1", t)
+        return [t], None
     try:
         with open(path, encoding="utf-8-sig", errors="replace") as fh:
             return [fh.read()], None

@@ -1,8 +1,8 @@
 {
  "case_id": "empty_lib",
  "status": "partial",
- "status_reason": "2 blocking check(s) failed - see review.md",
- "skill": "intro-gap-ledger 0.2.1",
+ "status_reason": "no reference material in the inputs: citations are marked [citation needed]",
+ "skill": "intro-gap-ledger 0.3.0",
  "language": "en",
  "citation_style": "numeric",
  "summary": {
@@ -105,6 +105,22 @@
    ]
   }
  ],
+ "comparison_table": [],
+ "quality_issues": [
+  {
+   "check": "S4c",
+   "level": "fail",
+   "message": "number 300 in an uncited sentence (cite its source or remove)",
+   "where": "P1.S1",
+   "sentence": "Large language models are usually trained on about 300 billion tokens [citation needed]."
+  },
+  {
+   "check": "S9",
+   "level": "fail",
+   "message": "plan.json has no related-work groups",
+   "where": null
+  }
+ ],
  "checks": [
   {
    "check": "S4c",
@@ -163,7 +179,7 @@
  "changes": [
   {
    "version": 1,
-   "at": "2026-11-25T09:38:23Z",
+   "at": "2026-11-27T02:53:04Z",
    "note": "first draft",
    "fails": 2,
    "warns": 3
@@ -187,11 +203,13 @@
   "matrix": "related_work_matrix.md",
   "gap_derivation": "gap_derivation.md",
   "contribution_map": "contribution_map.json",
+  "comparison_table": "comparison_table.md",
+  "comparison_csv": "comparison_table.csv",
   "review": "review.md",
   "diff": null
  },
  "preview_note": "skipped (--no-pdf)",
- "updated": "2026-11-25T09:38:23Z",
+ "updated": "2026-11-27T02:53:04Z",
  "seconds": 0.1,
  "unmapped_contract_fields": []
 }

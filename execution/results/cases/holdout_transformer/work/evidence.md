@@ -1,4 +1,4 @@
-# Evidence tables (intro-gap-ledger 0.2.1)
+# Evidence tables (intro-gap-ledger 0.3.0)
 
 language: en | style: apa | case: holdout_transformer | own paper: C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\tests\cases\holdout_transformer\input\main_paper.pdf
 

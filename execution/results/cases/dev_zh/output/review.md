@@ -1,6 +1,6 @@
 # Review - dev_zh_residual
 
-status: **complete** - all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 7 note(s) for the author (judgments, unverifiable claims)
+status: **success** - introduction + related work written: 4 parts, 4 references, source map for 17 sentences; quality checks flagged 0 issue(s) and 5 warning(s) (quality_issues / review.md); 7 item(s) for author confirmation (needs_review)
 
 summary: {"sentences": 17, "cited_sentences": 9, "author_judgments": 4, "references": 4, "groups": 2, "gaps": 1, "contributions": 3, "fails": 0, "warns": 5}
 

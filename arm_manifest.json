@@ -18,8 +18,8 @@
  "execution": {
   "log_path": "execution/run.log",
   "exit_code": 0,
-  "ran_at": "2026-11-25T09:38:32.209604Z",
-  "wall_time_s": 77.47,
+  "ran_at": "2026-11-27T02:53:22.873216Z",
+  "wall_time_s": 146.72,
   "ran_by": "agent",
   "artifacts": [
    {
@@ -27,14 +27,14 @@
     "path": "execution/results/metrics.json",
     "type": "metric",
     "format": "json",
-    "checksum_sha256": "9be08c15508928774b87e3a1bfe066a0b00eca9b964c5500347ed065b3c8a379"
+    "checksum_sha256": "8f600f3db0833f6caf7677e51875fe057a300596b0cc8c4cc00d3373a8a37c53"
    },
    {
     "id": "metrics_dev",
     "path": "execution/results/metrics_dev.json",
     "type": "metric",
     "format": "json",
-    "checksum_sha256": "5fff4de33d86edf73501f0721b98acc1c129ddeeb1c6b36be9dd9f74f9f5d3cf"
+    "checksum_sha256": "b83363c73d5d7a823154050a6accc189ffc40e5d0c212c99e4d927954e268c9a"
    },
    {
     "id": "metrics_holdout_at_freeze",
@@ -48,7 +48,7 @@
     "path": "execution/results/metrics_holdout.json",
     "type": "metric",
     "format": "json",
-    "checksum_sha256": "d5cdbb7f29b0b1b516e75a44ad2d575a5c950783f5e878f928ce51b5a84692af"
+    "checksum_sha256": "f0955d3a16689ac6f160ae2ba968f2af5f784b47374704baadbd91e79de92b3b"
    },
    {
     "id": "eval_rows_dev",
@@ -69,7 +69,7 @@
     "path": "execution/results/cases/dev_en/output/result.json",
     "type": "data",
     "format": "json",
-    "checksum_sha256": "5b4af665be60f2ac3d93e1fe7a692d0070d3b30cc4c7bd8ef952548cce456a88"
+    "checksum_sha256": "84d3dae38b8073102520bb68e4bed5c8a24ede8bf9fa54e9bc0c88c8cafb776e"
    },
    {
     "id": "dev_en_draft",
@@ -104,14 +104,14 @@
     "path": "execution/results/cases/dev_en/output/intro_related_work_preview.pdf",
     "type": "figure",
     "format": "pdf",
-    "checksum_sha256": "2fbf007f4bce108290c9b5f940799fa4cc54406d12271e19c5d013142cdc160d"
+    "checksum_sha256": "0d1d0180828a9e42a1f8e890771be9c40a710ad4002e30f96697c9f946b044e5"
    },
    {
     "id": "dev_zh_result",
     "path": "execution/results/cases/dev_zh/output/result.json",
     "type": "data",
     "format": "json",
-    "checksum_sha256": "eb9fd745980630a5dfc4108bfb42f6119d0ae94e6b54bde4e3bc74f2fb4ce8b6"
+    "checksum_sha256": "395886a53b646e1137e52d14a18dbaeaeb15abf09f36569c97ae99ba9c3be218"
    },
    {
     "id": "dev_zh_draft",
@@ -146,14 +146,14 @@
     "path": "execution/results/cases/dev_zh/output/intro_related_work_preview.pdf",
     "type": "figure",
     "format": "pdf",
-    "checksum_sha256": "8dc7393669fcd9e58999d4010b1ca4198e71a5cf404a4ba01cf1e4e9b7ad392d"
+    "checksum_sha256": "0e96683248ddacc170e3634ab5e6a830274fef319a8a00e482eee059d75348b3"
    },
    {
     "id": "holdout_transformer_result",
     "path": "execution/results/cases/holdout_transformer/output/result.json",
     "type": "data",
     "format": "json",
-    "checksum_sha256": "1603093a5ae53e008d0c1c286444bfda2ce817c20c246f28ff884a3e1294ddbd"
+    "checksum_sha256": "8bb39edc937a9f466fcd88a5ffe38b8005a64f292b705074e86987ecf244d9eb"
    },
    {
     "id": "holdout_transformer_draft",
@@ -188,7 +188,91 @@
     "path": "execution/results/cases/holdout_transformer/output/intro_related_work_preview.pdf",
     "type": "figure",
     "format": "pdf",
-    "checksum_sha256": "265c7bfc65e05cdfa97d0b47799ddfa0e17a8363c2b6fa807b386d30e715ea9e"
+    "checksum_sha256": "2fb8f1fb96fb5e77ec0a881f5c90507da9c5bb3a502ab985950fa0b24deb8ec8"
+   },
+   {
+    "id": "ho2_bn_paperonly_result",
+    "path": "execution/results/cases/ho2_bn_paperonly/output/result.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "4eacd8552b3168a343092a66c696a3549c12e1049342b4a8340d498d8885bb5f"
+   },
+   {
+    "id": "ho2_bn_paperonly_draft",
+    "path": "execution/results/cases/ho2_bn_paperonly/output/intro_related_work.md",
+    "type": "data",
+    "format": "md",
+    "checksum_sha256": "31ef941f04e68dadbac08c5c456b46b08b1e08ba76f2f582103e5db552e1fb0d"
+   },
+   {
+    "id": "ho2_bn_paperonly_gap_derivation",
+    "path": "execution/results/cases/ho2_bn_paperonly/output/gap_derivation.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "559308e2ed5f419875e7244502b0e2d20fb7cb3d8592fc4750d56faf38622f68"
+   },
+   {
+    "id": "ho2_bn_paperonly_matrix",
+    "path": "execution/results/cases/ho2_bn_paperonly/output/related_work_matrix.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "fffe1989bbe3279c0e90273553d2778e73c23db62bd5d9b2c108252f32646ad5"
+   },
+   {
+    "id": "ho2_bn_paperonly_source_map",
+    "path": "execution/results/cases/ho2_bn_paperonly/output/source_map.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "4cd53aa16d6e29ec246fd66a4d18d44ea23098657ac5b3ea0a71c3f4b0cae5ab"
+   },
+   {
+    "id": "ho2_bn_paperonly_preview",
+    "path": "execution/results/cases/ho2_bn_paperonly/output/intro_related_work_preview.pdf",
+    "type": "figure",
+    "format": "pdf",
+    "checksum_sha256": "befd034535b2ecec6438e4e8a8844b225bc32228e98b839858903d2a6bcc7960"
+   },
+   {
+    "id": "ho3_kaplan_notes_result",
+    "path": "execution/results/cases/ho3_kaplan_notes/output/result.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "70f900257375e9bc2b91ee0443fed21656277e110079103a71437c80e8a3dec7"
+   },
+   {
+    "id": "ho3_kaplan_notes_draft",
+    "path": "execution/results/cases/ho3_kaplan_notes/output/intro_related_work.md",
+    "type": "data",
+    "format": "md",
+    "checksum_sha256": "a104bdbcde4625e071fca8a2271d3aadb9ef607788ba4cc74d98b0b94db19b3a"
+   },
+   {
+    "id": "ho3_kaplan_notes_gap_derivation",
+    "path": "execution/results/cases/ho3_kaplan_notes/output/gap_derivation.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "0764779ed2ad6029da89ae841547de6b4f740c4300748df52819602c0792d144"
+   },
+   {
+    "id": "ho3_kaplan_notes_matrix",
+    "path": "execution/results/cases/ho3_kaplan_notes/output/related_work_matrix.md",
+    "type": "data",
+    "format": "markdown",
+    "checksum_sha256": "2e662ccbffe63dadfdbdd800c58514b2c6c4cb883544af9e8f6916e2fc2f035a"
+   },
+   {
+    "id": "ho3_kaplan_notes_source_map",
+    "path": "execution/results/cases/ho3_kaplan_notes/output/source_map.json",
+    "type": "data",
+    "format": "json",
+    "checksum_sha256": "eb862779992f9d522528b790b01e8f2db29e4e6adc467e03246437b541b040ee"
+   },
+   {
+    "id": "ho3_kaplan_notes_preview",
+    "path": "execution/results/cases/ho3_kaplan_notes/output/intro_related_work_preview.pdf",
+    "type": "figure",
+    "format": "pdf",
+    "checksum_sha256": "a3ac66caa9d754eb5dd586a91b9f6e47ee71fbc0c3712e0acaaac0c8ce775e72"
    }
   ]
  },
@@ -218,7 +302,7 @@
    "comparison_method": "numeric_tolerance"
   },
   {
-   "name": "gold ledgers without fail (3 cases)",
+   "name": "gold ledgers without fail (5 cases)",
    "type": "metric",
    "produced_by": [
     "metrics"

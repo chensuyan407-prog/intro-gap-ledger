@@ -5,7 +5,7 @@ import sys
 import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(ROOT), "intro-gap-ledger_arm_v0.1.0.zip")
+out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(ROOT), "intro-gap-ledger_arm_v0.3.0.zip")
 n = 0
 with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
     for r, ds, fs in os.walk(ROOT):

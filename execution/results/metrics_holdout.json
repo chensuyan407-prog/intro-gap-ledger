@@ -6,10 +6,10 @@
  "gold": {
   "holdout_transformer": {
    "fails": 0,
-   "status": "complete",
+   "status": "success",
    "warns": 1,
    "needs_review": 9,
-   "check_seconds": 0.3
+   "check_seconds": 0.51
   }
  },
  "defects": 15,
@@ -47,5 +47,5 @@
   "unsupported_novelty_scope": "1/1",
   "wrong_number_contribution": "1/1"
  },
- "wall_seconds": 7.5
+ "wall_seconds": 20.9
 }

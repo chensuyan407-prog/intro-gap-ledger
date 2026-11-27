@@ -7,17 +7,17 @@
  "gold": {
   "dev_en": {
    "fails": 0,
-   "status": "complete",
+   "status": "success",
    "warns": 2,
    "needs_review": 9,
-   "check_seconds": 1.13
+   "check_seconds": 1.64
   },
   "dev_zh": {
    "fails": 0,
-   "status": "complete",
+   "status": "success",
    "warns": 5,
    "needs_review": 7,
-   "check_seconds": 0.33
+   "check_seconds": 0.42
   }
  },
  "defects": 32,
@@ -55,5 +55,5 @@
   "uncited_number": "1/1",
   "wrong_number_cited": "2/2"
  },
- "wall_seconds": 38.2
+ "wall_seconds": 55.0
 }

@@ -1,4 +1,4 @@
-# intro-gap-ledger 0.2.1 — submission bundle for 写作08｜引言与相关工作写作
+# intro-gap-ledger 0.3.0 — submission bundle for 写作08｜引言与相关工作写作
 
 Skill for drafting the **Introduction and Related Work** of a paper with an evidence ledger: scripts extract located
 sentences (page + id) from the own paper and the cited PDFs; the agent writes a plan (related-work groups with a

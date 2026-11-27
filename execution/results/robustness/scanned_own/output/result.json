@@ -2,7 +2,7 @@
  "case_id": "scan",
  "status": "partial",
  "status_reason": "init only: evidence extracted, no draft written yet",
- "skill": "intro-gap-ledger 0.2.1",
+ "skill": "intro-gap-ledger 0.3.0",
  "missing_materials": [
   "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
  ],
@@ -20,5 +20,5 @@
    "problem": "little or no text layer (scanned?): no text layer and tesseract is not installed"
   }
  },
- "updated": "2026-11-25T09:38:23Z"
+ "updated": "2026-11-27T02:53:05Z"
 }

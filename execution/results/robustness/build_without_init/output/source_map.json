@@ -1,0 +1,245 @@
+[
+ {
+  "id": "P1.S1",
+  "part": "background",
+  "text": "<field context -> concrete problem -> technical constraint; each factual sentence with or >",
+  "citations": [],
+  "numbers": [],
+  "type": "author_judgment"
+ },
+ {
+  "id": "P2.S1",
+  "part": "related",
+  "text": "<!-- refs: brown2020, smith2022, rae2021, thoppilan2022, lieber2021, du2021 | evidence: E:brown2020:p1:5, E:smith2022:p1:1, E:rae2021:p1:1, E:thoppilan2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "5",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   }
+  ],
+  "type": "cited"
+ },
+ {
+  "id": "P3.S1",
+  "part": "related",
+  "text": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "6",
+    "found_in": [],
+    "elsewhere": []
+   }
+  ],
+  "type": "cited"
+ },
+ {
+  "id": "P4.S1",
+  "part": "related",
+  "text": "<!-- refs: yang2021, mccandlish2018, shallue2018, zhang2019 | evidence: E:yang2021:p1:1, E:mccandlish2018:p1:1, E:shallue2018:p1:1, E:zhang2019:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   }
+  ],
+  "type": "cited"
+ },
+ {
+  "id": "P5.S1",
+  "part": "related",
+  "text": "<!-- refs: clark2022, fedus2021, du2021, zoph2022, artetxe2021, guu2020 | evidence: E:fedus2021:p1:1, E:du2021:p1:1, E:zoph2022:p1:1 --> <compare these works on the group's axis: findings, conditions, limits >",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   }
+  ],
+  "type": "cited"
+ },
+ {
+  "id": "P6.S1",
+  "part": "related",
+  "text": "<!-- refs: kaplan2020 | evidence: E:kaplan2020:p1:6 --> <compare these works on the group's axis: findings, conditions, limits >",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "6",
+    "found_in": [],
+    "elsewhere": []
+   }
+  ],
+  "type": "cited"
+ },
+ {
+  "id": "P7.S1",
+  "part": "gap",
+  "text": "<!-- candidate limitation evidence: E:brown2020:p1:3, E:brown2020:p1:4, E:kaplan2020:p3:20, E:kaplan2020:p3:23, E:clark2022:p1:1, E:clark2022:p1:2, E:kaplan2020:p3:20, E:kaplan2020:p3:23 --> <gap derived from the shared limitation of the works above >",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "3",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "4",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "20",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "23",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "1",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "2",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "20",
+    "found_in": [],
+    "elsewhere": []
+   },
+   {
+    "value": "23",
+    "found_in": [],
+    "elsewhere": []
+   }
+  ],
+  "type": "cited"
+ },
+ {
+  "id": "P8.S1",
+  "part": "contrib",
+  "text": "Our contributions are:",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ },
+ {
+  "id": "P9.S1",
+  "part": "contrib",
+  "text": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ },
+ {
+  "id": "P10.S1",
+  "part": "contrib",
+  "text": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens …",
+  "citations": [],
+  "numbers": [
+   {
+    "value": "400",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "70",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "16",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "5",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   },
+   {
+    "value": "500",
+    "found_in": [
+     "self"
+    ],
+    "elsewhere": []
+   }
+  ],
+  "type": "statement"
+ },
+ {
+  "id": "P11.S1",
+  "part": "contrib",
+  "text": "Instead, we find that model size and the number of training tokens should be scaled in equal proportions.",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ },
+ {
+  "id": "P12.S1",
+  "part": "contrib",
+  "text": "We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.",
+  "citations": [],
+  "numbers": [],
+  "type": "statement"
+ }
+]

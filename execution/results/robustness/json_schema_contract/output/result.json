@@ -1,8 +1,8 @@
 {
  "case_id": "dev_en_compute_optimal",
  "status": "success",
- "status_reason": "all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 9 note(s) for the author (judgments, unverifiable claims)",
- "skill": "intro-gap-ledger 0.2.1",
+ "status_reason": "introduction + related work written: 4 parts, 5 references, source map for 16 sentences; quality checks flagged 0 issue(s) and 2 warning(s) (quality_issues / review.md); 9 item(s) for author confirmation (needs_review)",
+ "skill": "intro-gap-ledger 0.3.0",
  "language": "en",
  "citation_style": "ieee",
  "summary": {
@@ -549,6 +549,69 @@
    ]
   }
  ],
+ "comparison_table": [
+  {
+   "group": "Scaling laws for language models",
+   "dimension": "how the compute-optimal split between model size and training tokens is estimated",
+   "key": "kaplan2020",
+   "work": "Kaplan et al.",
+   "year": "2020",
+   "what_the_draft_says": "Both lines of scaling-law work fit power laws to the loss, but they differ in which variables are varied.",
+   "evidence": "One might expect language modeling performance to depend on model architecture, the size of neural models, the computing power used to train them, and the data available for this training process.",
+   "page": 2,
+   "evidence_kind": "full_text",
+   "limitation_used_for_gap": "Unless otherwise noted, all training runs included in our data used a learning rate schedule with a 3000 step linear warmup followed by a cosine decay to zero."
+  },
+  {
+   "group": "Scaling laws for language models",
+   "dimension": "how the compute-optimal split between model size and training tokens is estimated",
+   "key": "clark2022",
+   "work": "Clark et al.",
+   "year": "2022",
+   "what_the_draft_says": "Both lines of scaling-law work fit power laws to the loss, but they differ in which variables are varied.",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Large dense language models",
+   "dimension": "parameter count vs. number of training tokens at a given budget",
+   "key": "brown2020",
+   "work": "Brown et al.",
+   "year": "2020",
+   "what_the_draft_says": "GPT-3, Gopher and Megatron-Turing NLG all increase the parameter count, whereas the number of training tokens stays in a similar range.",
+   "evidence": "Below, we evaluate the 8 models described in Section 2 (the 175 billion parameter parameter GPT-3 and 7 smaller models) on a wide range of datasets.",
+   "page": 10,
+   "evidence_kind": "full_text",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Large dense language models",
+   "dimension": "parameter count vs. number of training tokens at a given budget",
+   "key": "rae2021",
+   "work": "Rae et al.",
+   "year": "2021",
+   "what_the_draft_says": "GPT-3, Gopher and Megatron-Turing NLG all increase the parameter count, whereas the number of training tokens stays in a similar range.",
+   "evidence": "[own paper p3] LaMDA (Thoppilan et al., 2022) 137 Billion 168 Billion GPT-3 (Brown et al., 2020) 175 Billion 300 Billion Jurassic (Lieber et al., 2021) 178 Billion 300 Billion Gopher (Rae et al., 2021) 280 Billion 300 Billion MT-NLG 530B (Smith et al., 2022) 530 Billion 270 Billion [own paper p3] These include both dense transformer models (Brown et al., 2020; Lieber et al., 2021; Rae et al., 2021…",
+   "page": 1,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Large dense language models",
+   "dimension": "parameter count vs. number of training tokens at a given budget",
+   "key": "smith2022",
+   "work": "Smith et al.",
+   "year": "2022",
+   "what_the_draft_says": "GPT-3, Gopher and Megatron-Turing NLG all increase the parameter count, whereas the number of training tokens stays in a similar range.",
+   "evidence": "Because of their success, the size of these models has increased rapidly, requiring high-performance hardware, software, and algorithmic techniques to enable training such large models.",
+   "page": 1,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  }
+ ],
+ "quality_issues": [],
  "checks": [
   {
    "check": "S5b",
@@ -808,7 +871,7 @@
  "changes": [
   {
    "version": 1,
-   "at": "2026-11-25T09:38:32Z",
+   "at": "2026-11-27T02:53:22Z",
    "note": "first draft",
    "fails": 0,
    "warns": 2
@@ -836,12 +899,14 @@
   "matrix": "related_work_matrix.md",
   "gap_derivation": "gap_derivation.md",
   "contribution_map": "contribution_map.json",
+  "comparison_table": "comparison_table.md",
+  "comparison_csv": "comparison_table.csv",
   "review": "review.md",
   "diff": null
  },
  "preview_note": "skipped (--no-pdf)",
- "updated": "2026-11-25T09:38:32Z",
- "seconds": 1.1,
+ "updated": "2026-11-27T02:53:22Z",
+ "seconds": 1.5,
  "verification_notes": [
   "[warn] S5b P2.S1: low lexical support (0.0) of [@clark2022] for this sentence: give an explicit #evidence id or rephrase",
   "[warn] S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase",

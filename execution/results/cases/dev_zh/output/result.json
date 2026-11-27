@@ -1,8 +1,8 @@
 {
  "case_id": "dev_zh_residual",
- "status": "complete",
- "status_reason": "all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 7 note(s) for the author (judgments, unverifiable claims)",
- "skill": "intro-gap-ledger 0.2.1",
+ "status": "success",
+ "status_reason": "introduction + related work written: 4 parts, 4 references, source map for 17 sentences; quality checks flagged 0 issue(s) and 5 warning(s) (quality_issues / review.md); 7 item(s) for author confirmation (needs_review)",
+ "skill": "intro-gap-ledger 0.3.0",
  "language": "zh",
  "citation_style": "gbt7714",
  "summary": {
@@ -549,6 +549,57 @@
    ]
   }
  ],
+ "comparison_table": [
+  {
+   "group": "通过加深网络提升表示能力",
+   "dimension": "网络深度如何增加、增加到多少层",
+   "key": "simonyan2015",
+   "work": "Simonyan et al.",
+   "year": "2015",
+   "what_the_draft_says": "这一路线的共同做法是在同一识别任务上不断增加层数，区别在于增加深度的方式。",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "通过加深网络提升表示能力",
+   "dimension": "网络深度如何增加、增加到多少层",
+   "key": "szegedy2015",
+   "work": "Szegedy et al.",
+   "year": "2015",
+   "what_the_draft_says": "这一路线的共同做法是在同一识别任务上不断增加层数，区别在于增加深度的方式。",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "改善深层网络的可训练性",
+   "dimension": "训练信号如何穿过多层：归一化中间激活 vs. 门控捷径",
+   "key": "ioffe2015",
+   "work": "Ioffe et al.",
+   "year": "2015",
+   "what_the_draft_says": "另一条路线不改变深度，而是改变训练信号穿过多层的方式。",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "full_text",
+   "limitation_used_for_gap": "Batch Normalization allows us to use much higher learning rates and be less careful about initialization."
+  },
+  {
+   "group": "改善深层网络的可训练性",
+   "dimension": "训练信号如何穿过多层：归一化中间激活 vs. 门控捷径",
+   "key": "srivastava2015",
+   "work": "Srivastava et al.",
+   "year": "2015",
+   "what_the_draft_says": "另一条路线不改变深度，而是改变训练信号穿过多层的方式。",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": "However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem."
+  }
+ ],
+ "quality_issues": [],
  "checks": [
   {
    "check": "S5d",
@@ -823,7 +874,7 @@
  "changes": [
   {
    "version": 1,
-   "at": "2026-11-25T09:38:18Z",
+   "at": "2026-11-27T02:52:42Z",
    "note": "first draft",
    "fails": 0,
    "warns": 5
@@ -853,12 +904,14 @@
   "matrix": "related_work_matrix.md",
   "gap_derivation": "gap_derivation.md",
   "contribution_map": "contribution_map.json",
+  "comparison_table": "comparison_table.md",
+  "comparison_csv": "comparison_table.csv",
   "review": "review.md",
   "diff": null
  },
  "preview_note": null,
- "updated": "2026-11-25T09:38:18Z",
- "seconds": 4.3,
+ "updated": "2026-11-27T02:52:42Z",
+ "seconds": 8.1,
  "引言与相关工作": "这一路线的共同做法是在同一识别任务上不断增加层数，区别在于增加深度的方式[1,2]。\nVGG 保持结构简单，只堆叠小卷积核[1]；\nGoogLeNet 则采用更深的模块化结构[2]。\n二者都没有改变“逐层堆叠”的训练方式。\n另一条路线不改变深度，而是改变训练信号穿过多层的方式[3,4]。\n批归一化对层输入做归一化，使网络可以使用高得多的学习率并降低对初始化的依赖[3]，在图像分类模型上以少 14 倍的训练步数达到相同精度[3]。\n与之不同，Highway 网络借鉴 LSTM，用自适应门控单元调节跨层信息流[4]。\n前者作用于激活分布，后者引入了带参数的捷径。\n",
  "参考文献": [
   "[1] Simonyan K, Zisserman A. Very deep convolutional networks for large-scale image recognition[C]//International Conference on Learning Representations, 2015.",

@@ -1,8 +1,8 @@
 {
  "case_id": "holdout_transformer",
- "status": "complete",
- "status_reason": "all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 9 note(s) for the author (judgments, unverifiable claims)",
- "skill": "intro-gap-ledger 0.2.1",
+ "status": "success",
+ "status_reason": "introduction + related work written: 4 parts, 5 references, source map for 14 sentences; quality checks flagged 0 issue(s) and 1 warning(s) (quality_issues / review.md); 9 item(s) for author confirmation (needs_review)",
+ "skill": "intro-gap-ledger 0.3.0",
  "language": "en",
  "citation_style": "apa",
  "summary": {
@@ -420,6 +420,69 @@
    "type": "statement"
   }
  ],
+ "comparison_table": [
+  {
+   "group": "Recurrent encoder-decoders with attention",
+   "dimension": "how the decoder accesses the source sentence and how much computation is sequential",
+   "key": "hochreiter1997",
+   "work": "Hochreiter et al.",
+   "year": "1997",
+   "what_the_draft_says": "Both variants keep long short-term memory style recurrence and therefore process tokens one step at a time.",
+   "evidence": "",
+   "page": null,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Recurrent encoder-decoders with attention",
+   "dimension": "how the decoder accesses the source sentence and how much computation is sequential",
+   "key": "bahdanau2015",
+   "work": "Bahdanau et al.",
+   "year": "2015",
+   "what_the_draft_says": "Recurrent translation models differ mainly in how the decoder reads the source sentence.",
+   "evidence": "Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance.",
+   "page": 1,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": "In this paper, we conjecture that the use of a fixed-length vector is a bottleneck in improving the performance of this basic encoder-decoder architecture, and propose to extend this by allowing a model to automatically (soft-)search for parts of a source sentence that are relevant to predicting a target word, without having to form these parts as a hard segment explicitly."
+  },
+  {
+   "group": "Recurrent encoder-decoders with attention",
+   "dimension": "how the decoder accesses the source sentence and how much computation is sequential",
+   "key": "wu2016",
+   "work": "Wu et al.",
+   "year": "2016",
+   "what_the_draft_says": "Recurrent translation models differ mainly in how the decoder reads the source sentence.",
+   "evidence": "[own paper p2] Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+   "page": 1,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": ""
+  },
+  {
+   "group": "Convolutional sequence models",
+   "dimension": "parallelism during training vs. path length between distant positions",
+   "key": "gehring2017",
+   "work": "Gehring et al.",
+   "year": "2017",
+   "what_the_draft_says": "Convolutional models trade recurrence for parallelism: compared to recurrent models, computations over all elements can be fully parallelized during training.",
+   "evidence": "Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length.",
+   "page": 1,
+   "evidence_kind": "secondary",
+   "limitation_used_for_gap": "The prevalent approach to sequence to sequence learning maps an input sequence to a variable length output sequence via recurrent neural networks."
+  },
+  {
+   "group": "Convolutional sequence models",
+   "dimension": "parallelism during training vs. path length between distant positions",
+   "key": "he2016",
+   "work": "He et al.",
+   "year": "2016",
+   "what_the_draft_says": "Deep convolutional stacks rely on residual learning to remain trainable.",
+   "evidence": "We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously.",
+   "page": 1,
+   "evidence_kind": "full_text",
+   "limitation_used_for_gap": ""
+  }
+ ],
+ "quality_issues": [],
  "checks": [
   {
    "check": "S5b",
@@ -620,7 +683,7 @@
  "changes": [
   {
    "version": 1,
-   "at": "2026-11-25T09:38:22Z",
+   "at": "2026-11-27T02:52:50Z",
    "note": "first draft",
    "fails": 0,
    "warns": 1
@@ -650,12 +713,14 @@
   "matrix": "related_work_matrix.md",
   "gap_derivation": "gap_derivation.md",
   "contribution_map": "contribution_map.json",
+  "comparison_table": "comparison_table.md",
+  "comparison_csv": "comparison_table.csv",
   "review": "review.md",
   "diff": null
  },
  "preview_note": null,
- "updated": "2026-11-25T09:38:22Z",
- "seconds": 3.6,
+ "updated": "2026-11-27T02:52:50Z",
+ "seconds": 6.4,
  "intro_markdown": "## 1 Introduction\n\nSequence transduction, such as machine translation, has been dominated by recurrent neural networks that map an input sequence to a variable length output sequence (Gehring et al., 2017). Neural machine translation trains a single network jointly to maximize translation performance (Bahdanau et al., 2015). Recurrent computation is sequential along the sequence, which limits parallelization within training examples as sentences get longer.\n\n## 2 Related Work\n\n### Recurrent encoder-decoders with attention\n\nRecurrent translation models differ mainly in how the decoder reads the source sentence (Bahdanau et al., 2015; Wu et al., 2016). Basic encoder-decoders compress a source sentence into a fixed-length vector from which the decoder generates a translation (Bahdanau et al., 2015), whereas Bahdanau et al. let the model soft-search for the parts of the source sentence that are relevant to predicting a target word (Bahdanau et al., 2015). Both variants keep long short-term memory style recurrence (Hochreiter & Schmidhuber, 1997) and therefore process tokens one step at a time.\n\n### Convolutional sequence models\n\nConvolutional models trade recurrence for parallelism: compared to recurrent models, computations over all elements can be fully parallelized during training (Gehring et al., 2017). Deep convolutional stacks rely on residual learning to remain trainable (He et al., 2016). In contrast to attention over all positions, a convolution only relates positions within its kernel, so distant positions are connected through several layers.\n\nThus recurrent models compute sequentially (Gehring et al., 2017) and convolutional models need several layers to connect distant positions (Gehring et al., 2017): no existing transduction model is both fully parallel and connects any two positions in a constant number of operations.\n\nOur contributions are:\n\n- We propose the Transformer, an encoder-decoder based solely on attention mechanisms, dispensing with recurrence and convolutions (Figure 1).\n- On WMT 2014 English-to-German the Transformer reaches 28.4 BLEU, more than 2 BLEU above the best previous results including ensembles (Table 2).\n- We show that the Transformer generalizes to English constituency parsing with large and limited training data.\n\n## References\n\nBahdanau, D., Cho, K., & Bengio, Y. (2015). Neural Machine Translation by Jointly Learning to Align and Translate. *International Conference on Learning Representations*.\nGehring, J., Auli, M., Grangier, D., Yarats, D., & Dauphin, Y. N. (2017). Convolutional Sequence to Sequence Learning. *Proceedings of the 34th International Conference on Machine Learning*, 1243-1252.\nHe, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep Residual Learning for Image Recognition. *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition*, 770-778. https://doi.org/10.1109/CVPR.2016.90\nHochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. *Neural Computation*, *9*(8), 1735-1780.\nWu, Y., Schuster, M., & Chen, Z. (2016). Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation. *arXiv preprint arXiv:1609.08144*.\n",
  "research_gap": {
   "text": "Thus recurrent models compute sequentially (Gehring et al., 2017) and convolutional models need several layers to connect distant positions (Gehring et al., 2017): no existing transduction model is both fully parallel and connects any two positions in a constant number of operations.\n",

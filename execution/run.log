@@ -8,17 +8,17 @@ $ tests\run_eval.py --set dev
  "gold": {
   "dev_en": {
    "fails": 0,
-   "status": "complete",
+   "status": "success",
    "warns": 2,
    "needs_review": 9,
-   "check_seconds": 1.13
+   "check_seconds": 1.64
   },
   "dev_zh": {
    "fails": 0,
-   "status": "complete",
+   "status": "success",
    "warns": 5,
    "needs_review": 7,
-   "check_seconds": 0.33
+   "check_seconds": 0.42
   }
  },
  "defects": 32,
@@ -56,7 +56,7 @@ $ tests\run_eval.py --set dev
   "uncited_number": "1/1",
   "wrong_number_cited": "2/2"
  },
- "wall_seconds": 38.2
+ "wall_seconds": 55.0
 }
 
 
@@ -71,10 +71,10 @@ $ tests\run_eval.py --set holdout
  "gold": {
   "holdout_transformer": {
    "fails": 0,
-   "status": "complete",
+   "status": "success",
    "warns": 1,
    "needs_review": 9,
-   "check_seconds": 0.3
+   "check_seconds": 0.51
   }
  },
  "defects": 15,
@@ -112,7 +112,7 @@ $ tests\run_eval.py --set holdout
   "unsupported_novelty_scope": "1/1",
   "wrong_number_contribution": "1/1"
  },
- "wall_seconds": 7.5
+ "wall_seconds": 20.9
 }
 
 
@@ -128,17 +128,17 @@ $ tests\run_eval.py --set v2
  "gold": {
   "ho2_bn_paperonly": {
    "fails": 0,
-   "status": "partial",
+   "status": "success",
    "warns": 4,
    "needs_review": 17,
-   "check_seconds": 0.21
+   "check_seconds": 0.4
   },
   "ho3_kaplan_notes": {
    "fails": 0,
-   "status": "partial",
+   "status": "success",
    "warns": 0,
    "needs_review": 10,
-   "check_seconds": 0.27
+   "check_seconds": 0.37
   }
  },
  "defects": 14,
@@ -168,7 +168,7 @@ $ tests\run_eval.py --set v2
   "wrong_number_cited": "1/1",
   "wrong_number_contribution": "2/2"
  },
- "wall_seconds": 6.6
+ "wall_seconds": 9.9
 }
 
 
@@ -214,16 +214,70 @@ $ submission\scripts\irw.py init --case tests\cases\dev_en\input\case.json --out
   }
  ],
  "missing": [],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 1.0
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Large language models",
+    [
+     "brown2020",
+     "smith2022",
+     "rae2021",
+     "thoppilan2022",
+     "lieber2021",
+     "du2021"
+    ]
+   ],
+   [
+    "Modelling the scaling behavior",
+    [
+     "kaplan2020"
+    ]
+   ],
+   [
+    "Estimating hyperparameters for large models",
+    [
+     "yang2021",
+     "mccandlish2018",
+     "shallue2018",
+     "zhang2019"
+    ]
+   ],
+   [
+    "Improved model architectures",
+    [
+     "clark2022",
+     "fedus2021",
+     "du2021",
+     "zoph2022",
+     "artetxe2021",
+     "guu2020"
+    ]
+   ],
+   [
+    "Efficient frontier",
+    [
+     "kaplan2020"
+    ]
+   ]
+  ],
+  "gap_candidates": 8,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 1.5
 }
 
 
 [exit 0]
 
-$ submission\scripts\irw.py check --work execution\results\cases\dev_en\work --out execution\results\cases\dev_en\output
+$ submission\scripts\irw.py build --work execution\results\cases\dev_en\work --out execution\results\cases\dev_en\output
 {
- "status": "complete",
+ "status": "success",
  "fails": 0,
  "warns": 2,
  "top": [],
@@ -233,7 +287,7 @@ $ submission\scripts\irw.py check --work execution\results\cases\dev_en\work --o
  ],
  "needs_review": 9,
  "unmapped_contract_fields": [],
- "seconds": 4.6
+ "seconds": 7.0
 }
 
 
@@ -273,16 +327,57 @@ $ submission\scripts\irw.py init --case tests\cases\dev_zh\input\case.json --out
   }
  ],
  "missing": [],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.3
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Residual Representations",
+    [
+     "briggs2000",
+     "szeliski1990",
+     "szeliski2006",
+     "jegou2012",
+     "perronnin2007",
+     "chatfield2011"
+    ]
+   ],
+   [
+    "Shortcut Connections",
+    [
+     "srivastava2015",
+     "szegedy2015",
+     "ripley1996",
+     "venables1999",
+     "lee2014",
+     "bishop1995"
+    ]
+   ],
+   [
+    "<group name: problem / method route / data & evaluation>",
+    [
+     "ioffe2015",
+     "simonyan2015",
+     "zhou2016"
+    ]
+   ]
+  ],
+  "gap_candidates": 6,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 0.5
 }
 
 
 [exit 0]
 
-$ submission\scripts\irw.py check --work execution\results\cases\dev_zh\work --out execution\results\cases\dev_zh\output
+$ submission\scripts\irw.py build --work execution\results\cases\dev_zh\work --out execution\results\cases\dev_zh\output
 {
- "status": "complete",
+ "status": "success",
  "fails": 0,
  "warns": 5,
  "top": [],
@@ -295,7 +390,7 @@ $ submission\scripts\irw.py check --work execution\results\cases\dev_zh\work --o
  ],
  "needs_review": 7,
  "unmapped_contract_fields": [],
- "seconds": 4.3
+ "seconds": 8.1
 }
 
 
@@ -339,16 +434,44 @@ $ submission\scripts\irw.py init --case tests\cases\holdout_transformer\input\ca
   }
  ],
  "missing": [],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.3
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Figure 2: (left) Scaled Dot-Product Attention",
+    [
+     "bahdanau2015",
+     "dennybritz2017"
+    ]
+   ],
+   [
+    "<group name: problem / method route / data & evaluation>",
+    [
+     "he2016",
+     "gehring2017",
+     "hochreiter1997",
+     "wu2016",
+     "ba2016"
+    ]
+   ]
+  ],
+  "gap_candidates": 3,
+  "contributions": 3,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 1.0
 }
 
 
 [exit 0]
 
-$ submission\scripts\irw.py check --work execution\results\cases\holdout_transformer\work --out execution\results\cases\holdout_transformer\output
+$ submission\scripts\irw.py build --work execution\results\cases\holdout_transformer\work --out execution\results\cases\holdout_transformer\output
 {
- "status": "complete",
+ "status": "success",
  "fails": 0,
  "warns": 1,
  "top": [],
@@ -357,7 +480,172 @@ $ submission\scripts\irw.py check --work execution\results\cases\holdout_transfo
  ],
  "needs_review": 9,
  "unmapped_contract_fields": [],
- "seconds": 3.6
+ "seconds": 6.4
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case tests\cases\ho2_bn_paperonly\input\case.json --out execution\results\cases\ho2_bn_paperonly\output --work execution\results\cases\ho2_bn_paperonly\work
+{
+ "case_id": "ho2_bn_paperonly",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\ho2_bn_paperonly\\input\\task.md",
+ "language": "zh",
+ "style": "gbt7714",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\ho2_bn_paperonly\\input\\paper.pdf",
+ "records": 22,
+ "with_text": [],
+ "abstract_only": [],
+ "metadata_only": [
+  "gulcehre2013",
+  "hyvarinen2000",
+  "pascanu2013",
+  "saxe2000",
+  "wiesler2011",
+  "wu2015"
+ ],
+ "notes": [],
+ "contract_fields": [
+  "introduction_zh",
+  "related_work_zh",
+  "references",
+  "evidence_map",
+  "human_check"
+ ],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "22 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
+ "missing": [],
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "<group name: problem / method route / data & evaluation>",
+    [
+     "srivastava2014",
+     "szegedy2014",
+     "duchi2011",
+     "russakovsky2014",
+     "sutskever2013",
+     "bengio2010"
+    ]
+   ]
+  ],
+  "gap_candidates": 0,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 0.2
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py build --work execution\results\cases\ho2_bn_paperonly\work --out execution\results\cases\ho2_bn_paperonly\output
+{
+ "status": "success",
+ "fails": 0,
+ "warns": 4,
+ "top": [],
+ "warn_top": [
+  "S5d P2.S1: cross-lingual citation [@sutskever2013] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+  "S5d P2.S1: cross-lingual citation [@nair2010] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+  "S5d P3.S1: cross-lingual citation [@lecun1998a] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence",
+  "S5d P3.S1: cross-lingual citation [@lyu2008] without an explicit #evidence id: lexical matching is not possible, add the id of the supporting sentence"
+ ],
+ "needs_review": 17,
+ "unmapped_contract_fields": [],
+ "seconds": 6.5
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case tests\cases\ho3_kaplan_notes\input\case.json --out execution\results\cases\ho3_kaplan_notes\output --work execution\results\cases\ho3_kaplan_notes\work
+{
+ "case_id": "ho3_kaplan_notes",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\ho3_kaplan_notes\\input\\task.md",
+ "language": "en",
+ "style": "apa",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\ho3_kaplan_notes\\input\\paper.pdf",
+ "records": 48,
+ "with_text": [],
+ "abstract_only": [],
+ "metadata_only": [],
+ "notes": [
+  "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\ho3_kaplan_notes\\input\\notes.md"
+ ],
+ "contract_fields": [
+  "introduction",
+  "related_work",
+  "research_gap",
+  "contributions",
+  "bibliography",
+  "claim_source_map",
+  "open_issues"
+ ],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
+ "missing": [],
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Related work",
+    [
+     "radford2019",
+     "mccandlish2018",
+     "vaswani2017",
+     "alecradford2018",
+     "liu2018",
+     "jacobdevlin2018"
+    ]
+   ],
+   [
+    "<group name: problem / method route / data & evaluation>",
+    [
+     "hestness2017",
+     "rosenfeld2019"
+    ]
+   ]
+  ],
+  "gap_candidates": 4,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 0.5
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py build --work execution\results\cases\ho3_kaplan_notes\work --out execution\results\cases\ho3_kaplan_notes\output
+{
+ "status": "success",
+ "fails": 0,
+ "warns": 0,
+ "top": [],
+ "warn_top": [],
+ "needs_review": 10,
+ "unmapped_contract_fields": [],
+ "seconds": 4.9
 }
 
 
@@ -382,7 +670,22 @@ $ submission\scripts\irw.py init --case execution\results\robustness\missing_cas
   "own paper (PDF/manuscript of the work being introduced) not found: contributions cannot be checked against results",
   "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
  ],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "<group name: problem / method route / data & evaluation>",
+    []
+   ]
+  ],
+  "gap_candidates": 0,
+  "contributions": 1,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
  "seconds": 0.0
 }
 
@@ -407,7 +710,22 @@ $ submission\scripts\irw.py init --case execution\results\robustness\empty_libra
  "missing": [
   "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
  ],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "<group name: problem / method route / data & evaluation>",
+    []
+   ]
+  ],
+  "gap_candidates": 0,
+  "contributions": 2,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
  "seconds": 0.0
 }
 
@@ -471,8 +789,62 @@ $ submission\scripts\irw.py init --case execution\results\robustness\encrypted_s
   }
  ],
  "missing": [],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.5
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Large language models",
+    [
+     "rae2021",
+     "brown2020",
+     "smith2022",
+     "thoppilan2022",
+     "lieber2021",
+     "du2021"
+    ]
+   ],
+   [
+    "Modelling the scaling behavior",
+    [
+     "kaplan2020"
+    ]
+   ],
+   [
+    "Estimating hyperparameters for large models",
+    [
+     "yang2021",
+     "mccandlish2018",
+     "shallue2018",
+     "zhang2019"
+    ]
+   ],
+   [
+    "Improved model architectures",
+    [
+     "clark2022",
+     "fedus2021",
+     "du2021",
+     "zoph2022",
+     "artetxe2021",
+     "guu2020"
+    ]
+   ],
+   [
+    "Efficient frontier",
+    [
+     "kaplan2020"
+    ]
+   ]
+  ],
+  "gap_candidates": 2,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 0.8
 }
 
 
@@ -501,7 +873,22 @@ $ submission\scripts\irw.py init --case execution\results\robustness\scanned_own
  "missing": [
   "library is empty: no reference records and no source PDFs - do not invent citations; mark needed citations as [需补充文献]/[citation needed]"
  ],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "<group name: problem / method route / data & evaluation>",
+    []
+   ]
+  ],
+  "gap_candidates": 0,
+  "contributions": 1,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
  "seconds": 0.1
 }
 
@@ -548,8 +935,62 @@ $ submission\scripts\irw.py init --case execution\results\robustness\bad_plan\in
   }
  ],
  "missing": [],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.9
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Large language models",
+    [
+     "brown2020",
+     "smith2022",
+     "rae2021",
+     "thoppilan2022",
+     "lieber2021",
+     "du2021"
+    ]
+   ],
+   [
+    "Modelling the scaling behavior",
+    [
+     "kaplan2020"
+    ]
+   ],
+   [
+    "Estimating hyperparameters for large models",
+    [
+     "yang2021",
+     "mccandlish2018",
+     "shallue2018",
+     "zhang2019"
+    ]
+   ],
+   [
+    "Improved model architectures",
+    [
+     "clark2022",
+     "fedus2021",
+     "du2021",
+     "zoph2022",
+     "artetxe2021",
+     "guu2020"
+    ]
+   ],
+   [
+    "Efficient frontier",
+    [
+     "kaplan2020"
+    ]
+   ]
+  ],
+  "gap_candidates": 8,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 1.4
 }
 
 
@@ -557,11 +998,11 @@ $ submission\scripts\irw.py init --case execution\results\robustness\bad_plan\in
 
 $ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\work --out execution\results\robustness\bad_plan\output --no-pdf
 {
- "status": "partial",
+ "status": "success",
  "fails": 4,
  "warns": 7,
  "top": [
-  "PLAN : C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\plan.json missing or invalid JSON",
+  "PLAN : C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\plan.json missing or invalid JSON object",
   "S9 : plan.json has no related-work groups",
   "S10 : plan.json has no gaps",
   "S11 : plan.json has no contributions"
@@ -577,20 +1018,20 @@ $ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\w
  ],
  "needs_review": 8,
  "unmapped_contract_fields": [],
- "seconds": 1.0
+ "seconds": 1.5
 }
 
 
 [exit 0]
 
 $ submission\scripts\irw.py check --work execution\results\robustness\bad_plan\work --out execution\results\robustness\bad_plan\output --no-pdf
-{"case_id": "dev_en_compute_optimal", "status": "failed", "status_reason": "no draft at C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\draft.md", "skill": "intro-gap-ledger 0.2.1"}
+{"error": "no draft at C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\draft.md", "result_json": "kept"}
 
 
 [exit 2]
 
 $ submission\scripts\irw.py check --work execution\results\robustness\check_before_init\work --out execution\results\robustness\check_before_init\output
-library.json missing: run init first
+{"error": "work/library.json missing: run init (or build --case /input/case.json)"}
 
 
 [exit 2]
@@ -635,8 +1076,68 @@ $ submission\scripts\irw.py init --case execution\results\robustness\corrupt_lib
   }
  ],
  "missing": [],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.5
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Large language models",
+    [
+     "smith2022",
+     "rae2021",
+     "brown2020",
+     "thoppilan2022",
+     "lieber2021",
+     "du2021"
+    ]
+   ],
+   [
+    "Modelling the scaling behavior",
+    [
+     "kaplan2020"
+    ]
+   ],
+   [
+    "Estimating hyperparameters for large models",
+    [
+     "yang2021",
+     "mccandlish2018",
+     "shallue2018",
+     "zhang2019"
+    ]
+   ],
+   [
+    "Improved model architectures",
+    [
+     "clark2022",
+     "fedus2021",
+     "du2021",
+     "zoph2022",
+     "artetxe2021",
+     "guu2020"
+    ]
+   ],
+   [
+    "Efficient frontier",
+    [
+     "kaplan2020"
+    ]
+   ],
+   [
+    "<group name: problem / method route / data & evaluation>",
+    [
+     "doe2021"
+    ]
+   ]
+  ],
+  "gap_candidates": 2,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 0.7
 }
 
 
@@ -682,8 +1183,62 @@ $ submission\scripts\irw.py init --case execution\results\robustness\determinism
   }
  ],
  "missing": [],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.8
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Large language models",
+    [
+     "brown2020",
+     "smith2022",
+     "rae2021",
+     "thoppilan2022",
+     "lieber2021",
+     "du2021"
+    ]
+   ],
+   [
+    "Modelling the scaling behavior",
+    [
+     "kaplan2020"
+    ]
+   ],
+   [
+    "Estimating hyperparameters for large models",
+    [
+     "yang2021",
+     "mccandlish2018",
+     "shallue2018",
+     "zhang2019"
+    ]
+   ],
+   [
+    "Improved model architectures",
+    [
+     "clark2022",
+     "fedus2021",
+     "du2021",
+     "zoph2022",
+     "artetxe2021",
+     "guu2020"
+    ]
+   ],
+   [
+    "Efficient frontier",
+    [
+     "kaplan2020"
+    ]
+   ]
+  ],
+  "gap_candidates": 8,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 1.2
 }
 
 
@@ -691,7 +1246,7 @@ $ submission\scripts\irw.py init --case execution\results\robustness\determinism
 
 $ submission\scripts\irw.py check --work execution\results\robustness\determinism\work --out execution\results\robustness\determinism\output --no-pdf
 {
- "status": "complete",
+ "status": "success",
  "fails": 0,
  "warns": 2,
  "top": [],
@@ -701,7 +1256,7 @@ $ submission\scripts\irw.py check --work execution\results\robustness\determinis
  ],
  "needs_review": 9,
  "unmapped_contract_fields": [],
- "seconds": 1.0
+ "seconds": 1.6
 }
 
 
@@ -709,7 +1264,7 @@ $ submission\scripts\irw.py check --work execution\results\robustness\determinis
 
 $ submission\scripts\irw.py check --work execution\results\robustness\determinism\work --out execution\results\robustness\determinism\output --no-pdf
 {
- "status": "complete",
+ "status": "success",
  "fails": 0,
  "warns": 2,
  "top": [],
@@ -719,7 +1274,183 @@ $ submission\scripts\irw.py check --work execution\results\robustness\determinis
  ],
  "needs_review": 9,
  "unmapped_contract_fields": [],
- "seconds": 1.0
+ "seconds": 1.4
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py init --case execution\results\robustness\quality_findings_non_blocking\input\case.json --out execution\results\robustness\quality_findings_non_blocking\output --work execution\results\robustness\quality_findings_non_blocking\work
+{
+ "case_id": "dev_en_compute_optimal",
+ "case_error": null,
+ "task_file": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\quality_findings_non_blocking\\input\\task.md",
+ "language": "en",
+ "style": "ieee",
+ "own_paper": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\quality_findings_non_blocking\\input\\paper.pdf",
+ "records": 50,
+ "with_text": [
+  "kaplan2020",
+  "brown2020"
+ ],
+ "abstract_only": [],
+ "metadata_only": [
+  "lespiau2021",
+  "hernandez2020",
+  "levine2020",
+  "lin2019",
+  "mitchell1980",
+  "rae2020",
+  "rajbhandari1951",
+  "sap2019",
+  "smith2021"
+ ],
+ "notes": [],
+ "contract_fields": [
+  "introduction",
+  "references",
+  "source_map",
+  "contributions",
+  "needs_review"
+ ],
+ "problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
+ "missing": [],
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Large language models",
+    [
+     "brown2020",
+     "smith2022",
+     "rae2021",
+     "thoppilan2022",
+     "lieber2021",
+     "du2021"
+    ]
+   ],
+   [
+    "Modelling the scaling behavior",
+    [
+     "kaplan2020"
+    ]
+   ],
+   [
+    "Estimating hyperparameters for large models",
+    [
+     "yang2021",
+     "mccandlish2018",
+     "shallue2018",
+     "zhang2019"
+    ]
+   ],
+   [
+    "Improved model architectures",
+    [
+     "clark2022",
+     "fedus2021",
+     "du2021",
+     "zoph2022",
+     "artetxe2021",
+     "guu2020"
+    ]
+   ],
+   [
+    "Efficient frontier",
+    [
+     "kaplan2020"
+    ]
+   ]
+  ],
+  "gap_candidates": 8,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 1.2
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py build --work execution\results\robustness\quality_findings_non_blocking\work --out execution\results\robustness\quality_findings_non_blocking\output --no-pdf
+{
+ "status": "success",
+ "fails": 2,
+ "warns": 2,
+ "top": [
+  "S4 P1.S1: number 170 not supported by the cited evidence",
+  "S2 P1.S2: citation key 'nobody2099' is not in the library (no invented references)"
+ ],
+ "warn_top": [
+  "S5b P2.S1: low lexical support (0.0) of [@clark2022] for this sentence: give an explicit #evidence id or rephrase",
+  "S5b P4.S1: sentence shares few words with its evidence E:kaplan2020:p7:91: check the paraphrase"
+ ],
+ "needs_review": 9,
+ "unmapped_contract_fields": [],
+ "seconds": 1.6
+}
+
+
+[exit 0]
+
+$ submission\scripts\irw.py build --case execution\results\robustness\build_without_init\input\case.json --work execution\results\robustness\build_without_init\work --out execution\results\robustness\build_without_init\output --no-pdf
+{
+ "status": "partial",
+ "fails": 56,
+ "warns": 30,
+ "top": [
+  "S0 : template placeholder left in the draft: <field context ->",
+  "S0 : template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+  "S0 : template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+  "S0 : template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+  "S0 : template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+  "S0 : template placeholder left in the draft: <compare these works on the group's axis: findings, conditions, limits [@k1; @k2…",
+  "S0 : template placeholder left in the draft: <gap derived from the shared limitation of the works above [@k #E:...]>",
+  "S0 : template placeholder left in plan.groups[0].dimension: <axis on which these works are compared - from the own paper's discussion: A var…",
+  "S0 : template placeholder left in plan.groups[0].comparison: <how they differ / what they share on that axis>",
+  "S0 : template placeholder left in plan.groups[1].dimension: <axis on which these works are compared - from the own paper's discussion: Under…",
+  "S0 : template placeholder left in plan.groups[1].comparison: <how they differ / what they share on that axis>",
+  "S0 : template placeholder left in plan.groups[2].dimension: <axis on which these works are compared - from the own paper's discussion: The m…",
+  "S0 : template placeholder left in plan.groups[2].comparison: <how they differ / what they share on that axis>",
+  "S0 : template placeholder left in plan.groups[3].dimension: <axis on which these works are compared - from the own paper's discussion: Recen…",
+  "S0 : template placeholder left in plan.groups[3].comparison: <how they differ / what they share on that axis>",
+  "S0 : template placeholder left in plan.groups[4].dimension: <axis on which these works are compared - from the own paper's discussion: We ca…",
+  "S0 : template placeholder left in plan.groups[4].comparison: <how they differ / what they share on that axis>",
+  "S0 : template placeholder left in plan.gaps[0].statement: <one-sentence gap that follows from the shared limitation of the cited works>",
+  "S2 P1.S1: citation key 'key' is not in the library (no invented references)",
+  "S2 P2.S1: citation key 'k1' is not in the library (no invented references)",
+  "S2 P2.S1: citation key 'k2' is not in the library (no invented references)",
+  "S2 P3.S1: citation key 'k1' is not in the library (no invented references)",
+  "S2 P3.S1: citation key 'k2' is not in the library (no invented references)",
+  "S2 P4.S1: citation key 'k1' is not in the library (no invented references)",
+  "S2 P4.S1: citation key 'k2' is not in the library (no invented references)"
+ ],
+ "warn_top": [
+  "S4b P2.S1: number 5 cannot be verified: cited source text not provided",
+  "S4b P2.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P2.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P2.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P3.S1: number 6 cannot be verified: cited source text not provided",
+  "S4b P4.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P4.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P4.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P4.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P5.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P5.S1: number 1 cannot be verified: cited source text not provided",
+  "S4b P5.S1: number 1 cannot be verified: cited source text not provided"
+ ],
+ "needs_review": 22,
+ "unmapped_contract_fields": [],
+ "seconds": 1.8
 }
 
 
@@ -765,8 +1496,62 @@ $ submission\scripts\irw.py init --case execution\results\robustness\json_schema
   }
  ],
  "missing": [],
- "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
- "seconds": 0.9
+ "scaffold": {
+  "wrote": [
+   "plan.json",
+   "draft.md"
+  ],
+  "groups": [
+   [
+    "Large language models",
+    [
+     "brown2020",
+     "smith2022",
+     "rae2021",
+     "thoppilan2022",
+     "lieber2021",
+     "du2021"
+    ]
+   ],
+   [
+    "Modelling the scaling behavior",
+    [
+     "kaplan2020"
+    ]
+   ],
+   [
+    "Estimating hyperparameters for large models",
+    [
+     "yang2021",
+     "mccandlish2018",
+     "shallue2018",
+     "zhang2019"
+    ]
+   ],
+   [
+    "Improved model architectures",
+    [
+     "clark2022",
+     "fedus2021",
+     "du2021",
+     "zoph2022",
+     "artetxe2021",
+     "guu2020"
+    ]
+   ],
+   [
+    "Efficient frontier",
+    [
+     "kaplan2020"
+    ]
+   ]
+  ],
+  "gap_candidates": 8,
+  "contributions": 4,
+  "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"
+ },
+ "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
+ "seconds": 1.3
 }
 
 
@@ -774,7 +1559,7 @@ $ submission\scripts\irw.py init --case execution\results\robustness\json_schema
 
 $ submission\scripts\irw.py check --work execution\results\robustness\json_schema_contract\work --out execution\results\robustness\json_schema_contract\output --no-pdf
 {
- "status": "complete",
+ "status": "success",
  "fails": 0,
  "warns": 2,
  "top": [],
@@ -784,7 +1569,7 @@ $ submission\scripts\irw.py check --work execution\results\robustness\json_schem
  ],
  "needs_review": 9,
  "unmapped_contract_fields": [],
- "seconds": 1.1
+ "seconds": 1.5
 }
 
 

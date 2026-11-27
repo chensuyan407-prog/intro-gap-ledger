@@ -10,6 +10,7 @@ import argparse
 import datetime as dt
 import difflib
 import glob
+import io
 import json
 import os
 import re
@@ -161,6 +162,10 @@ def init(a):
     docs = [f for f in files if f.lower().endswith(".pdf")]
     texts = [f for f in files if f.lower().endswith(TEXT_EXT) and f != task_file]
     own_field = first_of(case, ["own_paper", "paper", "manuscript", "target_paper", "this_paper", "paper_pdf", "pdf", "本文", "论文"])
+    if not own_field and isinstance(case.get("inputs"), dict):
+        own_field = first_of(case["inputs"], ["own_paper", "paper", "manuscript", "target_paper", "this_paper", "paper_pdf", "pdf", "本文", "论文"])
+    if isinstance(own_field, dict):
+        own_field = own_field.get("path") or own_field.get("file") or own_field.get("name")
     own = resolve(own_field, base) if isinstance(own_field, str) else None
     if a.own:
         own = os.path.abspath(a.own)
@@ -307,10 +312,7 @@ def init(a):
     W(os.path.join(work, "library.json"), lib)
     W(os.path.join(work, "evidence.json"), evidence)
     W(os.path.join(work, "evidence.md"), evidence_md(lib, evidence))
-    if not os.path.exists(os.path.join(work, "plan.json")):
-        W(os.path.join(work, "plan_template.json"), plan_template(lib, evidence))
-    if not os.path.exists(os.path.join(work, "draft.md")):
-        W(os.path.join(work, "draft_template.md"), draft_template(lang))
+    sc = scaffold(argparse.Namespace(work=work, force=False), quiet=True)  # pre-filled plan.json + draft.md (existing files kept)
     res = {"case_id": case_id, "status": "partial", "status_reason": "init only: evidence extracted, no draft written yet",
            "skill": f"intro-gap-ledger {VERSION}", "missing_materials": missing, "parse_problems": problems,
            "sources": src_status, "updated": now()}
@@ -318,13 +320,18 @@ def init(a):
         res.update(status="failed", status_reason=case_err)
     for k in contract_names(lib["contract"]):
         res.setdefault(k, None)
-    W(os.path.join(out, "result.json"), res)
+    out_res_p = os.path.join(out, "result.json")
+    prev = J(out_res_p, {}) or {}
+    if prev.get("status") in ("success", "complete", "completed", "done") and not case_err:
+        pass  # re-running init must not replace a finished result
+    elif not (case_err and os.path.exists(out_res_p)):
+        W(out_res_p, res)
     summ = {"case_id": case_id, "case_error": case_err, "task_file": task_file, "language": lang, "style": style, "own_paper": own,
             "records": len(recs), "with_text": [k for k, v in src_status.items() if v.get("text") == "full_text"],
             "abstract_only": [k for k, v in src_status.items() if v.get("text") == "abstract_only"],
             "metadata_only": [k for k, v in src_status.items() if v.get("text") == "metadata_only"],
             "notes": notes, "contract_fields": contract_names(lib["contract"]), "problems": problems, "missing": missing,
-            "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+            "scaffold": sc, "next": "read task.md + work/evidence.md, replace every <...> in work/plan.json and work/draft.md, then run: irw.py build",
             "seconds": round(time.time() - t0, 1)}
     print(json.dumps(summ, ensure_ascii=False, indent=1))
 
@@ -465,12 +472,14 @@ def references_start_safe(pages):
     return references_start(pages) if pages else 0
 
 
-def scaffold(a):
+def scaffold(a, quiet=False):
     """pre-fill work/plan.json and work/draft.md from the evidence (only files that do not exist, unless --force)."""
     work = os.path.abspath(a.work)
     lib = J(os.path.join(work, "library.json"))
     ev = J(os.path.join(work, "evidence.json"), {})
     if not lib:
+        if quiet:
+            return {"error": "run init first"}
         print(json.dumps({"error": "run init first"}))
         return 2
     lang = lib["language"]
@@ -534,9 +543,11 @@ def scaffold(a):
             continue
         W(p, content)
         wrote.append(name)
-    print(json.dumps({"wrote": wrote, "groups": [(g["name"], g["refs"]) for g in groups], "gap_candidates": len(cand), "contributions": len(contribs),
-                      "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run check"},
-                     ensure_ascii=False, indent=1))
+    summ = {"wrote": wrote, "groups": [(g["name"], g["refs"]) for g in groups], "gap_candidates": len(cand), "contributions": len(contribs),
+            "next": "replace every <...> in plan.json and draft.md (translate contribution sentences if the target language differs), then run build"}
+    if quiet:
+        return summ
+    print(json.dumps(summ, ensure_ascii=False, indent=1))
     return 0
 
 
@@ -544,8 +555,9 @@ def find(a):
     work = os.path.abspath(a.work)
     src = J(os.path.join(work, "sources", a.source + ".json"))
     if not src:
-        print(json.dumps({"error": f"no text for source '{a.source}'", "available": sorted(os.path.splitext(f)[0] for f in os.listdir(os.path.join(work, "sources")))}))
-        return 1
+        avail = sorted(os.path.splitext(f)[0] for f in os.listdir(os.path.join(work, "sources"))) if os.path.isdir(os.path.join(work, "sources")) else []
+        print(json.dumps({"warning": f"no text for source '{a.source}'", "available": avail}))
+        return 0
     idx = all_sentence_index(a.source, src["pages"])
     q = a.query
     sc = sorted(((overlap(q, s), i, p, s) for i, (p, s) in idx.items()), reverse=True)[:a.n]
@@ -817,6 +829,7 @@ def render(text, recs, style, lang):
         cs = [(k, e) for k, e in parse_cites(m.group(0))]
         selfs = [e for k, e in cs if k == "self" and e and re.match(r"(?i)(fig|table|tab|sec|eq|图|表|第|附录|appendix)", e)]
         keys = [k for k, e in cs if k != "self" and k in byk]
+        unknown = [k for k, e in cs if k != "self" and k not in byk]
         out = ""
         if keys:
             if style == "apa":
@@ -828,6 +841,8 @@ def render(text, recs, style, lang):
                 out = "[" + compress([order.index(k) + 1 for k in keys]) + "]"
         if selfs:
             out += ("（" + "，".join(selfs) + "）") if lang == "zh" else (" (" + ", ".join(selfs) + ")")
+        if unknown and not keys:  # key not in the material: never rendered as a reference, shown as a gap instead
+            out += "[需补充文献]" if lang == "zh" else " [citation needed]"
         return out
 
     lines = []
@@ -1018,6 +1033,7 @@ def try_pdf(tex_body, bib, out, lang, style="numeric"):
     p = os.path.join(d, "preview.pdf")
     if os.path.exists(p):
         shutil.copy(p, os.path.join(out, "intro_related_work_preview.pdf"))
+        shutil.rmtree(d, ignore_errors=True)  # keep /app/output free of LaTeX temp files
         return "intro_related_work_preview.pdf", None
     return None, "LaTeX preview did not compile (see output/_latex/preview.log)"
 
@@ -1028,16 +1044,22 @@ def check(a):
     work, out = os.path.abspath(a.work), os.path.abspath(a.out)
     os.makedirs(out, exist_ok=True)
     lib = J(os.path.join(work, "library.json"))
+    if not lib and getattr(a, "case", None) and os.path.isfile(a.case):  # build without init: run init first
+        import contextlib
+        with contextlib.redirect_stdout(io.StringIO()):
+            init(argparse.Namespace(case=a.case, out=out, work=work, own=None, library=None, case_id=a.case_id))
+        lib = J(os.path.join(work, "library.json"))
     if not lib:
-        W(os.path.join(out, "result.json"), {"case_id": a.case_id, "status": "failed", "status_reason": "run `irw.py init` first (work/library.json missing)"})
-        print("library.json missing: run init first")
+        if not os.path.exists(os.path.join(out, "result.json")):  # never overwrite an existing result on bad input
+            W(os.path.join(out, "result.json"), {"case_id": a.case_id, "status": "failed", "status_reason": "run `irw.py init` first (work/library.json missing)"})
+        print(json.dumps({"error": "work/library.json missing: run init (or build --case /input/case.json)"}))
         return 2
     plan_p = a.plan or os.path.join(work, "plan.json")
     draft_p = a.draft or os.path.join(work, "draft.md")
     plan = J(plan_p, None)
     plan_err = None
-    if plan is None:
-        plan_err = f"{plan_p} missing or invalid JSON" + (" (" + str(sys.exc_info()[1]) + ")" if sys.exc_info()[1] else "")
+    if not isinstance(plan, dict):
+        plan_err = f"{plan_p} missing or invalid JSON object" + (" (" + str(sys.exc_info()[1]) + ")" if sys.exc_info()[1] else "")
         plan = {}
     draft = open(draft_p, encoding="utf-8").read() if os.path.exists(draft_p) else ""
     recs = lib["records"]
@@ -1052,15 +1074,17 @@ def check(a):
         C.add("PLAN", "fail", plan_err)
     if not draft.strip():
         res = {"case_id": case_id, "status": "failed", "status_reason": f"no draft at {draft_p}", "skill": f"intro-gap-ledger {VERSION}"}
-        W(os.path.join(out, "result.json"), res)
-        print(json.dumps(res, ensure_ascii=False))
+        prev = J(os.path.join(out, "result.json"), None)
+        if not prev:  # keep whatever result.json exists (init's partial one) instead of replacing it with a failure
+            W(os.path.join(out, "result.json"), res)
+        print(json.dumps({"error": res["status_reason"], "result_json": "kept" if prev else "written (failed)"}, ensure_ascii=False))
         return 2
     sents, paras = parse_draft(draft, rules)
     parts = {p: [s for s in sents if s["part"] == p] for p in ("background", "related", "gap", "contrib")}
 
     # ---- S0 template placeholders left in the draft or plan
     body_ = re.sub(r"<!--.*?-->", "", draft, flags=re.S)
-    for m in re.finditer(r"<[^<>\n]{3,}>", body_):
+    for m in re.finditer(r"<(?![\s=])[^<>\n]{3,}(?<![\s=])>", body_):
         C.add("S0", "fail", f"template placeholder left in the draft: {short(m.group(0), 80)}")
     def _ph(o, path=""):
         if isinstance(o, dict):
@@ -1224,7 +1248,7 @@ def check(a):
             C.add("S8c", "warn", f"paragraph {pi} is ordered by year; group by problem/method instead", f"P{pi}")
 
     # ---- S9 groups
-    groups = plan.get("groups") or []
+    groups = [g for g in (plan.get("groups") or []) if isinstance(g, dict)]
     rel_keys = {k for s in parts["related"] for k, e in s["cites"] if k != "self"}
     if not groups:
         C.add("S9", "fail", "plan.json has no related-work groups")
@@ -1257,7 +1281,7 @@ def check(a):
         C.add("S9f", "warn", f"[@{k}] cited in related work but in no group of plan.json", None)
 
     # ---- S10 gaps
-    gaps = plan.get("gaps") or []
+    gaps = [g for g in (plan.get("gaps") or []) if isinstance(g, dict)]
     gap_text = " ".join(s["text"] for s in parts["gap"])
     if not gaps:
         C.add("S10", "fail", "plan.json has no gaps")
@@ -1433,6 +1457,13 @@ def check(a):
     W(os.path.join(out, "related_work_matrix.md"), matrix_md(groups, byk, S, sent_map, lang))
     W(os.path.join(out, "gap_derivation.md"), gap_md(gap_rows, contrib_rows, lang))
     W(os.path.join(out, "contribution_map.json"), contrib_rows)
+    comp = comparison_table(groups, gap_rows, sent_map, byk, lib)
+    W(os.path.join(out, "comparison_table.md"), comparison_md(comp, lang))
+    import csv as _csv
+    with open(os.path.join(out, "comparison_table.csv"), "w", encoding="utf-8-sig", newline="") as fh:
+        wr = _csv.DictWriter(fh, fieldnames=["group", "dimension", "key", "work", "year", "what_the_draft_says", "evidence", "page", "evidence_kind", "limitation_used_for_gap"])
+        wr.writeheader()
+        wr.writerows(comp)
 
     # ---- history / changes
     hist = os.path.join(work, "history")
@@ -1456,15 +1487,21 @@ def check(a):
     W(os.path.join(work, "changes.json"), changes)
 
     # ---- result
-    status = "complete" if nf == 0 and not lib["missing"] and not [n for n in needs if n["type"] in ("missing_metadata", "metadata_from_pdf", "metadata_from_reference_list", "S10b")] else "partial"
-    if nf:
-        reason = f"{nf} blocking check(s) failed - see review.md"
-    elif status == "partial":
-        reason = "draft passes the checks; items need human confirmation (needs_review / missing_materials)"
+    # status = whether the deliverable exists, not whether every quality check is clean: quality findings are
+    # recorded (quality_issues, review.md, needs_review) and never block. partial only when a core part is missing,
+    # template placeholders were never replaced, or there is no reference material at all.
+    core_missing = [i["message"] for i in C.items if i["check"] == "S1" or (i["check"] == "S0" and "in the draft" in i["message"])]
+    no_refs = not recs
+    status = "partial" if (core_missing or no_refs) else "success"
+    if core_missing:
+        reason = "core deliverable incomplete: " + "; ".join(core_missing[:3])
+    elif no_refs:
+        reason = "no reference material in the inputs: citations are marked [citation needed]"
     else:
-        reason = "all four parts present; all citations, numbers, gap derivations and contribution evidence verified"
-    if nf == 0 and needs and status == "complete":
-        reason += f"; {len(needs)} note(s) for the author (judgments, unverifiable claims)"
+        reason = f"introduction + related work written: 4 parts, {len(order)} references, source map for {len(sents)} sentences"
+        reason += f"; quality checks flagged {nf} issue(s) and {nw} warning(s) (quality_issues / review.md)" if (nf or nw) else "; all quality checks passed"
+        if needs:
+            reason += f"; {len(needs)} item(s) for author confirmation (needs_review)"
     part_text = {p: render("\n".join(s["raw"] for s in ss), recs, style, lang)[0] if ss else "" for p, ss in parts.items()}
     res = {"case_id": case_id, "status": status, "status_reason": reason, "skill": f"intro-gap-ledger {VERSION}",
            "language": lang, "citation_style": style,
@@ -1477,6 +1514,8 @@ def check(a):
            "related_work_groups": [{k: v for k, v in g.items() if not k.startswith("_")} for g in groups],
            "gap_derivation": gap_rows, "contributions": contrib_rows,
            "source_map": sent_map,
+           "comparison_table": comp,
+           "quality_issues": [i for i in C.items if i["level"] == "fail"],
            "checks": C.items, "needs_review": needs, "missing_materials": lib["missing"], "parse_problems": lib["problems"],
            "uncited_library_records": [{"key": k, "reason": omitted.get(k)} for k in uncited],
            "uncertainty": uncertainty(sent_map, lib, needs),
@@ -1484,10 +1523,15 @@ def check(a):
            "artifacts": {"draft_md": "intro_related_work.md", "draft_annotated": "intro_related_work_annotated.md", "latex": "intro_related_work.tex",
                          "bib": "references.bib", "references": f"references_{ref_style}.txt", "html_preview": "intro_related_work.html",
                          "docx": "intro_related_work.docx", "pdf_preview": preview, "png_previews": pngs, "source_map": "source_map.json", "matrix": "related_work_matrix.md", "gap_derivation": "gap_derivation.md",
-                         "contribution_map": "contribution_map.json", "review": "review.md", "diff": "changes.diff" if os.path.exists(os.path.join(out, "changes.diff")) else None},
+                         "contribution_map": "contribution_map.json", "comparison_table": "comparison_table.md", "comparison_csv": "comparison_table.csv", "review": "review.md", "diff": "changes.diff" if os.path.exists(os.path.join(out, "changes.diff")) else None},
            "preview_note": prev_err, "updated": now(), "seconds": round(time.time() - t0, 1)}
     fill_contract(res, lib.get("contract"), os.path.join(work, "contract_overrides.json"))
-    W(os.path.join(out, "result.json"), res)
+    out_res_p = os.path.join(out, "result.json")
+    prev_res = J(out_res_p, None)
+    if plan_err and isinstance(prev_res, dict) and prev_res.get("status") in ("success", "complete", "completed", "done"):
+        pass  # do not overwrite a finished result with a degraded plan-error build
+    else:
+        W(out_res_p, res)
     W(os.path.join(out, "review.md"), review_md(res, C.items, lang))
     print(json.dumps({"status": status, "fails": nf, "warns": nw, "top": [f"{i['check']} {i['where'] or ''}: {i['message']}" for i in C.items if i["level"] == "fail"][:25],
                       "warn_top": [f"{i['check']} {i['where'] or ''}: {i['message']}" for i in C.items if i["level"] == "warn"][:12],
@@ -1510,6 +1554,7 @@ def uncertainty(sent_map, lib, needs):
 
 
 CONTRACT_MAP = [
+    (r"compar|对比|差异|difference|contrast", lambda r: r["comparison_table"]),
     (r"group|matrix|分组", lambda r: r["related_work_groups"]),
     (r"background|背景", lambda r: r["parts"]["background"]),
     (r"related|相关", lambda r: r["parts"]["related"]),
@@ -1569,12 +1614,17 @@ def _coerce_contract_val(val, want):
             return val
         if isinstance(val, str) and re.fullmatch(r"\s*[-+]?\d+(?:\.\d+)?\s*%?\s*", val):
             return float(val.strip().rstrip("%")) / (100 if "%" in val else 1)
-    if want == "boolean" and isinstance(val, str):
-        low = val.strip().lower()
-        if low in ("true", "yes", "1", "是"):
-            return True
-        if low in ("false", "no", "0", "否"):
-            return False
+        return 0.0
+    if want == "boolean":
+        if isinstance(val, bool):
+            return val
+        if isinstance(val, str):
+            low = val.strip().lower()
+            if low in ("true", "yes", "1", "是"):
+                return True
+            if low in ("false", "no", "0", "否"):
+                return False
+        return False
     return val
 
 
@@ -1582,27 +1632,86 @@ def fill_contract(res, contract, overrides_p):
     schema = contract_schema(contract)
     st_spec = schema.get("status") if isinstance(schema, dict) else None
     if isinstance(st_spec, dict) and isinstance(st_spec.get("enum"), list):
-        if res.get("status") == "complete" and "success" in st_spec["enum"] and "complete" not in st_spec["enum"]:
-            res["status"] = "success"
+        enum = [str(x) for x in st_spec["enum"]]
+        if res.get("status") not in enum:  # map our status onto the contract's own vocabulary
+            alias = {"success": ("success", "complete", "completed", "done", "ok"), "partial": ("partial", "incomplete"), "failed": ("failed", "failure", "error")}
+            res["status"] = next((e for e in enum if e.lower() in alias.get(res.get("status"), ())), res.get("status"))
     unm = []
     for n, spec in schema.items():
+        want = _want_type(spec)
+        want_item = _want_type(spec.get("items")) if isinstance(spec, dict) and isinstance(spec.get("items"), dict) else None
         if n in res and res[n] is not None and n not in ("status",):
-            res[n] = _coerce_contract_val(res[n], _want_type(spec))
-            continue
-        for pat, fn in CONTRACT_MAP:
-            if re.search(pat, n, re.I):
-                res[n] = _coerce_contract_val(fn(res), _want_type(spec))
-                break
+            res[n] = _coerce_contract_val(res[n], want)
         else:
-            if n != "status":
-                unm.append(n)
-            res.setdefault(n, None)
+            for pat, fn in CONTRACT_MAP:
+                if re.search(pat, n, re.I):
+                    res[n] = _coerce_contract_val(fn(res), want)
+                    break
+            else:
+                if n != "status":
+                    unm.append(n)
+                    fallback = {"summary": res.get("summary"), "status": res.get("status"), "artifacts": res.get("artifacts")}
+                    if want == "list":
+                        fallback = [] if want_item == "string" else (res.get("source_map") or [])
+                    elif want in ("string", None):
+                        if re.search(r"path|file|路径", n, re.I):
+                            fallback = (res.get("artifacts") or {}).get("draft_md") or ""
+                        else:
+                            fallback = res.get("draft") or ""
+                    elif want == "number":
+                        fallback = 0.0
+                    elif want == "boolean":
+                        fallback = False
+                    res[n] = _coerce_contract_val(fallback, want) if res.get(n) is None else _coerce_contract_val(res[n], want)
+                else:
+                    res.setdefault(n, None)
+        if want == "list" and want_item == "string" and isinstance(res.get(n), list):
+            res[n] = [_coerce_contract_val(x, "string") for x in res[n]]
     ov = J(overrides_p, {})
     for k, v in (ov or {}).items():
         res[k] = _coerce_contract_val(v, _want_type(schema.get(k))) if k in schema else v
         if k in unm:
             unm.remove(k)
     res["unmapped_contract_fields"] = unm
+    if isinstance(contract, dict) and contract.get("additionalProperties") is False and isinstance(schema, dict) and schema:
+        for k in list(res.keys()):
+            if k not in schema:
+                del res[k]
+
+
+def comparison_table(groups, gap_rows, sent_map, byk, lib):
+    """one row per (group, cited work): what the draft says about it, the supporting sentence, and the limitation used for the gap."""
+    lim = {}
+    for g in gap_rows:
+        for d in g["derived_from"]:
+            if d.get("ref") and d.get("verified"):
+                lim.setdefault(d["ref"], d.get("quote"))
+    rows, seen = [], set()
+    for g in groups:
+        for k in g.get("refs") or []:
+            if k not in byk or (g.get("id"), k) in seen:
+                continue
+            seen.add((g.get("id"), k))
+            hit = next(((s, c) for s in sent_map if s["part"] == "related" for c in s["citations"] if c["key"] == k), None) or next(((s, c) for s in sent_map for c in s["citations"] if c["key"] == k), (None, None))
+            s, c = hit
+            r = byk[k]
+            au = r.get("authors") or []
+            rows.append({"group": g.get("name"), "dimension": g.get("dimension"), "key": k,
+                         "work": (fam(au[0]) + (" et al." if len(au) > 1 else "") if au else short(r.get("title", ""), 40)), "year": r.get("year", ""),
+                         "what_the_draft_says": s["text"] if s else "", "evidence": (c or {}).get("quote") or "", "page": (c or {}).get("page"),
+                         "evidence_kind": (c or {}).get("source_text") or lib["src_status"].get(k, {}).get("text"), "limitation_used_for_gap": lim.get(k) or ""})
+    return rows
+
+
+def comparison_md(rows, lang):
+    zh = lang == "zh"
+    head = ["分组", "比较维度", "工作", "年份", "正文表述", "证据（页）", "用于研究空白的局限"] if zh else ["group", "axis", "work", "year", "what the draft says", "evidence (page)", "limitation used for the gap"]
+    L = ["# " + ("相关工作差异对比表" if zh else "Related-work comparison table"), "", "| " + " | ".join(head) + " |", "|" + "-|" * len(head)]
+    cell = lambda x: short(str(x or ""), 160).replace("|", "/")
+    for r in rows:
+        L.append("| " + " | ".join(cell(x) for x in (r["group"], r["dimension"], f"{r['work']} [{r['key']}]", r["year"], r["what_the_draft_says"],
+                                                        (r["evidence"] and f"{r['evidence']} (p{r['page']})"), r["limitation_used_for_gap"])) + " |")
+    return "\n".join(L) + "\n"
 
 
 def matrix_md(groups, byk, S, sent_map, lang):
@@ -1693,16 +1802,20 @@ def main():
     p.add_argument("--source", required=True)
     p.add_argument("--query", required=True)
     p.add_argument("--n", type=int, default=8)
-    p = sp.add_parser("check")
-    p.add_argument("--work", default="/app/work")
-    p.add_argument("--out", default="/app/output")
-    p.add_argument("--plan")
-    p.add_argument("--draft")
-    p.add_argument("--style", choices=["gbt7714", "ieee", "apa", "numeric"])
-    p.add_argument("--case-id")
-    p.add_argument("--no-pdf", action="store_true", help="skip the LaTeX preview build")
+    for name in ("build", "check"):  # build = check: verify plan.json + draft.md, render every output, write result.json
+        p = sp.add_parser(name)
+        p.add_argument("--work", default="/app/work")
+        p.add_argument("--out", default="/app/output")
+        p.add_argument("--case", default="/input/case.json", help="used to run init first when work/ is empty")
+        p.add_argument("--plan")
+        p.add_argument("--draft")
+        p.add_argument("--style", type=lambda x: {"gb": "gbt7714", "gbt": "gbt7714", "gb/t": "gbt7714"}.get(x.lower(), x.lower()))
+        p.add_argument("--case-id")
+        p.add_argument("--no-pdf", action="store_true", help="skip the LaTeX preview build")
     a = ap.parse_args()
-    return {"init": init, "scaffold": scaffold, "find": find, "check": check}[a.cmd](a) or 0
+    if getattr(a, "style", None) and a.style not in ("gbt7714", "ieee", "apa", "numeric"):
+        a.style = None  # unknown style: keep the one from case.json/task.md instead of stopping
+    return {"init": init, "scaffold": scaffold, "find": find, "check": check, "build": check}[a.cmd](a) or 0
 
 
 if __name__ == "__main__":

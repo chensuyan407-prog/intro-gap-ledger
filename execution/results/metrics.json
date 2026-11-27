@@ -1,5 +1,5 @@
 {
- "skill": "intro-gap-ledger 0.2.1",
+ "skill": "intro-gap-ledger 0.3.0",
  "dev": {
   "defects": 32,
   "caught_expected": 32,
@@ -11,17 +11,17 @@
   "gold": {
    "dev_en": {
     "fails": 0,
-    "status": "complete",
+    "status": "success",
     "warns": 2,
     "needs_review": 9,
-    "check_seconds": 1.13
+    "check_seconds": 1.64
    },
    "dev_zh": {
     "fails": 0,
-    "status": "complete",
+    "status": "success",
     "warns": 5,
     "needs_review": 7,
-    "check_seconds": 0.33
+    "check_seconds": 0.42
    }
   },
   "by_type": {
@@ -121,7 +121,7 @@
  },
  "full_runs": {
   "dev_en": {
-   "status": "complete",
+   "status": "success",
    "summary": {
     "sentences": 16,
     "cited_sentences": 7,
@@ -137,10 +137,10 @@
    "pdf_preview": "intro_related_work_preview.pdf",
    "preview_note": null,
    "unmapped_contract_fields": [],
-   "check_seconds": 4.6
+   "check_seconds": 7.0
   },
   "dev_zh": {
-   "status": "complete",
+   "status": "success",
    "summary": {
     "sentences": 17,
     "cited_sentences": 9,
@@ -156,10 +156,10 @@
    "pdf_preview": "intro_related_work_preview.pdf",
    "preview_note": null,
    "unmapped_contract_fields": [],
-   "check_seconds": 4.3
+   "check_seconds": 8.1
   },
   "holdout_transformer": {
-   "status": "complete",
+   "status": "success",
    "summary": {
     "sentences": 14,
     "cited_sentences": 6,
@@ -175,7 +175,45 @@
    "pdf_preview": "intro_related_work_preview.pdf",
    "preview_note": null,
    "unmapped_contract_fields": [],
-   "check_seconds": 3.6
+   "check_seconds": 6.4
+  },
+  "ho2_bn_paperonly": {
+   "status": "success",
+   "summary": {
+    "sentences": 15,
+    "cited_sentences": 9,
+    "author_judgments": 2,
+    "references": 7,
+    "groups": 2,
+    "gaps": 1,
+    "contributions": 3,
+    "fails": 0,
+    "warns": 4
+   },
+   "needs_review": 17,
+   "pdf_preview": "intro_related_work_preview.pdf",
+   "preview_note": null,
+   "unmapped_contract_fields": [],
+   "check_seconds": 6.5
+  },
+  "ho3_kaplan_notes": {
+   "status": "success",
+   "summary": {
+    "sentences": 14,
+    "cited_sentences": 6,
+    "author_judgments": 4,
+    "references": 4,
+    "groups": 2,
+    "gaps": 1,
+    "contributions": 3,
+    "fails": 0,
+    "warns": 0
+   },
+   "needs_review": 10,
+   "pdf_preview": "intro_related_work_preview.pdf",
+   "preview_note": null,
+   "unmapped_contract_fields": [],
+   "check_seconds": 4.9
   }
  },
  "robustness": {
@@ -214,15 +252,16 @@
    "ok": true
   },
   "invalid_plan_json": {
-   "status": "partial",
+   "exit": 0,
+   "status": "success",
    "plan_fail": [
-    "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\plan.json missing or invalid JSON"
+    "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\execution\\results\\robustness\\bad_plan\\work\\plan.json missing or invalid JSON object"
    ],
    "ok": true
   },
-  "no_draft": {
+  "no_draft_keeps_result": {
    "exit": 2,
-   "status": "failed",
+   "status": "success",
    "ok": true
   },
   "check_before_init": {
@@ -242,6 +281,21 @@
   "determinism": {
    "ok": true
   },
+  "quality_findings_non_blocking": {
+   "exit": 0,
+   "status": "success",
+   "quality_issues": [
+    "S2",
+    "S4"
+   ],
+   "ok": true
+  },
+  "build_without_init_scaffold_partial": {
+   "exit": 0,
+   "status": "partial",
+   "reason": "core deliverable incomplete: template placeholder left in the draft: <field context ->; template placeholder left in the",
+   "ok": true
+  },
   "v021_schema_scale_list": {
    "status": "success",
    "schema_ok": true,
@@ -250,7 +304,7 @@
    "ok": true
   }
  },
- "robustness_passed": "10/10",
- "wall_seconds": 77.5,
+ "robustness_passed": "12/12",
+ "wall_seconds": 146.7,
  "note": "author-written cases on real arXiv papers; not the platform's fixed cases; no LLM A/B was run here"
 }

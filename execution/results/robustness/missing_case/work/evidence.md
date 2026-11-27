@@ -1,4 +1,4 @@
-# Evidence tables (intro-gap-ledger 0.2.1)
+# Evidence tables (intro-gap-ledger 0.3.0)
 
 language: en | style: numeric | case: None | own paper: None
 

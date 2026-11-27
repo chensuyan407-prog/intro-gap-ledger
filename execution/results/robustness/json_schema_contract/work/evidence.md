@@ -1,4 +1,4 @@
-# Evidence tables (intro-gap-ledger 0.2.1)
+# Evidence tables (intro-gap-ledger 0.3.0)
 
 language: en | style: ieee | case: dev_en_compute_optimal | own paper: C:\Users\12117\Desktop\bohrium-pdf-evidence-reader\introgap\execution\results\robustness\json_schema_contract\input\paper.pdf
 

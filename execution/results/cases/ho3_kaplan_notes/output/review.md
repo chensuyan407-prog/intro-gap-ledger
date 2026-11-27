@@ -1,6 +1,6 @@
 # Review - ho3_kaplan_notes
 
-status: **partial** - draft passes the checks; items need human confirmation (needs_review / missing_materials)
+status: **success** - introduction + related work written: 4 parts, 4 references, source map for 14 sentences; all quality checks passed; 10 item(s) for author confirmation (needs_review)
 
 summary: {"sentences": 14, "cited_sentences": 6, "author_judgments": 4, "references": 4, "groups": 2, "gaps": 1, "contributions": 3, "fails": 0, "warns": 0}
 

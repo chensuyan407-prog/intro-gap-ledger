@@ -128,7 +128,8 @@ def split_reflist(text):
     text = re.sub(r"(?m)^\s*\d{1,3}\s+(?=[A-Z][a-z]+,)", "", text)
     for kind, pat in LABEL_PATTERNS:
         ms = list(pat.finditer(text))
-        if len(ms) >= 3 and (kind != "dot" or [int(m.group(1)) for m in ms[:3]] == [1, 2, 3]):
+        min_hits = 3 if kind == "dot" else 1
+        if len(ms) >= min_hits and (kind != "dot" or [int(m.group(1)) for m in ms[:3]] == [1, 2, 3]):
             out = []
             for i, m in enumerate(ms):
                 end = ms[i + 1].start() if i + 1 < len(ms) else len(text)
@@ -214,6 +215,7 @@ def citation_contexts(sid, pages, recs, max_per=6):
     mentions through first-author family name + year."""
     stop = references_start(pages)
     by_label = {str(r.get("label")): r["key"] for r in recs if r.get("label") and r.get("label_doc") == sid}
+    all_keys = {r["key"] for r in recs}
     fams = {}
     for r in recs:
         if r.get("authors") and r.get("year"):
@@ -229,6 +231,8 @@ def citation_contexts(sid, pages, recs, max_per=6):
             if junk(s) or len(s) < 20:
                 continue
             keys = []
+            for m in re.finditer(r"\\(?:cite|citep|citet|parencite|textcite|autocite)\*?(?:\[[^\]]*\])*\{([^}]+)\}", s):  # LaTeX: bib keys
+                keys += [k.strip() for k in m.group(1).split(",") if k.strip() in all_keys]
             for m in re.finditer(r"\[([^\]]{1,60})\]", s):
                 for tok in re.split(r"[,;]\s*", m.group(1)):
                     tok = tok.strip()

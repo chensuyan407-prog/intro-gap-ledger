@@ -1,6 +1,6 @@
 # Review - empty_lib
 
-status: **partial** - 2 blocking check(s) failed - see review.md
+status: **partial** - no reference material in the inputs: citations are marked [citation needed]
 
 summary: {"sentences": 4, "cited_sentences": 0, "author_judgments": 1, "references": 0, "groups": 0, "gaps": 1, "contributions": 1, "fails": 2, "warns": 3}
 

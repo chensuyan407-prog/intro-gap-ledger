@@ -1,6 +1,6 @@
 # Review - dev_en_compute_optimal
 
-status: **success** - all four parts present; all citations, numbers, gap derivations and contribution evidence verified; 9 note(s) for the author (judgments, unverifiable claims)
+status: **success** - introduction + related work written: 4 parts, 5 references, source map for 16 sentences; quality checks flagged 0 issue(s) and 2 warning(s) (quality_issues / review.md); 9 item(s) for author confirmation (needs_review)
 
 summary: {"sentences": 16, "cited_sentences": 7, "author_judgments": 5, "references": 5, "groups": 2, "gaps": 1, "contributions": 3, "fails": 0, "warns": 2}
 

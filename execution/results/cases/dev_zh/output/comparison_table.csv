@@ -1,0 +1,5 @@
+﻿group,dimension,key,work,year,what_the_draft_says,evidence,page,evidence_kind,limitation_used_for_gap
+通过加深网络提升表示能力,网络深度如何增加、增加到多少层,simonyan2015,Simonyan et al.,2015,这一路线的共同做法是在同一识别任务上不断增加层数，区别在于增加深度的方式。,,,secondary,
+通过加深网络提升表示能力,网络深度如何增加、增加到多少层,szegedy2015,Szegedy et al.,2015,这一路线的共同做法是在同一识别任务上不断增加层数，区别在于增加深度的方式。,,,secondary,
+改善深层网络的可训练性,训练信号如何穿过多层：归一化中间激活 vs. 门控捷径,ioffe2015,Ioffe et al.,2015,另一条路线不改变深度，而是改变训练信号穿过多层的方式。,,,full_text,Batch Normalization allows us to use much higher learning rates and be less careful about initialization.
+改善深层网络的可训练性,训练信号如何穿过多层：归一化中间激活 vs. 门控捷径,srivastava2015,Srivastava et al.,2015,另一条路线不改变深度，而是改变训练信号穿过多层的方式。,,,secondary,"However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem."

@@ -1,0 +1,62 @@
+[
+ {
+  "id": "k1",
+  "text": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:3",
+    "page": 1,
+    "quote": "We find that current large language models are significantly undertrained, a consequence of the recent focus on scaling language models whilst keeping the amount of training data constant.",
+    "verified": true
+   }
+  ]
+ },
+ {
+  "id": "k2",
+  "text": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens …",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:4",
+    "page": 1,
+    "quote": "By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens should also be doubled.",
+    "verified": true
+   }
+  ]
+ },
+ {
+  "id": "k3",
+  "text": "Instead, we find that model size and the number of training tokens should be scaled in equal proportions.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p1:18",
+    "page": 1,
+    "quote": "Instead, we find that model size and the number of training tokens should be scaled in equal proportions.",
+    "verified": true
+   }
+  ]
+ },
+ {
+  "id": "k4",
+  "text": "We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.",
+  "gaps": [
+   "gap1"
+  ],
+  "evidence": [
+   {
+    "id": "E:self:p2:22",
+    "page": 2,
+    "quote": "We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.",
+    "verified": true
+   }
+  ]
+ }
+]

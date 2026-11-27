@@ -119,12 +119,15 @@ def robustness(log):
     open(os.path.join(w, "plan.json"), "w").write('{"groups": [ {"id": "g1",, } ')
     p = run(irw("check", "--work", w, "--out", o, "--no-pdf"), log)
     r = J(os.path.join(o, "result.json"))
-    out["invalid_plan_json"] = {"status": r["status"], "plan_fail": [c["message"] for c in r["checks"] if c["check"] == "PLAN"],
-                                "ok": r["status"] == "partial" and any(c["check"] == "PLAN" for c in r["checks"]) and os.path.exists(os.path.join(o, "intro_related_work.md"))}
+    # v0.3: a broken plan is a quality finding, not a missing deliverable - the draft is still rendered, exit 0
+    out["invalid_plan_json"] = {"exit": p.returncode, "status": r["status"], "plan_fail": [c["message"] for c in r["checks"] if c["check"] == "PLAN"],
+                                "ok": p.returncode == 0 and r["status"] == "success" and any(c["check"] == "PLAN" for c in r["quality_issues"])
+                                and os.path.exists(os.path.join(o, "intro_related_work.md"))}
     os.remove(os.path.join(w, "draft.md"))
     p = run(irw("check", "--work", w, "--out", o, "--no-pdf"), log)
     r = J(os.path.join(o, "result.json"))
-    out["no_draft"] = {"exit": p.returncode, "status": r["status"], "ok": p.returncode == 2 and r["status"] == "failed"}
+    # v0.3: missing draft -> exit 2, but the existing result.json (the last good build) is kept, not overwritten
+    out["no_draft_keeps_result"] = {"exit": p.returncode, "status": r["status"], "ok": p.returncode == 2 and r["status"] == "success" and bool(r.get("draft"))}
     d, i, w, o = mk("check_before_init")
     p = run(irw("check", "--work", w, "--out", o), log)
     r = J(os.path.join(o, "result.json"))
@@ -154,6 +157,31 @@ def robustness(log):
             r.pop(k, None)
         keep.append(json.dumps(r, sort_keys=True))
     out["determinism"] = {"ok": keep[0] == keep[1]}
+    # v0.3: quality findings never block - an invented key and a wrong number still give exit 0, status success,
+    # the findings in quality_issues and the invented key rendered as [citation needed] (not as a reference)
+    d, i, w, o = mk("quality_findings_non_blocking")
+    shutil.copytree(os.path.join(en, "input"), i, dirs_exist_ok=True)
+    run(irw("init", "--case", os.path.join(i, "case.json"), "--out", o, "--work", w), log)
+    for f in ("plan.json", "draft.md"):
+        shutil.copy(os.path.join(en, "gold", f), w)
+    dr = open(os.path.join(w, "draft.md"), encoding="utf-8").read()
+    dr = dr.replace("with 175 billion parameters [@brown2020 #E:brown2020:p1:6]", "with 170 billion parameters [@brown2020 #E:brown2020:p1:6]")
+    dr = dr.replace("on many tasks [@brown2020 #E:brown2020:p1:5]", "on many tasks [@nobody2099]")
+    open(os.path.join(w, "draft.md"), "w", encoding="utf-8").write(dr)
+    p = run(irw("build", "--work", w, "--out", o, "--no-pdf"), log)
+    r = J(os.path.join(o, "result.json"))
+    md = open(os.path.join(o, "intro_related_work.md"), encoding="utf-8").read()
+    q = sorted({c["check"] for c in r["quality_issues"]})
+    out["quality_findings_non_blocking"] = {"exit": p.returncode, "status": r["status"], "quality_issues": q,
+                                            "ok": p.returncode == 0 and r["status"] == "success" and "S2" in q and "S4" in q
+                                            and "[citation needed]" in md and "nobody" not in md}
+    # v0.3: build without init runs init itself; untouched scaffold -> partial (core text not written), exit 0
+    d, i, w, o = mk("build_without_init")
+    shutil.copytree(os.path.join(en, "input"), i, dirs_exist_ok=True)
+    p = run(irw("build", "--case", os.path.join(i, "case.json"), "--work", w, "--out", o, "--no-pdf"), log)
+    r = J(os.path.join(o, "result.json"))
+    out["build_without_init_scaffold_partial"] = {"exit": p.returncode, "status": r["status"], "reason": r["status_reason"][:120],
+                                                  "ok": p.returncode == 0 and r["status"] == "partial" and "placeholder" in r["status_reason"]}
     # 10 JSON Schema + deliverables contract, status enum mapping, EN/ZH scaled numbers, bullet-number retention (v0.2.1)
     d, i, w, o = mk("json_schema_contract")
     shutil.copytree(os.path.join(en, "input"), i, dirs_exist_ok=True)
@@ -199,7 +227,7 @@ def main():
         run([sys.executable, os.path.join(ROOT, "tests", "run_eval.py"), "--set", "holdout"], log)
         run([sys.executable, os.path.join(ROOT, "tests", "run_eval.py"), "--set", "v2"], log)
         full = {}
-        for c in ("dev_en", "dev_zh", "holdout_transformer"):
+        for c in ("dev_en", "dev_zh", "holdout_transformer", "ho2_bn_paperonly", "ho3_kaplan_notes"):
             cd = os.path.join(ROOT, "tests", "cases", c)
             w, o = os.path.join(RES, "cases", c, "work"), os.path.join(RES, "cases", c, "output")
             shutil.rmtree(w, ignore_errors=True)
@@ -207,7 +235,7 @@ def main():
             run(irw("init", "--case", os.path.join(cd, "input", "case.json"), "--out", o, "--work", w), log)
             for f in ("plan.json", "draft.md"):
                 shutil.copy(os.path.join(cd, "gold", f), w)
-            p = run(irw("check", "--work", w, "--out", o), log)
+            p = run(irw("build", "--work", w, "--out", o), log)
             r = J(os.path.join(o, "result.json"))
             full[c] = {"status": r["status"], "summary": r["summary"], "needs_review": len(r["needs_review"]), "pdf_preview": r["artifacts"]["pdf_preview"],
                        "preview_note": r["preview_note"], "unmapped_contract_fields": r["unmapped_contract_fields"], "check_seconds": r["seconds"]}
@@ -218,7 +246,7 @@ def main():
     ho = J(os.path.join(RES, "metrics_holdout.json"))
     hof = J(os.path.join(RES, "metrics_holdout_at_freeze.json"))
     v2 = J(os.path.join(RES, "metrics_v2.json"))
-    metrics = {"skill": "intro-gap-ledger 0.2.1", "dev": {k: dev[k] for k in ("defects", "caught_expected", "recall_expected", "baseline_b1_key_structure_lint", "baseline_b2_plus_numbers_anywhere", "benign", "benign_without_new_fail", "gold", "by_type")},
+    metrics = {"skill": "intro-gap-ledger 0.3.0", "dev": {k: dev[k] for k in ("defects", "caught_expected", "recall_expected", "baseline_b1_key_structure_lint", "baseline_b2_plus_numbers_anywhere", "benign", "benign_without_new_fail", "gold", "by_type")},
                "holdout_at_freeze": {k: hof[k] for k in ("defects", "caught_expected", "recall_expected", "baseline_b1_key_structure_lint", "baseline_b2_plus_numbers_anywhere", "benign", "benign_without_new_fail", "missed", "by_type")},
                "holdout_now": {k: ho[k] for k in ("defects", "caught_expected", "recall_expected", "benign_without_new_fail", "missed")},
                "v2": {k: v2[k] for k in ("defects", "caught_expected", "recall_expected", "baseline_b1_key_structure_lint", "baseline_b2_plus_numbers_anywhere", "benign", "benign_without_new_fail", "missed", "by_type")},
@@ -246,7 +274,7 @@ def write_arm(m, wall):
     arts = [("metrics", "execution/results/metrics.json", "metric", "json"), ("metrics_dev", "execution/results/metrics_dev.json", "metric", "json"),
             ("metrics_holdout_at_freeze", "execution/results/metrics_holdout_at_freeze.json", "metric", "json"), ("metrics_holdout", "execution/results/metrics_holdout.json", "metric", "json"),
             ("eval_rows_dev", "execution/results/eval_rows_dev.json", "data", "json"), ("eval_rows_holdout_at_freeze", "execution/results/eval_rows_holdout_at_freeze.json", "data", "json")]
-    for c in ("dev_en", "dev_zh", "holdout_transformer"):
+    for c in ("dev_en", "dev_zh", "holdout_transformer", "ho2_bn_paperonly", "ho3_kaplan_notes"):
         o = f"execution/results/cases/{c}/output/"
         arts += [(f"{c}_result", o + "result.json", "data", "json"), (f"{c}_draft", o + "intro_related_work.md", "data", "md"),
                  (f"{c}_gap_derivation", o + "gap_derivation.md", "data", "markdown"), (f"{c}_matrix", o + "related_work_matrix.md", "data", "markdown"),
@@ -261,7 +289,7 @@ def write_arm(m, wall):
                          "artifacts": [{"id": a, "path": p, "type": t, "format": f, "checksum_sha256": sha(os.path.join(ROOT, p))} for a, p, t, f in arts if os.path.exists(os.path.join(ROOT, p))]},
            "expected_outputs": [{"name": n, "type": "metric", "produced_by": ["metrics"], "comparison_method": "numeric_tolerance"} for n in
                                 ("planted defects caught at fail level (dev, rules tuned on it)", "planted defects caught at fail level (held-out, at code freeze)",
-                                 "benign edits without a new fail (dev + held-out)", "gold ledgers without fail (3 cases)", "robustness checks passed")],
+                                 "benign edits without a new fail (dev + held-out)", "gold ledgers without fail (5 cases)", "robustness checks passed")],
            "handoff": {"status": "partial", "next_suggestion": "Run the platform's three fixed cases with the DeepSeek harness (base vs Skill); add semantic (cross-lingual) support scoring; tighten number-in-context for table pages.",
                        "hypothesis": "Separating writing (agent) from verification (script) with an explicit evidence ledger - groups with a comparison axis, gaps derived from located limitation sentences of cited works, contributions bound to the paper's own sentences/figures/tables - catches the typical failure modes of introduction drafts (invented or misattributed citations, wrong numbers, uncited claims, padding, one-paper-per-sentence related work, unsupported gaps and contributions) that a key/structure lint misses."}}
     json.dump(man, open(os.path.join(ROOT, "arm_manifest.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
@@ -280,7 +308,7 @@ def write_arm(m, wall):
              f"; baselines {h['baseline_b1_key_structure_lint']} / {h['baseline_b2_plus_numbers_anywhere']}"),
         dev_("benign edits without a new fail (dev + held-out)", round((d["benign_without_new_fail"] + h["benign_without_new_fail"]) / (d["benign"] + h["benign"]), 4), 1.0, 0.25,
              "number format, paraphrase, group order, rewording, citation-style switch"),
-        dev_("gold ledgers without fail (3 cases)", gold_ok / 3, 1.0, 0.34, "gold drafts written by following SKILL.md; two real source conflicts (67.5 vs 67.6 MMLU; 41.8 vs 41.0 BLEU) found by the checker and recorded as author notes"),
+        dev_("gold ledgers without fail (5 cases)", gold_ok / len(m["full_runs"]), 1.0, 0.2, "gold drafts written by following SKILL.md; two real source conflicts (67.5 vs 67.6 MMLU; 41.8 vs 41.0 BLEU) found by the checker and recorded as author notes"),
         dev_("robustness checks passed", int(rp[0]) / int(rp[1]), 1.0, 0.1, "; ".join(f"{k}={'ok' if v['ok'] else 'FAIL'}" for k, v in m["robustness"].items()))],
         "notes": "No LLM A/B (base agent vs Skill agent) was run by the author; the platform runs it on its fixed cases. The code changed after the freeze only in contract-field mapping and the LaTeX preview bibliography style (see README)."}
     json.dump(ch, open(os.path.join(ROOT, "characterization.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)

@@ -1,4 +1,4 @@
-# intro-gap-ledger 0.2.1 — method, usage, results, limits
+# intro-gap-ledger 0.3.0 — method, usage, results, limits
 
 Skill for **写作08｜引言与相关工作写作**: drafting the Introduction and Related Work of a paper so that each of the
 four parts — background, related work, research gap, contributions — is tied to evidence that a reviewer can
@@ -21,22 +21,27 @@ explicit ledger.
    and limitation/assumption sentences (cue lexicon in `rules/lexicon.json`, zh + en), captions and headings.
    Libraries: BibTeX, RIS/EndNote, CSL-JSON/JSON, or a list in case.json; de-duplicated by DOI/title; PDFs are
    matched to records by file name or title on page 1; PDFs without a record get a flagged record.
+   `init` also pre-fills `plan.json` + `draft.md` (groups from the paper's own related-work structure, gap and
+   contribution candidates with evidence ids), so the agent edits instead of authoring from scratch.
 2. The agent fills `plan.json` (groups with basis + comparison dimension, gaps with `from` evidence, contributions
    with own-paper evidence) and `draft.md` (citations `[@key #evidence]`, `[@self:Table n]`, judgment tags).
-3. `check` verifies (table in SKILL.md): unknown keys; claim sentences without citation; numbers **in context**
+3. `build` (alias `check`; runs `init` itself if needed) verifies (table in SKILL.md): unknown keys; claim sentences without citation; numbers **in context**
    (explicit evidence sentence ±1, a source sentence sharing words with the claim, or the contribution's own
    evidence sentence/page/table page — not "anywhere in the PDF"); misattribution (another provided source matches
    the sentence much better); padding; one-paper-per-sentence paragraphs; group dimension and coverage; gap
    derivation (ids/quotes resolved, refs cited, limitation wording); contribution evidence (ids, quotes, that the
    Table/Figure exists), gap→contribution coverage, overclaim words vs. what the evidence pages report;
    required references; metadata completeness. Then renders Markdown / LaTeX / BibTeX / HTML / PDF preview and
-   `result.json`, versions the draft and records diffs.
+   `result.json`, versions the draft and records diffs. Findings never block (exit 0): they go to `quality_issues`,
+   `review.md` and `needs_review`; an unknown key is rendered as `[citation needed]`, never as a reference.
 
 ## Field dictionary (result.json)
 
 | field | meaning |
 |-|-|
-| `status` / `status_reason` | complete / partial / failed and why |
+| `status` / `status_reason` | `success` = four parts written with references; `partial` = a part missing, template placeholders left, or no reference material; `failed` = no draft / no init (mapped onto the contract's own status enum when it has one) |
+| `quality_issues` | every blocking-level finding of the checks (recorded for the author, not blocking) |
+| `comparison_table` | per group and cited work: axis, what the draft says, supporting sentence + page, limitation used for the gap (also `comparison_table.md/.csv`) |
 | `summary` | sentences, cited sentences, author judgments, references, groups, gaps, contributions, fails, warns |
 | `draft`, `parts` | rendered full text; each part separately |
 | `references` | formatted reference list in the target style (first-appearance order for numeric styles) |
@@ -63,14 +68,19 @@ this SKILL.md. Defects are planted into the gold drafts/plans (`tests/eval/mutat
 |-|-:|-:|-:|-:|
 | dev (2 cases, rules tuned on it) | 32/32 | 5/5 | 4/32 | 6/32 |
 | held-out, at freeze | 14/15 | 3/3 | 1/15 | 2/15 |
+| v2: paper only (zh) + paper/notes/CSV (en) | 14/14 | 3/3 | 1/14 | 2/14 |
 
 Held-out miss: H13 — "trained in 3.5 days" inserted into a contribution; 3.5 is a real number on the page of the
-cited Table 2, so the page-level allowance accepts it. Robustness: 9/9 (missing case.json, empty library,
-encrypted source, scanned own paper, invalid plan, no draft, check before init, corrupt libraries, determinism).
-Gold ledgers: 3/3 without fail; while writing them the checker found two genuine inconsistencies inside the
+cited Table 2, so the page-level allowance accepts it. Robustness: 12/12 (missing case.json, empty library,
+encrypted source, scanned own paper, invalid plan (still `success`, finding recorded), missing draft (exit 2, last result
+kept), build before init, corrupt libraries, determinism, quality findings non-blocking, build without init, JSON-Schema
+contract). Gold ledgers: 5/5 without fail, all `success`; while writing them the checker found two genuine inconsistencies inside the
 source PDFs (Chinchilla: MMLU 67.5% in the abstract vs 67.6% in Table 6; Transformer: EN-FR BLEU 41.8 in the
 abstract vs 41.0 in §6.1), now recorded as `author_notes`.
-Changes after the freeze: contract-field mapping (`open_questions`, `related_work_groups`) and the preview's BibTeX
+v0.3.0 (after the 59.3 replay): SKILL.md cut from 155 to 75 lines (init -> write -> build), status reflects whether the
+deliverable exists, every contract field is filled, comparison table added, DOCX read without python-docx, LaTeX `\cite`
+keys used as evidence contexts. Freeze files are unchanged; the scripts have changed since both freezes.
+Changes after the first freeze: contract-field mapping (`open_questions`, `related_work_groups`) and the preview's BibTeX
 style; held-out numbers unchanged.
 
 What this does **not** show: the gain of a model using the Skill over a base agent on the platform's cases

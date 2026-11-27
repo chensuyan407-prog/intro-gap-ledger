@@ -2,7 +2,7 @@
  "case_id": "enc",
  "status": "partial",
  "status_reason": "init only: evidence extracted, no draft written yet",
- "skill": "intro-gap-ledger 0.2.1",
+ "skill": "intro-gap-ledger 0.3.0",
  "missing_materials": [],
  "parse_problems": [
   {
@@ -225,5 +225,5 @@
    "text": "citing_context"
   }
  },
- "updated": "2026-11-25T09:38:23Z"
+ "updated": "2026-11-27T02:53:05Z"
 }

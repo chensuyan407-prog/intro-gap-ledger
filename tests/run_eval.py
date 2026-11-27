@@ -83,8 +83,7 @@ def baseline(work, draft, level):
     return hits
 
 
-def main():
-    st = sys.argv[sys.argv.index("--set") + 1] if "--set" in sys.argv else "dev"
+def main(st):
     outdir = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else os.path.join(ROOT, "execution", "results")
     muts = J(os.path.join(ROOT, "tests", "eval", f"mutations_{st}.json"))["mutations"]
     cases = sorted({m["case"] for m in muts})
@@ -163,8 +162,28 @@ def main():
     json.dump(rows, open(os.path.join(outdir, f"eval_rows_{st}.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     json.dump(metrics, open(os.path.join(outdir, f"metrics_{st}.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     shutil.rmtree(tmp, ignore_errors=True)
-    print(json.dumps(metrics, ensure_ascii=False, indent=1))
+    if "--quiet" not in sys.argv:
+        print(json.dumps(metrics, ensure_ascii=False, indent=1))
+    return metrics
 
 
 if __name__ == "__main__":
-    main()
+    # no --set: run every mutation set (dev, holdout, v2) and print one summary; exit 1 if a gold ledger fails,
+    # a benign edit is flagged, or a planted defect that was caught before is missed now.
+    sets = [sys.argv[sys.argv.index("--set") + 1]] if "--set" in sys.argv else ["dev", "holdout", "v2"]
+    if len(sets) > 1:
+        sys.argv.append("--quiet")
+    summary, ok = {}, True
+    for st in sets:
+        m = main(st)
+        known = {"holdout": {"H13"}}.get(st, set())  # documented miss (number moved from a nearby sentence)
+        missed = [x["id"] for x in m["missed"]]
+        good = all(g["fails"] == 0 for g in m["gold"].values()) and not m["benign_false_alarms"] and set(missed) <= known and not m["ops_not_applied"]
+        ok &= good
+        summary[st] = {"caught": f"{m['caught_expected']}/{m['defects']}", "benign_clean": f"{m['benign_without_new_fail']}/{m['benign']}",
+                       "gold_fails": {c: g["fails"] for c, g in m["gold"].items()}, "gold_status": {c: g["status"] for c, g in m["gold"].items()},
+                       "baseline_b1": m["baseline_b1_key_structure_lint"], "baseline_b2": m["baseline_b2_plus_numbers_anywhere"],
+                       "missed": missed, "pass": good}
+    if len(sets) > 1:
+        print(json.dumps({"sets": summary, "all_pass": ok}, ensure_ascii=False, indent=1))
+    sys.exit(0 if ok else 1)

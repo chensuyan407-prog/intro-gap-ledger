@@ -1,0 +1,42 @@
+{
+ "language": "en",
+ "style": "numeric",
+ "groups": [
+  {
+   "id": "g1",
+   "name": "<group name: problem / method route / data & evaluation>",
+   "basis": "problem|method|data|evaluation",
+   "dimension": "<comparison axis>",
+   "refs": [],
+   "comparison": "<...>",
+   "evidence": []
+  }
+ ],
+ "gaps": [
+  {
+   "id": "gap1",
+   "statement": "<one-sentence gap that follows from the shared limitation of the cited works>",
+   "type": "common_limitation",
+   "from": [],
+   "author_judgment": false,
+   "_candidates": []
+  }
+ ],
+ "contributions": [
+  {
+   "id": "k1",
+   "text": "<contribution>",
+   "gaps": [
+    "gap1"
+   ],
+   "evidence": [
+    {
+     "id": "E:self:p<page>:<n>"
+    }
+   ]
+  }
+ ],
+ "omitted_refs": {},
+ "author_notes": [],
+ "_doc": "scaffold: every <...> must be replaced; check groups/refs/evidence against evidence.md; drop _candidates when done"
+}
