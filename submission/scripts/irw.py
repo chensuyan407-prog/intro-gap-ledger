@@ -318,13 +318,32 @@ def init(a):
         res.update(status="failed", status_reason=case_err)
     for k in contract_names(lib["contract"]):
         res.setdefault(k, None)
-    W(os.path.join(out, "result.json"), res)
+    W(os.path.join(work, "output_contract.json"), contract_schema(lib["contract"]))
+    write_result(out, res, lib["contract"])
+    writing_points = [
+        "Establish the research trajectory, concrete problem and technical constraint.",
+        "Compare cited works by method, problem or setting, including findings, conditions and limits.",
+        "Derive a bounded research gap from those comparisons.",
+        "Map each contribution to the manuscript's methods, figures, tables or results.",
+        "Deliver editable Markdown and DOCX, previews, references and a source audit.",
+    ]
+    kickoff = {"required_writing_points": writing_points, "task": case.get("task") or case.get("instruction"),
+               "required_references": lib["required_refs"],
+               "output_contract": contract_schema(lib["contract"]),
+               "result_skeleton": result_payload(res, lib["contract"]),
+               "index": {"manuscript": own, "reference_library": libs,
+                         "bibliography": os.path.join(work, "library.json"),
+                         "evidence": os.path.join(work, "evidence.md"),
+                         "notes": notes,
+                         "reference_keys": {r["key"]: src_status.get(r["key"], {}).get("text") for r in recs}}}
+    W(os.path.join(work, "writing_brief.json"), kickoff)
     summ = {"case_id": case_id, "case_error": case_err, "task_file": task_file, "language": lang, "style": style, "own_paper": own,
             "records": len(recs), "with_text": [k for k, v in src_status.items() if v.get("text") == "full_text"],
             "abstract_only": [k for k, v in src_status.items() if v.get("text") == "abstract_only"],
             "metadata_only": [k for k, v in src_status.items() if v.get("text") == "metadata_only"],
             "notes": notes, "contract_fields": contract_names(lib["contract"]), "problems": problems, "missing": missing,
-            "next": "read work/evidence.md (and task.md), then write work/plan.json and work/draft.md; run irw.py check",
+            **kickoff,
+            "next": "Read the task and indexed evidence; write work/draft.md, then run irw.py build.",
             "seconds": round(time.time() - t0, 1)}
     print(json.dumps(summ, ensure_ascii=False, indent=1))
 
@@ -599,12 +618,16 @@ def parse_draft(text, rules):
                 paras.append((part, heading, " ".join(cur)))
                 cur = []
             heading = re.sub(r"^\s*#+\s*", "", line).strip()
-            if not re.search(r"<!--", text):  # no explicit markers: infer from headings
+            if not re.search(r"(?m)^\s*<!--\s*part\s*:", text):  # no explicit markers: infer from headings
                 h = norm(heading)
                 for p in ("contrib", "gap", "related", "background"):
-                    if any(al in h for al in aliases[p]):
+                    if any(re.fullmatch(r"(?:\d+[.\s]*)?" + re.escape(al) + r"(?:\s*[:：].*)?", h)
+                           if al.isascii() else re.fullmatch(r"(?:\d+[.\s]*)?" + re.escape(al) + r"(?:[:：].*)?", h)
+                           for al in aliases[p]):
                         part = p
                         break
+            continue
+        if re.fullmatch(r"\s*<!--.*-->\s*", line):
             continue
         if not line.strip():
             if cur:
@@ -639,7 +662,7 @@ def load_sources(work, keys):
         k = os.path.splitext(os.path.basename(f))[0]
         o = J(f) or {}
         pg = o.get("pages") or []
-        S[k] = {"pages": pg, "norm": norm(" ".join(pg)), "abstract_only": o.get("abstract_only", False), "note": o.get("note", False), "context": o.get("context", False),
+        S[k] = {"path": o.get("path"), "pages": pg, "norm": norm(" ".join(pg)), "abstract_only": o.get("abstract_only", False), "note": o.get("note", False), "context": o.get("context", False),
                 "idx": all_sentence_index(k, pg)}
     return S
 
@@ -682,6 +705,38 @@ def num_in_context(n, sentence, src, eid=None, cross=False):
     return False, best[0]
 
 
+def number_support(number, claim, source):
+    best = (0, None, None, None)
+    for eid, (page, quote) in source["idx"].items():
+        score = overlap(claim, quote)
+        if score >= 0.25 and score > best[0] and num_in_text(number, norm(quote), claim):
+            best = (score, eid, page, quote)
+    return best
+
+
+def table_text(page, label):
+    """Use the caption and following tabular text up to the next running paragraph."""
+    match = re.search(r"(?im)^\s*(?:table|tab\.?|表)\s*" + re.escape(label) + r"(?!\w)", page)
+    if not match:
+        return ""
+    blocks = re.split(r"\n\s*\n", page[match.start():].lstrip())
+    table = [blocks[0]]
+    for i, block in enumerate(blocks[1:], 1):
+        if re.match(r"(?is)^\s*(?:table|figure|表|图)\s*\d", block):
+            break
+        if any(len(line.split()) >= 10 for line in block.splitlines()):
+            # Some PDFs emit table cells after the page's main text.
+            captions = re.findall(r"(?im)^\s*(?:table|tab\.?|表)\s*[\w]+\s*[:：|.]", page)
+            if len(captions) == 1:
+                for candidate in blocks[i + 1:]:
+                    cells = re.findall(r"(?m)^\s*[+-]?\d+(?:\.\d+)?\s*%?\s*$", candidate)
+                    if len(cells) >= 2:
+                        table.append(candidate)
+            break
+        table.append(block)
+    return "\n".join(table)
+
+
 def num_in_evidence(n, k, own):
     """number in a contribution sentence must occur in that contribution's own-paper evidence (sentence or page)."""
     pages = set()
@@ -693,14 +748,16 @@ def num_in_evidence(n, k, own):
             pass  # id evidence: the number must be in that sentence, not just on its page
         elif ev.get("quote"):
             p, sc = find_quote(ev["quote"], own["pages"])
-            if p and sc >= 0.85:
+            if p and sc >= 0.85 and not re.match(r"(?i)\s*(?:tab|表)", ev.get("loc") or ""):
                 pages.add(p)
         if ev.get("loc"):
             lm = re.match(r"(?i)\s*(fig(?:ure)?\.?|table|tab\.?|图|表)\s*([0-9A-Za-z]+)", ev["loc"])
             if lm:
-                kind = r"(table|表)\s*" if lm.group(1).lower().startswith(("tab", "表")) else r"(figure|fig\.?|图)\s*"
+                is_table = lm.group(1).lower().startswith(("tab", "表"))
                 for i, pg in enumerate(own["pages"]):
-                    if re.search(r"(?im)^\s*" + kind + re.escape(lm.group(2)) + r"", pg):
+                    if is_table:
+                        txt.append(table_text(pg, lm.group(2)))
+                    elif re.search(r"(?im)^\s*(?:figure|fig\.?|图)\s*" + re.escape(lm.group(2)) + r"(?!\w)", pg):
                         pages.add(i + 1)
     if num_in_text(n, norm(" ".join(txt)), k.get("text") or "") or any(num_in_text(n, norm(own["pages"][p - 1]), k.get("text") or "") for p in pages if 0 < p <= len(own["pages"])):
         return True, None
@@ -808,9 +865,9 @@ def intext_author_year(r, lang):
     return f"{fam(au[0])} et al., {y}"
 
 
-def render(text, recs, style, lang):
+def render(text, recs, style, lang, citation_order=None):
     """replace [@k...] by numeric (first appearance) or author-year markers; strip judgment tags; returns (md, order)."""
-    order = []
+    order = list(citation_order or [])
     byk = {r["key"]: r for r in recs}
 
     def rep(m):
@@ -1022,12 +1079,139 @@ def try_pdf(tex_body, bib, out, lang, style="numeric"):
     return None, "LaTeX preview did not compile (see output/_latex/preview.log)"
 
 
+
+AUTHOR_YEAR = re.compile(r"[(（]([^()（）\n]*\b(?:19|20)\d{2}[a-z]?[^()（）\n]*)[)）]")
+NUMERIC_CITATION = re.compile(r"(?<!!)\[(\d{1,3}(?:\s*[-–,，;；]\s*\d{1,3})*)\](?!\()")
+LOCATOR = re.compile(r"(?i)(?:\b(?:fig(?:ure)?\.?|table|tab\.?)\s+|[图表]\s*)\d+[a-z]?(?!\w)")
+
+
+def normalize_citations(text, records, checks, lang):
+    """Resolve author–year citations only when the library identifies a unique work."""
+    aliases = {}
+    for record in records:
+        authors = record.get("authors") or []
+        year = record.get("year")
+        if authors and year:
+            first = authors[0] if has_cjk(authors[0]) else fam(authors[0])
+            aliases.setdefault((norm(first), str(year).lower()), []).append(record["key"])
+    unverified = "[引文待核]" if lang == "zh" else "[citation unverified]"
+
+    def normalize_line(line, number):
+        if re.match(r"^\s*(?:#|<!--)", line):
+            return line
+
+        def replace_author_year(match):
+            value = match[1]
+            keys = []
+            for citation in re.split(r"[;；]", value):
+                parsed = re.fullmatch(r"\s*(.+?)[,，\s]+((?:19|20)\d{2}[a-z]?)\s*", citation)
+                if not parsed:
+                    return match[0]
+                first = re.split(r"\s+(?:et al\.?|and|&)\s*|\s*等(?:人)?\s*$", parsed[1], maxsplit=1)[0]
+                if not re.fullmatch(r"[\w.'’\- ]+", first) or not first[0].isalpha():
+                    return match[0]
+                if not re.search(r"[,，]", citation) and not (first[0].isupper() or has_cjk(first)):
+                    return match[0]
+                candidates = aliases.get((norm(first), parsed[2].lower()), [])
+                if not candidates and " " in first:
+                    candidates = aliases.get((norm(fam(first)), parsed[2].lower()), [])
+                if len(candidates) != 1:
+                    checks.add("CITATION", "warn", f"unresolved author–year citation: {value}", f"L{number}")
+                    return match[0] + " " + unverified
+                keys.append(candidates[0])
+            return "[" + "; ".join("@" + key for key in keys) + "]"
+
+        def flag_number(match):
+            checks.add("CITATION", "warn", f"numeric citation {match[0]} has no declared bibliography order; use the indexed key", f"L{number}")
+            return match[0] + " " + unverified
+
+        return NUMERIC_CITATION.sub(flag_number, AUTHOR_YEAR.sub(replace_author_year, line))
+
+    return "\n".join(normalize_line(line, number) for number, line in enumerate(text.split("\n"), 1))
+
+
+def infer_plan(parts, sources, records, rules, checks, lang):
+    """Derive audit rows from the draft, leaving low-confidence links for review."""
+    groups = {}
+    for sentence in parts["related"]:
+        name = sentence["heading"] or ("相关工作" if lang == "zh" else "Related Work")
+        group = groups.setdefault(name, {"name": name, "refs": [], "evidence": [], "_sentences": []})
+        group["_sentences"].append(sentence["text"])
+        for key, eid in sentence["cites"]:
+            if key in records and key not in group["refs"]:
+                group["refs"].append(key)
+            src = sources.get(key)
+            if key not in records or not src:
+                continue
+            if not eid:
+                score, candidate, _, _ = best_support(sentence["text"], src)
+                if score >= 0.4:
+                    eid = candidate
+            if eid in src["idx"] and not any(e["id"] == eid for e in group["evidence"]):
+                group["evidence"].append({"ref": key, "id": eid})
+    for i, group in enumerate(groups.values(), 1):
+        name = group["name"]
+        setting = has_any(name, ["dataset", "evaluation", "benchmark", "数据", "评估"])
+        problem = has_any(name, ["problem", "task", "问题", "任务"])
+        group.update(id=f"g{i}", basis="evaluation" if setting else "problem" if problem else "method",
+                     dimension=name, comparison=short(" ".join(group.pop("_sentences")), 700))
+
+    gaps = []
+    for sentence in parts["gap"]:
+        if not sentence["text"].strip(" :："):
+            continue
+        cited = [(key, eid) for key, eid in sentence["cites"] if key in records]
+        if not cited:
+            cited = [(key, None) for key in dict.fromkeys(key for g in groups.values() for key in g["refs"])]
+        evidence = []
+        for key, eid in cited:
+            src = sources.get(key)
+            if not src:
+                continue
+            if eid and eid in src["idx"]:
+                evidence.append({"ref": key, "id": eid})
+                continue
+            candidates = ((overlap(sentence["text"], quote), candidate)
+                          for candidate, (_, quote) in src["idx"].items()
+                          if has_any(quote, rules["limitation_cues"]))
+            score, candidate = max(candidates, default=(0, None))
+            if score >= 0.4:
+                evidence.append({"ref": key, "id": candidate})
+        gaps.append({"id": f"gap{len(gaps) + 1}", "statement": sentence["text"],
+                     "type": "inferred_from_draft", "from": evidence,
+                     "author_judgment": sentence["judgment"] or not evidence})
+
+    own = sources.get("self")
+    contributions = []
+    for sentence in parts["contrib"]:
+        claim = sentence["text"]
+        if claim.endswith((":", "：")):
+            continue
+        locators = [loc for key, loc in sentence["cites"] if key == "self" and loc]
+        locators += LOCATOR.findall(claim)
+        evidence = [{"loc": loc} for loc in dict.fromkeys(locators)]
+        if own:
+            score, eid, _, _ = best_support(claim, own)
+            if score >= 0.4:
+                evidence.append({"id": eid})
+            for number in numbers(LOCATOR.sub("", claim)):
+                _, match, _, _ = number_support(number, claim, own)
+                if match and not any(ev.get("id") == match for ev in evidence):
+                    evidence.append({"id": match})
+        gap_links = [g["id"] for g in gaps if overlap(claim, g["statement"]) >= 0.25]
+        if gaps and not gap_links and evidence:
+            checks.add("GAP_LINK", "warn", "confirm which research gap this contribution addresses", sentence["id"], sentence=claim)
+        contributions.append({"id": f"k{len(contributions) + 1}", "text": claim, "gaps": gap_links, "evidence": evidence})
+    return {"groups": list(groups.values()), "gaps": gaps, "contributions": contributions}
+
+
 def check(a):
     t0 = time.time()
     rules = load_rules()
     work, out = os.path.abspath(a.work), os.path.abspath(a.out)
     os.makedirs(out, exist_ok=True)
     lib = J(os.path.join(work, "library.json"))
+    build = a.cmd == "build"
     if not lib:
         W(os.path.join(out, "result.json"), {"case_id": a.case_id, "status": "failed", "status_reason": "run `irw.py init` first (work/library.json missing)"})
         print("library.json missing: run init first")
@@ -1036,7 +1220,7 @@ def check(a):
     draft_p = a.draft or os.path.join(work, "draft.md")
     plan = J(plan_p, None)
     plan_err = None
-    if plan is None:
+    if not isinstance(plan, dict):
         plan_err = f"{plan_p} missing or invalid JSON" + (" (" + str(sys.exc_info()[1]) + ")" if sys.exc_info()[1] else "")
         plan = {}
     draft = open(draft_p, encoding="utf-8").read() if os.path.exists(draft_p) else ""
@@ -1048,15 +1232,21 @@ def check(a):
     S = load_sources(work, list(byk))
     own = S.get("self")
     C = Checks()
-    if plan_err:
+    if plan_err and not build:
         C.add("PLAN", "fail", plan_err)
     if not draft.strip():
         res = {"case_id": case_id, "status": "failed", "status_reason": f"no draft at {draft_p}", "skill": f"intro-gap-ledger {VERSION}"}
-        W(os.path.join(out, "result.json"), res)
+        write_result(out, res, lib["contract"], clean=build)
         print(json.dumps(res, ensure_ascii=False))
         return 2
+    original_draft = draft
+    if build:
+        draft = normalize_citations(draft, recs, C, lang)
     sents, paras = parse_draft(draft, rules)
     parts = {p: [s for s in sents if s["part"] == p] for p in ("background", "related", "gap", "contrib")}
+
+    if build and (plan_err or not os.path.isfile(plan_p)):
+        plan = infer_plan(parts, S, byk, rules, C, lang)
 
     # ---- S0 template placeholders left in the draft or plan
     body_ = re.sub(r"<!--.*?-->", "", draft, flags=re.S)
@@ -1120,6 +1310,26 @@ def check(a):
             else:
                 cinfo["source_text"] = "metadata_only"
             entry["citations"].append(cinfo)
+        if build:
+            for citation in entry["citations"]:
+                src = S.get(citation["key"], {})
+                citation["source_file"] = src.get("path") or byk[citation["key"]].get("source_file")
+                if citation["source_text"] == "secondary":
+                    context = re.search(r"\[(own paper|[^\]]+?) p(\d+)\]", citation.get("quote") or "")
+                    if context:
+                        label, page = context.groups()
+                        candidates = [path for path in lib["notes"] if os.path.basename(path) == label]
+                        citation.update(source_file=lib["own"] if label == "own paper" else next(iter(candidates), None),
+                                        context_page=int(page))
+                if citation.get("support") is not None and citation["support"] < 0.3:
+                    C.add("SOURCE", "warn", f"{citation['key']}: weak lexical match; verify finding, conditions and scope", s["id"], sentence=s["text"])
+            if own and (selfs or s["part"] == "contrib"):
+                score, eid, page, quote = best_support(s["text"], own)
+                entry["manuscript_evidence"] = {"source_file": own.get("path"),
+                                                "evidence": eid if score >= 0.35 else None,
+                                                "page": page if score >= 0.35 else None,
+                                                "quote": short(quote, 400) if score >= 0.35 else None,
+                                                "support": round(score, 2)}
         if selfs:
             entry["self_refs"] = selfs
         if s["judgment"]:
@@ -1129,7 +1339,7 @@ def check(a):
         elif selfs:
             entry["type"] = "own_paper"
         # numbers
-        nums = numbers(s["text"])
+        nums = numbers(LOCATOR.sub("", s["text"]) if build else s["text"])
         yrs = {byk[k]["year"] for k, _ in ckeys if k in byk}
         nums = [n for n in nums if n not in yrs and not re.fullmatch(r"(19|20)\d\d", n)]
         kplan = None
@@ -1157,10 +1367,19 @@ def check(a):
                     where.append("self")
                 elif pg:
                     elsewhere.append(f"self p{pg}")
-            entry["numbers"].append({"value": n, "found_in": where, "elsewhere": elsewhere})
+            number_row = {"value": n, "found_in": where, "elsewhere": elsewhere}
+            if build:
+                number_row["source_locations"] = []
+                for key in where:
+                    src = S.get(key, {})
+                    _, eid, page, quote = number_support(n, s["text"], src) if src else (0, None, None, None)
+                    if eid:
+                        number_row["source_locations"].append({"key": key, "evidence": eid, "page": page,
+                                                               "quote": short(quote, 400), "file": src.get("path")})
+            entry["numbers"].append(number_row)
             if not where:
                 ctx = f" (the number occurs only in unrelated context: {', '.join(elsewhere[:3])})" if elsewhere else ""
-                if ckeys and all(c["source_text"] == "metadata_only" for c in entry["citations"]):
+                if entry["citations"] and all(c["source_text"] == "metadata_only" for c in entry["citations"]):
                     C.add("S4b", "warn", f"number {n} cannot be verified: cited source text not provided", s["id"], sentence=s["text"])
                 elif ckeys or s["part"] == "contrib" or selfs:
                     C.add("S4", "fail", f"number {n} not supported by the cited evidence{' / the contribution evidence in the own paper' if s['part'] == 'contrib' or selfs else ''}{ctx}", s["id"], sentence=s["text"])
@@ -1398,7 +1617,8 @@ def check(a):
     if years and lib_years and max(years) < max(lib_years) - 2:
         C.add("S13c", "warn", f"newest cited work is {max(years)} while the library has {max(lib_years)}: recent progress covered?")
     for it in C.items:
-        if it["level"] == "warn" and it["check"] in ("S10b", "S11i", "S4b"):
+        if (it["level"] == "warn" and it["check"] in ("S10b", "S11i", "S4b")
+                or build and it["level"] in ("fail", "warn")):
             needs.append({"type": it["check"], "where": it["where"], "note": it["message"]})
     for n in plan.get("author_notes") or []:
         needs.append({"type": "author_note", "note": n})
@@ -1407,7 +1627,18 @@ def check(a):
             needs.append({"type": "author_judgment", "where": s["id"], "note": short(s["text"], 160)})
 
     # ---- render
-    md, order = render(draft, recs, style, lang)
+    render_draft = draft
+    if build:
+        def flag_unknown(match):
+            cites = parse_cites(match[0])
+            known = [f"@{k}{' #' + e if e else ''}" if k != "self" else f"@self:{e}"
+                     for k, e in cites if k in byk or k == "self"]
+            marker = "[" + "; ".join(known) + "]" if known else ""
+            if any(k not in byk and k != "self" for k, _ in cites):
+                marker += " [引文待核]" if lang == "zh" else " [citation unverified]"
+            return marker
+        render_draft = CITE_RE.sub(flag_unknown, draft)
+    md, order = render(render_draft, recs, style, lang)
     ref_style = "gbt7714" if style == "gbt7714" else ("apa" if style == "apa" else "ieee")
     reflist = [format_ref(byk[k], ref_style, None if style == "apa" else i + 1, lang) for i, k in enumerate(order)]
     head = "参考文献" if lang == "zh" else "References"
@@ -1417,18 +1648,23 @@ def check(a):
     W(os.path.join(out, f"references_{ref_style}.txt"), "\n".join(reflist) + "\n")
     bib = "".join(bib_entry(byk[k]) for k in order)
     W(os.path.join(out, "references.bib"), bib)
-    tex = to_latex(draft, recs)
+    tex = to_latex(render_draft, recs)
     W(os.path.join(out, "intro_related_work.tex"), tex)
     W(os.path.join(out, "intro_related_work.html"), html_preview(full_md, lang))
     write_docx(full_md, os.path.join(out, "intro_related_work.docx"), lang)
     preview, prev_err, pngs = None, "skipped (--no-pdf)", []
     if not a.no_pdf:
-        preview, prev_err = try_pdf(tex, bib, out, lang, style)
-        if not preview:
+        if build:
+            preview, prev_err = fallback_pdf(out, html_preview(full_md, lang), lang)
+        else:
+            preview, prev_err = try_pdf(tex, bib, out, lang, style)
+        if not preview and not build:
             preview, err2 = fallback_pdf(out, html_preview(full_md, lang), lang)
             prev_err = "; ".join(x for x in (prev_err, err2) if x)
         if preview:
             pngs = png_previews(out, preview)
+        if build and (not preview or not pngs):
+            needs.append({"type": "preview", "note": prev_err or "PNG rendering did not produce files"})
     W(os.path.join(out, "source_map.json"), sent_map)
     W(os.path.join(out, "related_work_matrix.md"), matrix_md(groups, byk, S, sent_map, lang))
     W(os.path.join(out, "gap_derivation.md"), gap_md(gap_rows, contrib_rows, lang))
@@ -1440,12 +1676,12 @@ def check(a):
     prev = sorted(glob.glob(os.path.join(hist, "draft_v*.md")), key=lambda p: int(re.findall(r"\d+", os.path.basename(p))[0]))
     v = len(prev) + 1
     changes = J(os.path.join(work, "changes.json"), [])
-    if not prev or open(prev[-1], encoding="utf-8").read() != draft:
+    if not prev or open(prev[-1], encoding="utf-8").read() != original_draft:
         shutil.copy(draft_p, os.path.join(hist, f"draft_v{v}.md"))
         if os.path.exists(plan_p):
             shutil.copy(plan_p, os.path.join(hist, f"plan_v{v}.json"))
         if prev:
-            dl = list(difflib.unified_diff(open(prev[-1], encoding="utf-8").read().splitlines(), draft.splitlines(), f"draft_v{v - 1}", f"draft_v{v}", lineterm=""))
+            dl = list(difflib.unified_diff(open(prev[-1], encoding="utf-8").read().splitlines(), original_draft.splitlines(), f"draft_v{v - 1}", f"draft_v{v}", lineterm=""))
             W(os.path.join(out, "changes.diff"), "\n".join(dl) + "\n")
             changes.append({"version": v, "at": now(), "lines_changed": sum(1 for l in dl if l[:1] in "+-" and not l.startswith(("+++", "---")))})
         else:
@@ -1457,15 +1693,17 @@ def check(a):
 
     # ---- result
     status = "complete" if nf == 0 and not lib["missing"] and not [n for n in needs if n["type"] in ("missing_metadata", "metadata_from_pdf", "metadata_from_reference_list", "S10b")] else "partial"
+    if build and needs:
+        status = "partial"
     if nf:
-        reason = f"{nf} blocking check(s) failed - see review.md"
+        reason = f"{nf} review finding(s) require attention; the draft is available" if build else f"{nf} blocking check(s) failed - see review.md"
     elif status == "partial":
         reason = "draft passes the checks; items need human confirmation (needs_review / missing_materials)"
     else:
         reason = "all four parts present; all citations, numbers, gap derivations and contribution evidence verified"
     if nf == 0 and needs and status == "complete":
         reason += f"; {len(needs)} note(s) for the author (judgments, unverifiable claims)"
-    part_text = {p: render("\n".join(s["raw"] for s in ss), recs, style, lang)[0] if ss else "" for p, ss in parts.items()}
+    part_text = {p: render("\n".join(s["raw"] for s in ss), recs, style, lang, order)[0] if ss else "" for p, ss in parts.items()}
     res = {"case_id": case_id, "status": status, "status_reason": reason, "skill": f"intro-gap-ledger {VERSION}",
            "language": lang, "citation_style": style,
            "summary": {"sentences": len(sents), "cited_sentences": sum(1 for s in sent_map if s["type"] == "cited"),
@@ -1486,9 +1724,9 @@ def check(a):
                          "docx": "intro_related_work.docx", "pdf_preview": preview, "png_previews": pngs, "source_map": "source_map.json", "matrix": "related_work_matrix.md", "gap_derivation": "gap_derivation.md",
                          "contribution_map": "contribution_map.json", "review": "review.md", "diff": "changes.diff" if os.path.exists(os.path.join(out, "changes.diff")) else None},
            "preview_note": prev_err, "updated": now(), "seconds": round(time.time() - t0, 1)}
-    fill_contract(res, lib.get("contract"), os.path.join(work, "contract_overrides.json"))
-    W(os.path.join(out, "result.json"), res)
     W(os.path.join(out, "review.md"), review_md(res, C.items, lang))
+    fill_contract(res, lib.get("contract"), os.path.join(work, "contract_overrides.json"))
+    write_result(out, res, lib["contract"], clean=build)
     print(json.dumps({"status": status, "fails": nf, "warns": nw, "top": [f"{i['check']} {i['where'] or ''}: {i['message']}" for i in C.items if i["level"] == "fail"][:25],
                       "warn_top": [f"{i['check']} {i['where'] or ''}: {i['message']}" for i in C.items if i["level"] == "warn"][:12],
                       "needs_review": len(needs), "unmapped_contract_fields": res.get("unmapped_contract_fields"), "seconds": res["seconds"]}, ensure_ascii=False, indent=1))
@@ -1510,6 +1748,9 @@ def uncertainty(sent_map, lib, needs):
 
 
 CONTRACT_MAP = [
+    (r"intro.*related|引言.*相关", lambda r: r["draft"]),
+    (r"^introduction_zh$|^引言$", lambda r: "\n\n".join(r["parts"][p] for p in ("background", "gap", "contrib") if r["parts"][p])),
+    (r"human_check", lambda r: r["needs_review"]),
     (r"group|matrix|分组", lambda r: r["related_work_groups"]),
     (r"background|背景", lambda r: r["parts"]["background"]),
     (r"related|相关", lambda r: r["parts"]["related"]),
@@ -1523,6 +1764,31 @@ CONTRACT_MAP = [
     (r"change|revision|diff|修改|版本", lambda r: r["changes"]),
     (r"intro|draft|text|manuscript|section|引言|正文|稿", lambda r: r["draft"]),
 ]
+
+
+def artifact_field(name):
+    name = name.lower()
+    for token, key in (("docx", "docx"), ("pdf", "pdf_preview"), ("png", "png_previews"),
+                       ("editable", "docx"), ("preview", "pdf_preview")):
+        if token in name:
+            return key
+    if re.fullmatch(r"(draft|manuscript|output)_(file|path)", name):
+        return "draft_md"
+    return None
+
+
+def result_payload(res, contract):
+    fields = contract_names(contract)
+    if not fields:
+        return res
+    return {"case_id": res.get("case_id"), **{k: res.get(k) for k in fields if k != "case_id"}}
+
+
+def write_result(out, res, contract, clean=True):
+    payload = result_payload(res, contract) if clean else res
+    W(os.path.join(out, "result.json"), payload)
+    if clean and contract:
+        W(os.path.join(out, "run_report.json"), res)
 
 
 def _want_type(spec):
@@ -1586,8 +1852,14 @@ def fill_contract(res, contract, overrides_p):
             res["status"] = "success"
     unm = []
     for n, spec in schema.items():
+        if n == "case_id":
+            continue
         if n in res and res[n] is not None and n not in ("status",):
             res[n] = _coerce_contract_val(res[n], _want_type(spec))
+            continue
+        artifact_key = artifact_field(n)
+        if artifact_key:
+            res[n] = _coerce_contract_val(res["artifacts"].get(artifact_key), _want_type(spec))
             continue
         for pat, fn in CONTRACT_MAP:
             if re.search(pat, n, re.I):
@@ -1599,6 +1871,8 @@ def fill_contract(res, contract, overrides_p):
             res.setdefault(n, None)
     ov = J(overrides_p, {})
     for k, v in (ov or {}).items():
+        if k == "case_id":
+            continue
         res[k] = _coerce_contract_val(v, _want_type(schema.get(k))) if k in schema else v
         if k in unm:
             unm.remove(k)
@@ -1693,7 +1967,7 @@ def main():
     p.add_argument("--source", required=True)
     p.add_argument("--query", required=True)
     p.add_argument("--n", type=int, default=8)
-    p = sp.add_parser("check")
+    p = sp.add_parser("check", aliases=["build"])
     p.add_argument("--work", default="/app/work")
     p.add_argument("--out", default="/app/output")
     p.add_argument("--plan")
@@ -1702,7 +1976,7 @@ def main():
     p.add_argument("--case-id")
     p.add_argument("--no-pdf", action="store_true", help="skip the LaTeX preview build")
     a = ap.parse_args()
-    return {"init": init, "scaffold": scaffold, "find": find, "check": check}[a.cmd](a) or 0
+    return {"init": init, "scaffold": scaffold, "find": find, "check": check, "build": check}[a.cmd](a) or 0
 
 
 if __name__ == "__main__":
