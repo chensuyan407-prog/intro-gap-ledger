@@ -1,0 +1,230 @@
+{
+ "case_id": "dev_zh_residual",
+ "status": "partial",
+ "status_reason": "init only: evidence extracted, no draft written yet",
+ "skill": "intro-gap-ledger 0.2.1",
+ "missing_materials": [],
+ "parse_problems": [
+  {
+   "file": "reference lists",
+   "problem": "45 record(s) parsed from the printed reference list of the own paper / notes: confirm metadata before submission"
+  }
+ ],
+ "sources": {
+  "self": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\本文_resnet.pdf",
+   "pages": 12,
+   "chars": 60032,
+   "problem": null
+  },
+  "ioffe2015": {
+   "path": "C:\\Users\\12117\\Desktop\\bohrium-pdf-evidence-reader\\introgap\\tests\\cases\\dev_zh\\input\\ioffe2015.pdf",
+   "pages": 11,
+   "chars": 45911,
+   "problem": null,
+   "text": "full_text"
+  },
+  "simonyan2015": {
+   "path": null,
+   "text": "abstract+citing_context"
+  },
+  "srivastava2015": {
+   "path": null,
+   "text": "abstract+citing_context"
+  },
+  "szegedy2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "zhou2016": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "bengio1994": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "bishop1995": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "briggs2000": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "chatfield2011": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "everingham2010": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "gidaris2015": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "girshick2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "girshick2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "glorot2010": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "goodfellow2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "he2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "he2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "he2015a": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "hinton2012": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "hochreiter1997": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "jegou2011": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "jegou2012": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "jia2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "krizhevsky2009": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "krizhevsky2012": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lecun1989": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lecun1998": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lee2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lin2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "lin2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "long2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "montufar2014": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "nair2010": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "perronnin2007": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "raiko2012": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "ren2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "ren2015a": {
+   "path": null,
+   "text": "metadata_only"
+  },
+  "ripley1996": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "romero2015": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "russakovsky2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "saxe2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "schraudolph1998": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "schraudolph1998a": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "sermanet2014": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "szeliski1990": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "szeliski2006": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "vatanen2013": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "vedaldi2008": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "venables1999": {
+   "path": null,
+   "text": "citing_context"
+  },
+  "zeiler2014": {
+   "path": null,
+   "text": "citing_context"
+  }
+ },
+ "updated": "2026-11-27T15:48:19Z",
+ "引言与相关工作": null,
+ "参考文献": null,
+ "证据映射": null,
+ "贡献对照": null,
+ "待确认": null
+}

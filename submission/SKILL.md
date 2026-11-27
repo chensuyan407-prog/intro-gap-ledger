@@ -31,16 +31,21 @@ length, venue and requested structure. Prefer a qualified claim to an unsupporte
 
 2. **Write `/app/work/draft.md` in one pass.** Use readable Markdown headings for Introduction
    or Background, Related Work, Research Gap, and Contributions, translated as appropriate.
+   Follow the five-stage chain: **Research Background → Related Work Trajectory → Comparison
+   Matrix (methods, strengths, limitations) → Research Gap → Contributions**.
    Place comparison groups under descriptive subheadings and write connected comparative prose.
    Keep the requested publication order. If a case asks for revision, preserve supported facts,
    the author's intended meaning and the requested style.
 
    - Start with the research trajectory, the concrete open question and the technical constraint.
    - Compare papers on a common axis such as method, setting, data or evaluation. Name the
-     trade-off and preserve each paper's conditions, results and limitations.
-   - Derive a scoped gap from the works just discussed. Signal an inference as an interpretation.
-   - Explain what each contribution does about the gap and how the manuscript establishes it.
-     Cite a real Figure/Table label when applicable. Copy exact values, metrics, units and settings.
+     trade-off and preserve each paper's conditions, results and limitations. Every limitation
+     and comparison point must bind to a real `[@key]` and source passage—never fabricate
+     citations or numbers.
+   - Derive a scoped gap directly from the limitations just discussed. Signal an inference as
+     an interpretation.
+   - Map each contribution explicitly to the gap it addresses and how the manuscript establishes
+     it. Cite a real Figure/Table label when applicable. Copy exact values, metrics, units and settings.
    - Place citations beside the claim they support. Use an indexed key such as `[@key]` for precise
      resolution, or a unique parenthetical author–year citation such as `(Surname, 2024)`.
      Group several keys in one citation with `[@first; @second]`. Use `[@key #E:...]` only when a

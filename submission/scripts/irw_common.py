@@ -292,9 +292,13 @@ def parse_bib(text, problems, src):
             problems.append({"file": src, "problem": f"unbalanced braces in entry {m.group(2)}; entry skipped"})
             continue
         f = _bib_fields(text[start:j - 1])
-        authors = [a.strip() for a in re.split(r"\s+and\s+", f.get("author", "")) if a.strip()]
+        raw_au = f.get("author", "")
+        authors = [a.strip() for a in re.split(r"\s+and\s+", raw_au, flags=re.I) if a.strip()]
+        if len(authors) == 1 and re.search(r"[;；、]", authors[0]):
+            authors = [a.strip() for a in re.split(r"[;；、]+", authors[0]) if a.strip()]
+        yr = re.sub(r"\D", "", f.get("year", "") or f.get("date", ""))[:4]
         recs.append(dict(key=m.group(2), type=m.group(1).lower(), title=f.get("title", "").replace("\\&", "&"), authors=authors,
-                         year=re.sub(r"\D", "", f.get("year", ""))[:4], venue=f.get("journal") or f.get("booktitle") or f.get("publisher") or f.get("howpublished") or f.get("school", ""),
+                         year=yr, venue=f.get("journal") or f.get("booktitle") or f.get("publisher") or f.get("howpublished") or f.get("school", ""),
                          volume=f.get("volume", ""), issue=f.get("number", ""), pages=f.get("pages", "").replace("--", "-"),
                          doi=f.get("doi", ""), url=f.get("url", ""), arxiv=f.get("eprint", ""), abstract=f.get("abstract", ""),
                          pdf=f.get("file", "") or f.get("pdf", ""), source_file=src))
@@ -304,7 +308,7 @@ def parse_bib(text, problems, src):
 def parse_ris(text, problems, src):
     recs, cur = [], None
     for line in text.splitlines():
-        m = re.match(r"^([A-Z][A-Z0-9])  -\s?(.*)$", line)
+        m = re.match(r"^([A-Z][A-Z0-9])\s+-\s?(.*)$", line)
         if not m:
             continue
         tag, val = m.group(1), m.group(2).strip()

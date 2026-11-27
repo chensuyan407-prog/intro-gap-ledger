@@ -34,7 +34,7 @@ def _split_authors(s):
     s = re.sub(r"\bet al\.?|等", "", s)
     if re.fullmatch(r"\s*[^,]+,\s*[^,]+(\s+and\s+[^,]+,\s*[^,]+)+\s*[.,]?\s*", s) or re.fullmatch(r"\s*[A-Z][a-z'\-]+,\s*[A-Z][a-z]+[^,]*\s*[.,]?\s*", s):
         return [x.strip(" .,") for x in re.split(r"\s+and\s+", s) if x.strip(" .,")][:30]  # "Glorot, Xavier and Bengio, Yoshua"
-    s = re.sub(r",?\s+and\s+|\s*&\s*|;", ", ", s)
+    s = re.sub(r",?\s+and\s+|\s*&\s*|[;；、，]", ", ", s, flags=re.I)
     parts = [p.strip() for p in s.split(",") if p.strip()]
     ps = [p.strip(" .") for p in s.split(",") if p.strip(" .")]
     if len(ps) >= 4 and len(ps) % 2 == 0 and all(re.fullmatch(r"[A-Z][\w'’\-]+(?:\s[A-Z][\w'’\-]+)?", ps[i]) for i in range(0, len(ps), 2)) \

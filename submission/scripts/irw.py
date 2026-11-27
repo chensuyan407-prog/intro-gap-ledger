@@ -965,10 +965,44 @@ def write_docx(md, path, lang):
             elif part:
                 out.append(run(part))
         return "".join(out)
+    def tbl_xml(rows):
+        if not rows:
+            return ""
+        ncols = max(len(r) for r in rows)
+        col_w = max(1200, 9026 // max(1, ncols))
+        grid = "".join(f'<w:gridCol w:w="{col_w}"/>' for _ in range(ncols))
+        bdr = '<w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="E0E0E0"/><w:left w:val="none"/><w:right w:val="none"/><w:insideV w:val="none"/></w:tblBorders>'
+        tmar = '<w:tblCellMar><w:top w:w="80" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:left w:w="100" w:type="dxa"/><w:right w:w="100" w:type="dxa"/></w:tblCellMar>'
+        trs = []
+        for ri, row in enumerate(rows):
+            cells = (row + [""] * ncols)[:ncols]
+            tcs = []
+            for c in cells:
+                shd = '<w:shd w:val="clear" w:color="auto" w:fill="F2F2F2"/>' if ri == 0 else ""
+                tcpr = f'<w:tcPr><w:tcW w:w="{col_w}" w:type="dxa"/>{shd}</w:tcPr>'
+                content = run(c, bold=(ri == 0)) if ri == 0 else inline(c)
+                tcs.append(f'<w:tc>{tcpr}<w:p><w:pPr><w:spacing w:after="40" w:line="260" w:lineRule="auto"/></w:pPr>{content}</w:p></w:tc>')
+            trs.append(f'<w:tr>{"".join(tcs)}</w:tr>')
+        return f'<w:tbl><w:tblPr><w:tblW w:w="9026" w:type="dxa"/>{bdr}{tmar}</w:tblPr><w:tblGrid>{grid}</w:tblGrid>{"".join(trs)}</w:tbl>'
+
     paras = []
-    for block in md.split("\n"):
-        b = block.rstrip()
+    lines = md.split("\n")
+    idx = 0
+    while idx < len(lines):
+        b = lines[idx].rstrip()
         if not b.strip():
+            idx += 1
+            continue
+        if b.lstrip().startswith("|") and "|" in b.lstrip()[1:]:
+            trows = []
+            while idx < len(lines) and lines[idx].strip().startswith("|"):
+                raw_r = lines[idx].strip().strip("|")
+                cells = [c.strip() for c in raw_r.split("|")]
+                if not all(re.fullmatch(r":?-{2,}:?", c or "-") for c in cells):
+                    trows.append(cells)
+                idx += 1
+            if trows:
+                paras.append(tbl_xml(trows))
             continue
         m = re.match(r"^(#{1,6})\s+(.*)", b)
         if m:
@@ -978,6 +1012,7 @@ def write_docx(md, path, lang):
             paras.append(f'<w:p><w:pPr><w:pStyle w:val="ListBullet"/><w:ind w:left="360" w:hanging="360"/></w:pPr>{run("• ")}{inline(re.sub(r"^\s*[-*]\s+", "", b))}</w:p>')
         else:
             paras.append(f'<w:p><w:pPr><w:spacing w:after="120" w:line="300" w:lineRule="auto"/><w:jc w:val="both"/></w:pPr>{inline(b)}</w:p>')
+        idx += 1
     W_NS = 'xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"'
     doc = f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document {W_NS}><w:body>{"".join(paras)}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/></w:sectPr></w:body></w:document>'
     styles = (f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles {W_NS}>'
