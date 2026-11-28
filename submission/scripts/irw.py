@@ -671,6 +671,9 @@ def parse_draft(text, rules):
     return sents, paras
 
 
+CONTRIB_INFER_RE = re.compile(r"\b(lowers?|reduces?|enables?|guarantees?|eliminates?|ensures?|proves?)\b|降低|消除|保证|证明", re.I)
+
+
 class Checks:
     def __init__(self):
         self.items = []
@@ -1358,7 +1361,7 @@ def check(a):
                         p, q = src["idx"][e]
                         cinfo.update(evidence=e, page=p, quote=short(q, 400), support=None if xl else round(overlap(s["text"], q), 2), link="explicit")
                         if not xl and cinfo["support"] < 0.15:
-                            C.add("S5b", "warn", f"sentence shares few words with its evidence {e}: check the paraphrase", s["id"], sentence=s["text"])
+                            C.add("S5b", "advisory", f"sentence shares few words with its evidence {e}: check the paraphrase", s["id"], sentence=s["text"])
                     else:
                         owner = e.split(":")[1] if e.count(":") >= 3 else "?"
                         C.add("S5c", "fail", f"evidence id {e} does not exist in source '{k}'" + (f" (it belongs to '{owner}')" if owner != k and owner in S else ""), s["id"], sentence=s["text"])
@@ -1382,7 +1385,7 @@ def check(a):
                         citation.update(source_file=lib["own"] if label == "own paper" else next(iter(candidates), None),
                                         context_page=int(page))
                 if citation.get("support") is not None and citation["support"] < 0.3:
-                    C.add("SOURCE", "warn", f"{citation['key']}: weak lexical match; verify finding, conditions and scope", s["id"], sentence=s["text"])
+                    C.add("SOURCE", "advisory", f"{citation['key']}: weak lexical match; verify finding, conditions and scope", s["id"], sentence=s["text"])
             if own and (selfs or s["part"] == "contrib"):
                 score, eid, page, quote = best_support(s["text"], own)
                 entry["manuscript_evidence"] = {"source_file": own.get("path"),
@@ -1459,7 +1462,7 @@ def check(a):
             if alts and ((alts[0][0] >= 0.5 and alts[0][0] >= c["support"] + 0.2 and c["support"] < 0.4) or (alts[0][0] >= 0.6 and alts[0][0] >= c["support"] + 0.3)) and alts[0][1] not in [x["key"] for x in entry["citations"]]:
                 C.add("S5", "fail", f"citation [@{c['key']}] weakly supports this sentence ({c['support']}); source '{alts[0][1]}' matches much better ({alts[0][0]:.2f}) - misattributed?", s["id"], sentence=s["text"])
             elif c["support"] < 0.2 and len(tokens(s["text"])) >= 6:
-                C.add("S5b", "warn", f"low lexical support ({c['support']}) of [@{c['key']}] for this sentence: give an explicit #evidence id or rephrase", s["id"], sentence=s["text"])
+                C.add("S5b", "advisory", f"low lexical support ({c['support']}) of [@{c['key']}] for this sentence: give an explicit #evidence id or rephrase", s["id"], sentence=s["text"])
         # claim without citation
         cues = rules["claim_cues_zh"] if has_cjk(s["text"]) else rules["claim_cues_en"]
         if s["part"] in ("background", "related") and not ckeys and not s["judgment"]:
@@ -1570,9 +1573,13 @@ def check(a):
                 C.add("S10f", "warn", f"gap {gid}: [@{r}] has no source text: limitation cannot be verified", gid)
             elif e:
                 C.add("S10e", "fail", f"gap {gid}: evidence {e} not found in source '{r}'", gid)
+            st_r = lib["src_status"].get(r, {}).get("text") or ""
+            if "citing_context" in st_r or "table_note" in st_r:
+                d["pending_source_check"] = True
             row["derived_from"].append(d)
         if g.get("statement") and overlap(g["statement"], gap_text) < 0.5:
             C.add("S10g", "warn", f"gap {gid}: statement not clearly expressed in the gap part of the draft", gid)
+        row["pending_source_check"] = any(d.get("pending_source_check") for d in row["derived_from"])
         gap_rows.append(row)
 
     # ---- S11 contributions
@@ -1660,6 +1667,9 @@ def check(a):
                     C.add("S11j", "fail", f"'{w.strip()}' without pointing to the own table/figure that shows it ([@self:Table n])", s["id"], sentence=s["text"])
             elif w.strip() in ("universal", "always", "solve", "solves", "guarantee", "any", "彻底", "完全解决", "普适", "任意", "comprehensive", "全面"):
                 C.add("S11k", "warn", f"scope word '{w.strip()}': does the evidence cover that scope?", s["id"], sentence=s["text"])
+        stripped = re.sub(r"(?i)(figure|table|fig\.?|图|表)\s*\d+[a-z]?", "", s["text"])
+        if CONTRIB_INFER_RE.search(s["text"]) and not re.search(r"\d", stripped) and not any(k == "self" and re.match(r"(?i)\s*(table|tab\.?|表)", str(e or "")) for k, e in s["cites"]):
+            C.add("S11m", "advisory", "inferential wording without an own table/figure value: check the claim is not broader than the evidence", s["id"], sentence=s["text"])
 
     # ---- S12/S13 metadata, coverage
     needs = []
@@ -1740,7 +1750,7 @@ def check(a):
         if build and (not preview or not pngs):
             needs.append({"type": "preview", "note": prev_err or "PNG rendering did not produce files"})
     W(os.path.join(out, "source_map.json"), sent_map)
-    W(os.path.join(out, "related_work_matrix.md"), matrix_md(groups, byk, S, sent_map, lang))
+    W(os.path.join(out, "related_work_matrix.md"), matrix_md(groups, byk, S, sent_map, lang, plan.get("scope_boundary") or []))
     W(os.path.join(out, "gap_derivation.md"), gap_md(gap_rows, contrib_rows, lang))
     W(os.path.join(out, "contribution_map.json"), contrib_rows)
 
@@ -1791,7 +1801,7 @@ def check(a):
            "source_map": sent_map,
            "checks": C.items, "needs_review": needs, "missing_materials": lib["missing"], "parse_problems": lib["problems"],
            "uncited_library_records": [{"key": k, "reason": omitted.get(k)} for k in uncited],
-           "uncertainty": uncertainty(sent_map, lib, needs),
+           "uncertainty": uncertainty(sent_map, lib, needs) + [f"scope boundary: '{b.get('work')}' is mentioned but outside the citation scope ({b.get('reason') or 'not in library'}); its comparison dimension is kept in related_work_matrix.md" for b in (plan.get("scope_boundary") or [])],
            "changes": changes, "inputs": lib["inputs"],
            "artifacts": {"draft_md": "intro_related_work.md", "draft_annotated": "intro_related_work_annotated.md", "latex": "intro_related_work.tex",
                          "bib": "references.bib", "references": f"references_{ref_style}.txt", "html_preview": "intro_related_work.html",
@@ -1959,7 +1969,7 @@ def source_label(source):
     return "secondary evidence" if source.get("context") else "supplied record"
 
 
-def matrix_md(groups, byk, S, sent_map, lang):
+def matrix_md(groups, byk, S, sent_map, lang, boundary=()):
     L = ["# Related-work grouping matrix", "", "| group | basis | dimension | works | comparison | evidence (page) |", "|-|-|-|-|-|-|"]
     for g in groups:
         evs = []
@@ -1978,15 +1988,19 @@ def matrix_md(groups, byk, S, sent_map, lang):
     for s in sent_map:
         for c in s["citations"]:
             L.append(f"- {s['id']} [{c['key']}] p{c.get('page')} ({c.get('link', '-')}, support {c.get('support')}): {short(c.get('quote') or c['source_text'], 140)}")
+    if boundary:
+        L += ["", "## Scope boundary (works mentioned in the manuscript but outside the citation scope)", "", "| work | comparison dimension | reason not cited |", "|-|-|-|"]
+        for b in boundary:
+            L.append("| " + " | ".join(str(b.get(f) or "-").replace("|", r"\|") for f in ("work", "dimension", "reason")) + " |")
     return "\n".join(L) + "\n"
 
 
 def gap_md(gaps, contribs, lang):
     L = ["# Gap derivation and contribution mapping", ""]
     for g in gaps:
-        L += [f"## {g['id']} ({g.get('type')}){' [author judgment]' if g['author_judgment'] else ''}", "", f"**Gap:** {g.get('statement')}", "", "Derived from:"]
+        L += [f"## {g['id']} ({g.get('type')}){' [author judgment]' if g['author_judgment'] else ''}{' [待原文核对 / pending source check]' if g.get('pending_source_check') else ''}", "", f"**Gap:** {g.get('statement')}", "", "Derived from:"]
         for d in g["derived_from"]:
-            L.append(f"- [{d['ref']}] p{d.get('page')} {'✓' if d.get('verified') else '✗ unverified'}: \"{short(d.get('quote') or '', 220)}\"")
+            L.append(f"- [{d['ref']}] p{d.get('page')} {'✓' if d.get('verified') else '✗ unverified'}{' · 待原文核对' if d.get('pending_source_check') else ''}: \"{short(d.get('quote') or '', 220)}\"")
         L += ["", "Filled by: " + (", ".join(g["filled_by"]) or "**none**"), ""]
     L += ["## Contributions", ""]
     for k in contribs:
@@ -2000,7 +2014,7 @@ def review_md(res, items, lang):
     L = [f"# Review - {res['case_id']}", "", f"status: **{res['status']}** - {res['status_reason']}", "", "summary: " + json.dumps(res["summary"], ensure_ascii=False), ""]
     if res["missing_materials"]:
         L += ["## Material gaps", ""] + [f"- {m}" for m in res["missing_materials"]] + [""]
-    for lvl in ("fail", "warn"):
+    for lvl in ("fail", "warn", "advisory"):
         xs = [i for i in items if i["level"] == lvl]
         if xs:
             L += [f"## {lvl} ({len(xs)})", ""] + [f"- {i['check']} {i['where'] or ''}: {i['message']}" + (f"  \n  > {short(i['sentence'], 200)}" if i.get("sentence") else "") for i in xs] + [""]
