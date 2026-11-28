@@ -435,7 +435,7 @@ def clean_text(t):
     t = unicodedata.normalize("NFKC", t or "")
     for a, b in (("ﬁ", "fi"), ("ﬂ", "fl"), ("ﬀ", "ff"), ("­", "")):
         t = t.replace(a, b)
-    return t
+    return re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", " ", t)
 
 
 def page_sentences(pages):

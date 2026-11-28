@@ -10,7 +10,11 @@ length, venue and requested structure. Prefer a qualified claim to an unsupporte
 
 ## Workflow
 
-1. **Initialize once.** Resolve the installed Skill and use the case's real input and output paths.
+1. **Read the task and case, then initialize.** Identify the target manuscript, citation scope,
+   requested sections and output fields from the actual inputs. Use the CLI directly.
+   Inspect its implementation only if a command fails and its output does not explain the error.
+   If citations are restricted to named libraries, append `--library-only /input/library.bib`
+   (use the actual path, repeat for each allowed file). PDFs can support matching records.
 
    ```bash
    PY=$(command -v python3 || command -v python)
@@ -23,13 +27,17 @@ length, venue and requested structure. Prefer a qualified claim to an unsupporte
    Read the task and the initialization summary. It gives you the required writing points,
    contract skeleton, source keys, manuscript path and library index. The same brief is saved
    to `/app/work/writing_brief.json`. Read relevant sections of `evidence.md` and the actual
-   manuscript, references, figures, tables and notes. Search a source only as needed.
+   manuscript, references, figures, tables and notes. Confirm the manuscript's title against
+   the input before drafting. Use targeted searches for disputed numbers, trade-offs and
+   contribution evidence. A raw page match gives a page to read in the original file.
 
    ```bash
    "$PY" "$SKILL_DIR/scripts/irw.py" find --work /app/work --source self --query "ablation"
    ```
 
-2. **Write `/app/work/draft.md` in one pass.** Use readable Markdown headings for Introduction
+2. **Write `/app/work/draft.md` promptly.** Once each section has enough verified evidence
+   for a sound first pass, save the draft and build it before investigating optional claims.
+   Use readable Markdown headings for Introduction
    or Background, Related Work, Research Gap, and Contributions, translated as appropriate.
    Follow the five-stage chain: **Research Background → Related Work Trajectory → Comparison
    Matrix (methods, strengths, limitations) → Research Gap → Contributions**.
@@ -38,18 +46,19 @@ length, venue and requested structure. Prefer a qualified claim to an unsupporte
    the author's intended meaning and the requested style.
 
    - Start with the research trajectory, the concrete open question and the technical constraint.
-   - Compare papers on a common axis such as method, setting, data or evaluation. Name the
-     trade-off and preserve each paper's conditions, results and limitations. Every limitation
-     and comparison point must bind to a real `[@key]` and source passage—never fabricate
-     citations or numbers.
-   - Derive a scoped gap directly from the limitations just discussed. Signal an inference as
-     an interpretation.
-   - Map each contribution explicitly to the gap it addresses and how the manuscript establishes
-     it. Cite a real Figure/Table label when applicable. Copy exact values, metrics, units and settings.
-   - Place citations beside the claim they support. Use an indexed key such as `[@key]` for precise
-     resolution, or a unique parenthetical author–year citation such as `(Surname, 2024)`.
-     Group several keys in one citation with `[@first; @second]`. Use `[@key #E:...]` only when a
-     specific source passage would resolve ambiguity, particularly across languages.
+   - Compare works on a common axis such as method, setting, data or evaluation. State what
+     each establishes under its conditions and what the comparison leaves open.
+   - Derive the gap from those specific limits. Distinguish what a paper varied or tested from
+     any fixed setting used in one experiment. Scope the inference to the supplied literature.
+   - Map each contribution to the gap it addresses and the manuscript method or result that
+     establishes it. Add `[@self:Table n]` or `[@self:Figure n]` when the claim relies on that item.
+     Keep values, units, baselines and settings together. If sources disagree, record both
+     locators and explain which value the draft uses. Use percentage points for differences
+     between percentages.
+   - Put citations on the sentences they support, including empirical opening sentences.
+     Bind decisive comparison, gap and numeric claims with `[@key #E:key:pN:I]`, using real IDs
+     from `evidence.md` or search, and use `[@first; @second]` to group keys as needed.
+     Attribute any secondary evidence to the supplied source that reports it.
    - Mark material gaps in ordinary prose, or use `[citation needed]` / `[需补充文献]` at the claim.
      The build supplies the bibliography. Keep the draft focused on manuscript prose.
 
@@ -60,9 +69,12 @@ length, venue and requested structure. Prefer a qualified claim to an unsupporte
    "$PY" "$SKILL_DIR/scripts/irw.py" build --work /app/work --out /app/output
    ```
 
-   Start with `review.md`. Correct clear factual or citation errors in the draft and build again.
-   When evidence is missing or ambiguous, qualify the claim and retain the review item.
-   Open the preview and verify headings, citations, glyphs and pagination.
+   With no `plan.json`, the build infers the audit from the draft. Add a compact plan only if
+   the inferred matrix, gap or contribution links need correction. In a plan, keep the full
+   comparison with its axis, real evidence IDs, and the gap each contribution addresses.
+   Read `review.md` and check the actual evidence behind any findings before revising. Retain
+   material limits for confirmation. Open the preview and verify headings, citations, glyphs
+   and pagination.
    Inspect `result.json` against `output_contract.json` and review any unresolved contract fields.
    If a case-specific field could not be inferred, put its actual value in
    `work/contract_overrides.json` and build again. Report remaining uncertainty when handing off.

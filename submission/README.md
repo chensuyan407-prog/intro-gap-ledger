@@ -19,8 +19,9 @@ explicit ledger.
 1. `init` extracts text from the own paper and every source PDF (column-aware block order, ligature/hyphen
    repair, TOC/affiliation filtering), numbers every body sentence `E:<key>:p<page>:<n>`, and lists claim/result
    and limitation/assumption sentences (cue lexicon in `rules/lexicon.json`, zh + en), captions and headings.
-   Libraries: BibTeX, RIS/EndNote, CSL-JSON/JSON, or a list in case.json; de-duplicated by DOI/title; PDFs are
-   matched to records by file name or title on page 1; PDFs without a record get a flagged record.
+   Libraries include BibTeX, RIS/EndNote, CSL-JSON/JSON and inline case records. PDFs are matched by
+   filename or title. For an explicitly closed citation list, pass `init --library-only FILE` with the
+   other init arguments. Repeat the flag for each allowed library. Matched PDFs still supply evidence.
 2. The agent fills `plan.json` (groups with basis + comparison dimension, gaps with `from` evidence, contributions
    with own-paper evidence) and `draft.md` (citations `[@key #evidence]`, `[@self:Table n]`, judgment tags).
 3. `check` verifies (table in SKILL.md): unknown keys; claim sentences without citation; numbers **in context**

@@ -113,23 +113,29 @@ def init(a):
     style = (first_of(case, ["citation_style", "style", "reference_style", "cite_style", "引用格式"]) or "")
     style = guess_style([str(style)]) or guess_style(strings) or ("gbt7714" if lang == "zh" else "numeric")
 
-    # libraries
-    libs = [f for f in files if f.lower().endswith(LIB_EXT)]
-    libs += [f for f in files if f.lower().endswith(".json") and os.path.abspath(f) != os.path.abspath(a.case or "") and looks_like_library_json(f)]
-    for l in a.library or []:
-        if os.path.abspath(l) not in libs:
-            libs.append(os.path.abspath(l))
-    inline = first_of(case, ["references", "library", "sources", "literature", "bibliography", "文献"])
+    # An explicit library scope defines citation eligibility. Other material
+    # can still supply evidence for the manuscript or for a matching record.
+    approved = [os.path.abspath(path) for path in (a.library_only or [])]
+    if approved:
+        libs, table_candidates, inline = list(dict.fromkeys(approved)), approved, None
+    else:
+        libs = [f for f in files if f.lower().endswith(LIB_EXT)]
+        libs += [f for f in files if f.lower().endswith(".json") and f != os.path.abspath(a.case or "") and looks_like_library_json(f)]
+        libs = list(dict.fromkeys(libs + [os.path.abspath(path) for path in a.library or []]))
+        table_candidates = files + libs
+        inline = first_of(case, ["references", "library", "sources", "literature", "bibliography", "文献"])
     recs = []
     if isinstance(inline, list) and inline and isinstance(inline[0], dict):
         from irw_common import parse_json_lib
         recs += parse_json_lib(inline, problems, "case.json")
-    for l in libs:
-        recs += parse_library(l, problems, )
-    for t in [f for f in files if f.lower().endswith(TABLE_EXT)]:  # literature tables (title + author/year columns)
-        got = parse_table(t, problems, {r.get("key") for r in recs})
+    for library in libs:
+        if not library.lower().endswith(TABLE_EXT):
+            recs += parse_library(library, problems)
+    for table in dict.fromkeys(f for f in table_candidates if f.lower().endswith(TABLE_EXT)):
+        got = parse_table(table, problems, {r.get("key") for r in recs})
         if got:
-            libs.append(t)
+            if table not in libs:
+                libs.append(table)
             recs += got
     # de-duplicate by key / doi / title
     seen, uniq, used = {}, [], set()
@@ -206,6 +212,8 @@ def init(a):
     notes = []
     for p in unmatched:  # extra source PDFs without a library record -> record from the PDF, flagged
         if p.lower().endswith(".pdf"):
+            if approved:
+                continue
             pg, _ = pages_of(p)
             lines = [l.strip() for l in (pg[0] if pg else "").splitlines() if len(l.strip()) > 8 and not l.lower().startswith(("arxiv", "provided", "published", "proceedings"))]
             k = re.sub(r"\W", "", os.path.splitext(os.path.basename(p))[0].lower()) or f"pdf{len(recs)}"
@@ -238,7 +246,7 @@ def init(a):
                     if not hit.get(f) and r.get(f):
                         hit[f] = r[f]
                         hit.setdefault("filled_from_reflist", []).append(f)
-            else:
+            elif not approved:
                 r.update(label_doc=did, reflist_of=label)
                 recs.append(r)
                 used.add(r["key"])
@@ -567,9 +575,24 @@ def find(a):
         return 1
     idx = all_sentence_index(a.source, src["pages"])
     q = a.query
-    sc = sorted(((overlap(q, s), i, p, s) for i, (p, s) in idx.items()), reverse=True)[:a.n]
-    for v, i, p, s in sc:
-        print(f"{v:.2f} {i}: {short(s, 400)}")
+    ranked = sorted(((overlap(q, s), i, s) for i, (_, s) in idx.items()), reverse=True)
+    matches = [row for row in ranked if row[0] > 0]
+    for score, evidence_id, sentence in matches[:a.n]:
+        print(f"{score:.2f} {evidence_id}: {short(sentence, 400)}")
+    if not matches:
+        # The sentence index filters headers, garbled formulas and other extraction
+        # noise. Show real page text if that filtering hid the requested passage.
+        passages = []
+        for page, text in enumerate(src["pages"], 1):
+            lines = [line.strip() for line in text.splitlines() if line.strip()]
+            for i, line in enumerate(lines):
+                score = overlap(q, line)
+                if score > 0:
+                    passages.append((score, page, " ".join(lines[max(0, i - 1):i + 2])))
+        for _, page, passage in sorted(passages, key=lambda match: -match[0])[:a.n]:
+            print(f"Raw page {page} (outside the sentence index): {short(passage, 400)}")
+        if not passages:
+            print(f"No text match in {a.source!r} for {q!r}.")
     return 0
 
 
@@ -1070,7 +1093,7 @@ def fallback_pdf(out, html_md, lang):
         return None, f"no preview renderer available: {e}"
 
 
-def png_previews(out, pdf_name, max_pages=3):
+def png_previews(out, pdf_name):
     try:
         try:
             import pymupdf as fitz
@@ -1079,11 +1102,13 @@ def png_previews(out, pdf_name, max_pages=3):
         d = fitz.open(os.path.join(out, pdf_name))
         names = []
         for i, pg in enumerate(d):
-            if i >= max_pages:
-                break
             n = f"intro_related_work_preview_p{i + 1}.png"
             pg.get_pixmap(dpi=110).save(os.path.join(out, n))
             names.append(n)
+        for previous in glob.glob(os.path.join(out, "intro_related_work_preview_p*.png")):
+            filename = os.path.basename(previous)
+            if re.fullmatch(r"intro_related_work_preview_p\d+\.png", filename) and filename not in names:
+                os.remove(previous)
         return names
     except Exception:  # noqa
         return []
@@ -1554,7 +1579,8 @@ def check(a):
     contribs = plan.get("contributions") or []
     if not contribs:
         C.add("S11", "fail", "plan.json has no contributions")
-    caps = norm(" ".join(c["text"] for c in (J(os.path.join(work, "evidence.json"), {}).get("self", {}).get("captions", []))))
+    captions = J(os.path.join(work, "evidence.json"), {}).get("self", {}).get("captions", [])
+    caps = norm(" ".join(c["text"] for c in captions))
     contrib_text = " ".join(s["text"] for s in parts["contrib"])
     gap_ids = {g.get("id") for g in gaps}
     contrib_rows = []
@@ -1597,6 +1623,19 @@ def check(a):
                         d["loc_exists"] = False
                     else:
                         d["loc_exists"] = True
+                        if not ev.get("id") and not ev.get("quote"):
+                            hits = [c for c in captions if re.match(pat + r"(?![a-z])", norm(c["text"]))]
+                            # A running-text cross-reference can start a line. Prefer
+                            # labels followed by a caption separator over these mentions.
+                            caption = next((c for c in hits if re.match(pat + r"\s*[|.:]", norm(c["text"]))), None)
+                            if caption is None:
+                                caption = next((c for c in hits if not re.match(pat + r"\s*\(", norm(c["text"]))), None)
+                            if caption:
+                                d.update(page=caption["page"], quote=caption["text"], verified=True)
+                            else:
+                                d["verified"] = False
+            if own:
+                d["source_file"] = own.get("path")
             row["evidence"].append(d)
         if k.get("text") and overlap(k["text"], contrib_text) < 0.5:
             C.add("S11f", "warn", f"contribution {kid} not clearly stated in the contributions part", kid)
@@ -1914,6 +1953,12 @@ def fill_contract(res, contract, overrides_p):
     res["unmapped_contract_fields"] = unm
 
 
+def source_label(source):
+    if source.get("abstract_only"):
+        return "supplied abstract"
+    return "secondary evidence" if source.get("context") else "supplied record"
+
+
 def matrix_md(groups, byk, S, sent_map, lang):
     L = ["# Related-work grouping matrix", "", "| group | basis | dimension | works | comparison | evidence (page) |", "|-|-|-|-|-|-|"]
     for g in groups:
@@ -1922,8 +1967,13 @@ def matrix_md(groups, byk, S, sent_map, lang):
             r = e.get("ref") or (e.get("id", "").split(":")[1] if e.get("id", "").count(":") >= 3 else "")
             if r in S and e.get("id") in S[r]["idx"]:
                 p, q = S[r]["idx"][e["id"]]
-                evs.append(f"{r} p{p}: \"{short(q, 90)}\"")
-        L.append(f"| {g.get('name')} | {g.get('basis')} | {g.get('dimension')} | {', '.join(g.get('refs') or [])} | {short(g.get('comparison') or '', 160)} | {'<br>'.join(evs)} |")
+                source = S[r]
+                located = re.match(r"\[([^\]]+ p\d+)\]", q) if source.get("context") else None
+                label = located[1] if located else f"{os.path.basename(source['path'])} p{p}" if source.get("path") else source_label(source)
+                evs.append(f"{r} ({label}), {e['id']}: \"{short(q, 140)}\"")
+        cells = (g.get("name"), g.get("basis"), g.get("dimension"), ", ".join(g.get("refs") or []),
+                 g.get("comparison"), "<br>".join(evs))
+        L.append("| " + " | ".join(" ".join(str(cell or "").splitlines()).replace("|", r"\|") for cell in cells) + " |")
     L += ["", "## Citation locators (per draft sentence)", ""]
     for s in sent_map:
         for c in s["citations"]:
@@ -1992,7 +2042,10 @@ def main():
     p.add_argument("--out", default="/app/output")
     p.add_argument("--work", default="/app/work")
     p.add_argument("--own", help="own paper file (overrides detection)")
-    p.add_argument("--library", action="append", help="extra library file(s)")
+    libraries = p.add_mutually_exclusive_group()
+    libraries.add_argument("--library", action="append", help="extra library file(s)")
+    libraries.add_argument("--library-only", action="append", metavar="FILE",
+                           help="restrict citations to records in FILE (repeat for each approved library)")
     p.add_argument("--case-id")
     p = sp.add_parser("scaffold")
     p.add_argument("--work", default="/app/work")
