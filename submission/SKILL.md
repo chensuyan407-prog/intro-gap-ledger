@@ -37,13 +37,12 @@ length, venue and requested structure. Prefer a qualified claim to an unsupporte
 
 2. **Write `/app/work/draft.md` promptly.** Once each section has enough verified evidence
    for a sound first pass, save the draft and build it before investigating optional claims.
-   Use readable Markdown headings for Introduction
-   or Background, Related Work, Research Gap, and Contributions, translated as appropriate.
-   Follow the five-stage chain: **Research Background → Related Work Trajectory → Comparison
-   Matrix (methods, strengths, limitations) → Research Gap → Contributions**.
-   Place comparison groups under descriptive subheadings and write connected comparative prose.
-   Keep the requested publication order. If a case asks for revision, preserve supported facts,
-   the author's intended meaning and the requested style.
+   Use readable Markdown headings matching the requested structure (do not force a rigid
+   four-section split if the venue/task asks for integrated prose). Follow the five-stage
+   logic: **Research Background → Related Work Trajectory → Comparison Matrix → Research Gap
+   → Contributions**. Place comparison groups under descriptive subheadings and write
+   connected comparative prose. Keep procedural notes (e.g. `"Outside the citation scope"`)
+   out of the manuscript body—put them in `author_notes` or `needs_review` instead.
 
    - Start with the research trajectory, the concrete open question and the technical constraint.
    - Compare works on a common axis such as method, setting, data or evaluation. State what
@@ -74,10 +73,23 @@ length, venue and requested structure. Prefer a qualified claim to an unsupporte
    comparison with its axis, real evidence IDs, and the gap each contribution addresses.
    Read `review.md` and check the actual evidence behind any findings before revising. Retain
    material limits for confirmation. Open the preview and verify headings, citations, glyphs
-   and pagination.
-   Inspect `result.json` against `output_contract.json` and review any unresolved contract fields.
-   If a case-specific field could not be inferred, put its actual value in
-   `work/contract_overrides.json` and build again. Report remaining uncertainty when handing off.
+   and pagination. `result.json` already includes `status`, `status_reason`, `sources`,
+   `uncertainty`, `changes`, `artifacts` and `needs_review` alongside contract fields.
+
+## Quick Reference (`plan.json` & Checks)
+
+```json
+{
+  "groups": [{"id": "g1", "name": "Method A", "basis": "method", "refs": ["key2024"], "evidence": [{"ref": "key2024", "id": "E:key2024:p2:1"}]}],
+  "gaps": [{"id": "gap1", "statement": "...", "from": [{"ref": "key2024", "id": "E:key2024:p2:1"}]}],
+  "contributions": [{"id": "k1", "text": "...", "gaps": ["gap1"], "evidence": [{"loc": "Table 2"}, {"id": "E:self:p4:3"}]}]
+}
+```
+
+- **Syntax**: `[@key #E:key:pN:I]` binds a claim to an evidence ID; `[@a; @b]` groups keys; `[@self:Table n]` / `[@self:Figure n]` links own-paper results.
+- **S3 / S4**: `S3` = uncited claim (add `[@key]` or `[author judgment]`); `S4` = number not in cited evidence (quote exact value or bind `#E`).
+- **S5 / S7**: `S5` = weak/misattributed citation (check `evidence.md`); `S7` = empty padding phrase (replace with concrete cited fact).
+- **S11g / S11h / S11j**: `S11g` = gap unaddressed by contributions (link in `plan.json`); `S11h` = "significant" without test (warn); `S11j` = SOTA/best without `[@self:Table n]`.
 
 ## Finished-draft checklist
 
@@ -110,8 +122,8 @@ The build renders the citation and checks its adjacent claim and the Table 2 loc
   Supported citation styles include GB/T 7714, APA and IEEE-style numeric.
 - The source map records the draft sentence, matched passage, page or evidence index,
   source file and number checks. The comparison matrix, gap derivation and contribution map
-  support review. `run_report.json` records status, uncertainties, artifacts and changes
-  alongside the contract-shaped `result.json`.
+  support review. `result.json` records `status`, `uncertainty`, `artifacts`, `changes` and
+  `needs_review` directly alongside contract fields.
 - Extracted and secondary evidence has scope limits. An abstract or another author's description
   cannot establish a paper's full experimental conditions. Candidate lexical matches still need
   semantic review, especially for translations, significance and claims of priority.
